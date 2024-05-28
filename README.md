@@ -64,3 +64,5 @@ deploy:
 
 Your `.gitlab-ci.yml` configuration can be customized based on your preferences. To learn more, read the documentation [here](https://docs.gitlab.com/ee/ci/yaml/).
 
+
+Just test commite=)
