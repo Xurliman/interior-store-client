@@ -6,6 +6,7 @@ variables:
   MYSQL_PASSWORD: secret
   MYSQL_DATABASE: homestead
   DB_HOST: mysql
+  LICENSE_FINDER_CLI_OPTS: "--recursive"
 
 cache:
   paths:
@@ -58,7 +59,17 @@ deploy:
 
 include:
   - template: Security/Dependency-Scanning.gitlab-ci.yml
-  - template: Security/License-Scanning.gitlab-ci.yml
+  # Deprecated
+  #- template: Security/License-Scanning.gitlab-ci.yml
   - template: Security/SAST.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
+
+license_management:
+  stage: test
+  script:
+    - apt-get update -qy
+    - apt-get install -y license_finder
+    - license_finder
+  only:
+    - master
 
