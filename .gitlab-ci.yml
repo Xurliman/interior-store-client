@@ -1,11 +1,11 @@
 
 
 variables:
-  MYSQL_ROOT_PASSWORD: root
-  MYSQL_USER: homestead
-  MYSQL_PASSWORD: secret
-  MYSQL_DATABASE: homestead
-  DB_HOST: mysql
+  MYSQL_ROOT_PASSWORD: password
+  MYSQL_USER: root
+  MYSQL_PASSWORD: password
+  MYSQL_DATABASE: configurator_db
+  DB_HOST: db
   LICENSE_FINDER_CLI_OPTS: "--recursive"
 
 cache:
@@ -14,33 +14,33 @@ cache:
     - node_modules/
 
 stages:
+  - build
   - test
+  - release
   - deploy
 
-.config:
-  image: edbizarro/gitlab-ci-pipeline-php:latest
-  services:
-    - mysql:latest
-  before_script:
-    # Install Node dependencies.
-    - npm install
-    # install composer dependencies
-    - composer install --prefer-dist --no-ansi --no-interaction --no-progress
-    # Copy over example configuration.
-    # Don't forget to set the database config in .env.example correctly
-    - cp .env.example .env
-    # Generate an application key. Re-cache.
-    - php artisan key:generate
-    - php artisan config:cache
-    # Run database migrations.
-    - php artisan migrate:refresh --seed
-    # Run database seed
-    - php artisan db:seed
+# SAST (Static Application Security Testing)
+#sast:
+#  stage: test
+
+#sentry_upload:
+#  image: getsentry/sentry-cli:latest
+#  stage: release
+#  rules:
+#    - if: $CI_COMMIT_TAG && $SENTRY_ORG
+#  script:
+#    - sentry-cli releases new --finalize "$CI_COMMIT_REF_NAME"
+#    - sentry-cli releases set-commits --auto "$CI_COMMIT_REF_NAME"
+
+build:
+  stage: build
+  when: manual
+  script:
+    - docker compose build
 
 check:
   stage: test
-  extends:
-    - .config
+  when: manual
   script:
     # run laravel tests
     - php vendor/bin/phpunit --coverage-text --colors=never
@@ -52,20 +52,24 @@ check:
 
 deploy:
   stage: deploy
-  extends:
-    - .config
+  when: manual
   script: echo "Define your deployment script!"
   environment: production
-
+  only:
+    - master
+    
 include:
   - template: Security/Dependency-Scanning.gitlab-ci.yml
   # Deprecated
   #- template: Security/License-Scanning.gitlab-ci.yml
   - template: Security/SAST.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
+  #- template: Security/Container-Scanning.gitlab-ci.yml
+  - template: Code-Quality.gitlab-ci.yml
 
 license_management:
-  stage: test
+  stage: release
+  when: manual
   script:
     - apt-get update -qy
     - apt-get install -y license_finder

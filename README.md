@@ -1,3 +1,33 @@
+## How to use it locally
+
+First of all, you need to have installed [Docker Desktop]((https://docs.docker.com/desktop/install/windows-install/)) and [Git]((https://git-scm.com/download/win)).
+
+Then you need to clone repo to local workstation:
+
+```
+git clone https://gitlab.fantomstudio.uz/root/fantom-configurator-frontend.git
+```
+
+Then you can build the solution:
+
+```
+cd /repo/location
+docker compose up
+```
+
+These commands run docker-compose.yml and Dockerfile. 
+There are 2 Docker containers: 'app' and 'db'.
+
+You can find their binded folder there: 
+
+```
+\\wsl.localhost\docker-desktop-data\data\docker\volumes
+```
+
+Now you can access web interface at http://localhost:8000/
+
+
+
 ## Introduction
 
 This is a simple pipeline example for a [Laravel]((https://laravel.com/docs)) application, showing just
@@ -63,6 +93,3 @@ deploy:
 ```
 
 Your `.gitlab-ci.yml` configuration can be customized based on your preferences. To learn more, read the documentation [here](https://docs.gitlab.com/ee/ci/yaml/).
-
-
-Just test commite=)
