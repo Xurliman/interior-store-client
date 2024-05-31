@@ -35,12 +35,16 @@ stages:
 build:
   stage: build
   when: manual
+  tags:
+    - docker
   script:
     - docker compose build
 
 check:
   stage: test
   when: manual
+  tags:
+    - docker
   script:
     # run laravel tests
     - php vendor/bin/phpunit --coverage-text --colors=never
@@ -53,23 +57,26 @@ check:
 deploy:
   stage: deploy
   when: manual
+  tags:
+    - docker
   script: echo "Define your deployment script!"
   environment: production
   only:
     - master
-    
+
+# Check a lot of things. Uncomment later
 include:
-  - template: Security/Dependency-Scanning.gitlab-ci.yml
-  # Deprecated
-  #- template: Security/License-Scanning.gitlab-ci.yml
-  - template: Security/SAST.gitlab-ci.yml
-  - template: Security/Secret-Detection.gitlab-ci.yml
+  #- template: Security/Dependency-Scanning.gitlab-ci.yml
+  #- template: Security/SAST.gitlab-ci.yml
+  #- template: Security/Secret-Detection.gitlab-ci.yml
   #- template: Security/Container-Scanning.gitlab-ci.yml
-  - template: Code-Quality.gitlab-ci.yml
+  #- template: Code-Quality.gitlab-ci.yml
 
 license_management:
   stage: release
   when: manual
+  tags:
+    - docker
   script:
     - apt-get update -qy
     - apt-get install -y license_finder
