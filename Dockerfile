@@ -40,11 +40,11 @@ RUN cp .env.example .env
 VOLUME /app/storage
 
 # Run Laravel server
-#CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan serve --host=0.0.0.0 --port=8000
 
 # The following script runs every time the container starts
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 

@@ -8,6 +8,7 @@ services:
         condition: service_healthy
     volumes:
       - configurator_app:/public
+      - fantom-configurator-cc_configurator_cc:/content
     ports:
       - "8000:8000"
     networks:
@@ -33,6 +34,8 @@ services:
 volumes:
   configurator_app: {}
   configurator_database: {}
+  fantom-configurator-cc_configurator_cc:
+    external: true
 
 networks:
   default: {}
