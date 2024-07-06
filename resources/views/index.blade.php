@@ -10,6 +10,7 @@
 <body>
 <!-- Header -->
     <x-layouts.header />
+    @yield('loading-modal')
     <!-- Main -->
     <main class="main">
         <!-- Blackout -->

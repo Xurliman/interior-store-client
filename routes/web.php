@@ -25,7 +25,7 @@ Route::get('/profile', function (){
     return view('components.user.profile');
 })->name('profile');
 Route::get('/scene-configurator', function (){
-    return view('scene-configurator');
+//    return view('scene-configurator');
     return view('components.main.configurator');
 })->name('scene');
 Route::get('/signup', function (){
