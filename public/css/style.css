@@ -1,0 +1,174 @@
+/* Sign In */
+.signin {
+  display: none;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+
+  width: 860px;
+  height: 560px;
+  background: var(--main-white);
+  border-radius: 24px;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+}
+
+.signin.open {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin__title {
+  font-weight: 600;
+  color: var(--main-black);
+}
+
+.signin__form_signup-link {
+  color: var(--signin-blue);
+  font-weight: 600;
+}
+
+.signin__form_signup {
+  color: var(--main-gray);
+  font-weight: 600;
+}
+
+.signin__form_input {
+  width: 380px;
+  border-radius: 12px;
+  border: 1px solid var(--main-blue);
+  padding: 16px 24px;
+  color: var(--main-black);
+}
+
+.signin__form_btn {
+  width: 380px;
+  border-radius: 12px;
+  background: var(--main-blue);
+  padding: 16px 24px;
+}
+
+@media (max-width: 480px) {
+  .signin {
+    width: 450px;
+  }
+}
+
+@media (max-width: 390px) {
+  .signin {
+    width: 350px;
+  }
+
+  .signin__form_input {
+    width: 300px;
+  }
+
+  .signin__form_btn {
+    width: 300px;
+  }
+}
+
+@media (max-width: 360px) {
+  .signin {
+    width: 330px;
+  }
+}
+
+/* Sign In */
+
+.carousel__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 912px) {
+  .main-cont {
+    width: 100vw;
+    position: relative;
+  }
+
+  .carousel__img {
+    height: var(--address-bar-height);
+  }
+
+  .main-cont::before {
+    content: "";
+    display: block;
+    padding-top: 0;
+  }
+
+  .carousel__img {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    object-fit: cover;
+  }
+}
+
+.carousel {
+  margin: 11px 0px;
+}
+
+.carousel__title {
+  pointer-events: none;
+  position: absolute;
+  bottom: 50px;
+  left: 60px;
+  z-index: 2;
+  color: white !important;
+
+  font-weight: 500;
+}
+
+@media (max-width: 570px) {
+  .carousel__title {
+    bottom: 140px;
+  }
+}
+
+.carousel__title-mobile {
+  display: none;
+}
+
+.carousel__btn-start {
+  background: var(--main-white) !important;
+}
+
+.carousel__btn {
+  display: none;
+
+  color: var(--signin-blue);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 500px;
+  background: var(--main-light-blue);
+
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+@media (max-width: 576px) {
+  .carousel__title {
+    /* top: 30px; */
+    left: 50%;
+
+    transform: translate(-50%, 0%);
+  }
+
+  .carousel__btn {
+    display: block;
+  }
+}
