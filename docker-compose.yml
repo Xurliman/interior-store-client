@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - configurator_app:/public
+      - fantom-configurator-cc_configurator_cc:/content
+    ports:
+      - "8000:8000"
+    networks:
+      - default
+    #  - web
+
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=configurator_db
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USERNAME=root
+      #- MYSQL_PASSWORD=password
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - configurator_database:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '--password=password', '-u', 'root']
+      timeout: 20s
+      retries: 10
+    ports:
+      - 3306:3306
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  configurator_app: {}
+  configurator_database: {}
+  fantom-configurator-cc_configurator_cc:
+    external: true
+
+networks:
+  default: {}
+#  web:
+#    external: true
