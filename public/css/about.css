@@ -1,0 +1,23 @@
+.about {
+  margin: 40px 0px 85px 30px;
+}
+
+.about__title {
+  color: var(--main-black);
+}
+
+.about__section_title {
+  color: var(--signin-blue);
+  font-weight: 500;
+}
+
+.about__section_desc {
+  max-width: 720px;
+  color: var(--signin-blue);
+}
+
+@media (max-width: 480px) {
+  .about {
+    margin: 30px 0px 80px 0px;
+  }
+}
