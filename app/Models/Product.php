@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Product extends Model
 {
@@ -26,12 +27,16 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function images(): MorphMany {
-        return $this->morphMany(Image::class, 'imageable');
+    public function images(): MorphOne {
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function price(): HasOne
     {
         return $this->HasOne(Price::class);
+    }
+
+    public function productConfiguration(): HasOne {
+        return $this->HasOne(ProductConfiguration::class);
     }
 }

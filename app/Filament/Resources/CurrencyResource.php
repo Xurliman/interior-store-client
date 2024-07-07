@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -17,13 +18,15 @@ class CurrencyResource extends Resource
 {
     protected static ?string $model = Currency::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-currency-euro';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('code')->required(),
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\TextInput::make('symbol')->nullable(),
             ]);
     }
 
@@ -31,7 +34,19 @@ class CurrencyResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('code')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('name')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('symbol')
+                    ->default('/')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
             ])
             ->filters([
                 //

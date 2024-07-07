@@ -14,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Product::class);
             $table->foreignIdFor(Currency::class);
-            $table->decimal('value', 8, 2)->default(0);
+            $table->decimal('value', 15, 2)->default(0);
             $table->timestamps();
         });
     }

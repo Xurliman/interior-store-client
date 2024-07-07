@@ -6,9 +6,12 @@ use App\Filament\Resources\SceneResource\Pages;
 use App\Filament\Resources\SceneResource\RelationManagers;
 use App\Models\Scene;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -17,13 +20,20 @@ class SceneResource extends Resource
 {
     protected static ?string $model = Scene::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-camera';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')
+                    ->required(),
+                TextInput::make('slug')
+                    ->required(),
+                FileUpload::make('srcset_img')
+                    ->disk('public')
+                    ->directory('scenes')
+                    ->required()
             ]);
     }
 
@@ -31,7 +41,14 @@ class SceneResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                TextColumn::make('slug')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
             ])
             ->filters([
                 //
@@ -49,7 +66,7 @@ class SceneResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ViewsRelationManager::class
         ];
     }
 
