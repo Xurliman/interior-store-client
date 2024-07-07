@@ -1,4 +1,4 @@
-@extends('index')
+@extends('components.layouts.base')
 
 @section('title', 'Register')
 

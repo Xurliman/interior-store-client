@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class View extends Model
@@ -30,5 +31,13 @@ class View extends Model
 
     public function items(): HasMany {
         return $this->hasMany(ViewItem::class);
+    }
+
+    public function cats(): HasManyThrough {
+        return $this->hasManyThrough(Category::class, ViewItem::class, 'view_id', 'id', 'id', 'category_id');
+    }
+
+    public function categories(): BelongsToMany {
+        return $this->belongsToMany(Category::class,'view_items')->withPivot('div_class')->withTimestamps();
     }
 }

@@ -38,22 +38,24 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('category_id')
-                    ->label('Category')
-                    ->relationship('category', 'name')
-                    ->required(),
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('short_name')
-                    ->nullable(),
-                MarkdownEditor::make('description')
-                    ->required(),
-                TextInput::make('dimensions')
-                    ->nullable(),
-                FileUpload::make('image')
-                    ->disk('public')
-                    ->directory('products')
-                    ->required(),
+                Forms\Components\Section::make()->schema([
+                    Select::make('category_id')
+                        ->label('Category')
+                        ->relationship('category', 'name')
+                        ->required(),
+                    TextInput::make('name')
+                        ->required(),
+                    TextInput::make('short_name')
+                        ->nullable(),
+                    TextInput::make('dimensions')
+                        ->nullable(),
+                    MarkdownEditor::make('description')
+                        ->required(),
+                    FileUpload::make('image')
+                        ->disk('public')
+                        ->directory('products')
+                        ->required(),
+                ])->columns(2)
             ]);
     }
 
@@ -61,11 +63,11 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('category.name')
+                TextColumn::make('name')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('name')
+                TextColumn::make('category.name')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),

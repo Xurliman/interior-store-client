@@ -28,13 +28,15 @@ class PriceResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('product_id')
-                    ->label('Product')
-                    ->relationship('product', 'name'),
-                Select::make('currency_id')
-                    ->label('Currency')
-                    ->relationship('currency', 'name'),
-                TextInput::make('value')->numeric()->required(),
+                Forms\Components\Section::make()->schema([
+                    Select::make('product_id')
+                        ->label('Product')
+                        ->relationship('product', 'name'),
+                    Select::make('currency_id')
+                        ->label('Currency')
+                        ->relationship('currency', 'name'),
+                    TextInput::make('value')->numeric()->required(),
+                ])
             ]);
     }
 

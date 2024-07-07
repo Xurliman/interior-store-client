@@ -1,4 +1,4 @@
-@extends('index')
+@extends('components.layouts.base')
 
 @section('title', 'Configurator')
 
@@ -135,11 +135,10 @@
                                      data-object="Lamp3" data-remove="lamps" src="" alt="Lamp" />
                                 <img class="loading-jpg lamp-img" data-price="400" data-product="lamp4"
                                      data-object="Lamp4" data-remove="lamps" src="" alt="Lamp" />
-                                <img class="loading-jpg lamp-img kitchen-white-lamp" data-price="500"
-                                     data-product="Lamp5" data-object="Lamp5" data-remove="lamps" src=""
-                                     alt="Lamp" />
-                                <img class="loading-jpg lamp-img kitchen-red-lamp" data-price="600"
-                                     data-product="Lamp6" data-object="Lamp6" data-remove="lamps" src=""
+                                <img class="loading-jpg lamp-img kitchen-white-lamp" data-price="500" data-product="Lamp5"
+                                     data-object="Lamp5" data-remove="lamps" src="" alt="Lamp" />
+                                <img class="loading-jpg lamp-img kitchen-red-lamp" data-price="600" data-product="Lamp6"
+                                     data-object="Lamp6" data-remove="lamps" src=""
                                      alt="Lamp" />
                             </div>
                         </div>

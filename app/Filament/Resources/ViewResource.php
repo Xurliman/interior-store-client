@@ -31,18 +31,21 @@ class ViewResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('scene_id')
-                    ->label('Scene')
-                    ->relationship('scenes', 'name')
-                    ->required(),
-                TextInput::make('name')
-                    ->required(),
-                Checkbox::make('is_default')
-                    ->default(false),
-                FileUpload::make('image')
-                    ->disk('public')
-                    ->directory('views')
-                    ->required(),
+               Forms\Components\Section::make()->schema([
+                   Select::make('scene_id')
+                       ->label('Scene')
+                       ->relationship('scene', 'name')
+                       ->required(),
+                   TextInput::make('name')
+                       ->required(),
+                   FileUpload::make('image')
+                       ->disk('public')
+                       ->directory('views')
+                       ->nullable(),
+                   Checkbox::make('is_default')
+                       ->label('Default')
+                       ->default(false),
+               ])->columns(2)
             ]);
     }
 
@@ -50,7 +53,7 @@ class ViewResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('scenes.name')
+                TextColumn::make('scene.name')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
@@ -79,7 +82,7 @@ class ViewResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\CategoriesRelationManager::class,
         ];
     }
 

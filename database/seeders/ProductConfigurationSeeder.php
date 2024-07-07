@@ -189,7 +189,7 @@ class ProductConfigurationSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'product_id' => 19,
+                'product_id' => 20,
                 'btn_class' => 'object-lamp-btn',
                 'data_object' => 'Lamp6',
                 'class' => 'lamp',

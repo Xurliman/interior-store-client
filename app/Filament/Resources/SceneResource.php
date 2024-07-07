@@ -26,14 +26,16 @@ class SceneResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('slug')
-                    ->required(),
-                FileUpload::make('srcset_img')
-                    ->disk('public')
-                    ->directory('scenes')
-                    ->required()
+                Forms\Components\Section::make()->schema([
+                    TextInput::make('name')
+                        ->required(),
+                    TextInput::make('slug')
+                        ->required(),
+                    FileUpload::make('srcset_img')
+                        ->disk('public')
+                        ->directory('scenes')
+                        ->required()
+                ])
             ]);
     }
 

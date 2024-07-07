@@ -28,24 +28,24 @@ class ProductConfigurationResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('product_id')
-                    ->label('Product')
-                    ->relationship('product', 'name')
-                    ->required(),
-                TextInput::make('data_mask')
-                    ->required(),
-                TextInput::make('data_object')
-                    ->required(),
-                TextInput::make('data_remove')
-                    ->required(),
-                TextInput::make('class')
-                    ->required(),
-                TextInput::make('extra_class')
-                    ->nullable(),
-                FileUpload::make('image_path')
-                    ->disk('public')
-                    ->directory('product_configurations')
-                    ->required(),
+                Forms\Components\Section::make()->schema([
+                    Select::make('product_id')
+                        ->label('Product')
+                        ->relationship('product', 'name')
+                        ->required(),
+                    TextInput::make('btn_class')
+                        ->required(),
+                    TextInput::make('data_object')
+                        ->required(),
+                    TextInput::make('class')
+                        ->required(),
+                    TextInput::make('extra_class')
+                        ->nullable(),
+                    FileUpload::make('image_path')
+                        ->disk('public')
+                        ->directory('product_configurations')
+                        ->nullable(),
+                ])->columns(2)
             ]);
     }
 
@@ -53,7 +53,11 @@ class ProductConfigurationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('data_mask')
+                TextColumn::make('product.name')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('btn_class')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
@@ -61,15 +65,7 @@ class ProductConfigurationResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('data_remove')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
                 TextColumn::make('class')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('extra_class')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),

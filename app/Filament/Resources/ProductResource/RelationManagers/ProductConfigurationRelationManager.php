@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\ProductResource\RelationManagers;
 
+use Filament\Actions\CreateAction;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -20,15 +22,17 @@ class ProductConfigurationRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                TextInput::make('data_mask')
+                TextInput::make('btn_class')
                     ->required(),
                 TextInput::make('data_object')
-                    ->required(),
-                TextInput::make('data_remove')
                     ->required(),
                 TextInput::make('class')
                     ->required(),
                 TextInput::make('extra_class')
+                    ->nullable(),
+                FileUpload::make('image_path')
+                    ->disk('public')
+                    ->directory('product_configurations')
                     ->nullable(),
             ]);
     }
@@ -38,7 +42,7 @@ class ProductConfigurationRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('class')
             ->columns([
-                TextColumn::make('data_mask')
+                TextColumn::make('btn_class')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
@@ -46,15 +50,7 @@ class ProductConfigurationRelationManager extends RelationManager
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('data_remove')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
                 TextColumn::make('class')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('extra_class')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
@@ -63,7 +59,7 @@ class ProductConfigurationRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+//                Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -73,6 +69,9 @@ class ProductConfigurationRelationManager extends RelationManager
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->emptyStateActions([
+                Tables\Actions\CreateAction::make(),
             ]);
     }
 }

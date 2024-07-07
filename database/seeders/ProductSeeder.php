@@ -150,6 +150,13 @@ class ProductSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'category_id' => 4,
+                'name' => 'Red Lamp',
+                'description' => 'Red Lamp',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('products')->insert($data);

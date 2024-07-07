@@ -83,30 +83,35 @@ class ViewSeeder extends Seeder
 //            kitchen-black view1 items
             [
                 'view_id' => 1,
+                'category_id' => 1,
                 'div_class' => 'wall',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 1,
+                'category_id' => 3,
                 'div_class' => 'chairs',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 1,
+                'category_id' => 2,
                 'div_class' => 'floor1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 1,
+                'category_id' => 2,
                 'div_class' => 'floor2',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 1,
+                'category_id' => 4,
                 'div_class' => 'lamps',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -115,30 +120,35 @@ class ViewSeeder extends Seeder
 //            kitchen-black view2 items
             [
                 'view_id' => 2,
+                'category_id' => 1,
                 'div_class' => 'wall',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 2,
+                'category_id' => 3,
                 'div_class' => 'chairs',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 2,
+                'category_id' => 2,
                 'div_class' => 'floor1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 2,
+                'category_id' => 2,
                 'div_class' => 'floor2',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 2,
+                'category_id' => 4,
                 'div_class' => 'lamps',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -148,18 +158,21 @@ class ViewSeeder extends Seeder
 //            kitchen-black view3 items
             [
                 'view_id' => 3,
+                'category_id' => 1,
                 'div_class' => 'wall',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 3,
+                'category_id' => 3,
                 'div_class' => 'chairs',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 3,
+                'category_id' => 4,
                 'div_class' => 'lamps',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -168,18 +181,21 @@ class ViewSeeder extends Seeder
 //            kitchen-red view1 items
             [
                 'view_id' => 4,
+                'category_id' => 1,
                 'div_class' => 'wall',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 4,
+                'category_id' => 2,
                 'div_class' => 'floor1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 4,
+                'category_id' => 4,
                 'div_class' => 'lamps',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -189,12 +205,14 @@ class ViewSeeder extends Seeder
 //            kitchen-red view2 items
             [
                 'view_id' => 5,
+                'category_id' => 1,
                 'div_class' => 'wall',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 5,
+                'category_id' => 4,
                 'div_class' => 'lamps',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -204,6 +222,7 @@ class ViewSeeder extends Seeder
 //            kitchen-red view3 items
             [
                 'view_id' => 6,
+                'category_id' => 1,
                 'div_class' => 'wall',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -212,36 +231,42 @@ class ViewSeeder extends Seeder
 //            kitchen-white view1 items
             [
                 'view_id' => 7,
+                'category_id' => 3,
                 'div_class' => 'chairs',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 7,
+                'category_id' => 2,
                 'div_class' => 'floor1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 7,
+                'category_id' => 2,
                 'div_class' => 'floor2',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 7,
+                'category_id' => 2,
                 'div_class' => 'floor3',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 7,
+                'category_id' => 2,
                 'div_class' => 'floor4',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 7,
+                'category_id' => 4,
                 'div_class' => 'lamps',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -251,12 +276,14 @@ class ViewSeeder extends Seeder
 //            kitchen-white view2 items
             [
                 'view_id' => 8,
+                'category_id' => 2,
                 'div_class' => 'floor1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 8,
+                'category_id' => 2,
                 'div_class' => 'floor2',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -266,18 +293,21 @@ class ViewSeeder extends Seeder
 //            kitchen-white view3 items
             [
                 'view_id' => 9,
+                'category_id' => 3,
                 'div_class' => 'chairs',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 9,
+                'category_id' => 2,
                 'div_class' => 'floor1',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'view_id' => 9,
+                'category_id' => 2,
                 'div_class' => 'floor2',
                 'created_at' => now(),
                 'updated_at' => now(),

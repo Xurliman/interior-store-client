@@ -5,13 +5,13 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 
 class CategoryResource extends Resource
 {
@@ -23,7 +23,12 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required(),
+                Section::make()->schema([
+                    TextInput::make('name')->required(),
+                    TextInput::make('data_mask')->required(),
+                    TextInput::make('div_id')->required(),
+                    TextInput::make('class')->nullable(),
+                ])->columns(2)
             ]);
     }
 
@@ -31,7 +36,18 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('data_mask')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('div_id')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
             ])
             ->filters([
                 //
@@ -50,7 +66,6 @@ class CategoryResource extends Resource
     {
         return [
             RelationManagers\ProductsRelationManager::class,
-            RelationManagers\ViewsRelationManager::class,
         ];
     }
 

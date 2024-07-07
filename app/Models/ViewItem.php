@@ -11,13 +11,19 @@ class ViewItem extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'view_id',
+        'category_id',
+        'div_class',
+    ];
+
     public function view(): BelongsTo
     {
         return $this->belongsTo(View::class);
     }
 
 
-    public function categories(): BelongsToMany {
-        return $this->belongsToMany(Category::class, 'category_view_items')->withTimestamps();
+    public function categories(): BelongsTo {
+        return $this->belongsTo(Category::class);
     }
 }
