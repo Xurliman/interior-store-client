@@ -21,7 +21,7 @@ class Category extends Model
     }
 
 
-    public function views(): BelongsToMany {
-        return $this->belongsToMany(View ::class, 'category_view')->withTimestamps();
+    public function viewItems(): BelongsToMany {
+        return $this->belongsToMany(ViewItem ::class, 'category_view_items')->withTimestamps();
     }
 }

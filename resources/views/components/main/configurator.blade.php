@@ -62,9 +62,12 @@
                              src="{{ asset('img/kitchen-black/View2/Png/Foreground.png') }}" alt="" />
                         <img class="loading-jpg foreground foreground-red"
                              src="{{ asset('img/kitchen-red/View1/Png/Table.png') }}" alt="" />
-
                         <img class="loading-jpg foreground foreground-red-view2"
                              src="{{ asset('img/kitchen-red/View2/Png/Table.png') }}" alt="" />
+                        <img class="loading-jpg foreground foreground-white"
+                             src="{{ asset('img/kitchen-white/View1/Png/Table.png') }}" alt="" />
+                        <img class="loading-jpg foreground foreground-white-view2"
+                             src="{{ asset('img/kitchen-white/View2/Png/Table.png') }}" alt="" />
 
                         <!-- Object Images -->
                         <div class="object__images">
@@ -96,7 +99,7 @@
                                      data-remove="wall-pattern" data-price="200" src="" alt="Fartuk" />
 
                                 <img class="loading-jpg fartuk-img" data-object="fartuk3" data-product="Fartuk 3"
-                                     data-remove="wall-patternor" data-price="300" src=""
+                                     data-remove="wall-pattern" data-price="300" src=""
                                      alt="Fartuk" />
                             </div>
 
@@ -175,8 +178,7 @@
                             <div class="kitchen-mask kitchen-red-masks">
                                 <!-- View 1 -->
                                 <div class="kitchen-view1 active">
-                                    <div class="mask_btn kitchen-red-view1-wall" data-mask="wall-pattern"></div>
-                                    >
+                                    <div class="mask_btn kitchen-red-view1-wall" data-mask="wall-pattern"></div>>
                                     <div class="mask_btn kitchen-red-view1-floor1" data-mask="floor"></div>
                                     <div class="mask_btn kitchen-red-view1-lamps" data-mask="lamps"></div>
                                 </div>

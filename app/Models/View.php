@@ -28,7 +28,7 @@ class View extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function categories(): BelongsToMany {
-        return $this->belongsToMany(Category::class, 'category_view')->withTimestamps();
+    public function items(): HasMany {
+        return $this->hasMany(ViewItem::class);
     }
 }

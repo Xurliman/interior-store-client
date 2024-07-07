@@ -12,9 +12,8 @@ return new class extends Migration
         Schema::create('product_configurations', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Product::class);
-            $table->string('data_mask');
+            $table->string('btn_class');
             $table->string('data_object');
-            $table->string('data_remove');
             $table->string('class');
             $table->string('extra_class')->nullable();
             $table->timestamps();
