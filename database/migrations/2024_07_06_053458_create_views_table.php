@@ -13,7 +13,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Scene::class);
             $table->string('name');
-            $table->text('image');
             $table->boolean('is_default');
             $table->timestamps();
         });

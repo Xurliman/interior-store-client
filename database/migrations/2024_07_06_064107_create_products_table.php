@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('short_name')->nullable();
             $table->text('description');
             $table->text('dimensions')->nullable();
-            $table->text('image');
             $table->timestamps();
         });
     }

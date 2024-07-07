@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('data_remove');
             $table->string('class');
             $table->string('extra_class')->nullable();
-            $table->text('image_path');
             $table->timestamps();
         });
     }
