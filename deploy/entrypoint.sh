@@ -1,7 +1,17 @@
 #!/bin/sh
 
+cd /var/www/html/
+
+
 # Checking if the database has already been initialized
-if [ ! -f /app/.initialized ]; then
+if [ ! -f /var/www/html/.initialized ]; then
+    
+    # first: change group (nginx)
+    chown -R :81 ./storage/app
+    
+    # second: change permissions
+    chmod -R 775 ./storage/app
+    
     # Generate an application key. Re-cache.
     php artisan key:generate
     php artisan config:clear
@@ -14,7 +24,7 @@ if [ ! -f /app/.initialized ]; then
     php artisan db:seed
 
     # Create a marker file to mark the database as initialized
-    touch /app/.initialized
+    touch /var/www/html/.initialized
 fi
 
 # Run Laravel server

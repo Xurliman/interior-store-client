@@ -1,8 +1,9 @@
 @echo off
 setlocal
 
-set CONTAINER_NAME=fantom-configurator-ubp-app-1
-set IMAGE_NAME=app
+
+set CONTAINER_NAME=laravelapp
+set IMAGE_NAME=deploy-laravel
 
 REM Going to the right folder
 cd /d "%cd%"
