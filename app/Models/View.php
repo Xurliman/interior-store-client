@@ -33,10 +33,6 @@ class View extends Model
         return $this->hasMany(ViewItem::class);
     }
 
-    public function cats(): HasManyThrough {
-        return $this->hasManyThrough(Category::class, ViewItem::class, 'view_id', 'id', 'id', 'category_id');
-    }
-
     public function categories(): BelongsToMany {
         return $this->belongsToMany(Category::class,'view_items')->withPivot('div_class')->withTimestamps();
     }

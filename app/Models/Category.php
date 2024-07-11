@@ -24,7 +24,6 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-
     public function viewItem(): HasOne {
         return $this->hasOne(ViewItem::class);
     }

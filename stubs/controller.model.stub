@@ -13,32 +13,7 @@ class {{ class }} extends Controller
         //
     }
 
-    public function create()
-    {
-        //
-    }
-
-    public function store({{ storeRequest }} $request)
-    {
-        //
-    }
-
     public function show({{ model }} ${{ modelVariable }})
-    {
-        //
-    }
-
-    public function edit({{ model }} ${{ modelVariable }})
-    {
-        //
-    }
-
-    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
-    {
-        //
-    }
-
-    public function destroy({{ model }} ${{ modelVariable }})
     {
         //
     }

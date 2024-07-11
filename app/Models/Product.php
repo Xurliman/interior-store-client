@@ -27,7 +27,7 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function images(): MorphOne {
+    public function image(): MorphOne {
         return $this->morphOne(Image::class, 'imageable');
     }
 
