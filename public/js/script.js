@@ -6,7 +6,7 @@ const appHeight = () =>
     );
 window.addEventListener("resize", appHeight);
 appHeight();
-
+console.log('data catch')
 //  Swiper Carousel
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,

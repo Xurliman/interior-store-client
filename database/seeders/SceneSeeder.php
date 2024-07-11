@@ -14,18 +14,21 @@ class SceneSeeder extends Seeder
             [
                 'name' => 'Black Kitchen',
                 'slug' => 'kitchen-black',
+                'img_class' => 'black',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'name' => 'Red Kitchen',
                 'slug' => 'kitchen-red',
+                'img_class' => 'red',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'name' => 'White Kitchen',
                 'slug' => 'kitchen-white',
+                'img_class' => 'white',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

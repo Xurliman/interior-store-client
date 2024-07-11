@@ -1,7 +1,7 @@
 <div class="container-xxl">
     <img
         class="open-chat-btn"
-        src="./img/icons/Support chat.png"
+        src="{{ asset('img/icons/Support chat.png') }}"
         alt="Open Chat"
     />
 
@@ -11,7 +11,7 @@
                 <div>
                     <img
                         class="chat-popup__img me-3"
-                        src="./img/chat-img.png"
+                        src="{{ asset('img/chat-img.png') }}"
                         alt=""
                     />
                     <span>Alice</span>
@@ -20,7 +20,7 @@
                 <button class="chat-popup-btn-close">
                     <img
                         class="chat-popup-btn"
-                        src="./img/icons/chat-cancel.svg"
+                        src="{{ asset('img/icons/chat-cancel.svg') }}"
                         alt=""
                     />
                 </button>
@@ -40,7 +40,7 @@
                 <button class="chat-popup-send-btn">
                     <img
                         class="chat-popup__text_icon"
-                        src="./img/icons/Send.svg"
+                        src="{{ asset('img/icons/Send.svg') }}"
                         alt="Send"
                     />
                 </button>

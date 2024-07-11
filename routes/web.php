@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\PriceController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SceneController;
+use App\Http\Controllers\ViewController;
+use App\Http\Resources\Scene\SceneResource;
+use App\Models\Scene;
 use App\Models\View;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +37,14 @@ Route::get('/signup', function (){
     return view('components.auth.registration');
 })->name('signup');
 
+Route::get('/scene-all', function (){
+    $scenes = SceneResource::collection(Scene::with('views')->get());
+
+    return $scenes;
+});
+Route::resource('scenes', SceneController::class)->only(['index', 'show']);
+Route::resource('categories', CategoryController::class)->only(['index', 'show']);
+Route::resource('products', ProductController::class)->only(['index', 'show']);
+Route::resource('currencies', CurrencyController::class)->only(['index', 'show']);
+Route::resource('prices', PriceController::class)->only(['index', 'show']);
+Route::resource('views', ViewController::class)->only(['index', 'show']);

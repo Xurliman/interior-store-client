@@ -15,7 +15,7 @@ class ViewResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'is_default' => $this->is_default,
-            'image' => $this->image->path,
+            'image' => $this->image->path ?? null,
             'scene' => SceneResource::make($this->whenLoaded('scene')),
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
         ];

@@ -647,61 +647,10 @@
             </div>
         </div>
 
-        <!-- Share Modal -->
-        <div class="share-blackout" data-modal="share">
-            <div class="share-modal">
-                <button class="close-share-modal ms-auto">
-                    <img src="{{ asset('img/icons/Cancel.svg') }}" alt="Cancel" />
-                </button>
-
-                <h4 class="share-modal__items_title h4 mb-4">
-                    Share to
-                </h4>
-
-                <div class="share-modal__items">
-                    <div class="share-modal__item d-flex flex-column align-items-center">
-                        <a href="#!">
-                            <img src="{{ asset('img/icons/Whatsapp.svg') }}" alt="Whatsapp" />
-                        </a>
-
-                        <span class="share-modal__item_title mt-2">WhatsApp</span>
-                    </div>
-
-                    <div class="share-modal__item d-flex flex-column align-items-center">
-                        <a href="#!">
-                            <img src="{{ asset('img/icons/Facebook.svg') }}" alt="Facbook" />
-                        </a>
-
-                        <span class="share-modal__item_title mt-2">Facebook</span>
-                    </div>
-
-                    <div class="share-modal__item d-flex flex-column align-items-center">
-                        <a href="#!">
-                            <img src="{{ asset('img/icons/gmail-pr.svg') }}" width="48px" heihgt="48px"
-                                 alt="Email" />
-                        </a>
-
-                        <span class="share-modal__item_title mt-2">Email</span>
-                    </div>
-
-                    <div class="share-modal__item d-flex flex-column align-items-center">
-                        <a href="#!">
-                            <img src="{{ asset('img/icons/link-pr.svg') }}" width="40px" heihgt="40px"
-                                 alt="Link" />
-                        </a>
-
-                        <span class="share-modal__item_title mt-2">Copy link</span>
-                    </div>
-                </div>
-
-                <button class="close-share-modal mb-2">Back</button>
-            </div>
-        </div>
     </div>
 @endsection
 
 @section('js')
     <script src="{{ asset('js/panzoom.js') }}"></script>
     <script src="{{ asset('js/scene.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
 @endsection

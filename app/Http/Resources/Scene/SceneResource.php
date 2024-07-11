@@ -14,7 +14,7 @@ class SceneResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'path' => $this->image->path,
+            'path' => $this->image->path ?? null,
             'views' => ViewResource::collection($this->whenLoaded('views')),
         ];
     }

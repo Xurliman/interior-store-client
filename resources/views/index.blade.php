@@ -23,13 +23,13 @@
                         <picture>
                             <source
                                 data-scene="kitchen-black"
-                                srcset="./img/main-black-mobile.jpg"
+                                srcset="{{ asset('img/main-black-mobile.jpg') }}"
                                 media="(max-width: 540px)"
                             />
                             <img
                                 data-scene="kitchen-black"
                                 class="carousel__img"
-                                src="./img/kitchen-black/View1/Jpeg/Final.jpg"
+                                src="{{ asset('img/kitchen-black/View1/Jpeg/Final.jpg') }}"
                                 alt="kitchen-black"
                             />
                         </picture>
@@ -57,13 +57,13 @@
                         <picture>
                             <source
                                 data-scene="kitchen-red"
-                                srcset="./img/main-red-mobile.jpg"
+                                srcset="{{ asset('img/main-red-mobile.jpg') }}"
                                 media="(max-width: 540px)"
                             />
                             <img
                                 data-scene="kitchen-red"
                                 class="carousel__img"
-                                src="./img/kitchen-red/View1/Jpeg/Final.jpg"
+                                src="{{ asset('img/kitchen-red/View1/Jpeg/Final.jpg') }}"
                                 alt="kitchen-red"
                             />
                         </picture>
@@ -91,13 +91,13 @@
                         <picture>
                             <source
                                 data-scene="kitchen-white"
-                                srcset="./img/main-white-mobile.jpg"
+                                srcset="{{ asset("img/main-white-mobile.jpg") }}"
                                 media="(max-width: 540px)"
                             />
                             <img
                                 data-scene="kitchen-white"
                                 class="carousel__img"
-                                src="./img/kitchen-white/View1/Jpeg/Final.jpg"
+                                src="{{ asset('img/kitchen-white/View1/Jpeg/Final.jpg') }}"
                                 alt="kitchen-gray"
                             />
                         </picture>
