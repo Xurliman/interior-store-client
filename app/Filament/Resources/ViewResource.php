@@ -83,6 +83,7 @@ class ViewResource extends Resource
     {
         return [
             RelationManagers\CategoriesRelationManager::class,
+            RelationManagers\ImageRelationManager::class
         ];
     }
 

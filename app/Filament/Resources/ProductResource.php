@@ -7,6 +7,7 @@ use App\Filament\Resources\ProductResource\Pages\CreateProduct;
 use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Filament\Resources\ProductResource\RelationManagers\ImageRelationManager;
 use App\Filament\Resources\ProductResource\RelationManagers\PriceRelationManager;
 use App\Filament\Resources\ProductResource\RelationManagers\ProductConfigurationRelationManager;
 use App\Models\Category;
@@ -51,10 +52,6 @@ class ProductResource extends Resource
                         ->nullable(),
                     MarkdownEditor::make('description')
                         ->required(),
-                    FileUpload::make('image')
-                        ->disk('public')
-                        ->directory('products')
-                        ->required(),
                 ])->columns(2)
             ]);
     }
@@ -89,7 +86,8 @@ class ProductResource extends Resource
     {
         return [
             ProductConfigurationRelationManager::class,
-            PriceRelationManager::class
+            PriceRelationManager::class,
+            ImageRelationManager::class
         ];
     }
 
