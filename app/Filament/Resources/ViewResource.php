@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ViewResource\Pages;
 use App\Filament\Resources\ViewResource\RelationManagers;
+use App\Models\Image;
 use App\Models\Scene;
 use App\Models\View;
 use Filament\Forms;
@@ -16,6 +17,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\CheckboxColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -38,6 +40,8 @@ class ViewResource extends Resource
                        ->required(),
                    TextInput::make('name')
                        ->required(),
+                   TextInput::make('data_view')
+                       ->required(),
                    FileUpload::make('image')
                        ->disk('public')
                        ->directory('views')
@@ -53,11 +57,18 @@ class ViewResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('images.path')
+                    ->circular()
+                    ->stacked(),
                 TextColumn::make('scene.name')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
                 TextColumn::make('name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                TextColumn::make('data_view')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
@@ -82,8 +93,8 @@ class ViewResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\ImageRelationManager::class,
             RelationManagers\CategoriesRelationManager::class,
-            RelationManagers\ImageRelationManager::class
         ];
     }
 

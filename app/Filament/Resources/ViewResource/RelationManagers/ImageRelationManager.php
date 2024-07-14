@@ -13,15 +13,20 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ImageRelationManager extends RelationManager
 {
-    protected static string $relationship = 'image';
+    protected static string $relationship = 'images';
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('type')
+                    ->options([
+                        'black_bg' => 'Final',
+                        'transparent_bg' => 'Background',
+                        'mask_bg' => 'Foreground',
+                    ]),
                 FileUpload::make('path')
                     ->image()
-                    ->preserveFilenames()
                     ->imageEditor()
                     ->disk('public')
                     ->required(),
@@ -33,7 +38,10 @@ class ImageRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('path')
             ->columns([
-                Tables\Columns\TextColumn::make('path'),
+                Tables\Columns\ImageColumn::make('path')
+                    ->circular()
+                    ->stacked(),
+                Tables\Columns\TextColumn::make('type')
             ])
             ->filters([
                 //

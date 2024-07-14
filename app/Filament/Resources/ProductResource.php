@@ -60,6 +60,8 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('image.path')
+                    ->circular(),
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable()

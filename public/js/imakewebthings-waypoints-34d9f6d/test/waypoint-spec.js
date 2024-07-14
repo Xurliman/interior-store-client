@@ -160,7 +160,7 @@ window.jQuery.each(Waypoint.adapters, function(i, adapter) {
           waitsFor(hitToBeTrue, 'callback to trigger')
         })
 
-        it('takes a bottom-in-view function alias', function() {
+        it('takes a bottom-in-views function alias', function() {
           var top = $target.offset().top
           var height = $target.outerHeight()
           var windowHeight = Waypoint.viewportHeight()
@@ -232,7 +232,7 @@ window.jQuery.each(Waypoint.adapters, function(i, adapter) {
           waitsFor(hitToBeTrue, 'callback to trigger')
         })
 
-        it('works with bottom-in-view offset alias', function() {
+        it('works with bottom-in-views offset alias', function() {
           waypoint = new Waypoint({
             element: $target[0],
             handler: setHitTrue,

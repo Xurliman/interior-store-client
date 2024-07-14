@@ -15,6 +15,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 1,
                 'name' => 'view1',
+                'data_view' => 'View1',
                 'is_default' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -22,6 +23,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 1,
                 'name' => 'view2',
+                'data_view' => 'View2',
                 'is_default' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -29,6 +31,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 1,
                 'name' => 'view3',
+                'data_view' => 'View3',
                 'is_default' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -37,6 +40,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 2,
                 'name' => 'view1',
+                'data_view' => 'View1',
                 'is_default' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -44,6 +48,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 2,
                 'name' => 'view2',
+                'data_view' => 'View2',
                 'is_default' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -51,6 +56,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 2,
                 'name' => 'view3',
+                'data_view' => 'View3',
                 'is_default' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -59,6 +65,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 3,
                 'name' => 'view1',
+                'data_view' => 'View1',
                 'is_default' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -66,6 +73,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 3,
                 'name' => 'view2',
+                'data_view' => 'View2',
                 'is_default' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -73,6 +81,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 3,
                 'name' => 'view3',
+                'data_view' => 'View3',
                 'is_default' => false,
                 'created_at' => now(),
                 'updated_at' => now(),

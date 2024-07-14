@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Storage; @endphp
 <div class="swiper-slide">
     <div class="main-cont">
         <h1 class="carousel__title carousel__title-mobile h1">
@@ -14,7 +15,21 @@
                 <img
                     data-scene="{{ $scene->slug }}"
                     class="carousel__img"
-                    src="{{ asset('img/kitchen-white/View1/Jpeg/Final.jpg') }}"
+                    src="{{ Storage::url(collect(
+                        collect(
+                            $scene
+                            ->load('views.images')
+                            ->views)
+                            ->where(function($view){
+                                return $view->is_default == true;
+                            })
+                            ->first()
+                            ->images)
+                            ->where(function($image){
+                                return $image->type == 'black_bg';
+                        })
+                        ->first()
+                        ->path) }}"
                     alt="kitchen-gray"
                 />
             </picture>

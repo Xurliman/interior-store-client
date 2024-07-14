@@ -21,7 +21,6 @@ class ImageRelationManager extends RelationManager
             ->schema([
                 FileUpload::make('path')
                     ->image()
-                    ->preserveFilenames()
                     ->imageEditor()
                     ->disk('public')
                     ->required(),

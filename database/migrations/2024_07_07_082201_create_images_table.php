@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->text('path');
+            $table->enum('type', ['black_bg', 'black_white', 'transparent_bg', 'mask_bg'])->nullable();
             $table->integer('imageable_id');
             $table->text('imageable_type');
             $table->timestamps();

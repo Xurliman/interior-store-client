@@ -38,9 +38,22 @@ Route::get('/signup', function (){
 })->name('signup');
 
 Route::get('/scene-all', function (){
-    $scenes = SceneResource::collection(Scene::with('views')->get());
-
-    return $scenes;
+    $scene = collect(
+        collect(
+            Scene::find(1)
+                ->load('views.images')
+            ->views)
+            ->where(function($view){
+                return $view->is_default == true;
+            })
+            ->first()
+            ->images)
+            ->where(function($image){
+                return $image->type == 'black_bg';
+        })
+        ->first()
+        ->path;
+    return $scene;
 });
 Route::resource('scenes', SceneController::class)->only(['index', 'show']);
 Route::resource('categories', CategoryController::class)->only(['index', 'show']);

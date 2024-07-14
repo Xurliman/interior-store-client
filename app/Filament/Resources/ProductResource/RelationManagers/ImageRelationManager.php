@@ -21,7 +21,6 @@ class ImageRelationManager extends RelationManager
             ->schema([
                 FileUpload::make('path')
                     ->image()
-                    ->preserveFilenames()
                     ->imageEditor()
                     ->disk('public')
                     ->required(),
@@ -33,7 +32,11 @@ class ImageRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('path')
             ->columns([
-                Tables\Columns\TextColumn::make('path'),
+                Tables\Columns\ImageColumn::make('path')
+                    ->disk('public')
+                    ->circular(),
+                Tables\Columns\TextColumn::make('type')
+                    ->default('only image'),
             ])
             ->filters([
                 //

@@ -14,7 +14,7 @@ class ViewItemResource extends JsonResource
         return [
             'id' => $this->id,
             'div_class' => $this->div_class,
-            'view' => ViewResource::make($this->whenLoaded('view')),
+            'views' => ViewResource::make($this->whenLoaded('views')),
             'category' => CategoryResource::make($this->whenLoaded('category'))
         ];
     }

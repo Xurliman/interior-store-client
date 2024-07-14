@@ -13,7 +13,8 @@ class Image extends Model
     protected $fillable = [
         'imageable_id',
         'imageable_type',
-        'path'
+        'path',
+        'type'
     ];
 
     public function imageable(): MorphTo

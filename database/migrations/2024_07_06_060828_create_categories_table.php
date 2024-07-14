@@ -13,6 +13,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('data_mask');
             $table->string('div_id');
+            $table->string('img_class');
+            $table->string('div_class');
             $table->string('class')->nullable();
             $table->timestamps();
         });
