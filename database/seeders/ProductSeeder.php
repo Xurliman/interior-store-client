@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            [
+            [//1
                 'category_id' => 1,
                 'name' => 'Black Wall Panel',
                 'description' => 'Black Wall Panel',
@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
                 'file_name' => 'KitchenFartuk1.jpg',
                 'path' => public_path("img/kitchen-black/Detailed/KitchenFartuk1.jpg"),
             ],
-            [
+            [//2
                 'category_id' => 1,
                 'name' => 'Grey Wall Panel',
                 'description' => 'Grey Wall Panel',
@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
                 'file_name' => 'KitchenFartuk2.jpg',
                 'path' => public_path("img/kitchen-black/Detailed/KitchenFartuk2.jpg"),
             ],
-            [
+            [//3
                 'category_id' => 1,
                 'name' => 'Yellow Wall Panel',
                 'description' => 'Yellow Wall Panel',
@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
             ],
 
 
-            [
+            [//4
                 'category_id' => 2,
                 'name' => 'Grey Floor Covering',
                 'description' => 'Grey Floor Covering',
@@ -52,7 +52,7 @@ class ProductSeeder extends Seeder
                 'file_name' => 'Parquet1.jpg',
                 'path' => public_path("img/kitchen-black/Detailed/Parquet1.jpg"),
             ],
-            [
+            [//5
                 'category_id' => 2,
                 'name' => 'Brown Floor Covering',
                 'description' => 'Brown Floor Covering',
@@ -278,6 +278,8 @@ class ProductSeeder extends Seeder
                 'path' => public_path("img/kitchen-red/Detailed/Lamp4.jpg"),
             ],
 
+
+            //from kitchen-white
             [//29
                 'category_id' => 2,
                 'name' => 'Tiny Brown Particles Floor Covering',

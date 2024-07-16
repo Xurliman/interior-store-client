@@ -34,7 +34,7 @@
                     <div class="object__images">
                         @foreach($categorised_products as $products)
                             @php
-                                $category = collect($products)->first();
+                                $category = collect($products)->first()->category;
                             @endphp
                             <div class="{{ $category->div_class }}">
                                 @foreach($products as $product)
