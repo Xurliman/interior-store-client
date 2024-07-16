@@ -36,7 +36,7 @@
                         @foreach($categories as $category)
                             <div class="{{ $category->div_class }}">
                                 @foreach($category->products as $product)
-                                    <img class="loading-jpg {{ $category->img_class }}"
+                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->id == $product_id ? $object_class : ''}}"
                                          src="{{ Storage::url($product->productConfiguration->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                          data-object="{{ $product->productConfiguration->data_object }}"
                                          data-product="{{ $product->name }}"
@@ -60,7 +60,7 @@
                         </div>
 
                         @foreach($categories as $category)
-                            <img class="mask mask-{{ $category->data_mask }}" data-mask="{{ $category->data_mask }}" src=""
+                            <img class="mask mask-{{ $category->data_mask }}" data-mask="{{ $category->data_mask }}" src="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : '' }}"
                                  alt="wall-panels"/>
                         @endforeach
 
@@ -100,13 +100,7 @@
     </div>
 
     <!-- Custom Menu -->
-    <div class="custom d-flex align-items-start">
-        <button class="custom-btn">
-            <img src="{{ asset('img/icons/Pencil.svg') }}" alt=""/>
-        </button>
-
-        <livewire:categories.index/>
-    </div>
+    <livewire:categories.index/>
 
     <!-- Options Desktop -->
     <div class="options">

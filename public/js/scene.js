@@ -617,10 +617,8 @@
                 viewScene.classList.remove("hide");
                 cameraView.classList.remove("active");
 
-                // loadImageWithModal(
-                //     sceneImg,
-                //     `./img/${kitchen}/${viewAttr}/Jpeg/Background.jpg`
-                // );
+                loadImageWithModal(sceneImg, `http://127.0.0.1:8000/storage/01J2Q09H0NJSQ5PQGE6DCM8TTK.jpg`);
+
                 console.log('viewAttr: ', viewAttr)
                 switch (viewAttr) {
                     case "View1":
@@ -1036,7 +1034,7 @@
                 imageElement.addEventListener("load", onLoad);
                 imageElement.addEventListener("error", onLoad);
             }
-        }, 2);
+        }, 800);
 
         // imageElement.src = url;
     }

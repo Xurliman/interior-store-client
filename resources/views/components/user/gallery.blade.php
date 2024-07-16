@@ -12,13 +12,13 @@
     <!-- Gallery -->
     <div class="gallery">
         <div class="container-xxl">
-            <h2 class="gallery__title h2 mb-4">My Gallery</h2>
+            <h2 class="gallery__title h2 mb-4">My Cart</h2>
 
             <div class="gallery__grid">
                 <div class="gallery__item">
                     <img
                         class="gallery__img mb-2"
-                        src="./img/galarry1.jpg"
+                        src="{{ asset('img/galarry1.jpg') }}"
                         alt="Bath"
                     />
 
@@ -26,15 +26,9 @@
                         <h3 class="gallery__item_title mb-3">Bath</h3>
 
                         <div class="gallery__desc d-flex flex-column">
-                                    <span class="gallery__accessors"
-                                    >1x something</span
-                                    >
-                            <span class="gallery__accessors"
-                            >2x something</span
-                            >
-                            <span class="gallery__accessors"
-                            >1x something + light</span
-                            >
+                            <span class="gallery__accessors">1x something</span>
+                            <span class="gallery__accessors">2x something</span>
+                            <span class="gallery__accessors">1x something + light</span>
                         </div>
 
                         <button class="gallery__btn">Check out</button>

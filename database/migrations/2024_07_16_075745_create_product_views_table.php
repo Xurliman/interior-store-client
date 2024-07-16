@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use App\Models\ProductConfiguration;
 use App\Models\View;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -10,14 +11,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('product_configurations', function (Blueprint $table) {
+        Schema::create('product_views', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Product::class);
+            $table->foreignIdFor(ProductConfiguration::class);
             $table->foreignIdFor(View::class);
-            $table->string('btn_class');
-            $table->string('data_object');
-            $table->string('class');
-            $table->string('extra_class')->nullable();
             $table->boolean('is_visible')->default(true);
             $table->timestamps();
         });
@@ -25,6 +22,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('product_configurations');
+        Schema::dropIfExists('product_views');
     }
 };

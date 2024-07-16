@@ -6,10 +6,13 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SceneController;
 use App\Http\Controllers\ViewController;
-use App\Http\Resources\Scene\SceneResource;
-use App\Models\Scene;
+use App\Models\Image;
+use App\Models\Product;
+use App\Models\ProductConfiguration;
 use App\Models\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\ImageManager;
 
 
 Route::get('/about', function (){
@@ -24,9 +27,6 @@ Route::get('/faq', function (){
 Route::get('/gallery', function (){
     return view('components.user.gallery');
 })->name('gallery');
-Route::get('/', function (){
-    return view('index');
-})->name('index');
 Route::get('/profile', function (){
     return view('components.user.profile');
 })->name('profile');
@@ -37,27 +37,27 @@ Route::get('/signup', function (){
     return view('components.auth.registration');
 })->name('signup');
 
-Route::get('/scene-all', function (){
-    $scene = collect(
-        collect(
-            Scene::find(1)
-                ->load('views.images')
-            ->views)
-            ->where(function($view){
-                return $view->is_default == true;
-            })
-            ->first()
-            ->images)
-            ->where(function($image){
-                return $image->type == 'black_bg';
-        })
-        ->first()
-        ->path;
-    return $scene;
-});
-Route::resource('scenes', SceneController::class)->only(['index', 'show']);
+Route::get('/', [SceneController::class, 'index'])->name('scenes.index');
+Route::resource('scenes', SceneController::class)->only(['show']);
 Route::resource('categories', CategoryController::class)->only(['index', 'show']);
 Route::resource('products', ProductController::class)->only(['index', 'show']);
 Route::resource('currencies', CurrencyController::class)->only(['index', 'show']);
 Route::resource('prices', PriceController::class)->only(['index', 'show']);
 Route::resource('views', ViewController::class)->only(['index', 'show']);
+
+Route::get('/test', function (){
+//    $path = public_path("img/kitchen-black/View1/Masks/Background.jpg");
+////    $product = Product::find(20);
+//    $manager = ImageManager::gd();
+//    $img = $manager->read($path);
+//    $fileName = date('YmdHi').'_'."Lamp6.jpg";
+//    $path = storage_path('app/public/'.$fileName);
+//    $img->toPng()->save($path);
+//    return "done";
+//    $image = new Image();
+//    $image->path = $path;
+//    $product->image()->save($image);
+//    $image->save();
+//    return $product->load('image');
+
+});

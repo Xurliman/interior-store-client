@@ -17,13 +17,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            CategorySeeder::class,
-            CurrencySeeder::class,
-            ProductSeeder::class,
-            ProductConfigurationSeeder::class,
-            PriceSeeder::class,
             SceneSeeder::class,
-            ViewSeeder::class
+            CategorySeeder::class,
+            ProductSeeder::class,
+            CurrencySeeder::class,
+            PriceSeeder::class,
+            ViewSeeder::class,
+            ProductConfigurationSeeder::class,
         ]);
     }
 }

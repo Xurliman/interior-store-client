@@ -11,20 +11,22 @@
                     />
                 </a>
 
-                <a class="second-nav__logo" href="/">Logo</a>
+                <a class="second-nav__logo" href="/">
+                    Logo
+                </a>
             </div>
 
             <ul class="second-nav__list">
                 <li class="second-nav__item">
-                    <a class="second-nav__link" href="{{ route('about') }}"
-                    >About us</a
-                    >
+                    <a class="second-nav__link" href="{{ route('about') }}">
+                        About us
+                    </a>
                 </li>
 
                 <li class="second-nav__item">
-                    <a class="second-nav__link" href="{{ route('contact') }}"
-                    >Contact Us</a
-                    >
+                    <a class="second-nav__link" href="{{ route('contact') }}">
+                        Contact Us
+                    </a>
                 </li>
 
                 <li class="second-nav__item">
