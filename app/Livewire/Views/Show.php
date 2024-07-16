@@ -33,9 +33,11 @@ class Show extends Component
     {
         $this->categoryMaskId = $categoryId;
         $this->productId = $productId;
-        $this->maskImg = Product::with('productConfiguration.images')
+        $this->maskImg = Product::with('productConfigurations.images')
             ->find($productId)
-            ->productConfiguration
+            ->productConfigurations()
+            ->where('view_id', $this->currentView->id)
+            ->first()
             ->images()
             ->where('type', 'mask_bg')
             ->first()?->path;
@@ -45,12 +47,20 @@ class Show extends Component
     {
         $bgImg = $this->currentView->images()->where('type', 'transparent_bg')->first()?->path;
         $fgImg = $this->currentView->images()->where('type', 'mask_bg')->first()?->path;
-        $categories = $this->currentView->load('categories.products.productConfiguration')->categories;
+        $products = $this
+            ->currentView
+            ->load('products.category')
+            ->load('products.image')
+            ->load('products.productConfigurations.images')
+            ->products;
+        $categorisedProducts = collect($products)->groupBy(function ($product) {
+            return $product->category_id;
+        });
         return view('livewire.views.show', [
             'view' => $this->currentView,
             'background_img' => $bgImg,
             'foreground_img' => $fgImg,
-            'categories' => $categories,
+            'categorised_products' => $categorisedProducts,
             'category_mask_id' => $this->categoryMaskId,
             'product_id' => $this->productId,
             'class' => $this->maskImg ? 'open' : '',

@@ -36,7 +36,7 @@ class Product extends Model
         return $this->HasOne(Price::class);
     }
 
-    public function productConfiguration(): HasOne {
-        return $this->HasOne(ProductConfiguration::class);
+    public function productConfigurations(): HasMany {
+        return $this->HasMany(ProductConfiguration::class);
     }
 }

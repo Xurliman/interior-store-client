@@ -32,15 +32,23 @@
 
                     <!-- Object Images -->
                     <div class="object__images">
-                        <!-- Floor -->
-                        @foreach($categories as $category)
+                        @foreach($categorised_products as $products)
+                            @php
+                                $category = collect($products)->first();
+                            @endphp
                             <div class="{{ $category->div_class }}">
-                                @foreach($category->products as $product)
+                                @foreach($products as $product)
+                                    @php
+                                        $productConfiguration = $product
+                                            ->productConfigurations()
+                                            ->where('view_id', $view->id)
+                                            ->first();
+                                    @endphp
                                     <img class="loading-jpg {{ $category->img_class }} {{ $product->id == $product_id ? $object_class : ''}}"
-                                         src="{{ Storage::url($product->productConfiguration->images()->where('type', 'transparent_bg')->first()?->path) }}"
-                                         data-object="{{ $product->productConfiguration->data_object }}"
+                                         src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
+                                         data-object="{{ $productConfiguration?->data_object }}"
                                          data-product="{{ $product->name }}"
-                                         data-price="{{ $product->price?->currency?->symbol.''.$product->price?->value }}"
+                                         data-price="{{ $product->price?->value }}"
                                          data-remove="{{ $category->data_mask }}"
                                          alt="{{ $product->image?->path }}"/>
                                 @endforeach
@@ -59,7 +67,10 @@
                             </div>
                         </div>
 
-                        @foreach($categories as $category)
+                        @foreach($categorised_products as $products)
+                            @php
+                                $category = collect($products)->first();
+                            @endphp
                             <img class="mask mask-{{ $category->data_mask }}" data-mask="{{ $category->data_mask }}" src="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : '' }}"
                                  alt="wall-panels"/>
                         @endforeach
@@ -100,8 +111,8 @@
     </div>
 
     <!-- Custom Menu -->
-    <livewire:categories.index/>
-
+{{--    @livewire('categories.index', ['viewId' => $view->id])--}}
+    <livewire:categories.index :viewId="$view->id"/>
     <!-- Options Desktop -->
     <div class="options">
         <!-- Save -->

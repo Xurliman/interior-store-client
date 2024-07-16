@@ -6,6 +6,7 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SceneController;
 use App\Http\Controllers\ViewController;
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductConfiguration;
@@ -46,18 +47,5 @@ Route::resource('prices', PriceController::class)->only(['index', 'show']);
 Route::resource('views', ViewController::class)->only(['index', 'show']);
 
 Route::get('/test', function (){
-//    $path = public_path("img/kitchen-black/View1/Masks/Background.jpg");
-////    $product = Product::find(20);
-//    $manager = ImageManager::gd();
-//    $img = $manager->read($path);
-//    $fileName = date('YmdHi').'_'."Lamp6.jpg";
-//    $path = storage_path('app/public/'.$fileName);
-//    $img->toPng()->save($path);
-//    return "done";
-//    $image = new Image();
-//    $image->path = $path;
-//    $product->image()->save($image);
-//    $image->save();
-//    return $product->load('image');
 
 });

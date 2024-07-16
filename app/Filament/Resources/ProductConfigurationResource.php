@@ -7,13 +7,17 @@ use App\Filament\Resources\ProductConfigurationResource\RelationManagers;
 use App\Models\Product;
 use App\Models\ProductConfiguration;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -33,6 +37,10 @@ class ProductConfigurationResource extends Resource
                         ->label('Product')
                         ->relationship('product', 'name')
                         ->required(),
+                    Select::make('view_id')
+                        ->label('View')
+                        ->relationship('view', 'name')
+                        ->required(),
                     TextInput::make('btn_class')
                         ->required(),
                     TextInput::make('data_object')
@@ -41,10 +49,8 @@ class ProductConfigurationResource extends Resource
                         ->required(),
                     TextInput::make('extra_class')
                         ->nullable(),
-                    FileUpload::make('image_path')
-                        ->disk('public')
-                        ->directory('product_configurations')
-                        ->nullable(),
+                    Toggle::make('is_visible')
+                        ->default(true),
                 ])->columns(2)
             ]);
     }
@@ -53,6 +59,9 @@ class ProductConfigurationResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('images.path')
+                    ->circular()
+                    ->stacked(),
                 TextColumn::make('product.name')
                     ->sortable()
                     ->searchable()
@@ -65,6 +74,8 @@ class ProductConfigurationResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
+                ToggleColumn::make('is_visible')
+                    ->toggleable(false),
                 TextColumn::make('class')
                     ->sortable()
                     ->searchable()

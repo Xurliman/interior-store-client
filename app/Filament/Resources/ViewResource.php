@@ -93,6 +93,7 @@ class ViewResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\ProductsRelationManager::class,
             RelationManagers\ImageRelationManager::class,
             RelationManagers\CategoriesRelationManager::class,
         ];

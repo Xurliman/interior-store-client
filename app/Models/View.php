@@ -38,6 +38,11 @@ class View extends Model
         return $this->belongsToMany(Category::class,'view_items')->withPivot('div_class')->withTimestamps();
     }
 
+    public function productConfigurations(): HasMany
+    {
+        return $this->hasMany(ProductConfiguration::class);
+    }
+
     public function products(): HasManyThrough {
         return $this->hasManyThrough(Product::class, ProductConfiguration::class, 'view_id', 'id', 'id', 'product_id');
     }

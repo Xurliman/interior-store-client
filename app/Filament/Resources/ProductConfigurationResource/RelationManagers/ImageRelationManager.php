@@ -7,6 +7,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -21,8 +23,8 @@ class ImageRelationManager extends RelationManager
             ->schema([
                 Forms\Components\Select::make('type')
                     ->options([
-                        'black_white' => 'Black & White',
-                        'black_bg' => 'Black Background',
+//                        'black_white' => 'Black & White',
+//                        'black_bg' => 'Black Background',
                         'transparent_bg' => 'Transparent Background',
                         'mask_bg' => 'Mask Background',
                     ]),
@@ -39,7 +41,9 @@ class ImageRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('path')
             ->columns([
-                Tables\Columns\TextColumn::make('path'),
+                ImageColumn::make('path')
+                    ->stacked(),
+                TextColumn::make('type')
             ])
             ->filters([
                 //

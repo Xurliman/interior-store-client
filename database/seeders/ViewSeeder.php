@@ -22,7 +22,7 @@ class ViewSeeder extends Seeder
                 'data_view' => 'View1',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
-                'mask_bg_file_name' => "Foreground.jpg",
+                'mask_bg_file_name' => "Foreground.png",
                 'transparent_bg' => public_path("img/kitchen-black/View1/Jpeg/Background.jpg"),
                 'black_bg' => public_path("img/kitchen-black/View1/Jpeg/Final.jpg"),
                 'mask_bg' => public_path("img/kitchen-black/View1/Png/Foreground.png"),
@@ -36,7 +36,7 @@ class ViewSeeder extends Seeder
                 'data_view' => 'View2',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
-                'mask_bg_file_name' => "Foreground.jpg",
+                'mask_bg_file_name' => "Foreground.png",
                 'transparent_bg' => public_path("img/kitchen-black/View2/Jpeg/Background.jpg"),
                 'black_bg' => public_path("img/kitchen-black/View2/Jpeg/Final.jpg"),
                 'mask_bg' => public_path("img/kitchen-black/View2/Png/Foreground.png"),
@@ -65,7 +65,7 @@ class ViewSeeder extends Seeder
                 'data_view' => 'View1',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
-                'mask_bg_file_name' => "Table.jpg",
+                'mask_bg_file_name' => "Table.png",
                 'transparent_bg' => public_path("img/kitchen-red/View1/Jpeg/Background.jpg"),
                 'black_bg' => public_path("img/kitchen-red/View1/Jpeg/Final.jpg"),
                 'mask_bg' => public_path("img/kitchen-red/View1/Png/Table.png"),
@@ -79,7 +79,7 @@ class ViewSeeder extends Seeder
                 'data_view' => 'View2',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
-                'mask_bg_file_name' => "Table.jpg",
+                'mask_bg_file_name' => "Table.png",
                 'transparent_bg' => public_path("img/kitchen-red/View2/Jpeg/Background.jpg"),
                 'black_bg' => public_path("img/kitchen-red/View2/Jpeg/Final.jpg"),
                 'mask_bg' => public_path("img/kitchen-red/View2/Png/Table.png"),
@@ -407,7 +407,7 @@ class ViewSeeder extends Seeder
                 $manager = ImageManager::gd();
                 $transparent_img = $manager->read($foundItem['transparent_bg']);
                 $fileName = uniqid(rand(), false).'_'.$foundItem['transparent_bg_file_name'];
-//                $transparent_img->save(storage_path('app/public/'.$fileName));
+                $transparent_img->save(storage_path('app/public/'.$fileName));
                 $transparent_bg_image = new Image();
                 $transparent_bg_image->type = 'transparent_bg';
                 $transparent_bg_image->path = $fileName;
@@ -416,7 +416,7 @@ class ViewSeeder extends Seeder
 
                 $black_img = $manager->read($foundItem['black_bg']);
                 $fileName = uniqid(rand(), false).'_'.$foundItem['black_bg_file_name'];
-//                $black_img->save(storage_path('app/public/'.$fileName));
+                $black_img->save(storage_path('app/public/'.$fileName));
                 $black_bg_image = new Image();
                 $black_bg_image->type = 'black_bg';
                 $black_bg_image->path = $fileName;

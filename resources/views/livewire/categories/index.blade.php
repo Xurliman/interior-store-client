@@ -5,11 +5,14 @@
     </button>
 
     <div class="custom__items">
-        @foreach($categories as $category)
+        @foreach($categorised_products as $products)
+            @php
+                $category = collect($products)->first()->category;
+            @endphp
             <div id="{{ $category->div_id }}" class="custom__block">
                 <!-- Custom Item -->
                 <div class="custom__item">
-                    <img class="custom__item_img" src="{{ Storage::url($category->products->first()->image?->path) }}" alt=""/>
+                    <img class="custom__item_img" src="{{ Storage::url($products->first()->image?->path) }}" alt=""/>
                     <span class="custom__item_title">{{ $category->name }}</span>
 
                     <button class="custom-item-btn" data-mask="{{ $category->data_mask }}">
@@ -25,10 +28,15 @@
                     </button>
 
                     <div class="drop-list-container">
-                        @foreach($category->products as $product)
-                            <button wire:click="productSelected({{ $category->id }}, {{ $product->id }})" class="load-jpg {{ $product->productConfiguration->btn_class }} {{ $product->productConfiguration->extra_class }}">
-                                <img class="custom__img custom-{{ $product->productConfiguration->class }}"
-                                     data-object="{{ $product->productConfiguration->data_object }}"
+                        @foreach($products as $product)
+                            @php
+                                $productConfiguration = $product
+                                    ->productConfigurations()
+                                    ->first();
+                            @endphp
+                            <button wire:click="productSelected({{ $category->id }}, {{ $product->id }})" class="load-jpg {{ $productConfiguration->btn_class }} {{ $productConfiguration->extra_class }}">
+                                <img class="custom__img custom-{{ $productConfiguration->class }}"
+                                     data-object="{{ $productConfiguration->data_object }}"
                                      data-remove="{{ $category->data_mask }}"
                                      src="{{ Storage::url($product->image?->path) }}" alt="Floor"/>
                             </button>
