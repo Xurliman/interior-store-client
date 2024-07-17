@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use function PHPUnit\Framework\isEmpty;
 
 class Product extends Model
 {
@@ -33,10 +34,20 @@ class Product extends Model
 
     public function price(): HasOne
     {
-        return $this->HasOne(Price::class);
+        return $this->hasOne(Price::class);
     }
 
     public function productConfigurations(): HasMany {
-        return $this->HasMany(ProductConfiguration::class);
+        return $this->hasMany(ProductConfiguration::class);
+    }
+
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
+    public static function isInCart($productId, $cartId): bool
+    {
+        return (bool)(Product::find($productId)->cartItems()->where('cart_id', $cartId)->first());
     }
 }

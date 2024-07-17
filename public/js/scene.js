@@ -390,24 +390,24 @@
         }
 
         customArr.forEach((item) => {
-            var product = item.elProduct;
-            var price = item.elPrice;
-            var itemElement = document.createElement("div");
-
-            itemElement.innerHTML = `
-                    <div class="order__item d-flex flex-column">
-                        <span class="order__item_title">${product}</span>
-                        <span class="order__item_price">$${price}</span>
-                    </div>
-            `;
-
-            orderList.appendChild(itemElement);
+            // var product = item.elProduct;
+            // var price = item.elPrice;
+            // var itemElement = document.createElement("div");
+            //
+            // itemElement.innerHTML = `
+            //         <div class="order__item d-flex flex-column">
+            //             <span class="order__item_title">${product}</span>
+            //             <span class="order__item_price">$${price}</span>
+            //         </div>
+            // `;
+            //
+            // orderList.appendChild(itemElement);
         });
 
         if (countItems <= 1) {
-            orderCount.innerHTML = `${countItems} item`;
+            // orderCount.innerHTML = `${countItems} item`;
         } else {
-            orderCount.innerHTML = `${countItems} items`;
+            // orderCount.innerHTML = `${countItems} items`;
         }
     }
 
@@ -428,7 +428,7 @@
             </div>
         `;
 
-            savedModalItems.appendChild(savedItem);
+            // savedModalItems.appendChild(savedItem);
         });
     }
 

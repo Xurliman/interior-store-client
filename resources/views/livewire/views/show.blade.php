@@ -43,7 +43,7 @@
                                             ->where('view_id', $view->id)
                                             ->first();
                                     @endphp
-                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->id == $product_id ? $object_visible : ''}}"
+                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->isInCart($product->id, $cart_id) ? 'object-visible' : ''}}"
                                          src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                          data-object="{{ $productConfiguration?->data_object }}"
                                          data-product="{{ $product->name }}"
@@ -79,33 +79,7 @@
             </div>
 
             <!-- Order Menu -->
-            <div class="container-xxl">
-                <div class="order__container">
-                    <div class="order__menu">
-                        <button class="move-up">
-                            <img src="{{ asset('img/icons/move-up.svg') }}" alt="move-up"/>
-                        </button>
-
-                        <span class="order__count ms-2">0 item</span>
-
-                        <button class="order__btn">Order</button>
-                    </div>
-
-                    <div class="order__list">
-                        <span class="order__list-empty">No products yet</span>
-                    </div>
-                </div>
-
-                <!-- Zoom in / Zoom out -->
-                <div class="slidecontainer">
-                    <button class="zoom-btn" id="zoomOutButton">
-                        -
-                    </button>
-                    <button class="zoom-btn" id="zoomInButton">
-                        +
-                    </button>
-                </div>
-            </div>
+            <livewire:cart.menu />
         </div>
     </div>
 
