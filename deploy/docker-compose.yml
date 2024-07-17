@@ -11,16 +11,16 @@ services:
     container_name: laravelapp
     build:
       context: ../
-      dockerfile: ./deploy/Dockerfile    
+      dockerfile: ./deploy/Dockerfile
     volumes:
       - ../storage/app:/var/www/html/storage/app
-      - fantom-configurator-cc_configurator_cc:/content
+#      - fantom-configurator-cc_configurator_cc:/content
     environment:
       APP_NAME: ${APP_NAME}
       APP_ENV: ${APP_ENV}
       APP_DEBUG: ${APP_DEBUG}
       APP_KEY: ${APP_KEY}
-      APP_VERSION: ${APP_VERSION}
+#      APP_VERSION: ${APP_VERSION}
       APP_URL: ${APP_URL}
       DB_CONNECTION: mysql
       DB_HOST: database
@@ -48,10 +48,10 @@ services:
     restart: unless-stopped
     image: mariadb:lts-jammy
     environment:
-      MARIADB_DATABASE: ${DB_DATABASE}
-      MARIADB_USER: ${DB_USERNAME}
-      MARIADB_PASSWORD: ${DB_PASSWORD}
-      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - configurator_database:/var/lib/mysql
     healthcheck:
@@ -68,8 +68,8 @@ services:
 volumes:
   configurator_app: {}
   configurator_database: {}
-  fantom-configurator-cc_configurator_cc:
-    external: true
+#  fantom-configurator-cc_configurator_cc:
+#    external: true
 
 networks:
   n-laravel:
