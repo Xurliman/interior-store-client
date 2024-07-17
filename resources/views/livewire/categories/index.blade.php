@@ -9,7 +9,7 @@
             @php
                 $category = collect($products)->first()->category;
             @endphp
-            <div id="{{ $category->div_id }}" class="custom__block">
+            <div id="{{ $category->div_id }}" class="custom__block" style="display: block;">
                 <!-- Custom Item -->
                 <div class="custom__item">
                     <img class="custom__item_img" src="{{ Storage::url($products->first()->image?->path) }}" alt=""/>
@@ -23,7 +23,7 @@
 
                 <!-- Custom Drop List -->
                 <div class="custom-drop-list {{ $category_id == $category->id ? 'open' : '' }}" data-item="{{ $category->data_mask }}" data-mask="{{ $category->data_mask }}">
-                    <button class="custom-item-remove {{ $category_id == $category->id ? 'active' : '' }}" data-remove="{{ $category->data_mask }}">
+                    <button wire:click.prevent="removeProducts({{ $category->id }})" class="custom-item-remove {{ $category_id == $category->id ? 'active' : '' }}" data-remove="{{ $category->data_mask }}">
                         Remove
                     </button>
 
@@ -34,7 +34,7 @@
                                     ->productConfigurations()
                                     ->first();
                             @endphp
-                            <button wire:click="productSelected({{ $category->id }}, {{ $product->id }})" class="load-jpg {{ $productConfiguration->btn_class }} {{ $productConfiguration->extra_class }}">
+                            <button wire:click.prevent="productSelected({{ $category->id }}, {{ $product->id }})" class="load-jpg {{ $productConfiguration->btn_class }} {{ $productConfiguration->extra_class }}">
                                 <img class="custom__img custom-{{ $productConfiguration->class }}"
                                      data-object="{{ $productConfiguration->data_object }}"
                                      data-remove="{{ $category->data_mask }}"

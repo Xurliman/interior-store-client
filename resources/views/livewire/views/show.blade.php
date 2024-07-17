@@ -2,9 +2,8 @@
 <div class="scene">
     <!-- Camera View -->
     <div class="camera-view">
-
         @foreach($scene->views as $sceneView)
-            <button wire:click.prevent="viewSelected({{ $sceneView }})" class="camera__item d-flex flex-column"
+            <button wire:click.prevent="viewSelected({{ $sceneView->id }})" class="camera__item d-flex flex-column"
                     data-view="{{ $sceneView->data_view }}">
                 <img data-view="{{ $sceneView->data_view }}" class="camera__item_img {{ $sceneView->name }}"
                      src="{{ Storage::url($sceneView->images()->where('type', 'black_bg')->first()->path) }}" alt=""/>
@@ -44,7 +43,7 @@
                                             ->where('view_id', $view->id)
                                             ->first();
                                     @endphp
-                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->id == $product_id ? $object_class : ''}}"
+                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->id == $product_id ? $object_visible : ''}}"
                                          src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                          data-object="{{ $productConfiguration?->data_object }}"
                                          data-product="{{ $product->name }}"

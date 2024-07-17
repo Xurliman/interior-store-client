@@ -2,10 +2,13 @@
 
 namespace App\Livewire\Views;
 
+use App\GetCategorisedProduct;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Scene;
 use App\Models\View;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Livewire\Component;
 use Livewire\Attributes\On;
 
@@ -16,20 +19,23 @@ class Show extends Component
     public $categoryMaskId;
     public $productId;
     public $maskImg;
+    public string $activeClass = '';
+    use GetCategorisedProduct;
 
-    public function mount(Scene $scene, $view)
+    public function mount(Scene $scene, $view): void
     {
         $this->scene = $scene;
-        $this->currentView = $view ?? $this->scene->views()->where('is_default', true)->first();;
+        $this->currentView = $view ?? $this->scene->views()->where('is_default', true)->first();
     }
 
-    public function viewSelected(View $view)
+    public function viewSelected($viewId): void
     {
-        $this->currentView = $view;
+        $this->currentView = View::getView($viewId);
+        $this->dispatch('new-view-selected', ['viewId' => $viewId]);
     }
 
     #[On('update-category-mask')]
-    public function updateProductMask($categoryId, $productId)
+    public function updateProductMask($categoryId, $productId): void
     {
         $this->categoryMaskId = $categoryId;
         $this->productId = $productId;
@@ -43,19 +49,12 @@ class Show extends Component
             ->first()?->path;
     }
 
-    public function render()
+    public function render(): Application|Factory|\Illuminate\Contracts\View\View
     {
         $bgImg = $this->currentView->images()->where('type', 'transparent_bg')->first()?->path;
         $fgImg = $this->currentView->images()->where('type', 'mask_bg')->first()?->path;
-        $products = $this
-            ->currentView
-            ->load('products.category')
-            ->load('products.image')
-            ->load('products.productConfigurations.images')
-            ->products;
-        $categorisedProducts = collect($products)->groupBy(function ($product) {
-            return $product->category_id;
-        });
+        $categorisedProducts = $this->getCategorisedProducts(View::getView($this->currentView->id)?->products);
+
         return view('livewire.views.show', [
             'view' => $this->currentView,
             'background_img' => $bgImg,
@@ -64,7 +63,8 @@ class Show extends Component
             'category_mask_id' => $this->categoryMaskId,
             'product_id' => $this->productId,
             'class' => $this->maskImg ? 'open' : '',
-            'object_class' => $this->maskImg ? 'object-visible' : '',
+            'active_class' => $this->activeClass ?? '',
+            'object_visible' => $this->maskImg ? 'object-visible' : '',
             'mask_img' => $this->maskImg,
         ]);
     }

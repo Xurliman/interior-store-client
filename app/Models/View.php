@@ -46,4 +46,13 @@ class View extends Model
     public function products(): HasManyThrough {
         return $this->hasManyThrough(Product::class, ProductConfiguration::class, 'view_id', 'id', 'id', 'product_id');
     }
+
+    public static function getView($viewId)
+    {
+        return self::with('products.category')
+            ->with('products.image')
+            ->with('products.productConfigurations.images')
+            ->where('id', $viewId)
+            ->first();
+    }
 }

@@ -128,7 +128,6 @@
         button.addEventListener("click", (e) => {
             var buttonTarget = e.target;
             var buttonAttr = buttonTarget.getAttribute("data-tip");
-
             switch (buttonAttr) {
                 case "share":
                     shareModal.classList.add("active");
@@ -150,9 +149,6 @@
                     downloadModal.forEach((el) => {
                         el.classList.add("active");
                     });
-                    break;
-                case "share":
-                    shareModal.classList.add("active");
                     break;
                 default:
                     break;
@@ -294,7 +290,6 @@
             // Remove added products
             removeBtn.forEach((btn) => {
                 var btnAttr = btn.getAttribute("data-remove");
-
                 if (btnAttr == objectRemoveAttr) {
                     btn.classList.add("active");
 
@@ -565,17 +560,18 @@
         // );
         loadImageWithModal(sceneImg, `http://127.0.0.1:8000/storage/01J2Q09H0NJSQ5PQGE6DCM8TTK.jpg`);
 
-        floor.style = "display: block";
-        lamp.style = "display: block";
-        chair.style = "display: block";
+        // floor.style = "display: block";
+        // lamp.style = "display: block";
+        // chair.style = "display: block";
 
         // Open / Close | Scene / Camera View
+        console.log(cameraViewBtn)
         cameraViewBtn.forEach((element) => {
             element.addEventListener("click", () => {
                 viewScene.classList.add("hide");
                 cameraView.classList.add("active");
                 custom.classList.remove("open");
-
+                console.log(cameraViewBtn)
                 // view1.src = `./img/${kitchen}/View1/Jpeg/Final.jpg`;
                 // view2.src = `./img/${kitchen}/View2/Jpeg/Final.jpg`;
                 // view3.src = `./img/${kitchen}/View3/Jpeg/Final.jpg`;
