@@ -50,4 +50,5 @@ class Product extends Model
     {
         return (bool)(Product::find($productId)->cartItems()->where('cart_id', $cartId)->first());
     }
+
 }

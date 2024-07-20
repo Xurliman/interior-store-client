@@ -17,17 +17,17 @@ class Menu extends Component
     #[On('renew-cart')]
     public function renewCart(Cart $cart)
     {
-        $this->cart = $cart;
+        $this->cart = $cart?->load('products');
     }
 
     public function mount(): void
     {
         /** @var User $user */
-        $user = auth()->user();
+        $user = auth()->user() ?? User::find(1);
         if (is_null($user->cart)) {
             $user->cart()->create();
         }
-        $this->cart = $user->cart->load('products');
+        $this->cart = $user->cart?->load('products');
     }
 
     public function render(): Application|Factory|View

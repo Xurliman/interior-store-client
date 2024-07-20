@@ -282,9 +282,9 @@
 
             // Check clicked product type for masks
             if (objectBtnMaskAttr == "chairs") {
-                productMaskChairs = objectBtnAttr;
+                // productMaskChairs = objectBtnAttr;
             } else if (objectBtnMaskAttr == "lamps") {
-                productMaskLamps = objectBtnAttr;
+                // productMaskLamps = objectBtnAttr;
             }
 
             // Remove added products
@@ -385,9 +385,9 @@
         var orderList = document.querySelector(".order__list");
         var orderCount = document.querySelector(".order__count");
 
-        if (customArr.length !== 0) {
-            orderList.innerHTML = "";
-        }
+        // if (customArr.length !== 0) {
+        //     orderList.innerHTML = "";
+        // }
 
         customArr.forEach((item) => {
             // var product = item.elProduct;
@@ -672,7 +672,6 @@
                             // foregroundRedView2.classList.remove("active");
                             // foregroundBlackView2.classList.add("active");
                             // foregroundBlack.classList.remove("active");
-                            console.log("foregroundBlack: ", foregroundBlack)
                             floor.style = "display: block";
                         }
                         break;

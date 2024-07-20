@@ -5,10 +5,6 @@
 /deploy/Dockerfile
 /.phpunit.cache
 /node_modules
-/public/build
-/public/hot
-/public/storage
-/public/bucket
 /storage/*.key
 /vendor
 #.env
@@ -26,3 +22,6 @@ yarn-error.log
 /.idea
 /.vscode
 .git
+
+/docker/docker-compose.yml
+/docker/Dockerfile

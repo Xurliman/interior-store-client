@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Traits;
 
-use App\Models\View;
 use Illuminate\Support\Collection;
 
 trait GetCategorisedProduct

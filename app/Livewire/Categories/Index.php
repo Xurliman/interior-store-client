@@ -2,12 +2,10 @@
 
 namespace App\Livewire\Categories;
 
-use App\GetCategorisedProduct;
-use App\Models\Cart;
-use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\View;
+use App\Traits\GetCategorisedProduct;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Livewire\Attributes\On;
@@ -19,6 +17,7 @@ class Index extends Component
     public $categoryId;
     public $viewId;
     public $categorisedProducts;
+    public $activeClass = '';
     use GetCategorisedProduct;
 
 
@@ -37,6 +36,7 @@ class Index extends Component
     }
 
     public function removeProducts($categoryId): void {
+        $this->activeClass = '';
         /** @var User $user */
         $user = auth()->user();
         $user->cart
@@ -51,27 +51,33 @@ class Index extends Component
     public function productSelected($categoryId, $productId): void
     {
         $this->class = 'open';
+        $this->activeClass = 'active';
         $this->categoryId = $categoryId;
 
         /** @var User $user */
         $user = auth()->user();
-        $product = $user->cart
-            ->items()
-            ->whereHas('product', function ($query) use ($categoryId) {
-                $query->where('category_id', $categoryId);
-            });
-        if ($product) {
-            $product->update([
-                'product_id' => $productId,
-                'quantity' => 1,
-            ]);
+        $doesCartHaveCategoryProduct = $user
+            ->cart
+            ->products()
+            ->where('category_id', $categoryId)
+            ->exists();
+        $isProductInCart = Product::isInCart($productId, $user->cart->id);
+        if ($doesCartHaveCategoryProduct || $isProductInCart) {
+            $user->cart
+                ->products()
+                ->where(function ($query) use ($categoryId) {
+                    $query->where('category_id', $categoryId);
+                })->update([
+                    'product_id' => $productId,
+                    'quantity' => 1,
+                ]);
         } else {
             $user->cart->items()->create([
                 'product_id' => $productId,
                 'quantity' => 1,
             ]);
         }
-        
+
         $this->dispatch('renew-cart', cart: $user->cart->id);
         $this->dispatch('update-category-mask', categoryId : $categoryId, cartId: $user->cart->id);
     }
@@ -83,6 +89,7 @@ class Index extends Component
             'category_id' => $this->categoryId,
             'view_id' => $this->viewId,
             'class' => $this->class,
+            'active_class' => $this->activeClass,
         ]);
     }
 }

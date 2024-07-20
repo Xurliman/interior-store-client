@@ -23,7 +23,7 @@
 
                 <!-- Custom Drop List -->
                 <div class="custom-drop-list {{ $category_id == $category->id ? 'open' : '' }}" data-item="{{ $category->data_mask }}" data-mask="{{ $category->data_mask }}">
-                    <button wire:click.prevent="removeProducts({{ $category->id }})" class="custom-item-remove {{ $category_id == $category->id ? 'active' : '' }}" data-remove="{{ $category->data_mask }}">
+                    <button wire:click.prevent="removeProducts({{ $category->id }})" class="custom-item-remove {{ $category_id == $category->id ? $active_class : ''}}" data-remove="{{ $category->data_mask }}">
                         Remove
                     </button>
 

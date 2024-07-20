@@ -2,15 +2,14 @@
 
 namespace App\Livewire\Views;
 
-use App\GetCategorisedProduct;
-use App\Models\Category;
 use App\Models\Product;
 use App\Models\Scene;
 use App\Models\View;
+use App\Traits\GetCategorisedProduct;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class Show extends Component
 {
@@ -25,6 +24,7 @@ class Show extends Component
     public function mount(Scene $scene, $view): void
     {
         $this->scene = $scene;
+        $this->cartId = auth()->user()?->cart?->id ?? 1;
         $this->currentView = $view ?? $this->scene->views()->where('is_default', true)->first();
     }
 

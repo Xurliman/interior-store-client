@@ -38,6 +38,10 @@ Route::get('/signup', function (){
     return view('components.auth.registration');
 })->name('signup');
 
+Route::get('/testt', function () {
+	return "HEELLLOOO ALPINEE";
+});
+
 Route::get('/', [SceneController::class, 'index'])->name('scenes.index');
 Route::resource('scenes', SceneController::class)->only(['show']);
 Route::resource('categories', CategoryController::class)->only(['index', 'show']);
@@ -47,5 +51,5 @@ Route::resource('prices', PriceController::class)->only(['index', 'show']);
 Route::resource('views', ViewController::class)->only(['index', 'show']);
 
 Route::get('/test', function (){
-
+    echo phpinfo();
 });

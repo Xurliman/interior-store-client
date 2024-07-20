@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cart;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -10,12 +11,14 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@gmail.qq',
             'password' => bcrypt('securepass'),
         ]);
-
+        Cart::create([
+            'user_id' => $user->id,
+        ]);
         $this->call([
             SceneSeeder::class,
             CategorySeeder::class,

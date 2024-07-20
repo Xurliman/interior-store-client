@@ -14,7 +14,7 @@
             @forelse($cart->products as $product)
                 <div class="order__item d-flex flex-column">
                     <span class="order__item_title">{{ $product?->name }}</span>
-                    <span class="order__item_price">{{ $product?->price?->value }}</span>
+                    <span class="order__item_price">{{ $product?->price?->currency?->symbol }}{{ $product?->price?->value }}</span>
                 </div>
             @empty
                 <span class="order__list-empty">No products yet</span>
