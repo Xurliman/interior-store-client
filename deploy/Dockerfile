@@ -33,6 +33,7 @@ RUN apk add --no-cache \
     php-xmlwriter \
     php-pdo \
     php-pdo_mysql \
+    php-fpm \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip pdo pdo_mysql intl \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
@@ -91,8 +92,8 @@ RUN apk add --no-cache \
     libpng-dev \
     oniguruma-dev \
     gettext-dev \
-    freetype-dev \
     nginx openrc \
+    icu-dev \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip pdo pdo_mysql \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
@@ -100,6 +101,9 @@ RUN apk add --no-cache \
     && docker-php-ext-enable gd \
     && docker-php-ext-install bcmath \
     && docker-php-ext-enable bcmath \
+    && docker-php-ext-configure intl \
+&& docker-php-ext-install intl \
+    && docker-php-ext-enable intl \
     && docker-php-ext-install exif \
     && docker-php-ext-enable exif \
     && docker-php-ext-install gettext \
