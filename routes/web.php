@@ -6,14 +6,7 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SceneController;
 use App\Http\Controllers\ViewController;
-use App\Models\Category;
-use App\Models\Image;
-use App\Models\Product;
-use App\Models\ProductConfiguration;
-use App\Models\View;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Intervention\Image\ImageManager;
 
 
 Route::get('/about', function (){
@@ -38,10 +31,6 @@ Route::get('/signup', function (){
     return view('components.auth.registration');
 })->name('signup');
 
-Route::get('/testt', function () {
-	return "HEELLLOOO ALPINEE";
-});
-
 Route::get('/', [SceneController::class, 'index'])->name('scenes.index');
 Route::resource('scenes', SceneController::class)->only(['show']);
 Route::resource('categories', CategoryController::class)->only(['index', 'show']);
@@ -50,6 +39,12 @@ Route::resource('currencies', CurrencyController::class)->only(['index', 'show']
 Route::resource('prices', PriceController::class)->only(['index', 'show']);
 Route::resource('views', ViewController::class)->only(['index', 'show']);
 
-Route::get('/test', function (){
-    echo phpinfo();
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+//    Route::get('/dashboard', function () {
+//        return view('dashboard');
+//    })->name('dashboard');
 });

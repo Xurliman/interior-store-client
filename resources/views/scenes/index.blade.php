@@ -1,6 +1,6 @@
 @extends('components.layouts.base')
 
-@section('title', 'My Gallery')
+@section('title', 'Scenes')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />

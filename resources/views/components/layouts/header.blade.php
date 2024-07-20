@@ -12,7 +12,7 @@
                 </a>
 
                 <a class="second-nav__logo" href="/">
-                    Logo
+                    <x-logo.application-logo />
                 </a>
             </div>
 

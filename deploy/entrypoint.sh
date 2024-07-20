@@ -18,7 +18,7 @@ if [ ! -f /var/www/fantom/.initialized ]; then
     php artisan config:cache
 
     # Run database migrations.
-    php artisan migrate:refresh --seed
+    php artisan migrate:fresh --seed
 
     # Run database seed
     php artisan storage:link

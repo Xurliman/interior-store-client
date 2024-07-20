@@ -17,7 +17,7 @@ class SceneController extends Controller
         return view('scenes.index', compact('scenes'));
     }
 
-    public function show(Scene $scene)
+    public function show(Scene $scene): View|Factory|Application
     {
         return view('scenes.show', compact('scene'));
     }
