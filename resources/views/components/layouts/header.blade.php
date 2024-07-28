@@ -31,7 +31,12 @@
 
                 <li class="second-nav__item">
                     <button class="second-nav__link second-nav-btn">
-                        User info
+                        @auth
+                            {{ auth()->user()->name }}
+                        @endauth
+                        @guest
+                            User info
+                        @endguest
                     </button>
                 </li>
             </ul>

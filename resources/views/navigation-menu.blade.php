@@ -95,6 +95,15 @@
                                 {{ __('Fantom') }}
                             </x-elements.dropdown-link>
 
+                            @php
+                                $isAdmin = auth()->user()->hasRole('admin');
+                            @endphp
+                            @if($isAdmin)
+                                <x-elements.dropdown-link href="/admin">
+                                    {{ __('Admin Panel') }}
+                                </x-elements.dropdown-link>
+                            @endif
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-elements.dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}

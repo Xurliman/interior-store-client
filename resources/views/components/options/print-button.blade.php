@@ -1,4 +1,7 @@
-<button class="options__btn options-btn-print position-relative" data-tip="print">
+<button
+    x-on:click="window.print()"
+    class="options__btn options-btn-print position-relative"
+    data-tip="print">
     <img data-tip="print" src="{{ asset('img/icons/Printer.svg') }}" alt="Print" />
 
     <!-- Tip Print -->

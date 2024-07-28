@@ -85,38 +85,38 @@
     <!-- Options Desktop -->
     <div class="options">
         <!-- Save -->
-        <livewire:options.save-button/>
+        <x-options.save-button />
 
         <!-- Camera View -->
-        <livewire:options.camera-view-button/>
+        <x-options.camera-view-button />
 
         <!-- Download -->
-        <livewire:options.download-button/>
+        <x-options.download-button />
 
         <!-- Print -->
-        <livewire:options.print-button/>
+        <x-options.print-button />
 
         <!-- Share -->
-        <livewire:options.share-button/>
+        <x-options.share-button />
     </div>
 
     <!-- Options Mobile -->
     <div class="options-container">
         <div class="options-mobile">
             <!-- Save -->
-            <livewire:options.save-button/>
+            <x-options.save-button />
 
             <!-- Camera View -->
-            <livewire:options.camera-view-button/>
+            <x-options.camera-view-button />
 
             <!-- Download -->
-            <livewire:options.download-button/>
+            <x-options.download-button />
 
             <!-- Print -->
-            <livewire:options.print-button/>
+            <x-options.print-button />
 
             <!-- Share -->
-            <livewire:options.share-button/>
+            <x-options.share-button />
         </div>
 
         <button class="open-options-btn">
