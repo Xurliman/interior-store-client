@@ -13,6 +13,9 @@
                 @foreach($selected_products as $product_id)
                     @php
                         $product = \App\Models\Product::firstWhere('id', $product_id)->load('price.currency');
+                        if (is_null($product->price)) {
+                            dd(collect($product)->toArray());
+                        }
                     @endphp
                     <div class="saved-modal__item d-flex">
                         <h5 class="saved-modal__item_title h5">{{ $product?->name }} &nbsp;</h5>

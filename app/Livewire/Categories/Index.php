@@ -2,8 +2,6 @@
 
 namespace App\Livewire\Categories;
 
-use App\Models\User;
-use App\Models\View;
 use App\Traits\GetCategorisedProduct;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
@@ -13,6 +11,7 @@ use Livewire\Component;
 class Index extends Component
 {
     public string $class = '';
+    public bool $showDropList = true;
     public $categoryId;
     public $viewId;
     public $categorisedProducts;
@@ -32,12 +31,11 @@ class Index extends Component
     public function viewSelected($viewId): void
     {
         $this->viewId = $viewId;
+        $this->showDropList = false;
         $this->categorisedProducts = $this->getCategorisedProducts($viewId);
     }
 
     public function removeProducts($categoryId): void {
-        $this->activeClass = '';
-
         $productIds = $this->getCategoryProducts($categoryId);
         foreach ($productIds as $productId) {
             if (in_array($productId, $this->selectedProducts)) {
@@ -62,7 +60,6 @@ class Index extends Component
     public function productSelected($categoryId, $productId): void
     {
         $this->class = 'open';
-        $this->activeClass = 'active';
         $this->categoryId = $categoryId;
 
         $productIds = $this->getCategoryProducts($categoryId);
@@ -118,6 +115,7 @@ class Index extends Component
         return view('livewire.categories.index', [
             'categories' => $this->categorisedProducts,
             'category_id' => $this->categoryId,
+            'show_drop_list' => $this->showDropList,
             'view_id' => $this->viewId,
             'class' => $this->class,
             'active_class' => $this->activeClass,
