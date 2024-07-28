@@ -3,20 +3,36 @@
 namespace App\Traits;
 
 use App\Models\Category;
+use App\Models\View;
 use Illuminate\Support\Collection;
 
 trait GetCategorisedProduct
 {
-    public function getCategorisedProducts($products): Collection
+    public function getCategorisedProducts($viewId): \Illuminate\Database\Eloquent\Collection
     {
-        return collect($products)->filter(function ($product) {
-            $productConfigurations = collect($product->productConfigurations)->map(function ($productConfiguration) {
-                return $productConfiguration->is_visible == true;
-            })->toArray();
-            return in_array(true, $productConfigurations);
-        })->groupBy(function ($product) {
-            return $product->category_id;
-        });
+        $view = View::firstWhere('id', $viewId);
+        $sceneViews = $view->scene->views()->pluck('id')->all();
+        $categories = Category::with('products.productConfigurations')->get();
+
+        foreach ($categories as $key => $category) {
+            $flag = false;
+            $category->display = false;
+            foreach ($category->products as $product) {
+                foreach ($product->productConfigurations as $productConfiguration) {
+                    if (in_array($productConfiguration->view_id, $sceneViews)) {
+                        $flag = true;
+                        if ($productConfiguration->view_id == $view->id) {
+                            $category->display = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!$flag) {
+                unset($categories[$key]);
+            }
+        }
+        return $categories;
     }
 
     public function getCategoryProducts($categoryId): Collection

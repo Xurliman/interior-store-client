@@ -24,7 +24,7 @@ class Index extends Component
     public function mount($viewId): void
     {
         $this->viewId = $viewId;
-        $this->categorisedProducts = $this->getCategorisedProducts(View::firstWhere('id', $viewId)?->products);
+        $this->categorisedProducts = $this->getCategorisedProducts($viewId);
     }
 
 
@@ -32,20 +32,31 @@ class Index extends Component
     public function viewSelected($viewId): void
     {
         $this->viewId = $viewId;
-        $this->categorisedProducts = $this->getCategorisedProducts(View::firstWhere('id', $viewId)?->products);
+        $this->categorisedProducts = $this->getCategorisedProducts($viewId);
     }
 
     public function removeProducts($categoryId): void {
         $this->activeClass = '';
-        /** @var User $user */
-        $user = auth()->user();
-        $user->cart
-            ->items()
-            ->whereHas('product', function ($query) use ($categoryId) {
-                $query->where('category_id', $categoryId);
-            })
-            ->delete();
-        $this->dispatch('renew-cart', cart: $user->cart->id);
+
+        $productIds = $this->getCategoryProducts($categoryId);
+        foreach ($productIds as $productId) {
+            if (in_array($productId, $this->selectedProducts)) {
+                $key = array_search($productId, $this->selectedProducts);
+                unset($this->selectedProducts[$key]);
+            }
+        }
+        $this->categorisedProducts = $this->getCategorisedProducts($categoryId);
+//        /** @var User $user */
+//        $user = auth()->user();
+//        $user->cart
+//            ->items()
+//            ->whereHas('product', function ($query) use ($categoryId) {
+//                $query->where('category_id', $categoryId);
+//            })
+//            ->delete();
+//        $this->dispatch('renew-cart',
+//            cart: $user->cart->id
+//        );
     }
 
     public function productSelected($categoryId, $productId): void
@@ -67,8 +78,12 @@ class Index extends Component
             if (!$flag) {
                 $this->selectedProducts[] = $productId;
             }
+            $this->dispatch('update-category-mask',
+                categoryId : $categoryId,
+                productId : $productId,
+                selectedProducts : $this->selectedProducts);
         }
-
+        $this->categorisedProducts = $this->getCategorisedProducts($this->viewId);
 //        /** @var User $user */
 //        $user = auth()->user();
 //        $doesCartHaveCategoryProduct = $user
@@ -94,17 +109,14 @@ class Index extends Component
 //        }
 
 //        $this->dispatch('renew-cart', cart: $user->cart->id);
-        $this->dispatch('update-category-mask',
-            categoryId : $categoryId,
-            productId : $productId,
-            selectedProducts : $this->selectedProducts);
+
 //            cartId: $user->cart->id);
     }
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View
     {
         return view('livewire.categories.index', [
-            'categorised_products' => $this->categorisedProducts,
+            'categories' => $this->categorisedProducts,
             'category_id' => $this->categoryId,
             'view_id' => $this->viewId,
             'class' => $this->class,

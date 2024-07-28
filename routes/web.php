@@ -6,6 +6,8 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SceneController;
 use App\Http\Controllers\ViewController;
+use App\Models\Category;
+use App\Models\View;
 use Illuminate\Support\Facades\Route;
 
 

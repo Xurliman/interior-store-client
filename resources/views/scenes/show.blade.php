@@ -21,5 +21,5 @@
 
 @section('js')
     <script src="{{ asset('js/panzoom.js') }}"></script>
-    <script src="{{ asset('js/scene.js') }}"></script>
+    <script type="module" src="{{ asset('js/scene.js') }}"></script>
 @endsection

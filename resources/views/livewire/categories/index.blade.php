@@ -5,14 +5,14 @@
     </button>
 
     <div class="custom__items">
-        @foreach($categorised_products as $products)
-            @php
-                $category = collect($products)->first()->category;
-            @endphp
-            <div id="{{ $category->div_id }}" class="custom__block" style="display: block;">
+        @foreach($categories as $category)
+            <div
+                id="{{ $category->div_id }}"
+                class="custom__block"
+                style="{{ $category->display ? 'display:block' : 'display:none' }}">
                 <!-- Custom Item -->
                 <div class="custom__item">
-                    <img class="custom__item_img" src="{{ Storage::url($products->first()->image?->path) }}" alt=""/>
+                    <img class="custom__item_img" src="{{ Storage::url($category->products->first()->image?->path) }}" alt=""/>
                     <span class="custom__item_title">{{ $category->name }}</span>
 
                     <button class="custom-item-btn" data-mask="{{ $category->data_mask }}">
@@ -28,20 +28,23 @@
                     </button>
 
                     <div class="drop-list-container">
-                        @foreach($products as $product)
+                        @foreach($category->products as $product)
                             @php
-                                $productConfiguration = $product
-                                    ->productConfigurations()
+                                $productConfiguration = collect($product->productConfigurations)
                                     ->where('view_id', $view_id)
                                     ->where('is_visible', true)
                                     ->first();
                             @endphp
-                            <button wire:click.prevent="productSelected({{ $category->id }}, {{ $product->id }})" class="load-jpg {{ $productConfiguration->btn_class }} {{ $productConfiguration->extra_class }}">
-                                <img class="custom__img custom-{{ $productConfiguration->class }}"
-                                     data-object="{{ $productConfiguration->data_object }}"
-                                     data-remove="{{ $category->data_mask }}"
-                                     src="{{ Storage::url($product->image?->path) }}" alt="Floor"/>
-                            </button>
+                            @if($productConfiguration)
+                                <button wire:click.prevent="productSelected({{ $category->id }}, {{ $product->id }})"
+                                        class="load-jpg {{ $productConfiguration?->btn_class }} {{ $productConfiguration?->extra_class }}">
+                                    <img class="custom__img custom-{{ $productConfiguration?->class }}"
+                                         data-object="{{ $productConfiguration?->data_object }}"
+                                         data-remove="{{ $category->data_mask }}"
+                                         src="{{ Storage::url($product->image?->path) }}"
+                                         alt="Floor"/>
+                                </button>
+                            @endif
                         @endforeach
                     </div>
                 </div>

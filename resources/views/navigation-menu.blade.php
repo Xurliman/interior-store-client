@@ -91,8 +91,8 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-elements.dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                            <x-elements.dropdown-link href="/">
+                                {{ __('Fantom') }}
                             </x-elements.dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

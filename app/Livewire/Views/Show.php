@@ -30,7 +30,9 @@ class Show extends Component
     public function viewSelected($viewId): void
     {
         $this->currentView = View::firstWhere('id', $viewId);
-        $this->dispatch('new-view-selected', ['viewId' => $viewId]);
+        $this->dispatch('new-view-selected',
+            viewId : $viewId
+        );
     }
 
     #[On('update-category-mask')]
@@ -53,13 +55,13 @@ class Show extends Component
     {
         $bgImg = $this->currentView->images()->where('type', 'transparent_bg')->first()?->path;
         $fgImg = $this->currentView->images()->where('type', 'mask_bg')->first()?->path;
-        $categorisedProducts = $this->getCategorisedProducts(View::getView($this->currentView->id)?->products);
+        $categorisedProducts = $this->getCategorisedProducts($this->currentView->id);
 
         return view('livewire.views.show', [
             'view' => $this->currentView,
             'background_img' => $bgImg,
             'foreground_img' => $fgImg,
-            'categorised_products' => $categorisedProducts,
+            'categories' => $categorisedProducts,
             'category_mask_id' => $this->categoryMaskId,
             'class' => $this->maskImg ? 'open' : '',
             'active_class' => $this->activeClass ?? '',

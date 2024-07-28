@@ -31,26 +31,25 @@
 
                     <!-- Object Images -->
                     <div class="object__images">
-                        @foreach($categorised_products as $products)
-                            @php
-                                $category = collect($products)->first()->category;
-                            @endphp
+                        @foreach($categories as $category)
                             <div class="{{ $category->div_class }}">
-                                @foreach($products as $product)
+                                @foreach($category->products as $product)
                                     @php
-                                        $productConfiguration = $product
-                                            ->productConfigurations()
+                                        $productConfiguration = collect($product->productConfigurations)
                                             ->where('view_id', $view->id)
+                                            ->where('is_visible', true)
                                             ->first();
                                     @endphp
 {{--                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->isInCart($product->id, $cart_id) ? 'object-visible' : ''}}"--}}
-                                    <img class="loading-jpg {{ $category->img_class }} {{ in_array($product->id, $selected_products) ? 'object-visible' : ''}}"
-                                         src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
-                                         data-object="{{ $productConfiguration?->data_object }}"
-                                         data-product="{{ $product->name }}"
-                                         data-price="{{ $product->price?->value }}"
-                                         data-remove="{{ $category->data_mask }}"
-                                         alt="{{ $product->image?->path }}"/>
+                                    @if($productConfiguration)
+                                        <img class="loading-jpg {{ $category->img_class }} {{ in_array($productConfiguration->product_id, $selected_products) ? 'object-visible' : ''}}"
+                                             src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
+                                             data-object="{{ $productConfiguration?->data_object }}"
+                                             data-product="{{ $product->name }}"
+                                             data-price="{{ $product->price?->value }}"
+                                             data-remove="{{ $category->data_mask }}"
+                                             alt="{{ $product->image?->path }}"/>
+                                    @endif
                                 @endforeach
                             </div>
                         @endforeach
@@ -67,10 +66,7 @@
                             </div>
                         </div>
 
-                        @foreach($categorised_products as $products)
-                            @php
-                                $category = collect($products)->first();
-                            @endphp
+                        @foreach($categories as $category)
                             <img class="mask mask-{{ $category->data_mask }}" data-mask="{{ $category->data_mask }}" src="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : '' }}"
                                  alt="wall-panels"/>
                         @endforeach
@@ -129,43 +125,6 @@
     </div>
 
     <!-- Saved Modal -->
-    <div class="saved-blackout" data-modal="saved">
-        <div class="saved-modal">
-            <button class="close-saved-modal ms-auto mb-4">
-                <img src="{{ asset('img/icons/Cancel.svg') }}" alt="Cancel"/>
-            </button>
-
-            <div class="saved-modal-container">
-                <h4 class="saved-modal__items_title h4">
-                    Saved to My gallery
-                </h4>
-
-                <div class="saved-modal__items d-flex flex-column"></div>
-
-                <div class="saved-modal__items d-flex flex-column">
-                    <div class="d-flex me-auto mt-2">
-                        <button class="check-out-saved-modal mb-2 me-3">
-                            Check out
-                        </button>
-                        <button class="close-saved-modal mb-2">
-                            Back
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Empty Modal -->
-        <div class="saved-modal-empty">
-            <button class="close-saved-modal ms-auto">
-                <img src="{{ asset('img/icons/Cancel.svg') }}" alt="Cancel"/>
-            </button>
-
-            <h4 class="saved-modal__items_title mt-3 h4">
-                No products to save
-            </h4>
-            <button class="close-saved-modal mb-2">Back</button>
-        </div>
-    </div>
+    <x-modals.saved-modal :selected-products="$selected_products" />
 
 </div>

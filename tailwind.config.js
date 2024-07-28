@@ -23,8 +23,3 @@ export default {
     plugins: [forms, typography],
 
 };
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-    darkMode: ['selector', '[data-mode="light"]'],
-    // ...
-}

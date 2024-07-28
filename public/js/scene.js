@@ -179,19 +179,16 @@ document.addEventListener("click", (e) => {
 });
 
 // Custon Item Btns
-var customItemBtn = document.querySelectorAll(".custom-item-btn");
-var customDropList = document.querySelectorAll(".custom-drop-list");
 var customBtn = document.querySelector(".custom-btn");
 var removeBtn = document.querySelectorAll(".custom-item-remove");
 var custom = document.querySelector(".custom");
+var customItemBtn = document.querySelectorAll(".custom-item-btn");
+var customDropList = document.querySelectorAll(".custom-drop-list");
 var lastClickedButton = null;
-
-// Open Cusotm Menu Items
 customItemBtn.forEach((button) => {
     button.addEventListener("click", (e) => {
         var btn = e.target;
         var buttonAttr = btn.getAttribute("data-item");
-
         customDropList.forEach((el) => {
             var listAttr = el.getAttribute("data-item");
             if (buttonAttr == listAttr) {
@@ -209,6 +206,7 @@ customItemBtn.forEach((button) => {
         lastClickedButton = button;
     });
 });
+
 
 // Open Custom Menu
 customBtn.addEventListener("click", () => {
@@ -412,23 +410,23 @@ function pushProductsOrder() {
 
 // Save Products To Saved Modal
 function pushProductsToSavedModal() {
-    var savedModalItems = document.querySelector(".saved-modal__items");
-    savedModalItems.innerHTML = "";
-
-    productArr.forEach((item) => {
-        var product = item.elProduct;
-        var price = item.elPrice;
-        var savedItem = document.createElement("div");
-
-        savedItem.innerHTML = `
-        <div class="saved-modal__item d-flex">
-            <h5 class="saved-modal__item_title h5">${product} &nbsp;</h5>
-            <h5 class="saved-modal__item-price">$${price}</h5>
-        </div>
-    `;
-
-        // savedModalItems.appendChild(savedItem);
-    });
+    // var savedModalItems = document.querySelector(".saved-modal__items");
+    // savedModalItems.innerHTML = "";
+    //
+    // productArr.forEach((item) => {
+    //     var product = item.elProduct;
+    //     var price = item.elPrice;
+    //     var savedItem = document.createElement("div");
+    //
+    //     savedItem.innerHTML = `
+    //     <div class="saved-modal__item d-flex">
+    //         <h5 class="saved-modal__item_title h5">${product} &nbsp;</h5>
+    //         <h5 class="saved-modal__item-price">$${price}</h5>
+    //     </div>
+    // `;
+    //
+    //     // savedModalItems.appendChild(savedItem);
+    // });
 }
 
 // Close Custom Menu if Options Menu is open
@@ -490,9 +488,9 @@ var masks = document.querySelectorAll(".mask_btn");
 zoomInButton.addEventListener("click", () => panzoomInstance.zoomIn());
 
 zoomOutButton.addEventListener("click", () => panzoomInstance.zoomOut());
-
 // Get Chosen Scene
 document.addEventListener("livewire:navigated", () => {
+    console.log("navigated")
     // Get scene-kitchen
     var kitchen = localStorage.getItem("scene-bg");
 
@@ -647,10 +645,10 @@ document.addEventListener("livewire:navigated", () => {
                         // foregroundRedView2.classList.remove("active");
                         // foregroundBlackView2.classList.remove("active");
                         // foregroundBlack.classList.remove("active");
-                        chirsBox.style = "display: none";
-                        chair.style = "display: none";
-                        lamp.style = "display: none";
-                        lampsBox.style = "display: none";
+                        // chirsBox.style = "display: none";
+                        // chair.style = "display: none";
+                        // lamp.style = "display: none";
+                        // lampsBox.style = "display: none";
                     }
                     if (kitchen === "kitchen-red") {
                         // foregroundBlackView2.classList.remove("active");
@@ -673,7 +671,7 @@ document.addEventListener("livewire:navigated", () => {
                 case "View3":
                     if (kitchen === "kitchen-white") {
                         chair.style = "display: block";
-                        lampsBox.style = "display: none";
+                        // lampsBox.style = "display: none";
                         chirsBox.style = "display: block";
                         floor.style = "display: block";
                     }
@@ -681,16 +679,16 @@ document.addEventListener("livewire:navigated", () => {
                         kitchen === "kitchen-black" ||
                         kitchen === "kitchen-red"
                     ) {
-                        floor.style = "display: none";
+                        // floor.style = "display: none";
                     }
                     if (kitchen === "kitchen-red") {
                         // foregroundRed.classList.remove("active");
                         // foregroundRedView2.classList.remove("active");
-                        lampsBox.style = "display: none";
-                        lamp.style = "display: none";
+                        // lampsBox.style = "display: none";
+                        // lamp.style = "display: none";
                         // foregroundRed.classList.remove("active");
                         // foregroundBlackView2.classList.remove("active");
-                        portuquetsBox.style = "display: none";
+                        // portuquetsBox.style = "display: none";
                     }
                     if (kitchen === "kitchen-black") {
                         // foregroundBlackView2.classList.remove("active");
@@ -759,16 +757,16 @@ document.addEventListener("livewire:navigated", () => {
         }
 
         // Open Custom Menu
-        customItemBtn.forEach((button) => {
-            var buttonAttr = button.getAttribute("data-mask");
-
-            if (buttonAttr == customMenu) {
-                button.classList.add("open");
-            } else {
-                button.classList.remove("open");
-            }
-            console.log("working")
-        });
+        // customItemBtn.forEach((button) => {
+        //     var buttonAttr = button.getAttribute("data-mask");
+        //
+        //     if (buttonAttr == customMenu) {
+        //         button.classList.add("open");
+        //     } else {
+        //         button.classList.remove("open");
+        //     }
+        //     console.log("working")
+        // });
 
         customDropList.forEach((el) => {
             var listArtt = el.getAttribute("data-mask");
