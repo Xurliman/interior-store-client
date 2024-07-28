@@ -633,7 +633,7 @@
 
 .custom-item-btn.open {
   transition: all 0.3s ease;
-  transform: rotate(90deg);
+  /*transform: rotate(90deg);*/
 }
 
 .bar-stool-img {

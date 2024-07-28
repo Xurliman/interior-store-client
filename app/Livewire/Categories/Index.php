@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Categories;
 
-use App\Models\Product;
 use App\Models\User;
 use App\Models\View;
 use App\Traits\GetCategorisedProduct;
@@ -18,13 +17,14 @@ class Index extends Component
     public $viewId;
     public $categorisedProducts;
     public $activeClass = '';
+    public array $selectedProducts = [];
     use GetCategorisedProduct;
 
 
     public function mount($viewId): void
     {
         $this->viewId = $viewId;
-        $this->categorisedProducts = $this->getCategorisedProducts(View::getView($viewId)?->products);
+        $this->categorisedProducts = $this->getCategorisedProducts(View::firstWhere('id', $viewId)?->products);
     }
 
 
@@ -32,7 +32,7 @@ class Index extends Component
     public function viewSelected($viewId): void
     {
         $this->viewId = $viewId;
-        $this->categorisedProducts = $this->getCategorisedProducts(View::getView($viewId)?->products);
+        $this->categorisedProducts = $this->getCategorisedProducts(View::firstWhere('id', $viewId)?->products);
     }
 
     public function removeProducts($categoryId): void {
@@ -54,32 +54,51 @@ class Index extends Component
         $this->activeClass = 'active';
         $this->categoryId = $categoryId;
 
-        /** @var User $user */
-        $user = auth()->user();
-        $doesCartHaveCategoryProduct = $user
-            ->cart
-            ->products()
-            ->where('category_id', $categoryId)
-            ->exists();
-        $isProductInCart = Product::isInCart($productId, $user->cart->id);
-        if ($doesCartHaveCategoryProduct || $isProductInCart) {
-            $user->cart
-                ->products()
-                ->where(function ($query) use ($categoryId) {
-                    $query->where('category_id', $categoryId);
-                })->update([
-                    'product_id' => $productId,
-                    'quantity' => 1,
-                ]);
-        } else {
-            $user->cart->items()->create([
-                'product_id' => $productId,
-                'quantity' => 1,
-            ]);
+        $productIds = $this->getCategoryProducts($categoryId);
+        if (!in_array($productId, $this->selectedProducts)) {
+            $flag = false;
+            foreach ($productIds as $catProductId) {
+                if(in_array($catProductId, $this->selectedProducts)) {
+                    $flag = true;
+                    $key = array_search($catProductId, $this->selectedProducts);
+                    $this->selectedProducts[$key] = $productId;
+                }
+            }
+            if (!$flag) {
+                $this->selectedProducts[] = $productId;
+            }
         }
 
-        $this->dispatch('renew-cart', cart: $user->cart->id);
-        $this->dispatch('update-category-mask', categoryId : $categoryId, cartId: $user->cart->id);
+//        /** @var User $user */
+//        $user = auth()->user();
+//        $doesCartHaveCategoryProduct = $user
+//            ->cart
+//            ->products()
+//            ->where('category_id', $categoryId)
+//            ->exists();
+//        $isProductInCart = Product::isInCart($productId, $user->cart->id);
+//        if ($doesCartHaveCategoryProduct || $isProductInCart) {
+//            $user->cart
+//                ->products()
+//                ->where(function ($query) use ($categoryId) {
+//                    $query->where('category_id', $categoryId);
+//                })->update([
+//                    'product_id' => $productId,
+//                    'quantity' => 1,
+//                ]);
+//        } else {
+//            $user->cart->items()->create([
+//                'product_id' => $productId,
+//                'quantity' => 1,
+//            ]);
+//        }
+
+//        $this->dispatch('renew-cart', cart: $user->cart->id);
+        $this->dispatch('update-category-mask',
+            categoryId : $categoryId,
+            productId : $productId,
+            selectedProducts : $this->selectedProducts);
+//            cartId: $user->cart->id);
     }
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View

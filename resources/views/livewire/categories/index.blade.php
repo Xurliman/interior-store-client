@@ -32,6 +32,8 @@
                             @php
                                 $productConfiguration = $product
                                     ->productConfigurations()
+                                    ->where('view_id', $view_id)
+                                    ->where('is_visible', true)
                                     ->first();
                             @endphp
                             <button wire:click.prevent="productSelected({{ $category->id }}, {{ $product->id }})" class="load-jpg {{ $productConfiguration->btn_class }} {{ $productConfiguration->extra_class }}">

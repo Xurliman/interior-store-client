@@ -16,33 +16,33 @@ class Show extends Component
     public $scene;
     public $currentView;
     public $categoryMaskId;
-    public $cartId;
     public $maskImg;
     public string $activeClass = '';
+    public array $selectedProducts = [];
     use GetCategorisedProduct;
 
     public function mount(Scene $scene, $view): void
     {
         $this->scene = $scene;
-        $this->cartId = auth()->user()?->cart?->id ?? 1;
         $this->currentView = $view ?? $this->scene->views()->where('is_default', true)->first();
     }
 
     public function viewSelected($viewId): void
     {
-        $this->currentView = View::getView($viewId);
+        $this->currentView = View::firstWhere('id', $viewId);
         $this->dispatch('new-view-selected', ['viewId' => $viewId]);
     }
 
     #[On('update-category-mask')]
-    public function updateProductMask($categoryId, $cartId): void
+    public function updateProductMask($categoryId, $productId, $selectedProducts): void
     {
         $this->categoryMaskId = $categoryId;
-        $this->cartId = $cartId;
+        $this->selectedProducts = $selectedProducts;
         $this->maskImg = Product::with('productConfigurations.images')
-            ->find(1)
+            ->find($productId)
             ->productConfigurations()
             ->where('view_id', $this->currentView->id)
+            ->where('is_visible', true)
             ->first()
             ->images()
             ->where('type', 'mask_bg')
@@ -61,10 +61,10 @@ class Show extends Component
             'foreground_img' => $fgImg,
             'categorised_products' => $categorisedProducts,
             'category_mask_id' => $this->categoryMaskId,
-            'cart_id' => $this->cartId,
             'class' => $this->maskImg ? 'open' : '',
             'active_class' => $this->activeClass ?? '',
             'mask_img' => $this->maskImg,
+            'selected_products' => $this->selectedProducts,
         ]);
     }
 }

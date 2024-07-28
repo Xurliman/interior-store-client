@@ -43,7 +43,8 @@
                                             ->where('view_id', $view->id)
                                             ->first();
                                     @endphp
-                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->isInCart($product->id, $cart_id) ? 'object-visible' : ''}}"
+{{--                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->isInCart($product->id, $cart_id) ? 'object-visible' : ''}}"--}}
+                                    <img class="loading-jpg {{ $category->img_class }} {{ in_array($product->id, $selected_products) ? 'object-visible' : ''}}"
                                          src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                          data-object="{{ $productConfiguration?->data_object }}"
                                          data-product="{{ $product->name }}"
@@ -79,12 +80,11 @@
             </div>
 
             <!-- Order Menu -->
-            <livewire:cart.menu />
+            <x-orders.menu :selected-products="$selected_products"/>
         </div>
     </div>
 
     <!-- Custom Menu -->
-{{--    @livewire('categories.index', ['viewId' => $view->id])--}}
     <livewire:categories.index :viewId="$view->id"/>
     <!-- Options Desktop -->
     <div class="options">

@@ -52,7 +52,6 @@ class View extends Model
         return self::with('products.category')
             ->with('products.image')
             ->with('products.productConfigurations.images')
-            ->where('id', $viewId)
-            ->first();
+            ->firstWhere('id', $viewId);
     }
 }
