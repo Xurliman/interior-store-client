@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\User;
+namespace App\View\Components\Profile;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Gallery extends Component
+class ProfileSettings extends Component
 {
     public function __construct()
     {
@@ -15,6 +15,6 @@ class Gallery extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.user.gallery');
+        return view('components.profile.profile-settings');
     }
 }

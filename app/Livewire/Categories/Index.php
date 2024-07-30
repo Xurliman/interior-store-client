@@ -81,29 +81,6 @@ class Index extends Component
                 selectedProducts : $this->selectedProducts);
         }
         $this->categorisedProducts = $this->getCategorisedProducts($this->viewId);
-//        /** @var User $user */
-//        $user = auth()->user();
-//        $doesCartHaveCategoryProduct = $user
-//            ->cart
-//            ->products()
-//            ->where('category_id', $categoryId)
-//            ->exists();
-//        $isProductInCart = Product::isInCart($productId, $user->cart->id);
-//        if ($doesCartHaveCategoryProduct || $isProductInCart) {
-//            $user->cart
-//                ->products()
-//                ->where(function ($query) use ($categoryId) {
-//                    $query->where('category_id', $categoryId);
-//                })->update([
-//                    'product_id' => $productId,
-//                    'quantity' => 1,
-//                ]);
-//        } else {
-//            $user->cart->items()->create([
-//                'product_id' => $productId,
-//                'quantity' => 1,
-//            ]);
-//        }
 
 //        $this->dispatch('renew-cart', cart: $user->cart->id);
 

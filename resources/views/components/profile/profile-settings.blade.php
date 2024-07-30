@@ -23,9 +23,7 @@
                         placeholder="John"
                     />
 
-                    <label class="profile__form_label mb-2"
-                    >Email</label
-                    >
+                    <label class="profile__form_label mb-2">Email</label>
                     <input
                         class="profile__form_input"
                         type="email"

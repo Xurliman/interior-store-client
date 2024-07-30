@@ -26,7 +26,9 @@
 
             <div class="saved-modal__items d-flex flex-column">
                 <div class="d-flex me-auto mt-2">
-                    <button class="check-out-saved-modal mb-2 me-3">
+                    <button
+
+                        class="check-out-saved-modal mb-2 me-3">
                         Check out
                     </button>
                     <button class="close-saved-modal mb-2">

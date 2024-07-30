@@ -5,8 +5,8 @@
             <ul class="navbar-nav">
                 @auth
                 <li class="nav-item">
-                    <a class="drop-down__link nav-link mb-1" href="{{ route('gallery') }}">
-                        My Cart
+                    <a class="drop-down__link nav-link mb-1" href="{{ route('carts.index') }}">
+                        Gallery
                     </a>
                 </li>
 
