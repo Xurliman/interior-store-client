@@ -91,7 +91,7 @@
         <x-options.camera-view-button />
 
         <!-- Download -->
-        <x-options.download-button />
+        <livewire:options.image-download-button :selected-products="$selected_products" />
 
         <!-- Print -->
         <x-options.print-button />
@@ -110,7 +110,7 @@
             <x-options.camera-view-button />
 
             <!-- Download -->
-            <x-options.download-button />
+            <livewire:options.image-download-button :selected-products="$selected_products"/>
 
             <!-- Print -->
             <x-options.print-button />

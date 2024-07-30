@@ -42,6 +42,6 @@ Route::middleware([
 
 
 Route::get('/test', function () {
-    $view = View::firstWhere('id', 4);
-    ImageMerger::selectedProductsMaskManager([21, 22, 23, 24], $view);
+    $view = View::firstWhere('id', 2);
+    ImageMerger::galleryImageCreator([10, 6, 19, 3], $view);
 });
