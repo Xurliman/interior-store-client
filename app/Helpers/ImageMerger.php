@@ -2,111 +2,146 @@
 
 namespace App\Helpers;
 
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductConfiguration;
 use App\Models\View;
-use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class ImageMerger
 {
-    public static function mergeProductWithCorrespondingMask(ProductConfiguration $productConfiguration, $directoryName): void
+    public static function mergeProductWithCorrespondingMask(ProductConfiguration $productConfiguration): string
     {
-        $productTransparentImage = $productConfiguration->images()
-            ->where('type', 'mask_bg')
+        $productMaskMergedImage = $productConfiguration->images()
+            ->where('type', 'mask_merged')
             ->first()?->path;
-        $productMaskImage = $productConfiguration->images()
-            ->where('type', 'transparent_bg')
-            ->first()?->path;
-        self::mergeImages(
-            destinationImagePath: storage_path("app/public/".$productTransparentImage),
-            sourceImagePath: storage_path("app/public/".$productMaskImage),
-            directoryName: $directoryName,
-            pct: 1);
+        if (is_null($productMaskMergedImage)) {
+            $destinationImage = $productConfiguration->images()
+                ->where('type', 'mask_bg')
+                ->first()?->path;
+            $sourceImage = $productConfiguration->images()
+                ->where('type', 'transparent_bg')
+                ->first()?->path;
+            if ($destinationImage) {
+                $productMaskMergedImage = self::layerImages(
+                    destinationImagePath: storage_path("app/public/$destinationImage"),
+                    sourceImagePaths: [storage_path("app/public/$sourceImage")],
+                    pct: 1
+                );
+            } else {
+                $productMaskMergedImage = $sourceImage;
+            }
+
+            self::saveToDatabaseMaskMerged($productMaskMergedImage, $productConfiguration);
+        }
+        return $productMaskMergedImage;
     }
 
-    public static function viewMergeWithForegroundTable(View $view, $directoryName): void
+    public static function mergeViewWithForegroundTable(View $view)
     {
-        $destinationImage = $view->images()
-            ->where('type', 'transparent_bg')
+        $viewMaskMergedImage = $view->images()
+            ->where('type', 'mask_merged')
             ->first()?->path;
-        $sourceImage = $view->images()
-            ->where('type', 'mask_bg')
-            ->first()?->path;
-        if (!is_null($sourceImage)) {
-            self::mergeImages(
-                destinationImagePath: storage_path("app/public/".$destinationImage),
-                sourceImagePath: storage_path("app/public/".$sourceImage),
-                directoryName: $directoryName);
+        if (is_null($viewMaskMergedImage)) {
+            $destinationImage = $view->images()
+                ->where('type', 'transparent_bg')
+                ->first()?->path;
+            $sourceImage = $view->images()
+                ->where('type', 'mask_bg')
+                ->first()?->path;
+            if (is_null($sourceImage)) {
+                $destinationImage = imagecreatefromjpeg(storage_path("app/public/".$destinationImage));
+                $newFileName = uniqid(rand(), false).'_'.time().'.png';
+                imagepng($destinationImage, storage_path("app/public/$newFileName"));
+                imagedestroy($destinationImage);
+                $viewMaskMergedImage = $newFileName;
+            } else {
+                $viewMaskMergedImage = self::layerImages(
+                    destinationImagePath: storage_path("app/public/$destinationImage"),
+                    sourceImagePaths: [storage_path("app/public/$sourceImage")],
+                    pct: 0
+                );
+            }
+            self::saveToDatabaseMaskMerged(
+                maskMergedImagePath: $viewMaskMergedImage,
+                object: $view);
         }
+        return $viewMaskMergedImage;
     }
 
-    public static function mergeImages($destinationImagePath, $sourceImagePath, $directoryName, $pct=0): void
+    public static function imageCreateForView(View $view, $selectedProducts): string
     {
-        list($width, $height) = getimagesize($sourceImagePath);
-        if (str_ends_with($destinationImagePath, ".jpeg") || str_ends_with($destinationImagePath, ".jpg")) {
-            $destinationImage = imagecreatefromjpeg($destinationImagePath);
-        } else {
-            $destinationImage = imagecreatefrompng($destinationImagePath);
-        }
-        $sourceImage = imagecreatefrompng($sourceImagePath);
-
-        if ($pct > 0) {
-        imagealphablending($destinationImage, false);
-        imagealphablending($sourceImage, false);
-        }
-
-        imagecopy($destinationImage, $sourceImage, 0, 0, 0, 0, $width, $height);
-
-        if ($pct > 0) {
-        imagesavealpha($destinationImage, true);
-        imagesavealpha($sourceImage, true);
-        }
-
-        header('Content-type: image/png');
-
-        if (!file_exists($directoryName)){
-            mkdir($directoryName);
-        }
-        imagepng($destinationImage, $directoryName."/merge.png",0);
-        imagedestroy($destinationImage);
-        imagedestroy($sourceImage);
-    }
-
-
-    public static function galleryImageCreator($selectedProducts, View $view): void
-    {
-        $directoryName = storage_path("app/public/generated-images/");
-        self::viewMergeWithForegroundTable($view, $directoryName."/views/".$view->id);
-
-        $productConfigurationIds = [];
-        foreach ($selectedProducts as $selectedProductId) {
-            $productConfiguration = collect(
-                Product::firstWhere('id', $selectedProductId)
-                    ->load('productConfigurations.images')
-                    ->productConfigurations
-            )
+        $viewImageName = self::mergeViewWithForegroundTable(view: $view);
+        $destinationViewImagePath = storage_path("app/public/$viewImageName");
+        $sourceImagePaths = [];
+        $selectedProducts = Product::find([$selectedProducts])
+            ->load('productConfigurations.images')
+            ->sortBy('category_id');
+        foreach ($selectedProducts as $selectedProduct) {
+            $productConfiguration = collect($selectedProduct
+                ->productConfigurations)
                 ->where('view_id', $view->id)
                 ->where('is_visible', true)
                 ->first();
             if (is_null($productConfiguration)) {
                 continue;
             }
-            $productConfigurationIds[] = $productConfiguration->id;
-            self::mergeProductWithCorrespondingMask($productConfiguration, $directoryName."/product-configurations/".$productConfiguration->id);
+            $sourceImageName = self::mergeProductWithCorrespondingMask(
+                productConfiguration: $productConfiguration);
+            $sourceImagePaths[] = storage_path("app/public/$sourceImageName");
+        }
+        return self::layerImages(
+            destinationImagePath: $destinationViewImagePath,
+            sourceImagePaths: $sourceImagePaths
+        );
+    }
+
+    public static function saveToDatabaseMaskMerged($maskMergedImagePath, $object): void
+    {
+        $image = new Image();
+        $image->type = "mask_merged";
+        $image->path = $maskMergedImagePath;
+        $object->images()->save($image);
+        $image->save();
+    }
+
+    public static function layerImages($destinationImagePath, array $sourceImagePaths, $pct = 0): string
+    {
+        if (str_ends_with($destinationImagePath, ".jpeg") || str_ends_with($destinationImagePath, ".jpg")) {
+            $finalImage = imagecreatefromjpeg($destinationImagePath);
+        } else {
+            $finalImage = imagecreatefrompng($destinationImagePath);
         }
 
-        $oldResultFile = $directoryName."results/".$view->id."/merge.png";
-        if (file_exists($oldResultFile)) {
-            unlink($oldResultFile);
-        }
-
-        foreach ($productConfigurationIds as $productConfigurationId) {
-            $destinationViewImagePath = $directoryName."results/".$view->id."/merge.png";
-            if (!file_exists($destinationViewImagePath)) {
-                $destinationViewImagePath = $directoryName."views/".$view->id."/merge.png";
+        $tmpFiles = [];
+        foreach ($sourceImagePaths as $sourceImagePath) {
+            list($width, $height) = getimagesize($sourceImagePath);
+            $sourceImage = imagecreatefrompng($sourceImagePath);
+            if ($pct > 0) {
+                imagealphablending($finalImage, false);
+                imagealphablending($sourceImage, false);
             }
-            $sourceViewImagePath = $directoryName."product-configurations/".$productConfigurationId."/merge.png";
-            self::mergeImages($destinationViewImagePath, $sourceViewImagePath, $directoryName."results/".$view->id);
+            imagecopy($finalImage, $sourceImage, 0, 0, 0, 0, $width, $height);
+            if ($pct > 0) {
+                imagesavealpha($finalImage, true);
+                imagesavealpha($sourceImage, true);
+            }
+            if (!next($sourceImagePaths)) {
+                header('Content-type: image/png');
+                $newFileName = uniqid(rand(), false).'_'.time().'.png';
+                imagepng($finalImage, storage_path("app/public/$newFileName"), 0);
+                imagedestroy($finalImage);
+                foreach ($tmpFiles as $file) {
+                    unlink($file);
+                }
+                return $newFileName;
+            }
+            $randKey = uniqid(rand(), false);
+            $tmpFileName = storage_path("app/public/tmp_image_{$randKey}.png");
+            $tmpFiles[] = $tmpFileName;
+            imagepng($finalImage, $tmpFileName);
+            $finalImage = imagecreatefrompng($tmpFileName);
+            imagedestroy($sourceImage);
         }
+        return $destinationImagePath;
     }
 }

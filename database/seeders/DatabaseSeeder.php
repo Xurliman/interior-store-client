@@ -11,17 +11,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        /** @var User $user */
-        $user = User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.qq',
-            'password' => bcrypt('securepass'),
-        ]);
-        $user->assignRole('admin');
-        Cart::create([
-            'user_id' => $user->id,
-        ]);
+
         $this->call([
+            UserSeeder::class,
             SceneSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,

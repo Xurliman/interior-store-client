@@ -42,6 +42,7 @@ Route::middleware([
 
 
 Route::get('/test', function () {
-    $view = View::firstWhere('id', 2);
-    ImageMerger::galleryImageCreator([10, 6, 19, 3], $view);
+    $view = View::firstWhere('id', 1);
+    $res = ImageMerger::imageCreateForView($view, [10, 6, 19, 3,36]);
+    echo $res;
 });

@@ -43,18 +43,9 @@ class Index extends Component
                 unset($this->selectedProducts[$key]);
             }
         }
+        $this->dispatch('update-selected-products-list',
+            selectedProducts : $this->selectedProducts);
         $this->categorisedProducts = $this->getCategorisedProducts($categoryId);
-//        /** @var User $user */
-//        $user = auth()->user();
-//        $user->cart
-//            ->items()
-//            ->whereHas('product', function ($query) use ($categoryId) {
-//                $query->where('category_id', $categoryId);
-//            })
-//            ->delete();
-//        $this->dispatch('renew-cart',
-//            cart: $user->cart->id
-//        );
     }
 
     public function productSelected($categoryId, $productId): void
@@ -78,6 +69,8 @@ class Index extends Component
             $this->dispatch('update-category-mask',
                 categoryId : $categoryId,
                 productId : $productId,
+                selectedProducts : $this->selectedProducts);
+            $this->dispatch('update-selected-products-list',
                 selectedProducts : $this->selectedProducts);
         }
         $this->categorisedProducts = $this->getCategorisedProducts($this->viewId);

@@ -147,7 +147,7 @@ optionsBtn.forEach((button) => {
                 });
 
                 downloadModal.forEach((el) => {
-                    el.classList.add("active");
+                    // el.classList.add("active");
                 });
                 break;
             default:
@@ -173,7 +173,7 @@ document.addEventListener("click", (e) => {
         });
 
         downloadModal.forEach((el) => {
-            el.classList.remove("active");
+            // el.classList.remove("active");
         });
     }
 });
