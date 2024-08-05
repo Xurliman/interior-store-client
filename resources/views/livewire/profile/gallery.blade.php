@@ -25,13 +25,13 @@
                         </div>
 
                         <button
-                            x-on:click=""
+                            wire:click="update()"
                             class="gallery__btn">
                             Modify
                         </button>
                         <button
-                            wire:click="delete"
                             wire:confirm="Are you sure you want to delete this post?"
+                            wire:click="deleteProduct({{ $cart->id }})"
                             class="gallery__btn cm-error">
                             Delete
                         </button>

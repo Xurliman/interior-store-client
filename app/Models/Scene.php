@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Facades\Storage;
 
 class Scene extends Model
 {
@@ -23,5 +24,17 @@ class Scene extends Model
 
     public function image(): MorphOne {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        static::deleting(function ($scene) {
+            $sceneImg = $scene->image->path;
+            Storage::disk('public')->delete($sceneImg);
+            $scene->image()->delete();
+            $scene->views()->delete();
+        });
     }
 }

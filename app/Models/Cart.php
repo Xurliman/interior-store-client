@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Facades\Storage;
 
 class Cart extends Model
 {
@@ -38,5 +39,19 @@ class Cart extends Model
 
     public function products(): HasManyThrough {
         return $this->hasManyThrough(Product::class, CartItem::class, 'cart_id', 'id', 'id', 'product_id');
+    }
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        static::deleting(function ($cart) {
+            $cart->items()->delete();
+
+            $cartImg = $cart->image->path;
+            Storage::disk('public')->delete($cartImg);
+
+            $cart->image()->delete();
+        });
     }
 }

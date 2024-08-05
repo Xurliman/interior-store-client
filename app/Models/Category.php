@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Storage;
 
 class Category extends Model
 {
@@ -32,5 +33,14 @@ class Category extends Model
 
     public function views(): BelongsToMany {
         return $this->belongsToMany(View::class,'view_items')->withPivot('div_class')->withTimestamps();
+    }
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        static::deleting(function ($category) {
+            $category->products()->delete();
+        });
     }
 }

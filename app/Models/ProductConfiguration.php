@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Facades\Storage;
 
 class ProductConfiguration extends Model
 {
@@ -32,5 +33,19 @@ class ProductConfiguration extends Model
 
     public function view(): BelongsTo {
         return $this->belongsTo(View::class);
+    }
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        static::deleting(function ($productConfiguration) {
+            $productConfigurationImages = $productConfiguration->images;
+            foreach ($productConfigurationImages as $productConfigurationImg) {
+                Storage::disk('public')->delete($productConfigurationImg);
+            }
+
+            $productConfiguration->images()->delete();
+        });
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Facades\Storage;
 
 class View extends Model
 {
@@ -53,5 +54,19 @@ class View extends Model
             ->with('products.image')
             ->with('products.productConfigurations.images')
             ->firstWhere('id', $viewId);
+    }
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        static::deleting(function ($view) {
+            $viewImages = $view->images;
+            foreach ($viewImages as $viewImg) {
+                Storage::disk('public')->delete($viewImg);
+            }
+            $view->images()->delete();
+            $view->items()->delete();
+        });
     }
 }
