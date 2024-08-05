@@ -33,9 +33,10 @@
                 <div class="d-flex me-auto mt-2">
                     <form
                         method="POST"
-                        action="{{ route('carts.store', ['view_id'=> $view_id, 'selected_products' => json_encode($selected_products)]) }}">
+                        wire:submit="saveToGallery()">
                         @csrf
-                        <button type="submit"
+                        <button
+                            type="submit"
                             class="check-out-saved-modal mb-2 me-3">
                             Check out
                         </button>

@@ -15,11 +15,6 @@ class Gallery extends Component
         $this->carts = $carts;
     }
 
-    public function update()
-    {
-
-    }
-
     public function deleteProduct($cartId): void
     {
         Cart::firstWhere('id', $cartId)->delete();
