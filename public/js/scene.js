@@ -107,15 +107,15 @@ btnCloseShareModal.forEach((el) => {
 
 btnCloseSavedModal.forEach((el) => {
     el.addEventListener("click", () => {
-        savedModalBlackout.classList.remove("active");
-        savedModalEmpty.classList.remove("active");
-        savedModal.classList.remove("active");
+        // savedModalBlackout.classList.remove("active");
+        // savedModalEmpty.classList.remove("active");
+        // savedModal.classList.remove("active");
     });
 });
 
-btnMoveToGallary.addEventListener("click", () => {
-    window.location.href = "../gallery.html";
-});
+// btnMoveToGallary.addEventListener("click", () => {
+//     window.location.href = "../gallery.html";
+// });
 
 // Open Mobile Options Menu / Hide Desktop Options menu
 optionsMobileBtn.addEventListener("click", () => {
@@ -134,11 +134,11 @@ optionsBtn.forEach((button) => {
                 break;
             case "save":
                 if (customArr.length !== 0) {
-                    savedModalBlackout.classList.add("active");
-                    savedModal.classList.add("active");
+                    // savedModalBlackout.classList.add("active");
+                    // savedModal.classList.add("active");
                 } else {
-                    savedModalBlackout.classList.add("active");
-                    savedModalEmpty.classList.add("active");
+                    // savedModalBlackout.classList.add("active");
+                    // savedModalEmpty.classList.add("active");
                 }
                 break;
             case "download":
@@ -160,13 +160,12 @@ optionsBtn.forEach((button) => {
 document.addEventListener("click", (e) => {
     if (
         e.target.classList.contains("share-blackout") ||
-        e.target.classList.contains("saved-blackout") ||
         e.target.classList.contains("download-blackout")
     ) {
         shareModal.classList.remove("active");
-        savedModalBlackout.classList.remove("active");
-        savedModalEmpty.classList.remove("active");
-        savedModal.classList.remove("active");
+        // savedModalBlackout.classList.remove("active");
+        // savedModalEmpty.classList.remove("active");
+        // savedModal.classList.remove("active");
 
         downloadModalBlackout.forEach((el) => {
             el.classList.remove("active");

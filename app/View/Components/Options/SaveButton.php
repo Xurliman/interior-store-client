@@ -8,11 +8,6 @@ use Illuminate\View\Component;
 
 class SaveButton extends Component
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function render(): View|Closure|string
     {
         return view('components.options.save-button');

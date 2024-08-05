@@ -3,11 +3,18 @@
     <!-- Camera View -->
     <div class="camera-view">
         @foreach($scene->views as $sceneView)
-            <button wire:click.prevent="viewSelected({{ $sceneView->id }})" class="camera__item d-flex flex-column"
-                    data-view="{{ $sceneView->data_view }}">
-                <img data-view="{{ $sceneView->data_view }}" class="camera__item_img {{ $sceneView->name }}"
-                     src="{{ Storage::url($sceneView->images()->where('type', 'black_bg')->first()->path) }}" alt=""/>
-                <span class="camera__item_txt">{{ $sceneView->name }}</span>
+            <button
+                wire:click.prevent="viewSelected({{ $sceneView->id }})"
+                class="camera__item d-flex flex-column"
+                data-view="{{ $sceneView->data_view }}">
+                <img
+                    data-view="{{ $sceneView->data_view }}"
+                    class="camera__item_img {{ $sceneView->name }}"
+                    src="{{ Storage::url($sceneView->images()->where('type', 'black_bg')->first()->path) }}"
+                    alt=""/>
+                <span
+                    class="camera__item_txt">{{ $sceneView->name }}
+                </span>
             </button>
         @endforeach
     </div>
@@ -20,13 +27,21 @@
         <!-- Panzoom / Scene images -->
         <div class="my-cont">
             <div class="f-panzoom">
-                <div class="f-panzoom__content" id="myPanzoom">
-                    <img usemap="#image-map" id="scene-img" class="loading-jpg scene__bg"
-                         src="{{ Storage::url($background_img) }}" alt="{{ $background_img }}"/>
+                <div
+                    class="f-panzoom__content"
+                    id="myPanzoom">
+                    <img
+                        usemap="#image-map"
+                        id="scene-img"
+                        class="loading-jpg scene__bg"
+                        src="{{ Storage::url($background_img) }}"
+                        alt="{{ $background_img }}"/>
 
                     @if($foreground_img)
-                        <img class="loading-jpg foreground foreground-{{ $scene->img_class }} active"
-                             src="{{ Storage::url($foreground_img) }}" alt="{{ $foreground_img }}"/>
+                        <img
+                            class="loading-jpg foreground foreground-{{ $scene->img_class }} active"
+                            src="{{ Storage::url($foreground_img) }}"
+                            alt="{{ $foreground_img }}"/>
                     @endif
 
                     <!-- Object Images -->
@@ -58,7 +73,9 @@
 
                     <!-- Masks -->
                     <div class="masks-container">
-                        <div id="{{ $view->scene->slug }}-masks" class="kitchen-mask {{ $view->scene->slug }}-masks">
+                        <div
+                            id="{{ $view->scene->slug }}-masks"
+                            class="kitchen-mask {{ $view->scene->slug }}-masks">
                             <div class="kitchen-{{ $view->name }} active">
                                 @foreach($view->items as $item)
                                     <div class="mask_btn {{ $view->scene->slug }}-{{ $view->name }}-{{ $item->div_class }}" data-mask="{{ $item->category->data_mask }}"></div>
@@ -67,8 +84,11 @@
                         </div>
 
                         @foreach($categories as $category)
-                            <img class="mask mask-{{ $category->data_mask }}" data-mask="{{ $category->data_mask }}" src="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : '' }}"
-                                 alt="wall-panels"/>
+                            <img
+                                class="mask mask-{{ $category->data_mask }}"
+                                data-mask="{{ $category->data_mask }}"
+                                src="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : '' }}"
+                                alt="wall-panels"/>
                         @endforeach
 
                     </div>
@@ -85,13 +105,15 @@
     <!-- Options Desktop -->
     <div class="options">
         <!-- Save -->
-        <x-options.save-button />
+        <x-options.save-button x-data=""/>
 
         <!-- Camera View -->
         <x-options.camera-view-button />
 
         <!-- Download -->
-        <livewire:options.image-download-button :viewId="$view->id" :selected-products="$selected_products" />
+        <livewire:options.image-download-button
+            :viewId="$view->id"
+            :selected-products="$selected_products" />
 
         <!-- Print -->
         <x-options.print-button />
@@ -110,7 +132,9 @@
             <x-options.camera-view-button />
 
             <!-- Download -->
-            <livewire:options.image-download-button :viewId="$view->id" :selected-products="$selected_products"/>
+            <livewire:options.image-download-button
+                :viewId="$view->id"
+                :selected-products="$selected_products"/>
 
             <!-- Print -->
             <x-options.print-button />
@@ -125,6 +149,8 @@
     </div>
 
     <!-- Saved Modal -->
-    <x-modals.saved-modal :selected-products="$selected_products" />
-
+{{--    <x-modals.saved-modal :selected-products="$selected_products" />--}}
+    <livewire:options.save-to-gallery
+        :view-id="$view->id"
+        :selected-products="$selected_products"/>
 </div>

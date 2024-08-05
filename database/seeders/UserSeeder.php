@@ -21,9 +21,6 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.qq',
             'password' => bcrypt('securepass'),
         ]);
-        Cart::create([
-            'user_id' => $user->id,
-        ]);
         Role::create([
             'id' => 1,
             'name' => 'admin',

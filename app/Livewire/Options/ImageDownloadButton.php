@@ -51,14 +51,16 @@ class ImageDownloadButton extends Component
         $this->selectedProducts = $selectedProducts;
     }
 
-    public function downloadPng(): BinaryFileResponse
+    public function downloadPng()#: BinaryFileResponse
     {
-        $view = View::firstWhere('id', $this->viewId);
-        $downloadedImg = ImageMerger::imageCreateForView($view, $this->selectedProducts);
-        $path = storage_path("app/public/$downloadedImg");
-        return response()
-            ->download($path, "download.png")
-            ->deleteFileAfterSend(true);
+        if (count($this->selectedProducts) > 0) {
+            $view = View::firstWhere('id', $this->viewId);
+            $downloadedImg = ImageMerger::imageCreateForView($view, $this->selectedProducts);
+            $path = storage_path("app/public/$downloadedImg");
+            return response()
+                ->download($path, "download.png")
+                ->deleteFileAfterSend(true);
+        }
     }
 
     public function downloadPdf()

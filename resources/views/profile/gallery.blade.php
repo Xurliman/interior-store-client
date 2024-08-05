@@ -10,7 +10,7 @@
 
 @section('content')
     <!-- Gallery -->
-    <x-profile.gallery :products="$products"/>
+    <livewire:profile.gallery :carts="$carts"/>
 @endsection
 
 @section('js')
