@@ -75,7 +75,7 @@
                     <div class="masks-container">
                         <div
                             id="{{ $view->scene->slug }}-masks"
-                            class="kitchen-mask {{ $view->scene->slug }}-masks">
+                            class="kitchen-mask {{ $view->scene->slug }}-masks active">
                             <div class="kitchen-{{ $view->name }} active">
                                 @foreach($view->items as $item)
                                     <div class="mask_btn {{ $view->scene->slug }}-{{ $view->name }}-{{ $item->div_class }}" data-mask="{{ $item->category->data_mask }}"></div>
@@ -84,10 +84,22 @@
                         </div>
 
                         @foreach($categories as $category)
+                            @php
+                            $mask_img = $category
+                                ->products
+                                ->first()
+                                ->productConfigurations()
+                                ->where('view_id', $this->currentView->id)
+                                ->where('is_visible', true)
+                                ->first()
+                                ->images()
+                                ->where('type', 'mask_bg')
+                                ->first()?->path;
+                            @endphp
                             <img
                                 class="mask mask-{{ $category->data_mask }}"
                                 data-mask="{{ $category->data_mask }}"
-                                src="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : '' }}"
+                                src="{{ $category->id == $category_mask_id ? Storage::url($mask_selected_img) : Storage::url($mask_img) }}"
                                 alt="wall-panels"/>
                         @endforeach
 

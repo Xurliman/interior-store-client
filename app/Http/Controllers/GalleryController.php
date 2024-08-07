@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\ImageMerger;
 use App\Models\Cart;
-use App\Models\Image;
-use App\Models\Product;
 use App\Models\User;
-use App\Models\View;
-use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {

@@ -63,9 +63,7 @@ class Show extends Component
             'foreground_img' => $fgImg,
             'categories' => $categorisedProducts,
             'category_mask_id' => $this->categoryMaskId,
-            'class' => $this->maskImg ? 'open' : '',
-            'active_class' => $this->activeClass ?? '',
-            'mask_img' => $this->maskImg,
+            'mask_selected_img' => $this->maskImg,
             'selected_products' => $this->selectedProducts,
         ]);
     }

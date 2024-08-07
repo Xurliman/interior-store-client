@@ -7,20 +7,11 @@
 
             <span class="order__count ms-2">{{count($selected_products)}} items</span>
 
-            <form
-                method="post"
-                action="{{ route('carts.store') }}">
-                @csrf
-                <input type="hidden" value="{{ count($selected_products)>0 ? json_encode($selected_products) : '' }}" name="selected_products" required>
-                @error('$selected_products')
-                    {{ $message }}
-                @enderror
-                <button
-                    class="order__btn"
-                    type="submit" >
-                    Cart
-                </button>
-            </form>
+            <button
+                class="order__btn"
+                type="submit" >
+                Order
+            </button>
         </div>
 
         <div class="order__list">
