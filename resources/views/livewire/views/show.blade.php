@@ -58,7 +58,7 @@
                                     {{--                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->isInCart($product->id, $cart_id) ? 'object-visible' : ''}}"--}}
                                     @if($productConfiguration)
                                         <img
-                                            class="loading-jpg {{ $category->img_class }} {{ in_array($productConfiguration->product_id, $selected_products) ? 'object-visible' : ''}}"
+                                            class="loading-jpg {{ $category->img_class }} {{ in_array($productConfiguration->product_id, collect($selected_products)->pluck('product_id')->toArray()) ? 'object-visible' : ''}}"
                                             src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                             data-object="{{ $productConfiguration?->data_object }}"
                                             data-product="{{ $product->name }}"

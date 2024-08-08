@@ -19,7 +19,7 @@ class ImageDownloadButton extends Component
     public function mount($viewId, $selectedProducts=[]): void
     {
         $this->viewId = $viewId;
-        $this->selectedProducts = $selectedProducts;
+        $this->selectedProducts = collect($selectedProducts)->pluck('product_id')->toArray();
     }
 
     public function addToCart(): void {
@@ -48,10 +48,10 @@ class ImageDownloadButton extends Component
     #[On('update-selected-products-list')]
     public function updateSelectedProducts($selectedProducts): void
     {
-        $this->selectedProducts = $selectedProducts;
+        $this->selectedProducts = collect($selectedProducts)->pluck('product_id')->toArray();
     }
 
-    public function downloadPng()#: BinaryFileResponse
+    public function downloadPng()
     {
         if (count($this->selectedProducts) > 0) {
             $view = View::firstWhere('id', $this->viewId);
@@ -65,13 +65,13 @@ class ImageDownloadButton extends Component
 
     public function downloadPdf()
     {
-        $view = View::firstWhere('id', $this->viewId);
-        $downloadedImg = ImageMerger::imageCreateForView($view, $this->selectedProducts);
-        $path = storage_path("app/public/$downloadedImg");
-        list($width, $height) = getimagesize($path);
-        $pdf = new FPDF();
-        $pdf->Image($downloadedImg, 0, 0, $width, $height, 'PNG');
-        $pdf->Output('D');
+//        $view = View::firstWhere('id', $this->viewId);
+//        $downloadedImg = ImageMerger::imageCreateForView($view, $this->selectedProducts);
+//        $path = storage_path("app/public/$downloadedImg");
+//        list($width, $height) = getimagesize($path);
+//        $pdf = new FPDF();
+//        $pdf->Image($downloadedImg, 0, 0, $width, $height, 'PNG');
+//        $pdf->Output('D');
 //        return response()
 //            ->download($path, "download.pdf")
 //            ->deleteFileAfterSend(true);
@@ -79,8 +79,6 @@ class ImageDownloadButton extends Component
 
     public function render(): \Illuminate\Contracts\View\View|Factory|Application|\Illuminate\View\View
     {
-        return view('livewire.options.image-download-button', [
-            'selected_products' => $this->selectedProducts,
-        ]);
+        return view('livewire.options.image-download-button');
     }
 }

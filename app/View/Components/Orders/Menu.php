@@ -12,7 +12,7 @@ class Menu extends Component
 
     public function __construct($selectedProducts)
     {
-        $this->selectedProducts = $selectedProducts;
+        $this->selectedProducts = collect($selectedProducts)->pluck('product_id')->toArray();
     }
 
     public function render(): View|Closure|string

@@ -24,9 +24,9 @@ class SaveToGallery extends Component
         $this->viewId = $viewId;
         $this->selectedProducts = collect(
             Product::with('price.currency')
-                ->whereIn('id', $selectedProducts)
+                ->whereIn('id', collect($selectedProducts)->pluck('product_id')->toArray())
                 ->get()
-            )->toArray();
+        )->toArray();
     }
 
     #[On('new-view-selected')]
@@ -40,7 +40,7 @@ class SaveToGallery extends Component
     {
         $this->selectedProducts = collect(
             Product::with('price.currency')
-                ->whereIn('id', $selectedProducts)
+                ->whereIn('id', collect($selectedProducts)->pluck('product_id')->toArray())
                 ->get()
         )->toArray();
     }
@@ -53,6 +53,7 @@ class SaveToGallery extends Component
         $cart = $user->carts()->create([
             'view_id' => $this->viewId,
         ]);
+
         $productsToSave = collect($this->selectedProducts)
             ->map(function ($product){
                 $product['quantity'] = 1;

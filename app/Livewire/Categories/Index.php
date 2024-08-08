@@ -36,12 +36,10 @@ class Index extends Component
     }
 
     public function removeProducts($categoryId): void {
-        $productIds = $this->getCategoryProducts($categoryId);
-        foreach ($productIds as $productId) {
-            if (in_array($productId, $this->selectedProducts)) {
-                $key = array_search($productId, $this->selectedProducts);
-                unset($this->selectedProducts[$key]);
-            }
+        $selectedProductCategoryIds = collect($this->selectedProducts)->pluck('category_id')->toArray();
+        if(in_array($categoryId, $selectedProductCategoryIds)) {
+            $key = array_search($categoryId, $selectedProductCategoryIds);
+            unset($this->selectedProducts[$key]);
         }
         $this->dispatch('update-selected-products-list',
             selectedProducts : $this->selectedProducts);
@@ -53,18 +51,17 @@ class Index extends Component
         $this->class = 'open';
         $this->categoryId = $categoryId;
 
-        $productIds = $this->getCategoryProducts($categoryId);
-        if (!in_array($productId, $this->selectedProducts)) {
-            $flag = false;
-            foreach ($productIds as $catProductId) {
-                if(in_array($catProductId, $this->selectedProducts)) {
-                    $flag = true;
-                    $key = array_search($catProductId, $this->selectedProducts);
-                    $this->selectedProducts[$key] = $productId;
-                }
-            }
-            if (!$flag) {
-                $this->selectedProducts[] = $productId;
+        $selectedProductIds = collect($this->selectedProducts)->pluck('product_id')->toArray();
+        $selectedProductCategoryIds = collect($this->selectedProducts)->pluck('category_id')->toArray();
+        if (!in_array($productId, $selectedProductIds)) {
+            if(in_array($categoryId, $selectedProductCategoryIds)) {
+                $key = array_search($categoryId, $selectedProductCategoryIds);
+                $this->selectedProducts[$key]['product_id'] = $productId;
+            } else {
+                $this->selectedProducts[] = [
+                    'product_id' => $productId,
+                    'category_id' => $categoryId
+                ];
             }
             $this->dispatch('update-category-mask',
                 categoryId : $categoryId,
@@ -74,8 +71,6 @@ class Index extends Component
                 selectedProducts : $this->selectedProducts);
         }
         $this->categorisedProducts = $this->getCategorisedProducts($this->viewId);
-
-//        $this->dispatch('renew-cart', product: $user->cart->id);
     }
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View
