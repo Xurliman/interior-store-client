@@ -74,60 +74,32 @@
 
                     <!-- Masks -->
                     <div class="masks-container">
-                        <div
-                            id="{{ $view->scene->slug }}-masks"
-                            class="kitchen-mask {{ $view->scene->slug }}-masks active">
-                            <div class="kitchen-{{ $view->name }} active">
-                                @foreach($categories as $category)
-                                    @php
-                                        $viewItem = $category
-                                            ->viewItems()
-                                            ->where('view_id', $view->id)
-                                            ->first();
-                                    @endphp
-                                    @if(!is_null($viewItem))
-                                        <div
-                                            class="mask_btn {{ $view->scene->slug }}-{{ $view->name }}-{{ $viewItem->div_class }}"
-                                            data-mask="{{ $category->data_mask }}">
-
-                                        </div>
-                                    @else
-                                        <div
-                                            style="display: none"
-                                            class="mask_btn {{ $view->scene->slug }}-{{ $view->name }}-{{ $category->viewItem?->div_class }}"
-                                            data-mask="{{ $category->data_mask }}">
-                                        </div>
-                                    @endif
+                        <div class="kitchen-mask {{ $scene->slug }}-masks active">
+                        @foreach($scene->views as $sceneView)
+                            <div class="kitchen-{{ $sceneView->name }} {{ $view->id == $sceneView->id ? 'active' : '' }}">
+                                @foreach($sceneView->items as $item)
+                                    <div
+                                        class="mask_btn {{ $scene->slug }}-{{ $sceneView->name }}-{{ $item->div_class }}"
+                                        data-mask="{{ $item->category->data_mask }}">
+                                    </div>
                                 @endforeach
                             </div>
+                        @endforeach
                         </div>
 
                         @foreach($categories as $category)
-                            @php
-                                $mask_img = $category
-                                    ->products()
-                                    ->whereHas('productConfigurations', function (Builder $query) use ($view){
-                                        $query->where('view_id', $view->id)
-                                              ->where('is_visible', true);
-                                    })->first()?->productConfigurations()
-                                    ->where('view_id', $view->id)
-                                    ->where('is_visible', true)
-                                    ->first()?->images()
-                                    ->where('type', 'mask_bg')
-                                    ->first()?->path;
-                            @endphp
                             <img
                                 class="mask mask-{{ $category->data_mask }}"
                                 data-mask="{{ $category->data_mask }}"
-                                src="{{ $category->id == $category_mask_id ? Storage::url($mask_selected_img) : Storage::url($mask_img) }}"
-                                alt="wall-panels"/>
+                                src="{{ Storage::url($category->mask_img) }}"
+                                alt="{{ Storage::url($category->mask_img) }}"/>
                         @endforeach
                     </div>
                 </div>
             </div>
 
             <!-- Order Menu -->
-            <x-orders.menu :selected-products="$selected_products"/>
+            <livewire:orders.menu :selected-products="$selected_products"/>
         </div>
     </div>
 
@@ -136,7 +108,7 @@
     <!-- Options Desktop -->
     <div class="options">
         <!-- Save -->
-        <x-options.save-button x-data=""/>
+        <x-options.save-button x-data/>
 
         <!-- Camera View -->
         <x-options.camera-view-button/>
@@ -157,7 +129,7 @@
     <div class="options-container">
         <div class="options-mobile">
             <!-- Save -->
-            <x-options.save-button/>
+            <x-options.save-button x-data/>
 
             <!-- Camera View -->
             <x-options.camera-view-button/>

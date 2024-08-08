@@ -261,6 +261,8 @@ objectParquetBtn.forEach((button) => {
 // Custom Objects Handler
 function customObjectsHandler(button, object) {
     button.addEventListener("click", (e) => {
+        console.log("button", button)
+        console.log("object", object)
         var objectBtn = e.target;
         var objectBtnAttr = objectBtn.getAttribute("data-object");
         var objectBtnMaskAttr = objectBtn.getAttribute("data-mask");

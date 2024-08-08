@@ -31,16 +31,29 @@
 
             <div class="saved-modal__items d-flex flex-column">
                 <div class="d-flex me-auto mt-2">
-                    <form
-                        method="POST"
-                        wire:submit="saveToGallery()">
-                        @csrf
-                        <button
-                            type="submit"
-                            class="check-out-saved-modal mb-2 me-3">
-                            Check out
-                        </button>
-                    </form>
+                    @if(is_null($cart))
+                        <form
+                            method="POST"
+                            wire:submit="saveToGallery()">
+                            @csrf
+                            <button
+                                type="submit"
+                                class="check-out-saved-modal mb-2 me-3">
+                                Check out
+                            </button>
+                        </form>
+                    @else
+                        <form
+                            method="POST"
+                            wire:submit="updateCart({{ $cart }})">
+                            @csrf
+                            <button
+                                type="submit"
+                                class="check-out-saved-modal mb-2 me-3">
+                                Check out
+                            </button>
+                        </form>
+                    @endif
                     <button class="close-saved-modal mb-2">
                         Back
                     </button>

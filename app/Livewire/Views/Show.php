@@ -61,7 +61,7 @@ class Show extends Component
             'view' => $this->currentView,
             'background_img' => $bgImg,
             'foreground_img' => $fgImg,
-            'categories' => $categorisedProducts,
+            'categories' => $this->setMaskImgs($categorisedProducts, $this->selectedProducts),
             'category_mask_id' => $this->categoryMaskId,
             'mask_selected_img' => $this->maskImg,
             'selected_products' => $this->selectedProducts,

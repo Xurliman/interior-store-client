@@ -48,10 +48,11 @@ class Cart extends Model
         static::deleting(function ($cart) {
             $cart->items()->delete();
 
-            $cartImg = $cart->image->path;
-            Storage::disk('public')->delete($cartImg);
-
-            $cart->image()->delete();
+            $cartImg = $cart->image?->path;
+            if ($cartImg) {
+                Storage::disk('public')->delete($cartImg);
+                $cart->image()->delete();
+            }
         });
     }
 }

@@ -20,10 +20,14 @@ class Index extends Component
     use GetCategorisedProduct;
 
 
-    public function mount($viewId): void
+    public function mount($viewId, $selectedProducts = []): void
     {
         $this->viewId = $viewId;
         $this->categorisedProducts = $this->getCategorisedProducts($viewId);
+
+        if (!is_null($selectedProducts)) {
+            $this->selectedProducts = $selectedProducts;
+        }
     }
 
 
@@ -36,14 +40,13 @@ class Index extends Component
     }
 
     public function removeProducts($categoryId): void {
-        $selectedProductCategoryIds = collect($this->selectedProducts)->pluck('category_id')->toArray();
-        if(in_array($categoryId, $selectedProductCategoryIds)) {
-            $key = array_search($categoryId, $selectedProductCategoryIds);
+        if(in_array($categoryId, $this->getSelectedCategoryIds($this->selectedProducts))) {
+            $key = array_search($categoryId, $this->getSelectedCategoryIds($this->selectedProducts));
             unset($this->selectedProducts[$key]);
         }
         $this->dispatch('update-selected-products-list',
             selectedProducts : $this->selectedProducts);
-        $this->categorisedProducts = $this->getCategorisedProducts($categoryId);
+        $this->categorisedProducts = $this->getCategorisedProducts($this->viewId);
     }
 
     public function productSelected($categoryId, $productId): void
@@ -51,11 +54,9 @@ class Index extends Component
         $this->class = 'open';
         $this->categoryId = $categoryId;
 
-        $selectedProductIds = collect($this->selectedProducts)->pluck('product_id')->toArray();
-        $selectedProductCategoryIds = collect($this->selectedProducts)->pluck('category_id')->toArray();
-        if (!in_array($productId, $selectedProductIds)) {
-            if(in_array($categoryId, $selectedProductCategoryIds)) {
-                $key = array_search($categoryId, $selectedProductCategoryIds);
+        if (!in_array($productId, $this->getSelectedProductIds($this->selectedProducts))) {
+            if(in_array($categoryId, $this->getSelectedCategoryIds($this->selectedProducts))) {
+                $key = array_search($categoryId, $this->getSelectedCategoryIds($this->selectedProducts));
                 $this->selectedProducts[$key]['product_id'] = $productId;
             } else {
                 $this->selectedProducts[] = [

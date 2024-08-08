@@ -53,7 +53,8 @@
                                         x-on:click="
                                             $wire.activeClass='active';
                                             $wire.productSelected({{ $category->id }}, {{ $product->id }})"
-                                        class="load-jpg {{ $productConfiguration?->btn_class }} {{ $productConfiguration?->extra_class }}">
+                                        class="load-jpg">
+{{--                                        class="load-jpg {{ $productConfiguration?->btn_class }} {{ $productConfiguration?->extra_class }}">--}}
                                     <img class="custom__img custom-{{ $productConfiguration?->class }}"
                                          data-object="{{ $productConfiguration?->data_object }}"
                                          data-remove="{{ $category->data_mask }}"

@@ -57,11 +57,11 @@
                                     @endphp
                                     {{--                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->isInCart($product->id, $cart_id) ? 'object-visible' : ''}}"--}}
                                     @if($productConfiguration)
-                                        <img class="loading-jpg {{ $category->img_class }} {{ in_array($productConfiguration->product_id, $selected_products) ? 'object-visible' : ''}}"
+                                        <img class="loading-jpg {{ $category->img_class }} {{ in_array($productConfiguration->product_id, collect($selected_products)->pluck('product_id')->toArray()) ? 'object-visible' : ''}}"
                                              src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                              data-object="{{ $productConfiguration?->data_object }}"
                                              data-product="{{ $product->name }}"
-                                             data-price="{{ $product->price?->value }}"
+                                             data-price="{{ $product->price }}"
                                              data-remove="{{ $category->data_mask }}"
                                              alt="{{ $product->image?->path }}"/>
                                     @endif
@@ -73,63 +73,41 @@
 
                     <!-- Masks -->
                     <div class="masks-container">
-                        <div
-                            id="{{ $view->scene->slug }}-masks"
-                            class="kitchen-mask {{ $view->scene->slug }}-masks active">
-                            <div class="kitchen-{{ $view->name }} active">
-                                @foreach($view->items as $item)
-                                    <div class="mask_btn {{ $view->scene->slug }}-{{ $view->name }}-{{ $item->div_class }}" data-mask="{{ $item->category->data_mask }}"></div>
-                                @endforeach
-                            </div>
+                        <div class="kitchen-mask {{ $scene->slug }}-masks active">
+                            @foreach($scene->views as $sceneView)
+                                <div class="kitchen-{{ $sceneView->name }} {{ $view->id == $sceneView->id ? 'active' : '' }}">
+                                    @foreach($sceneView->items as $item)
+                                        <div
+                                            class="mask_btn {{ $scene->slug }}-{{ $sceneView->name }}-{{ $item->div_class }}"
+                                            data-mask="{{ $item->category->data_mask }}">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
                         </div>
 
-
                         @foreach($categories as $category)
-                            @php
-                                $category->mask_img = App\Models\Product::with('productConfigurations.images')
-                                    ->whereIn('id', $this->selectedProducts)
-                                    ->where('category_id', $item->category->id)
-                                    ->first()
-                                    ->productConfigurations()
-                                    ->where('view_id', $this->currentView->id)
-                                    ->where('is_visible', true)
-                                    ->first()?->images()
-                                    ->where('type', 'mask_bg')
-                                    ->first()?->path;;
-
-                                if ($product->category_id == $item->category->id) {
-                                    $category->mask_img = $product
-                                       ->productConfigurations()
-                                       ->where('view_id', $this->currentView->id)
-                                       ->where('is_visible', true)
-                                       ->first()?->images()
-                                       ->where('type', 'mask_bg')
-                                       ->first()?->path;
-                                }
-                            @endphp
                             <img
                                 class="mask mask-{{ $category->data_mask }}"
                                 data-mask="{{ $category->data_mask }}"
-                                src="{{ Storage::url($category->mask_img) }}"
-                                alt="{{ Storage::url($category->mask_img) }}"/>
-{{--                                src="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : Storage::url($category->mask_img) }}"--}}
-{{--                                alt="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : Storage::url($category->mask_img) }}"/>--}}
+                                src="{{ !is_null($category->mask_img) ? Storage::url($category->mask_img) : '#'}}"
+                                alt="{{ !is_null($category->mask_img) ? Storage::url($category->mask_img) : 'not found' }}"/>
                         @endforeach
                     </div>
                 </div>
             </div>
 
             <!-- Order Menu -->
-            <x-orders.menu :selected-products="$selected_products"/>
+            <livewire:orders.menu :selected-products="$selected_products"/>
         </div>
     </div>
 
     <!-- Custom Menu -->
-    <livewire:categories.index :viewId="$view->id"/>
+    <livewire:categories.index :viewId="$view->id" :selected-products="$selected_products"/>
     <!-- Options Desktop -->
     <div class="options">
         <!-- Save -->
-        <x-options.save-button x-data=""/>
+        <x-options.save-button x-data/>
 
         <!-- Camera View -->
         <x-options.camera-view-button />
@@ -150,7 +128,7 @@
     <div class="options-container">
         <div class="options-mobile">
             <!-- Save -->
-            <x-options.save-button />
+            <x-options.save-button x-data/>
 
             <!-- Camera View -->
             <x-options.camera-view-button />
@@ -176,5 +154,6 @@
     {{--    <x-modals.saved-modal :selected-products="$selected_products" />--}}
     <livewire:options.save-to-gallery
         :view-id="$view->id"
-        :selected-products="$selected_products"/>
+        :selected-products="$selected_products"
+        :cart="$cart"/>
 </div>

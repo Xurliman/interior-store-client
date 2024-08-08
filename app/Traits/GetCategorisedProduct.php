@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\View;
 use Illuminate\Support\Collection;
 
@@ -40,5 +41,55 @@ trait GetCategorisedProduct
         return collect(Category::with('products')->firstWhere('id', $categoryId)->products)->map(function ($product) {
             return $product->id;
         });
+    }
+
+    public function getSelectedCategoryIds(array $selectedProducts): array
+    {
+        return collect($selectedProducts)->pluck('category_id')->toArray();
+    }
+
+    public function getSelectedProductIds(array $selectedProducts): array
+    {
+        return collect($selectedProducts)->pluck('product_id')->toArray();
+    }
+
+    public function getProduct($categoryId, $selectedProducts)
+    {
+        return collect($selectedProducts)->firstWhere(function ($product) use ($categoryId) {
+            return $product['category_id'] == $categoryId;
+        })['product_id'];
+    }
+
+    public function setMaskImgs($categorisedProducts, $selectedProducts)
+    {
+        $sProducts = Product::with('productConfigurations.images')
+            ->whereIn('id', $this->getSelectedProductIds($selectedProducts))
+            ->get();
+        foreach ($categorisedProducts as $category) {
+            if (in_array($category->id, $this->getSelectedCategoryIds($selectedProducts))) {
+                $productId = $this->getProduct($category->id, $selectedProducts);
+                $category->mask_img = collect($sProducts)
+                    ->where('id', $productId)
+                    ->where('is_visible', true)
+                    ->first()?->productConfigurations
+                    ->where('view_id', $this->currentView->id)
+                    ->where('is_visible', true)
+                    ->first()?->images
+                    ->where('type', 'mask_bg')
+                    ->first()?->path;
+            } else {
+                $category->mask_img = collect($category->products)
+                    ->map(function ($product) {
+                        return collect($product->productConfigurations)
+                            ->where('view_id', $this->currentView->id)
+                            ->where('is_visible', true)
+                            ->first()?->images
+                            ->where('type', 'mask_bg')
+                            ->first()?->path;
+                    })->filter()
+                    ->first();
+            }
+        }
+        return $categorisedProducts;
     }
 }
