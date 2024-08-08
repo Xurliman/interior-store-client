@@ -15,9 +15,9 @@ class Menu extends Component
     public $cart;
 
     #[On('renew-cart')]
-    public function renewCart(Cart $cart)
+    public function renewCart(Cart $cart): void
     {
-        $this->cart = $cart?->load('products');
+        $this->cart = $cart->load('products');
     }
 
     public function mount(): void
@@ -25,14 +25,14 @@ class Menu extends Component
         /** @var User $user */
         $user = auth()->user() ?? User::find(1);
         if (is_null($user->cart)) {
-            $user->cart()->create();
+            $user->carts()->create();
         }
-        $this->cart = $user->cart?->load('products');
+        $this->cart = $user->carts?->load('products');
     }
 
     public function render(): Application|Factory|View
     {
-        return view('livewire.cart.menu', [
+        return view('livewire.carts.menu', [
             'cart' => $this->cart
         ]);
     }

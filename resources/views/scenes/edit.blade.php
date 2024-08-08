@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-    <livewire:views.show :scene="$scene" :view="null"/>
+    <livewire:views.edit :cart="$cart"/>
 @endsection
 
 @section('js')

@@ -75,7 +75,7 @@ class SaveToGallery extends Component
             'path' => $galleryImage,
             'type' => 'mask_merged'
         ]);
-        $this->redirectRoute('cart.index');
+        $this->redirectRoute('carts.index');
     }
 
     public function render(): \Illuminate\Contracts\View\View|Factory|Application|View

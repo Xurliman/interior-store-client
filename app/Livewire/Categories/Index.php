@@ -11,12 +11,12 @@ use Livewire\Component;
 class Index extends Component
 {
     public string $class = '';
+    public string $activeClass = '';
     public bool $showDropList = true;
+    public array $selectedProducts = [];
     public $categoryId;
     public $viewId;
     public $categorisedProducts;
-    public $activeClass = '';
-    public array $selectedProducts = [];
     use GetCategorisedProduct;
 
 
@@ -75,9 +75,7 @@ class Index extends Component
         }
         $this->categorisedProducts = $this->getCategorisedProducts($this->viewId);
 
-//        $this->dispatch('renew-cart', cart: $user->cart->id);
-
-//            cartId: $user->cart->id);
+//        $this->dispatch('renew-cart', product: $user->cart->id);
     }
 
     public function render(): Application|Factory|\Illuminate\Contracts\View\View

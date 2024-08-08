@@ -1,4 +1,4 @@
-@php use Illuminate\Database\Eloquent\Builder;use Illuminate\Support\Facades\Storage; @endphp
+@php use Illuminate\Support\Facades\Storage; @endphp
 <div class="scene">
     <!-- Camera View -->
     <div class="camera-view">
@@ -57,14 +57,13 @@
                                     @endphp
                                     {{--                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->isInCart($product->id, $cart_id) ? 'object-visible' : ''}}"--}}
                                     @if($productConfiguration)
-                                        <img
-                                            class="loading-jpg {{ $category->img_class }} {{ in_array($productConfiguration->product_id, $selected_products) ? 'object-visible' : ''}}"
-                                            src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
-                                            data-object="{{ $productConfiguration?->data_object }}"
-                                            data-product="{{ $product->name }}"
-                                            data-price="{{ $product->price?->value }}"
-                                            data-remove="{{ $category->data_mask }}"
-                                            alt="{{ $product->image?->path }}"/>
+                                        <img class="loading-jpg {{ $category->img_class }} {{ in_array($productConfiguration->product_id, $selected_products) ? 'object-visible' : ''}}"
+                                             src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
+                                             data-object="{{ $productConfiguration?->data_object }}"
+                                             data-product="{{ $product->name }}"
+                                             data-price="{{ $product->price?->value }}"
+                                             data-remove="{{ $category->data_mask }}"
+                                             alt="{{ $product->image?->path }}"/>
                                     @endif
                                 @endforeach
                             </div>
@@ -78,49 +77,43 @@
                             id="{{ $view->scene->slug }}-masks"
                             class="kitchen-mask {{ $view->scene->slug }}-masks active">
                             <div class="kitchen-{{ $view->name }} active">
-                                @foreach($categories as $category)
-                                    @php
-                                        $viewItem = $category
-                                            ->viewItems()
-                                            ->where('view_id', $view->id)
-                                            ->first();
-                                    @endphp
-                                    @if(!is_null($viewItem))
-                                        <div
-                                            class="mask_btn {{ $view->scene->slug }}-{{ $view->name }}-{{ $viewItem->div_class }}"
-                                            data-mask="{{ $category->data_mask }}">
-
-                                        </div>
-                                    @else
-                                        <div
-                                            style="display: none"
-                                            class="mask_btn {{ $view->scene->slug }}-{{ $view->name }}-{{ $category->viewItem?->div_class }}"
-                                            data-mask="{{ $category->data_mask }}">
-                                        </div>
-                                    @endif
+                                @foreach($view->items as $item)
+                                    <div class="mask_btn {{ $view->scene->slug }}-{{ $view->name }}-{{ $item->div_class }}" data-mask="{{ $item->category->data_mask }}"></div>
                                 @endforeach
                             </div>
                         </div>
 
+
                         @foreach($categories as $category)
                             @php
-                                $mask_img = $category
-                                    ->products()
-                                    ->whereHas('productConfigurations', function (Builder $query) use ($view){
-                                        $query->where('view_id', $view->id)
-                                              ->where('is_visible', true);
-                                    })->first()?->productConfigurations()
-                                    ->where('view_id', $view->id)
+                                $category->mask_img = App\Models\Product::with('productConfigurations.images')
+                                    ->whereIn('id', $this->selectedProducts)
+                                    ->where('category_id', $item->category->id)
+                                    ->first()
+                                    ->productConfigurations()
+                                    ->where('view_id', $this->currentView->id)
                                     ->where('is_visible', true)
                                     ->first()?->images()
                                     ->where('type', 'mask_bg')
-                                    ->first()?->path;
+                                    ->first()?->path;;
+
+                                if ($product->category_id == $item->category->id) {
+                                    $category->mask_img = $product
+                                       ->productConfigurations()
+                                       ->where('view_id', $this->currentView->id)
+                                       ->where('is_visible', true)
+                                       ->first()?->images()
+                                       ->where('type', 'mask_bg')
+                                       ->first()?->path;
+                                }
                             @endphp
                             <img
                                 class="mask mask-{{ $category->data_mask }}"
                                 data-mask="{{ $category->data_mask }}"
-                                src="{{ $category->id == $category_mask_id ? Storage::url($mask_selected_img) : Storage::url($mask_img) }}"
-                                alt="wall-panels"/>
+                                src="{{ Storage::url($category->mask_img) }}"
+                                alt="{{ Storage::url($category->mask_img) }}"/>
+{{--                                src="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : Storage::url($category->mask_img) }}"--}}
+{{--                                alt="{{ $category->id == $category_mask_id ? Storage::url($mask_img) : Storage::url($category->mask_img) }}"/>--}}
                         @endforeach
                     </div>
                 </div>
@@ -139,28 +132,28 @@
         <x-options.save-button x-data=""/>
 
         <!-- Camera View -->
-        <x-options.camera-view-button/>
+        <x-options.camera-view-button />
 
         <!-- Download -->
         <livewire:options.image-download-button
             :viewId="$view->id"
-            :selected-products="$selected_products"/>
+            :selected-products="$selected_products" />
 
         <!-- Print -->
-        <x-options.print-button/>
+        <x-options.print-button />
 
         <!-- Share -->
-        <x-options.share-button/>
+        <x-options.share-button />
     </div>
 
     <!-- Options Mobile -->
     <div class="options-container">
         <div class="options-mobile">
             <!-- Save -->
-            <x-options.save-button/>
+            <x-options.save-button />
 
             <!-- Camera View -->
-            <x-options.camera-view-button/>
+            <x-options.camera-view-button />
 
             <!-- Download -->
             <livewire:options.image-download-button
@@ -168,10 +161,10 @@
                 :selected-products="$selected_products"/>
 
             <!-- Print -->
-            <x-options.print-button/>
+            <x-options.print-button />
 
             <!-- Share -->
-            <x-options.share-button/>
+            <x-options.share-button />
         </div>
 
         <button class="open-options-btn">

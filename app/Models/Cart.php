@@ -26,7 +26,7 @@ class Cart extends Model
 
     public function view(): BelongsTo
     {
-        return $this->belongsTo(view::class);
+        return $this->belongsTo(View::class);
     }
 
     public function items(): HasMany {

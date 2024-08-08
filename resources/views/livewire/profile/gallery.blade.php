@@ -25,7 +25,7 @@
                         </div>
 
                         <button
-                            wire:click="{{ route('carts.edit', ['cart'=> $cart]) }}"
+                            wire:click="edit({{ $cart }})"
                             class="gallery__btn">
                             Modify
                         </button>

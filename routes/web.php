@@ -28,7 +28,7 @@ Route::get('/signup', function (){
 Route::get('/', [SceneController::class, 'index'])->name('scenes.index');
 Route::resource('scenes', SceneController::class)->only(['show']);
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('carts', GalleryController::class)->only(['index', 'store', 'edit', 'update']);
+    Route::resource('carts', GalleryController::class)->only(['index', 'show', 'edit']);
 });
 Route::middleware([
     'auth:sanctum',

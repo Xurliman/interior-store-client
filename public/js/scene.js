@@ -712,7 +712,6 @@ document.addEventListener("livewire:navigated", () => {
         button.addEventListener("click", (e) => {
             var buttonTarget = e.target;
             var buttonAttr = buttonTarget.getAttribute("data-mask");
-
             switch (buttonAttr) {
                 case "wall-pattern":
                     showMasks(maskWallPanels, buttonAttr);
@@ -724,6 +723,7 @@ document.addEventListener("livewire:navigated", () => {
                     showMasks(maskFloor, buttonAttr);
                     break;
                 case "lamps":
+                    console.log(maskLamps)
                     showMasks(maskLamps, buttonAttr);
                     break;
                 default:
@@ -743,6 +743,7 @@ document.addEventListener("livewire:navigated", () => {
 
         // Check Chosen Product Mask
         var maskAttr = mask.getAttribute("data-mask");
+        console.log(maskAttr)
         mask.classList.add("active");
 
         if (maskAttr == "chairs") {
