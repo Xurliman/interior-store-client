@@ -35,6 +35,7 @@ class ProductConfiguration extends Model
         return $this->belongsTo(View::class);
     }
 
+
     public static function boot(): void
     {
         parent::boot();

@@ -24,7 +24,7 @@
                 @foreach($selected_products as $product)
                     <div class="saved-modal__item d-flex">
                         <h5 class="saved-modal__item_title h5">{{ $product['name'] }} &nbsp;</h5>
-                        <h5 class="saved-modal__item-price">{{ $product['price']['currency']['symbol'] }}{{ $product['price']['value'] }}</h5>
+                        <h5 class="saved-modal__item-price">{{ "$".$product['price'] }}</h5>
                     </div>
                 @endforeach
             </div>

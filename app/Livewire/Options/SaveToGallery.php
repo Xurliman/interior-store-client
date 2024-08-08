@@ -23,7 +23,7 @@ class SaveToGallery extends Component
     {
         $this->viewId = $viewId;
         $this->selectedProducts = collect(
-            Product::with('price.currency')
+            Product::with('category')
                 ->whereIn('id', collect($selectedProducts)->pluck('product_id')->toArray())
                 ->get()
         )->toArray();
@@ -39,7 +39,7 @@ class SaveToGallery extends Component
     public function updateSelectedProducts($selectedProducts): void
     {
         $this->selectedProducts = collect(
-            Product::with('price.currency')
+            Product::with('category')
                 ->whereIn('id', collect($selectedProducts)->pluck('product_id')->toArray())
                 ->get()
         )->toArray();

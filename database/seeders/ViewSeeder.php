@@ -19,6 +19,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 1,
                 'name' => 'view1',
+                'description' => 'Black Kitchen - View1',
                 'data_view' => 'View1',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
@@ -33,6 +34,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 1,
                 'name' => 'view2',
+                'description' => 'Black Kitchen - View2',
                 'data_view' => 'View2',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
@@ -47,6 +49,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 1,
                 'name' => 'view3',
+                'description' => 'Black Kitchen - View3',
                 'data_view' => 'View3',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
@@ -62,6 +65,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 2,
                 'name' => 'view1',
+                'description' => 'Red Kitchen - View1',
                 'data_view' => 'View1',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
@@ -76,6 +80,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 2,
                 'name' => 'view2',
+                'description' => 'Red Kitchen - View2',
                 'data_view' => 'View2',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
@@ -90,6 +95,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 2,
                 'name' => 'view3',
+                'description' => 'Red Kitchen - View3',
                 'data_view' => 'View3',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
@@ -105,6 +111,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 3,
                 'name' => 'view1',
+                'description' => 'White Kitchen - View1',
                 'data_view' => 'View1',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
@@ -119,6 +126,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 3,
                 'name' => 'view2',
+                'description' => 'White Kitchen - View2',
                 'data_view' => 'View2',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",
@@ -133,6 +141,7 @@ class ViewSeeder extends Seeder
             [
                 'scene_id' => 3,
                 'name' => 'view3',
+                'description' => 'White Kitchen - View3',
                 'data_view' => 'View3',
                 'transparent_bg_file_name' => "Background.jpg",
                 'black_bg_file_name' => "Final.jpg",

@@ -50,7 +50,11 @@ class ProductConfigurationRelationManager extends RelationManager
                 ImageColumn::make('images.path')
                     ->circular()
                     ->stacked(),
-                TextColumn::make('btn_class')
+                TextColumn::make('view.scene.name')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('view.name')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),

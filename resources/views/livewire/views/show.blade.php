@@ -62,7 +62,7 @@
                                             src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                             data-object="{{ $productConfiguration?->data_object }}"
                                             data-product="{{ $product->name }}"
-                                            data-price="{{ $product->price?->value }}"
+                                            data-price="{{ $product->price }}"
                                             data-remove="{{ $category->data_mask }}"
                                             alt="{{ $product->image?->path }}"/>
                                     @endif

@@ -33,11 +33,6 @@ class Product extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function price(): HasOne
-    {
-        return $this->hasOne(Price::class);
-    }
-
     public function productConfigurations(): HasMany {
         return $this->hasMany(ProductConfiguration::class);
     }

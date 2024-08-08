@@ -46,6 +46,9 @@ class ProductResource extends Resource
                         ->required(),
                     TextInput::make('name')
                         ->required(),
+                    TextInput::make('price')
+                        ->numeric()
+                        ->required(),
                     TextInput::make('short_name')
                         ->nullable(),
                     TextInput::make('dimensions')
@@ -88,7 +91,6 @@ class ProductResource extends Resource
     {
         return [
             ProductConfigurationRelationManager::class,
-            PriceRelationManager::class,
             ImageRelationManager::class
         ];
     }

@@ -39,7 +39,7 @@ class ProductConfigurationResource extends Resource
                         ->required(),
                     Select::make('view_id')
                         ->label('View')
-                        ->relationship('view', 'name')
+                        ->relationship('view', 'description')
                         ->required(),
                     TextInput::make('btn_class')
                         ->required(),

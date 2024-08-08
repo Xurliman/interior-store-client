@@ -19,7 +19,7 @@
                             @foreach($cart->products as $product)
                                 <span class="gallery__accessors">
                                 {{ $product->name }}
-                                    {{ $product->price->currency->symbol.$product->price->value }}
+                                    {{ '$'.$product->price }}
                             </span>
                             @endforeach
                         </div>
