@@ -30,7 +30,6 @@ class Index extends Component
         }
     }
 
-
     #[On('new-view-selected')]
     public function viewSelected($viewId): void
     {

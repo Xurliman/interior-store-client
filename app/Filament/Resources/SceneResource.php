@@ -31,8 +31,6 @@ class SceneResource extends Resource
                         ->required(),
                     TextInput::make('slug')
                         ->required(),
-                    TextInput::make('img_class')
-                        ->required(),
                     FileUpload::make('srcset_img')
                         ->disk('public')
                         ->directory('scenes')
@@ -50,10 +48,6 @@ class SceneResource extends Resource
                     ->sortable()
                     ->toggleable(),
                 TextColumn::make('slug')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(),
-                TextColumn::make('img_class')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),

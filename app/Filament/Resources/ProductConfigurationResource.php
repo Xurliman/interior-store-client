@@ -41,16 +41,8 @@ class ProductConfigurationResource extends Resource
                         ->label('View')
                         ->relationship('view', 'description')
                         ->required(),
-                    TextInput::make('btn_class')
-                        ->required(),
                     TextInput::make('data_object')
                         ->required(),
-                    TextInput::make('class')
-                        ->required(),
-                    TextInput::make('extra_class')
-                        ->nullable(),
-                    Toggle::make('is_visible')
-                        ->default(true),
                 ])->columns(2)
             ]);
     }
@@ -66,20 +58,12 @@ class ProductConfigurationResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('btn_class')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
                 TextColumn::make('data_object')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
                 ToggleColumn::make('is_visible')
                     ->toggleable(false),
-                TextColumn::make('class')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
             ])
             ->filters([
                 //

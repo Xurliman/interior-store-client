@@ -10,6 +10,7 @@ use App\Models\View;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -40,15 +41,14 @@ class ViewResource extends Resource
                        ->required(),
                    TextInput::make('name')
                        ->required(),
-                   TextInput::make('data_view')
-                       ->required(),
-                   FileUpload::make('image')
-                       ->disk('public')
-                       ->directory('views')
-                       ->nullable(),
                    Checkbox::make('is_default')
                        ->label('Default')
                        ->default(false),
+                   MarkdownEditor::make('description')
+                       ->required(),
+                   FileUpload::make('image')
+                       ->disk('public')
+                       ->nullable(),
                ])->columns(2)
             ]);
     }
@@ -65,10 +65,6 @@ class ViewResource extends Resource
                     ->sortable()
                     ->toggleable(),
                 TextColumn::make('name')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(),
-                TextColumn::make('data_view')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),

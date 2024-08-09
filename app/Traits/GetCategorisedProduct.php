@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\View;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 trait GetCategorisedProduct
@@ -13,8 +14,11 @@ trait GetCategorisedProduct
     {
         $view = View::firstWhere('id', $viewId);
         $sceneViews = $view->scene->views()->pluck('id')->all();
-        $categories = Category::with('products.productConfigurations')->get();
-
+        $categories = Category::with('products.productConfigurations')
+            ->whereHas('products', function (Builder $query){
+                $query->where('is_visible', 1);
+            })
+            ->get();
         foreach ($categories as $key => $category) {
             $flag = false;
             $category->display = false;
@@ -74,19 +78,19 @@ trait GetCategorisedProduct
                     ->where('is_visible', true)
                     ->first()?->productConfigurations
                     ->where('view_id', $this->currentView->id)
-                    ->where('is_visible', true)
                     ->first()?->images
                     ->where('type', 'mask_bg')
                     ->first()?->path;
             } else {
                 $category->mask_img = collect($category->products)
                     ->map(function ($product) {
-                        return collect($product->productConfigurations)
-                            ->where('view_id', $this->currentView->id)
-                            ->where('is_visible', true)
-                            ->first()?->images
-                            ->where('type', 'mask_bg')
-                            ->first()?->path;
+                        if ($product->is_visible) {
+                            return collect($product->productConfigurations)
+                                ->where('view_id', $this->currentView->id)
+                                ->first()?->images
+                                ->where('type', 'mask_bg')
+                                ->first()?->path;
+                        }
                     })->filter()
                     ->first();
             }

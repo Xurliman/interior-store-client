@@ -56,9 +56,10 @@ class Product extends Model
             $product->cartItems()->delete();
 
             $productImg = $product->image->path;
-            Storage::disk('public')->delete($productImg);
-
-            $product->image()->delete();
+            if ($productImg) {
+                Storage::disk('public')->delete($productImg);
+                $product->image()->delete();
+            }
         });
     }
 }

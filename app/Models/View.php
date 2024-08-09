@@ -63,9 +63,11 @@ class View extends Model
         static::deleting(function ($view) {
             $viewImages = $view->images;
             foreach ($viewImages as $viewImg) {
-                Storage::disk('public')->delete($viewImg);
+                if ($viewImg->path) {
+                    Storage::disk('public')->delete($viewImg->path);
+                    $view->images()->delete();
+                }
             }
-            $view->images()->delete();
             $view->items()->delete();
         });
     }

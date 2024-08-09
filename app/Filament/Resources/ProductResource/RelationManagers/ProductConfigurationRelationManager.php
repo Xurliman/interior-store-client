@@ -27,18 +27,10 @@ class ProductConfigurationRelationManager extends RelationManager
             ->schema([
                 Select::make('view_id')
                     ->label('View')
-                    ->relationship('view', 'data_view')
-                    ->required(),
-                TextInput::make('btn_class')
+                    ->relationship('view', 'name')
                     ->required(),
                 TextInput::make('data_object')
                     ->required(),
-                TextInput::make('class')
-                    ->required(),
-                TextInput::make('extra_class')
-                    ->nullable(),
-                Toggle::make('is_visible')
-                    ->default(true),
             ]);
     }
 
@@ -62,13 +54,6 @@ class ProductConfigurationRelationManager extends RelationManager
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('class')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
-                ToggleColumn::make('is_visible')
-                    ->toggleable(false)
-                    ->sortable()
             ])
             ->filters([
                 //

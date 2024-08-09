@@ -50,7 +50,6 @@
                                     @php
                                         $productConfiguration = collect($product->productConfigurations)
                                             ->where('view_id', $view->id)
-                                            ->where('is_visible', true)
                                             ->first();
                                     @endphp
                                     @if($productConfiguration)

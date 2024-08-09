@@ -26,10 +26,6 @@ class CategoryResource extends Resource
                 Section::make()->schema([
                     TextInput::make('name')->required(),
                     TextInput::make('data_mask')->required(),
-                    TextInput::make('div_id')->required(),
-                    TextInput::make('class')->nullable(),
-                    TextInput::make('div_class')->required(),
-                    TextInput::make('img_class')->required(),
                 ])->columns(2)
             ]);
     }
@@ -43,18 +39,6 @@ class CategoryResource extends Resource
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('data_mask')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('div_id')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('div_class')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('img_class')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),

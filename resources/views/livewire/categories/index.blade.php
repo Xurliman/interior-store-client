@@ -14,7 +14,7 @@
                 <div class="custom__item">
                     <img
                         class="custom__item_img"
-                        src="{{ Storage::url($category->products->first()->image?->path) }}"
+                        src="{{ Storage::url($category->products()->where('is_visible', true)->first()->image?->path) }}"
                         alt=""/>
                     <span class="custom__item_title">{{ $category->name }}</span>
 
@@ -42,11 +42,10 @@
                     </button>
 
                     <div class="drop-list-container">
-                        @foreach($category->products as $product)
+                        @foreach($category->products->where('is_visible', true) as $product)
                             @php
                                 $productConfiguration = collect($product->productConfigurations)
                                     ->where('view_id', $view_id)
-                                    ->where('is_visible', true)
                                     ->first();
                             @endphp
                             @if($productConfiguration)

@@ -33,8 +33,8 @@ class ImageRelationManager extends RelationManager
             ->recordTitleAttribute('path')
             ->columns([
                 Tables\Columns\ImageColumn::make('path')
-                    ->disk('public')
-                    ->circular(),
+                    ->circular()
+                    ->stacked(),
                 Tables\Columns\TextColumn::make('type')
                     ->default('only image'),
             ])

@@ -32,8 +32,10 @@ class Scene extends Model
 
         static::deleting(function ($scene) {
             $sceneImg = $scene->image->path;
-            Storage::disk('public')->delete($sceneImg);
-            $scene->image()->delete();
+            if ($sceneImg) {
+                Storage::disk('public')->delete($sceneImg);
+                $scene->image()->delete();
+            }
             $scene->views()->delete();
         });
     }

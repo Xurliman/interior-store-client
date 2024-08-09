@@ -4,11 +4,13 @@ namespace App\Filament\Resources\SceneResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Columns\CheckboxColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,6 +28,8 @@ class ViewsRelationManager extends RelationManager
                     ->required(),
                 Checkbox::make('is_default')
                     ->default(false),
+                MarkdownEditor::make('description')
+                    ->required(),
             ]);
     }
 
@@ -34,6 +38,9 @@ class ViewsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
+                ImageColumn::make('images.path')
+                    ->circular()
+                    ->stacked(),
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable()

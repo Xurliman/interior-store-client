@@ -80,7 +80,6 @@ class ImageMerger
             $productConfiguration = collect($selectedProduct
                 ->productConfigurations)
                 ->where('view_id', $view->id)
-                ->where('is_visible', true)
                 ->first();
             if (is_null($productConfiguration)) {
                 continue;

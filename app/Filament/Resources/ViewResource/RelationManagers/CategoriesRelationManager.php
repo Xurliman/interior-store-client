@@ -21,8 +21,6 @@ class CategoriesRelationManager extends RelationManager
             ->schema([
                 TextInput::make('name')->required(),
                 TextInput::make('data_mask')->required(),
-                TextInput::make('div_id')->required(),
-                TextInput::make('class')->nullable(),
             ]);
     }
 
@@ -36,10 +34,6 @@ class CategoriesRelationManager extends RelationManager
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('data_mask')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('div_id')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),

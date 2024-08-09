@@ -47,7 +47,6 @@ class Show extends Component
             ->find($productId)
             ->productConfigurations()
             ->where('view_id', $this->currentView->id)
-            ->where('is_visible', true)
             ->first()
             ->images()
             ->where('type', 'mask_bg')

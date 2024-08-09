@@ -40,7 +40,9 @@ class ProductConfiguration extends Model
         static::deleting(function ($productConfiguration) {
             $productConfigurationImages = $productConfiguration->images;
             foreach ($productConfigurationImages as $productConfigurationImg) {
-                Storage::disk('public')->delete($productConfigurationImg);
+                if ($productConfigurationImg) {
+                    Storage::disk('public')->delete($productConfigurationImg->path);
+                }
             }
 
             $productConfiguration->images()->delete();

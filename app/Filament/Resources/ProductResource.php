@@ -17,6 +17,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,6 +26,7 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -53,6 +55,8 @@ class ProductResource extends Resource
                         ->nullable(),
                     TextInput::make('dimensions')
                         ->nullable(),
+                    Toggle::make('is_visible')
+                        ->default(true),
                     MarkdownEditor::make('description')
                         ->required(),
                 ])->columns(2)
@@ -73,6 +77,12 @@ class ProductResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
+                TextColumn::make('price')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                ToggleColumn::make('is_visible')
+                    ->toggleable(false),
             ])
             ->filters([
                 //
