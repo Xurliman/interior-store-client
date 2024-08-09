@@ -19,7 +19,7 @@ class View extends Model
     protected $fillable = [
         'scene_id',
         'name',
-        'data_view',
+        'description',
         'is_default',
     ];
 

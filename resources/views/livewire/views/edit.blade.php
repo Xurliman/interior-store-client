@@ -5,11 +5,9 @@
         @foreach($scene->views as $sceneView)
             <button
                 wire:click.prevent="viewSelected({{ $sceneView->id }})"
-                class="camera__item d-flex flex-column"
-                data-view="{{ $sceneView->data_view }}">
+                class="camera__item d-flex flex-column">
                 <img
-                    data-view="{{ $sceneView->data_view }}"
-                    class="camera__item_img {{ $sceneView->name }}"
+                    class="camera__item_img"
                     src="{{ Storage::url($sceneView->images()->where('type', 'black_bg')->first()->path) }}"
                     alt=""/>
                 <span
@@ -39,7 +37,7 @@
 
                     @if($foreground_img)
                         <img
-                            class="loading-jpg foreground foreground-{{ $scene->img_class }} active"
+                            class="loading-jpg foreground active"
                             src="{{ Storage::url($foreground_img) }}"
                             alt="{{ $foreground_img }}"/>
                     @endif
@@ -47,7 +45,7 @@
                     <!-- Object Images -->
                     <div class="object__images">
                         @foreach($categories as $category)
-                            <div class="{{ $category->div_class }}">
+                            <div>
                                 @foreach($category->products as $product)
                                     @php
                                         $productConfiguration = collect($product->productConfigurations)
@@ -55,11 +53,9 @@
                                             ->where('is_visible', true)
                                             ->first();
                                     @endphp
-                                    {{--                                    <img class="loading-jpg {{ $category->img_class }} {{ $product->isInCart($product->id, $cart_id) ? 'object-visible' : ''}}"--}}
                                     @if($productConfiguration)
-                                        <img class="loading-jpg {{ $category->img_class }} {{ in_array($productConfiguration->product_id, collect($selected_products)->pluck('product_id')->toArray()) ? 'object-visible' : ''}}"
+                                        <img class="loading-jpg {{ in_array($productConfiguration->product_id, collect($selected_products)->pluck('product_id')->toArray()) ? 'object-visible' : ''}}"
                                              src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
-                                             data-object="{{ $productConfiguration?->data_object }}"
                                              data-product="{{ $product->name }}"
                                              data-price="{{ $product->price }}"
                                              data-remove="{{ $category->data_mask }}"
@@ -73,7 +69,7 @@
 
                     <!-- Masks -->
                     <div class="masks-container">
-                        <div class="kitchen-mask {{ $scene->slug }}-masks active">
+                        <div class="kitchen-mask active">
                             @foreach($scene->views as $sceneView)
                                 <div class="kitchen-{{ $sceneView->name }} {{ $view->id == $sceneView->id ? 'active' : '' }}">
                                     @foreach($sceneView->items as $item)

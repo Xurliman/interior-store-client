@@ -15,9 +15,7 @@ class Show extends Component
 {
     public $scene;
     public $currentView;
-    public $categoryMaskId;
     public $maskImg;
-    public string $activeClass = '';
     public array $selectedProducts = [];
     use GetCategorisedProduct;
 
@@ -35,10 +33,15 @@ class Show extends Component
         );
     }
 
+    #[On('update-selected-products-list')]
+    public function updateSelectedProducts($selectedProducts): void
+    {
+        $this->selectedProducts = $selectedProducts;
+    }
+
     #[On('update-category-mask')]
     public function updateProductMask($categoryId, $productId, $selectedProducts): void
     {
-        $this->categoryMaskId = $categoryId;
         $this->selectedProducts = $selectedProducts;
         $this->maskImg = Product::with('productConfigurations.images')
             ->find($productId)
@@ -62,8 +65,6 @@ class Show extends Component
             'background_img' => $bgImg,
             'foreground_img' => $fgImg,
             'categories' => $this->setMaskImgs($categorisedProducts, $this->selectedProducts),
-            'category_mask_id' => $this->categoryMaskId,
-            'mask_selected_img' => $this->maskImg,
             'selected_products' => $this->selectedProducts,
         ]);
     }

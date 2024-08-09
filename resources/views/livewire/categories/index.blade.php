@@ -7,7 +7,7 @@
     <div class="custom__items">
         @foreach($categories as $category)
             <div
-                id="{{ $category->div_id }}"
+{{--                id="{{ $category->div_id }}"--}}
                 class="custom__block"
                 style="{{ $category->display ? 'display:block' : 'display:none' }}">
                 <!-- Custom Item -->
@@ -30,12 +30,13 @@
                 </div>
 
                 <!-- Custom Drop List -->
-                <div class="custom-drop-list {{ ($category_id == $category->id && $show_drop_list) ? 'open' : '' }}" data-item="{{ $category->data_mask }}" data-mask="{{ $category->data_mask }}">
+                <div class="custom-drop-list {{ ($category_id == $category->id && $show_drop_list) ? 'open' : '' }}"
+                     data-item="{{ $category->data_mask }}"
+                     data-mask="{{ $category->data_mask }}">
                     <button
                         x-on:click="
-                            $wire.activeClass='';
                             $wire.removeProducts({{ $category->id }})"
-                        class="custom-item-remove {{ $category_id == $category->id ? $active_class : ''}}"
+                        class="custom-item-remove {{ in_array($category->id, collect($selectedProducts)->pluck('category_id')->toArray()) ? 'active' : ''}}"
                         data-remove="{{ $category->data_mask }}">
                         Remove
                     </button>
@@ -54,9 +55,7 @@
                                             $wire.activeClass='active';
                                             $wire.productSelected({{ $category->id }}, {{ $product->id }})"
                                         class="load-jpg">
-{{--                                        class="load-jpg {{ $productConfiguration?->btn_class }} {{ $productConfiguration?->extra_class }}">--}}
-                                    <img class="custom__img custom-{{ $productConfiguration?->class }}"
-                                         data-object="{{ $productConfiguration?->data_object }}"
+                                    <img class="custom__img"
                                          data-remove="{{ $category->data_mask }}"
                                          src="{{ Storage::url($product->image?->path) }}"
                                          alt="Floor"/>

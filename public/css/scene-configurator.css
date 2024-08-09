@@ -980,17 +980,17 @@
   display: none;
 }
 
-.kitchenBlackMasks.active {
+/*.kitchenBlackMasks.active {*/
+/*  display: block;*/
+/*}*/
+
+.kitchen-mask.active {
   display: block;
 }
 
-.kitchen-red-masks.active {
-  display: block;
-}
-
-.kitchen-white-masks.active {
-  display: block;
-}
+/*.kitchen-white-masks.active {*/
+/*  display: block;*/
+/*}*/
 
 .kitchen-view1 {
   display: none;
@@ -1020,17 +1020,17 @@
   display: block;
 }
 
-.kitchen-black-masks.active {
-  display: block;
-}
+/*.kitchen-black-masks.active {*/
+/*  display: block;*/
+/*}*/
 
-.kitchen-red-masks.active {
-  display: block;
-}
+/*.kitchen-red-masks.active {*/
+/*  display: block;*/
+/*}*/
 
-.kitchen-white-masks.active {
-  display: block;
-}
+/*.kitchen-white-masks.active {*/
+/*  display: block;*/
+/*}*/
 
 .pointer {
   pointer-events: none;

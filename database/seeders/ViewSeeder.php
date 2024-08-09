@@ -399,7 +399,8 @@ class ViewSeeder extends Seeder
                     'mask_bg_file_name',
                     'transparent_bg',
                     'black_bg',
-                    'mask_bg'
+                    'mask_bg',
+                    'data_view'
                 ])->toArray();
             })->toArray()
         );
@@ -408,7 +409,7 @@ class ViewSeeder extends Seeder
         $views = View::all();
         foreach ($views as $view) {
             $foundItem = collect($data)->first(function ($item) use ($view) {
-                if ($item['data_view'] == $view->data_view && $item['scene_id'] == $view->scene_id) {
+                if ($item['data_view'] == ucfirst($view->name) && $item['scene_id'] == $view->scene_id) {
                     return $item;
                 }
             });

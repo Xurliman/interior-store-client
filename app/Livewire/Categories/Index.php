@@ -4,6 +4,7 @@ namespace App\Livewire\Categories;
 
 use App\Traits\GetCategorisedProduct;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -11,7 +12,6 @@ use Livewire\Component;
 class Index extends Component
 {
     public string $class = '';
-    public string $activeClass = '';
     public bool $showDropList = true;
     public array $selectedProducts = [];
     public $categoryId;
@@ -41,8 +41,11 @@ class Index extends Component
 
     public function removeProducts($categoryId): void {
         if(in_array($categoryId, $this->getSelectedCategoryIds($this->selectedProducts))) {
-            $key = array_search($categoryId, $this->getSelectedCategoryIds($this->selectedProducts));
-            unset($this->selectedProducts[$key]);
+            foreach ($this->selectedProducts as $key => $selectedProduct) {
+                if ($selectedProduct['category_id'] == $categoryId) {
+                    unset($this->selectedProducts[$key]);
+                }
+            }
         }
         $this->dispatch('update-selected-products-list',
             selectedProducts : $this->selectedProducts);
@@ -56,12 +59,15 @@ class Index extends Component
 
         if (!in_array($productId, $this->getSelectedProductIds($this->selectedProducts))) {
             if(in_array($categoryId, $this->getSelectedCategoryIds($this->selectedProducts))) {
-                $key = array_search($categoryId, $this->getSelectedCategoryIds($this->selectedProducts));
-                $this->selectedProducts[$key]['product_id'] = $productId;
+                foreach ($this->selectedProducts as $key => $selectedProduct) {
+                    if ($selectedProduct['category_id'] == $categoryId) {
+                        $this->selectedProducts[$key]['product_id'] = $productId;
+                    }
+                }
             } else {
                 $this->selectedProducts[] = [
+                    'category_id' => $categoryId,
                     'product_id' => $productId,
-                    'category_id' => $categoryId
                 ];
             }
             $this->dispatch('update-category-mask',
@@ -74,7 +80,7 @@ class Index extends Component
         $this->categorisedProducts = $this->getCategorisedProducts($this->viewId);
     }
 
-    public function render(): Application|Factory|\Illuminate\Contracts\View\View
+    public function render(): Application|Factory|View
     {
         return view('livewire.categories.index', [
             'categories' => $this->categorisedProducts,
@@ -82,7 +88,6 @@ class Index extends Component
             'show_drop_list' => $this->showDropList,
             'view_id' => $this->viewId,
             'class' => $this->class,
-            'active_class' => $this->activeClass,
         ]);
     }
 }

@@ -260,23 +260,21 @@ objectParquetBtn.forEach((button) => {
 
 // Custom Objects Handler
 function customObjectsHandler(button, object) {
-    button.addEventListener("click", (e) => {
-        console.log("button", button)
-        console.log("object", object)
-        var objectBtn = e.target;
-        var objectBtnAttr = objectBtn.getAttribute("data-object");
-        var objectBtnMaskAttr = objectBtn.getAttribute("data-mask");
-        var objectRemoveAttr = objectBtn.getAttribute("data-remove");
+    // button.addEventListener("click", (e) => {
+        // var objectBtn = e.target;
+        // var objectBtnAttr = objectBtn.getAttribute("data-object");
+        // var objectBtnMaskAttr = objectBtn.getAttribute("data-mask");
+        // var objectRemoveAttr = objectBtn.getAttribute("data-remove");
 
-        object.forEach((el) => {
-            var objectAttr = el.getAttribute("data-object");
+        // object.forEach((el) => {
+            // var objectAttr = el.getAttribute("data-object");
 
-            if (objectAttr == objectBtnAttr) {
+            // if (objectAttr == objectBtnAttr) {
                 // el.classList.add("object-visible");
-            } else {
+            // } else {
                 // el.classList.remove("object-visible");
-            }
-        });
+            // }
+        // });
 
         // Check clicked product type for masks
         // if (objectBtnMaskAttr == "chairs") {
@@ -286,42 +284,42 @@ function customObjectsHandler(button, object) {
         // }
 
         // Remove added products
-        removeBtn.forEach((btn) => {
-            var btnAttr = btn.getAttribute("data-remove");
-            if (btnAttr == objectRemoveAttr) {
-                btn.classList.add("active");
+        // removeBtn.forEach((btn) => {
+        //     var btnAttr = btn.getAttribute("data-remove");
+        //     if (btnAttr == objectRemoveAttr) {
+        //         // btn.classList.add("active");
+        //
+        //         btn.addEventListener("click", () => {
+        //             object.forEach((el) => {
+        //                 var elProduct = el.getAttribute("data-product");
+        //
+        //                 if (el.classList.contains("object-visible")) {
+        //                     var indexProductArr = productArr.findIndex(
+        //                         (item) => item.elProduct === elProduct
+        //                     );
+        //                     var indexCustomArr = customArr.findIndex(
+        //                         (item) => item.elProduct === elProduct
+        //                     );
+        //
+        //                     if (
+        //                         indexProductArr !== -1 ||
+        //                         indexCustomArr !== -1
+        //                     ) {
+        //                         productArr.splice(indexProductArr, 1);
+        //                         customArr.splice(indexCustomArr, 1);
+        //                         countItems--;
+        //                     }
+        //                 }
+        //
+        //                 el.classList.remove("object-visible");
+        //                 btn.classList.remove("active");
+        //             });
+        //         });
+        //     }
+        // });
 
-                btn.addEventListener("click", () => {
-                    object.forEach((el) => {
-                        var elProduct = el.getAttribute("data-product");
-
-                        if (el.classList.contains("object-visible")) {
-                            var indexProductArr = productArr.findIndex(
-                                (item) => item.elProduct === elProduct
-                            );
-                            var indexCustomArr = customArr.findIndex(
-                                (item) => item.elProduct === elProduct
-                            );
-
-                            if (
-                                indexProductArr !== -1 ||
-                                indexCustomArr !== -1
-                            ) {
-                                productArr.splice(indexProductArr, 1);
-                                customArr.splice(indexCustomArr, 1);
-                                countItems--;
-                            }
-                        }
-
-                        el.classList.remove("object-visible");
-                        btn.classList.remove("active");
-                    });
-                });
-            }
-        });
-
-        checkObjectProduct(object);
-    });
+        // checkObjectProduct(object);
+    // });
 }
 
 // Check Object Product
@@ -617,27 +615,27 @@ document.addEventListener("livewire:navigated", () => {
                         // foregroundRedView2.classList.remove("active");
                         // foregroundBlackView2.classList.remove("active");
                         // foregroundBlack.classList.add("active");
-                        floor.style = "display: block";
+                        // floor.style = "display: block";
                     }
                     if (kitchen === "kitchen-red") {
                         // foregroundBlackView2.classList.remove("active");
                         // foregroundBlack.classList.remove("active");
                         // foregroundRed.classList.add("active");
                         // foregroundRedView2.classList.remove("active");
-                        floor.style = "display: block";
-                        lamp.style = "display: block";
-                        lampsBox.style = "display: block";
-                        portuquetsBox.style = "display: block";
+                        // floor.style = "display: block";
+                        // lamp.style = "display: block";
+                        // lampsBox.style = "display: block";
+                        // portuquetsBox.style = "display: block";
                     }
                     if (kitchen === "kitchen-white") {
                         // foregroundRed.classList.remove("active");
                         // foregroundRedView2.classList.remove("active");
                         // foregroundBlackView2.classList.remove("active");
                         // foregroundBlack.classList.remove("active");
-                        chair.style = "display: block";
-                        lamp.style = "display: block";
-                        lampsBox.style = "display: block";
-                        chirsBox.style = "display: block";
+                        // chair.style = "display: block";
+                        // lamp.style = "display: block";
+                        // lampsBox.style = "display: block";
+                        // chirsBox.style = "display: block";
                     }
                     break;
                 case "View2":
@@ -656,25 +654,25 @@ document.addEventListener("livewire:navigated", () => {
                         // foregroundBlack.classList.remove("active");
                         // foregroundRed.classList.remove("active");
                         // foregroundRedView2.classList.add("active");
-                        floor.style = "display: block";
-                        lamp.style = "display: block";
-                        lampsBox.style = "display: block";
-                        portuquetsBox.style = "display: block";
+                        // floor.style = "display: block";
+                        // lamp.style = "display: block";
+                        // lampsBox.style = "display: block";
+                        // portuquetsBox.style = "display: block";
                     }
                     if (kitchen === "kitchen-black") {
                         // foregroundRed.classList.remove("active");
                         // foregroundRedView2.classList.remove("active");
                         // foregroundBlackView2.classList.add("active");
                         // foregroundBlack.classList.remove("active");
-                        floor.style = "display: block";
+                        // floor.style = "display: block";
                     }
                     break;
                 case "View3":
                     if (kitchen === "kitchen-white") {
-                        chair.style = "display: block";
+                        // chair.style = "display: block";
                         // lampsBox.style = "display: none";
-                        chirsBox.style = "display: block";
-                        floor.style = "display: block";
+                        // chirsBox.style = "display: block";
+                        // floor.style = "display: block";
                     }
                     if (
                         kitchen === "kitchen-black" ||
@@ -694,9 +692,9 @@ document.addEventListener("livewire:navigated", () => {
                     if (kitchen === "kitchen-black") {
                         // foregroundBlackView2.classList.remove("active");
                         // foregroundBlack.classList.remove("active");
-                        portuquetsBox.classList.add("hide");
+                        // portuquetsBox.classList.add("hide");
                     } else {
-                        portuquetsBox.classList.remove("hide");
+                        // portuquetsBox.classList.remove("hide");
                     }
                     break;
             }
@@ -725,7 +723,6 @@ document.addEventListener("livewire:navigated", () => {
                     showMasks(maskFloor, buttonAttr);
                     break;
                 case "lamps":
-                    console.log(maskLamps)
                     showMasks(maskLamps, buttonAttr);
                     break;
                 default:
@@ -744,19 +741,18 @@ document.addEventListener("livewire:navigated", () => {
         }, 200);
 
         // Check Chosen Product Mask
-        var maskAttr = mask.getAttribute("data-mask");
-        console.log(maskAttr)
+        // var maskAttr = mask.getAttribute("data-mask");
         mask.classList.add("active");
 
-        if (maskAttr == "chairs") {
+        // if (maskAttr == "chairs") {
             // mask.src = `./img/${kitchen}/${viewNum}/Masks/Png/${productMaskChairs}.png`;
-        } else if (maskAttr == "lamps") {
+        // } else if (maskAttr == "lamps") {
             // mask.src = `./img/${kitchen}/${viewNum}/Masks/Png/${productMaskLamps}.png`;
-        } else if (maskAttr == "floor") {
+        // } else if (maskAttr == "floor") {
             // mask.src = `./img/${kitchen}/${viewNum}/Masks/Png/Parquet.png`;
-        } else if (maskAttr == "wall-pattern") {
+        // } else if (maskAttr == "wall-pattern") {
             // mask.src = `./img/${kitchen}/${viewNum}/Masks/Png/KitchenFartuk.png`;
-        }
+        // }
 
         // Open Custom Menu
         // customItemBtn.forEach((button) => {

@@ -14,10 +14,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Product::class);
             $table->foreignIdFor(View::class);
-            $table->string('btn_class');
             $table->string('data_object');
-            $table->string('class');
-            $table->string('extra_class')->nullable();
             $table->boolean('is_visible')->default(true);
             $table->timestamps();
         });

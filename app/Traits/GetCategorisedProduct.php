@@ -66,6 +66,7 @@ trait GetCategorisedProduct
             ->whereIn('id', $this->getSelectedProductIds($selectedProducts))
             ->get();
         foreach ($categorisedProducts as $category) {
+
             if (in_array($category->id, $this->getSelectedCategoryIds($selectedProducts))) {
                 $productId = $this->getProduct($category->id, $selectedProducts);
                 $category->mask_img = collect($sProducts)

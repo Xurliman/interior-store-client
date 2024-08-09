@@ -16,10 +16,7 @@ class ProductConfiguration extends Model
     protected $fillable = [
         'product_id',
         'view_id',
-        'btn_class',
         'data_object',
-        'class',
-        'extra_class',
         'is_visible',
     ];
 

@@ -11,7 +11,6 @@ return new class extends Migration
         Schema::create('scenes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('img_class');
             $table->string('slug')->unique();
             $table->timestamps();
         });
