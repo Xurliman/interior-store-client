@@ -13,6 +13,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -20,6 +21,7 @@ use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -41,14 +43,14 @@ class ViewResource extends Resource
                        ->required(),
                    TextInput::make('name')
                        ->required(),
-                   Checkbox::make('is_default')
+                   Toggle::make('is_default')
                        ->label('Default')
                        ->default(false),
+                   Toggle::make('is_visible')
+                       ->requiredIf('is_default', true)
+                       ->default(true),
                    MarkdownEditor::make('description')
                        ->required(),
-                   FileUpload::make('image')
-                       ->disk('public')
-                       ->nullable(),
                ])->columns(2)
             ]);
     }
@@ -68,10 +70,12 @@ class ViewResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
-                CheckboxColumn::make('is_default')
+                ToggleColumn::make('is_default')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                ToggleColumn::make('is_visible')
+                    ->toggleable(false),
             ])
             ->filters([
                 //
@@ -89,7 +93,7 @@ class ViewResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\ProductsRelationManager::class,
+//            RelationManagers\ProductsRelationManager::class,
             RelationManagers\ImageRelationManager::class,
             RelationManagers\CategoriesRelationManager::class,
         ];
@@ -102,5 +106,10 @@ class ViewResource extends Resource
             'create' => Pages\CreateView::route('/create'),
             'edit' => Pages\EditView::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }

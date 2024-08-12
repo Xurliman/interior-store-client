@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'productConfigurations';
+    protected static string $relationship = 'products';
 
     public function form(Form $form): Form
     {
@@ -41,10 +41,10 @@ class ProductsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                ImageColumn::make('images.path')
+                ImageColumn::make('image.path')
                     ->circular()
                     ->stacked(),
-                TextColumn::make('product.name'),
+                TextColumn::make('name'),
                 CheckboxColumn::make('is_visible')
             ])
             ->filters([

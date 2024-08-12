@@ -8,10 +8,12 @@ use App\Models\Scene;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -31,10 +33,8 @@ class SceneResource extends Resource
                         ->required(),
                     TextInput::make('slug')
                         ->required(),
-                    FileUpload::make('srcset_img')
-                        ->disk('public')
-                        ->directory('scenes')
-                        ->required()
+                    Toggle::make('is_visible')
+                        ->default(true),
                 ])
             ]);
     }
@@ -51,6 +51,8 @@ class SceneResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                ToggleColumn::make('is_visible')
+                    ->toggleable(false),
             ])
             ->filters([
                 //
@@ -69,7 +71,6 @@ class SceneResource extends Resource
     {
         return [
             RelationManagers\ViewsRelationManager::class,
-            RelationManagers\ImageRelationManager::class
         ];
     }
 
@@ -77,8 +78,13 @@ class SceneResource extends Resource
     {
         return [
             'index' => Pages\ListScenes::route('/'),
-            'create' => Pages\CreateScene::route('/create'),
+//            'create' => Pages\CreateScene::route('/create'),
             'edit' => Pages\EditScene::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }

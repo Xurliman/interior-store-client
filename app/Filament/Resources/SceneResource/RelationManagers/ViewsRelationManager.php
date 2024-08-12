@@ -6,12 +6,14 @@ use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -24,12 +26,19 @@ class ViewsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required(),
-                Checkbox::make('is_default')
-                    ->default(false),
-                MarkdownEditor::make('description')
-                    ->required(),
+                Forms\Components\Section::make([
+                    TextInput::make('name')
+                        ->required(),
+                    MarkdownEditor::make('description')
+                        ->required(),
+                    Forms\Components\Section::make([
+                        Toggle::make('is_default')
+                            ->default(false),
+                        Toggle::make('is_visible')
+                            ->requiredIf('is_default', true)
+                            ->default(true),
+                    ])->columns(2),
+                ])->columns(1),
             ]);
     }
 
@@ -45,10 +54,12 @@ class ViewsRelationManager extends RelationManager
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                CheckboxColumn::make('is_default')
+                ToggleColumn::make('is_default')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
+                ToggleColumn::make('is_visible')
+                    ->toggleable(false),
             ])
             ->filters([
                 //

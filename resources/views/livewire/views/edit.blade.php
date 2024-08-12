@@ -48,12 +48,14 @@
                             <div>
                                 @foreach($category->products as $product)
                                     @php
+                                        /** @var \App\Models\ProductConfiguration $productConfiguration */
                                         $productConfiguration = collect($product->productConfigurations)
                                             ->where('view_id', $view->id)
                                             ->first();
                                     @endphp
                                     @if($productConfiguration)
                                         <img class="loading-jpg {{ in_array($productConfiguration->product_id, collect($selected_products)->pluck('product_id')->toArray()) ? 'object-visible' : ''}}"
+                                             style="{{ in_array($product->id, collect($selected_products)->pluck('product_id')->toArray()) ? 'display:block;' : 'display:none;'}}"
                                              src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                              data-product="{{ $product->name }}"
                                              data-price="{{ $product->price }}"
@@ -70,14 +72,36 @@
                     <div class="masks-container">
                         <div class="kitchen-mask active">
                             @foreach($scene->views as $sceneView)
-                                <div class="kitchen-{{ $sceneView->name }} {{ $view->id == $sceneView->id ? 'active' : '' }}">
-                                    @foreach($sceneView->items as $item)
-                                        <div
-                                            class="mask_btn {{ $scene->slug }}-{{ $sceneView->name }}-{{ $item->div_class }}"
-                                            data-mask="{{ $item->category->data_mask }}">
-                                        </div>
-                                    @endforeach
-                                </div>
+                                @if($view->id == $sceneView->id)
+                                    <div class="active">
+                                        @foreach($sceneView->items as $item)
+                                            <div
+                                                class="mask_btn"
+                                                style="width: {{$item->width}}%;
+                                                height: {{$item->height}}%;
+                                                {{$item->top ? "top: {$item->top}%;" : ''}}
+                                                {{$item->bottom ? "bottom: {$item->bottom}%;" : ''}}
+                                                {{$item->left ? "left: {$item->left}%;" : ''}}
+                                                {{$item->right ? "right: {$item->right}%;" : ''}}
+                                                background: transparent;
+                                                position: absolute;
+                                                z-index: 1;
+                                                cursor: pointer;"
+                                                data-mask="{{ $item->category->data_mask }}">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <div class="">
+                                        @foreach($sceneView->items as $item)
+                                            <div
+                                                class="mask_btn"
+                                                {{--                                            style="width: {{$item->width}}%; height: {{$item->height}}%; top: {{$item->top}}%; bottom: {{$item->bottom}}%; left: {{$item->left}}%; right: {{$item->right}}%; background: transparent; position: absolute; z-index: 1; cursor: pointer;"--}}
+                                                data-mask="{{ $item->category->data_mask }}">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
 

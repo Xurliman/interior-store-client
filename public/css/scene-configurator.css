@@ -91,7 +91,7 @@
 .scene {
   width: 100vw;
   height: var(--address-bar-height);
-  overflow: hidden;
+  /*overflow: hidden;*/
   position: relative;
 }
 

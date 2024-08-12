@@ -14,6 +14,12 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(View::class);
             $table->foreignIdFor(Category::class);
+            $table->decimal('width')->default(0);
+            $table->decimal('height')->default(0);
+            $table->decimal('bottom')->nullable();
+            $table->decimal('top')->nullable();
+            $table->decimal('right')->nullable();
+            $table->decimal('left')->nullable();
             $table->string('div_class');
             $table->timestamps();
         });

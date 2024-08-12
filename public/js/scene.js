@@ -625,7 +625,7 @@ document.addEventListener("livewire:navigated", () => {
                         // floor.style = "display: block";
                         // lamp.style = "display: block";
                         // lampsBox.style = "display: block";
-                        // portuquetsBox.style = "display: block";
+                        portuquetsBox.style = "display: block";
                     }
                     if (kitchen === "kitchen-white") {
                         // foregroundRed.classList.remove("active");
@@ -657,7 +657,7 @@ document.addEventListener("livewire:navigated", () => {
                         // floor.style = "display: block";
                         // lamp.style = "display: block";
                         // lampsBox.style = "display: block";
-                        // portuquetsBox.style = "display: block";
+                        portuquetsBox.style = "display: block";
                     }
                     if (kitchen === "kitchen-black") {
                         // foregroundRed.classList.remove("active");
@@ -692,9 +692,9 @@ document.addEventListener("livewire:navigated", () => {
                     if (kitchen === "kitchen-black") {
                         // foregroundBlackView2.classList.remove("active");
                         // foregroundBlack.classList.remove("active");
-                        // portuquetsBox.classList.add("hide");
+                        portuquetsBox.classList.add("hide");
                     } else {
-                        // portuquetsBox.classList.remove("hide");
+                        portuquetsBox.classList.remove("hide");
                     }
                     break;
             }

@@ -13,7 +13,10 @@ class SceneController extends Controller
 {
     public function index(): View|Factory|Application
     {
-        $scenes = SceneResource::collection(Scene::with('views')->get());
+        $scenes = SceneResource::collection(Scene::with('views')
+            ->where('is_visible', true)
+            ->get()
+        );
         return view('scenes.index', compact('scenes'));
     }
 

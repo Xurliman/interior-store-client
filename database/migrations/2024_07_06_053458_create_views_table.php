@@ -14,7 +14,8 @@ return new class extends Migration
             $table->foreignIdFor(Scene::class);
             $table->string('name');
             $table->string('description')->nullable();
-            $table->boolean('is_default');
+            $table->boolean('is_visible')->default(true);
+            $table->boolean('is_default')->default(false);
             $table->timestamps();
         });
     }

@@ -36,7 +36,7 @@ class ImageRelationManager extends RelationManager
                     ->disk('public')
                     ->circular(),
                 Tables\Columns\TextColumn::make('type')
-                    ->default('only image'),
+                    ->default('image'),
             ])
             ->filters([
                 //

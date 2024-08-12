@@ -13,9 +13,11 @@
     <!-- Carousel -->
     <div class="carousel swiper mySwiper">
         <div class="swiper-wrapper">
-            @foreach($scenes as $scene)
+            @forelse($scenes as $scene)
                 <x-scenes.slide :scene="$scene"/>
-            @endforeach
+            @empty
+                <h1>No Scene</h1>
+            @endforelse
         </div>
 
         <div class="swiper-button-next"></div>

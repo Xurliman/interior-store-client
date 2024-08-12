@@ -22,20 +22,11 @@ class Scene extends Model
         return $this->hasMany(View::class);
     }
 
-    public function image(): MorphOne {
-        return $this->morphOne(Image::class, 'imageable');
-    }
-
     public static function boot(): void
     {
         parent::boot();
 
         static::deleting(function ($scene) {
-            $sceneImg = $scene->image->path;
-            if ($sceneImg) {
-                Storage::disk('public')->delete($sceneImg);
-                $scene->image()->delete();
-            }
             $scene->views()->delete();
         });
     }

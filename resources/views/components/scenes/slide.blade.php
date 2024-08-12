@@ -18,16 +18,13 @@
                             $scene
                             ->load('views.images')
                             ->views)
-                            ->where(function($view){
-                                return $view->is_default == true;
-                            })
-                            ->first()
-                            ->images)
+                            ->where('is_visible', true)
+                            ->where('is_default', true)
+                            ->first()?->images)
                             ->where(function($image){
                                 return $image->type == 'black_bg';
                         })
-                        ->first()
-                        ->path) }}"
+                        ->first()?->path) }}"
                     alt="kitchen-gray"
                 />
             </picture>

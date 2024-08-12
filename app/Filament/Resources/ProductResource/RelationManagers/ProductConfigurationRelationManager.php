@@ -27,7 +27,7 @@ class ProductConfigurationRelationManager extends RelationManager
             ->schema([
                 Select::make('view_id')
                     ->label('View')
-                    ->relationship('view', 'name')
+                    ->relationship('view', 'description')
                     ->required(),
                 TextInput::make('data_object')
                     ->required(),
