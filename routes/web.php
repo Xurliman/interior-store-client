@@ -28,18 +28,28 @@ Route::get('/signup', function (){
 Route::get('/', [SceneController::class, 'index'])->name('scenes.index');
 Route::resource('scenes', SceneController::class)->only(['show']);
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('carts', GalleryController::class)->only(['index', 'show', 'edit']);
+    Route::resource('carts', GalleryController::class)->only(['index', 'edit']);
 });
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-//    Route::get('/dashboard', function () {
-//        return view('dashboard');
-//    })->name('dashboard');
+
 });
 
+Route::get('/print', function (\Illuminate\Http\Request $request) {
+    $view = View::firstWhere('id', $request->view_id);
+    $printImg = ImageMerger::imageCreateForView(
+        $view,
+        collect($request->products)->pluck('product_id')->toArray());
+
+    return view('scenes.preview-print', [
+        'print_img' => $printImg,
+        'products' => Product::whereIn('id', collect($request->products)->pluck('product_id')->toArray())->get(),
+    ]);
+})->name('print');
 
 Route::get('/test', function () {
     $view = View::firstWhere('id', 1);

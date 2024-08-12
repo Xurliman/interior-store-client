@@ -16,12 +16,6 @@ class GalleryController extends Controller
         ]);
     }
 
-    public function show(Cart $cart)
-    {
-        dd("alskjkals");
-        dd($cart);
-    }
-
     public function edit(Cart $cart)
     {
         return view('scenes.edit', compact('cart'));

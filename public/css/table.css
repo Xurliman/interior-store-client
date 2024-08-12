@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f8f8f8;
+    flex-direction: column; /* Allow stacking of content */
+}
+
+.container {
+    background-color: white;
+    width: 100vw; /* Adjusted width */
+    height: 100vh;
+    padding: 0; /* Adjusted padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #ddd; /* Border for closer look */
+}
+
+@media print {
+    .rotate-image {
+        transform: rotate(90deg); /* Rotate image by 90 degrees */
+        transform-origin: center center; /* Rotate around the center */
+        width: 100%; /* Adjust the width to match the viewport height */
+        height: 100%; /* Adjust the height to match the viewport width */
+        /*max-width: none; !* Remove any maximum width restrictions *!*/
+        /*max-height: none; !* Remove any maximum height restrictions *!*/
+    }
+
+    .container {
+        width: 100vw; /* Adjusted width */
+        height: 100vh;
+    }
+}
+
+.image-container {
+    text-align: center;
+    margin: auto;
+}
+
+.full-page-image {
+    width: 100%;
+    height: 100%;
+    /*max-width: 100%;*/
+    /*max-height: 100vh; !* Ensures the image fits within the viewport *!*/
+    object-fit: contain;
+}
+
+.logo h1 {
+    text-align: center;
+    font-size: 26px; /* Slightly larger font */
+    letter-spacing: 3px; /* Increased letter spacing */
+    margin: 0;
+    font-weight: bold;
+}
+
+.content {
+    margin-top: 30px; /* Increased margin for spacing */
+}
+
+.content h2 {
+    font-size: 18px;
+    margin-bottom: 15px; /* Increased bottom margin */
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+td {
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.item {
+    width: 70%; /* Set width for items to better align with prices */
+}
+
+.price {
+    width: 30%; /* Set width for prices */
+    text-align: right;
+    font-weight: bold;
+}
+
+.total {
+    text-align: right;
+    font-size: 16px; /* Slightly larger font size */
+    font-weight: bold;
+    padding-top: 20px;
+    border-top: 1px solid #000; /* Thicker border for emphasis */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 300px; /* Increased margin for better spacing */
+    font-size: 12px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer p {
+    margin: 5px 0;
+}

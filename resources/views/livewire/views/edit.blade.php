@@ -137,7 +137,9 @@
             :selected-products="$selected_products" />
 
         <!-- Print -->
-        <x-options.print-button />
+        <livewire:options.print-button
+            :view-id="$view->id"
+            :selected-products="$selected_products"/>
 
         <!-- Share -->
         <x-options.share-button />
@@ -158,7 +160,9 @@
                 :selected-products="$selected_products"/>
 
             <!-- Print -->
-            <x-options.print-button />
+            <livewire:options.print-button
+                :view-id="$view->id"
+                :selected-products="$selected_products"/>
 
             <!-- Share -->
             <x-options.share-button />
