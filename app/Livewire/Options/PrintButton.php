@@ -30,12 +30,14 @@ class PrintButton extends Component
         $this->viewId = $viewId;
     }
 
-    public function print()
+    public function print(): void
     {
-        redirect()->route('print', [
-            'view_id' => $this->viewId,
-            'products' => $this->selectedProducts,
-        ]);
+        if (count($this->selectedProducts) != 0) {
+            redirect()->route('print', [
+                'view_id' => $this->viewId,
+                'products' => $this->selectedProducts,
+            ]);
+        }
     }
 
     public function render()

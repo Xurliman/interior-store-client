@@ -39,20 +39,5 @@ Route::middleware([
 
 });
 
-Route::get('/print', function (\Illuminate\Http\Request $request) {
-    $view = View::firstWhere('id', $request->view_id);
-    $printImg = ImageMerger::imageCreateForView(
-        $view,
-        collect($request->products)->pluck('product_id')->toArray());
-
-    return view('scenes.preview-print', [
-        'print_img' => $printImg,
-        'products' => Product::whereIn('id', collect($request->products)->pluck('product_id')->toArray())->get(),
-    ]);
-})->name('print');
-
-Route::get('/test', function () {
-    $view = View::firstWhere('id', 1);
-    $res = ImageMerger::imageCreateForView($view, [10, 6, 19, 3,36]);
-    echo $res;
-});
+Route::post('/print-view', [SceneController::class, 'printView'])->name('print');
+Route::post('/pdf-download', [SceneController::class, 'downloadPDF'])->name('pdf-download');

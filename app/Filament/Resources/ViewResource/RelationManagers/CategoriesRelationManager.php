@@ -3,24 +3,33 @@
 namespace App\Filament\Resources\ViewResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
-use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class CategoriesRelationManager extends RelationManager
 {
-    protected static string $relationship = 'categories';
+    protected static string $relationship = 'items';
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->required(),
-                TextInput::make('data_mask')->required(),
+                Select::make('category_id')
+                    ->label('Category')
+                    ->relationship('category', 'name')
+                    ->required(),
+                TextInput::make('width')->required()->numeric(),
+                TextInput::make('height')->required()->numeric(),
+                TextInput::make('bottom')->nullable()->numeric(),
+                TextInput::make('top')->nullable()->numeric(),
+                TextInput::make('right')->nullable()->numeric(),
+                TextInput::make('left')->nullable()->numeric(),
+                TextInput::make('div_class')->required(),
             ]);
     }
 
@@ -29,11 +38,19 @@ class CategoriesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('view.description')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('data_mask')
+                TextColumn::make('category.name')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('width')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('height')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
@@ -42,15 +59,11 @@ class CategoriesRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                AttachAction::make()
-                    ->form(fn (AttachAction $action): array => [
-                        $action->getRecordSelect(),
-                    Forms\Components\TextInput::make('div_class')->required(),
-                ]),
+                Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DetachAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

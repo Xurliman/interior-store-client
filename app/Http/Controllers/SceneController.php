@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ImageMerger;
 use App\Http\Resources\Scene\SceneResource;
+use App\Models\Product;
 use App\Models\Scene;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
+use App\Models\View;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class SceneController extends Controller
 {
-    public function index(): View|Factory|Application
+    public function index()
     {
         $scenes = SceneResource::collection(Scene::with('views')
             ->where('is_visible', true)
@@ -20,8 +21,45 @@ class SceneController extends Controller
         return view('scenes.index', compact('scenes'));
     }
 
-    public function show(Scene $scene): View|Factory|Application
+    public function show(Scene $scene)
     {
         return view('scenes.show', compact('scene'));
+    }
+
+    public function printView(Request $request)
+    {
+        $request->validate([
+            'view_id' => 'required|integer|exists:views,id',
+            'products' => 'required'
+        ]);
+        $products = json_decode($request->products, 1);
+        return $this->generatePdf($products, $request->view_id)->stream('download.pdf');
+    }
+
+    public function downloadPDF(Request $request)
+    {
+        $request->validate([
+            'view_id' => 'required|integer|exists:views,id',
+            'products' => 'required'
+        ]);
+        $products = json_decode($request->products, 1);
+        return $this->generatePdf($products, $request->view_id)->download('download.pdf');
+    }
+
+    public function generatePdf($products, $viewId)
+    {
+        $view = View::firstWhere('id', $viewId);
+        if (count($products)==0) {
+            $printImg = "img/image-not-found.png";
+        } else {
+            $printImg = "storage/".ImageMerger::imageCreateForView(
+                $view,
+                collect($products)->pluck('product_id')->toArray());
+        }
+
+        return Pdf::loadView('scenes.preview-print', [
+            'print_img' => $printImg,
+            'products' => Product::whereIn('id', collect($products)->pluck('product_id')->toArray())->get(),
+        ]);
     }
 }

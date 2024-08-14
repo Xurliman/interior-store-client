@@ -21,11 +21,16 @@
                 class="download-modal__btn download-modal-png me-auto">
                 PNG
             </button>
-            <button
-                x-on:click="$wire.downloadPdf()"
-                class="download-modal__btn download-modal-jpg me-auto">
-                PDF
-            </button>
+            <form action="{{ route('pdf-download') }}" method="POST" target="_blank">
+                @csrf
+                <input type="hidden" name="view_id" value="{{ $viewId }}">
+                <input type="hidden" name="products" value="{{ json_encode($selectedProducts) }}">
+                <button
+                    type="submit"
+                    class="download-modal__btn download-modal-png me-auto">
+                    PDF
+                </button>
+            </form>
         @endauth
         @guest
             <button class="download-modal__btn download-modal-jpg me-auto">
