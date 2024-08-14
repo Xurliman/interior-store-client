@@ -21,6 +21,7 @@ class View extends Model
         'name',
         'description',
         'is_default',
+        'is_visible',
     ];
 
     public function scene(): BelongsTo {
@@ -36,7 +37,7 @@ class View extends Model
     }
 
     public function categories(): BelongsToMany {
-        return $this->belongsToMany(Category::class,'view_items')->withPivot('div_class')->withTimestamps();
+        return $this->belongsToMany(Category::class,'view_items')->withTimestamps();
     }
 
     public function productConfigurations(): HasMany

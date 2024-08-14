@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Image;
 use App\Models\ProductConfiguration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Intervention\Image\ImageManager;
 
 class ProductConfigurationSeeder extends Seeder
@@ -801,7 +803,7 @@ class ProductConfigurationSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'product_id' => 40,
+                    'product_id' => 40,
                 'view_id' => 7,
                 'data_object' => 'Lamp3',
                 'created_at' => now(),
@@ -852,5 +854,8 @@ class ProductConfigurationSeeder extends Seeder
                 }
             }
         }
+        Schema::table('product_configurations', function (Blueprint $table) {
+            $table->dropColumn('data_object');
+        });
     }
 }

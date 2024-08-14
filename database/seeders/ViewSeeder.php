@@ -160,7 +160,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 1,
                 'category_id' => 1,
-                'div_class' => 'wall',
                 'width' => 39,
                 'height' => 15,
                 'top' => 48,
@@ -173,7 +172,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 1,
                 'category_id' => 3,
-                'div_class' => 'chairs',
                 'width' => 24,
                 'height' => 20,
                 'top' => 66,
@@ -186,7 +184,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 1,
                 'category_id' => 2,
-                'div_class' => 'floor1',
                 'width' => 17,
                 'height' => 20,
                 'top' => null,
@@ -199,7 +196,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 1,
                 'category_id' => 2,
-                'div_class' => 'floor2',
                 'width' => 15,
                 'height' => 34,
                 'top' => null,
@@ -212,7 +208,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 1,
                 'category_id' => 4,
-                'div_class' => 'lamps',
                 'width' => 55,
                 'height' => 47,
                 'top' => 0,
@@ -227,7 +222,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 2,
                 'category_id' => 1,
-                'div_class' => 'wall',
                 'width' => 34,
                 'height' => 17,
                 'top' => 47,
@@ -240,7 +234,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 2,
                 'category_id' => 3,
-                'div_class' => 'chairs',
                 'width' => 13.5,
                 'height' => 25,
                 'top' => 63,
@@ -253,7 +246,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 2,
                 'category_id' => 2,
-                'div_class' => 'floor1',
                 'width' => 33,
                 'height' => 12,
                 'top' => null,
@@ -266,7 +258,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 2,
                 'category_id' => 2,
-                'div_class' => 'floor2',
                 'width' => 22.5,
                 'height' => 34,
                 'top' => null,
@@ -279,7 +270,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 2,
                 'category_id' => 4,
-                'div_class' => 'lamps',
                 'width' => 44,
                 'height' => 47,
                 'top' => 0,
@@ -295,7 +285,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 3,
                 'category_id' => 1,
-                'div_class' => 'wall',
                 'width' => 66,
                 'height' => 27,
                 'top' => 44,
@@ -308,7 +297,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 3,
                 'category_id' => 3,
-                'div_class' => 'chairs',
                 'width' => 54.5,
                 'height' => 17,
                 'top' => null,
@@ -321,7 +309,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 3,
                 'category_id' => 4,
-                'div_class' => 'lamps',
                 'width' => 66,
                 'height' => 44,
                 'top' => 0,
@@ -336,7 +323,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 4,
                 'category_id' => 1,
-                'div_class' => 'wall',
                 'width' => 22,
                 'height' => 14.5,
                 'top' => 47,
@@ -349,7 +335,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 4,
                 'category_id' => 2,
-                'div_class' => 'floor1',
                 'width' => 100,
                 'height' => 21,
                 'top' => null,
@@ -362,7 +347,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 4,
                 'category_id' => 4,
-                'div_class' => 'lamps',
                 'width' => 57,
                 'height' => 46.5,
                 'top' => 0,
@@ -378,7 +362,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 5,
                 'category_id' => 1,
-                'div_class' => 'wall',
                 'width' => 33.5,
                 'height' => 22,
                 'top' => 46,
@@ -391,7 +374,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 5,
                 'category_id' => 4,
-                'div_class' => 'lamps',
                 'width' => 86,
                 'height' => 46,
                 'top' => 0,
@@ -407,7 +389,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 6,
                 'category_id' => 1,
-                'div_class' => 'wall',
                 'width' => 67.5,
                 'height' => 42,
                 'top' => 34,
@@ -422,7 +403,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 7,
                 'category_id' => 3,
-                'div_class' => 'chairs',
                 'width' => 25.5,
                 'height' => 37.5,
                 'top' => null,
@@ -435,7 +415,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 7,
                 'category_id' => 2,
-                'div_class' => 'floor1',
                 'width' => 40.5,
                 'height' => 18,
                 'top' => null,
@@ -448,7 +427,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 7,
                 'category_id' => 2,
-                'div_class' => 'floor2',
                 'width' => 16,
                 'height' => 21,
                 'top' => null,
@@ -461,7 +439,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 7,
                 'category_id' => 2,
-                'div_class' => 'floor3',
                 'width' => 9,
                 'height' => 33,
                 'top' => null,
@@ -474,7 +451,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 7,
                 'category_id' => 2,
-                'div_class' => 'floor4',
                 'width' => 23.5,
                 'height' => 18,
                 'top' => null,
@@ -487,7 +463,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 7,
                 'category_id' => 4,
-                'div_class' => 'lamps',
                 'width' => 32.5,
                 'height' => 59,
                 'top' => 0,
@@ -503,7 +478,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 8,
                 'category_id' => 2,
-                'div_class' => 'floor1',
                 'width' => 40.5,
                 'height' => 18,
                 'top' => null,
@@ -516,7 +490,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 8,
                 'category_id' => 2,
-                'div_class' => 'floor2',
                 'width' => 17.5,
                 'height' => 18,
                 'top' => null,
@@ -532,7 +505,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 9,
                 'category_id' => 3,
-                'div_class' => 'chairs',
                 'width' => 30,
                 'height' => 44,
                 'top' => null,
@@ -545,7 +517,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 9,
                 'category_id' => 2,
-                'div_class' => 'floor1',
                 'width' => 31.5,
                 'height' => 33,
                 'top' => null,
@@ -558,7 +529,6 @@ class ViewSeeder extends Seeder
             [
                 'view_id' => 9,
                 'category_id' => 2,
-                'div_class' => 'floor2',
                 'width' => 14.5,
                 'height' => 15,
                 'top' => null,

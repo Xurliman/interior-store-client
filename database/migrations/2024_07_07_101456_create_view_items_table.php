@@ -20,7 +20,6 @@ return new class extends Migration
             $table->decimal('top')->nullable();
             $table->decimal('right')->nullable();
             $table->decimal('left')->nullable();
-            $table->string('div_class');
             $table->timestamps();
         });
     }

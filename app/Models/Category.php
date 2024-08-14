@@ -28,7 +28,7 @@ class Category extends Model
     }
 
     public function views(): BelongsToMany {
-        return $this->belongsToMany(View::class,'view_items')->withPivot('div_class')->withTimestamps();
+        return $this->belongsToMany(View::class,'view_items')->withTimestamps();
     }
 
     public static function boot(): void

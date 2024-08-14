@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\ProductConfiguration;
 
+use App\Http\Resources\View\ViewResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -11,10 +12,8 @@ class ProductConfigurationResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'btn_class' => $this->btn_class,
-            'data_object' => $this->data_object,
-            'class' => $this->class,
-            'extra_class' => $this->extra_class,
+            'images' => $this->images,
+            'view' => ViewResource::make($this->whenLoaded('view')),
         ];
     }
 }

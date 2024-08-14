@@ -14,7 +14,12 @@ class ViewItem extends Model
     protected $fillable = [
         'view_id',
         'category_id',
-        'div_class',
+        'width',
+        'height',
+        'top',
+        'bottom',
+        'right',
+        'left',
     ];
 
     public function view(): BelongsTo

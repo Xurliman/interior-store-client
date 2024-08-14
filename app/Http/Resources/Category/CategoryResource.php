@@ -14,9 +14,6 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'data_mask' => $this->data_mask,
-            'div_id' => $this->div_id,
-            'class' => $this->class,
             'products' => ProductResource::collection($this->whenLoaded('products')),
             'view_item' => ViewItemResource::make($this->whenLoaded('view_item'))
         ];

@@ -29,8 +29,6 @@ class ProductConfigurationRelationManager extends RelationManager
                     ->label('View')
                     ->relationship('view', 'description')
                     ->required(),
-                TextInput::make('data_object')
-                    ->required(),
             ]);
     }
 
@@ -47,10 +45,6 @@ class ProductConfigurationRelationManager extends RelationManager
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('view.name')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('data_object')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),

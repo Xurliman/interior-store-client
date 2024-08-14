@@ -20,7 +20,7 @@ class ProductResource extends JsonResource
             'dimensions' => $this->dimensions,
             'category' => CategoryResource::make($this->whenLoaded('category')),
             'product_configuration' => ProductConfigurationResource::make($this->whenLoaded('productConfiguration')),
-            'price' => PriceResource::make($this->whenLoaded('price')),
+            'price' => $this->price,
             'image' => $this->image->path ?? null
         ];
     }

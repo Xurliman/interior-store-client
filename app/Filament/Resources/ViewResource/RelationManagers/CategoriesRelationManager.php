@@ -29,7 +29,6 @@ class CategoriesRelationManager extends RelationManager
                 TextInput::make('top')->nullable()->numeric(),
                 TextInput::make('right')->nullable()->numeric(),
                 TextInput::make('left')->nullable()->numeric(),
-                TextInput::make('div_class')->required(),
             ]);
     }
 
