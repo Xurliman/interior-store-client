@@ -4,7 +4,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/scene-configurator.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/base.css') }}" />
+{{--    <link rel="stylesheet" href="{{ asset('css/base.css') }}" /> --}}
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}"/>
 @endsection
 

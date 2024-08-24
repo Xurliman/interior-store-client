@@ -24,10 +24,13 @@
 
         <!-- Panzoom / Scene images -->
         <div class="my-cont">
-            <div class="f-panzoom">
+            <div
+                class="f-panzoom"
+                style="overflow: hidden; user-select: none; touch-action: none;">
                 <div
                     class="f-panzoom__content"
-                    id="myPanzoom">
+                    id="myPanzoom"
+                    style="cursor: move; user-select: none; touch-action: none; transform-origin: 50% 50%; transition: none; transform: scale(1) translate(0px, 0px);">
                     <img
                         usemap="#image-map"
                         id="scene-img"

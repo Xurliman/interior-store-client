@@ -1,5 +1,5 @@
 @php use Illuminate\Support\Facades\Storage; @endphp
-<div class="swiper-slide">
+<div class="swiper-slide" style="width: 884px; margin-right: 30px;">
     <div class="main-cont">
         <h1 class="carousel__title carousel__title-mobile h1">
             {{ $scene->name }}
@@ -33,8 +33,7 @@
         <div class="container-xxl">
             <h1 class="carousel__title h1">{{ $scene->name }}</h1>
             <button
-                class="carousel__btn carousel__btn-start kitchen-scene"
-            >
+                class="carousel__btn carousel__btn-start kitchen-scene">
                 Get started
             </button>
         </div>

@@ -1041,337 +1041,337 @@
   height: 100vh;
 }
 
-.kitchen-white-view3-chairs {
-  width: 30%;
-  height: 44%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  right: 38.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view3-chairs {*/
+/*  width: 30%;*/
+/*  height: 44%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  right: 38.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view3-floor1 {
-  width: 31.5%;
-  height: 33%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view3-floor1 {*/
+/*  width: 31.5%;*/
+/*  height: 33%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view3-floor2 {
-  width: 14.5%;
-  height: 15%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view3-floor2 {*/
+/*  width: 14.5%;*/
+/*  height: 15%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  right: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view2-floor1 {
-  width: 40.5%;
-  height: 18%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  left: 18%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view2-floor1 {*/
+/*  width: 40.5%;*/
+/*  height: 18%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 18%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view2-floor2 {
-  width: 17.5%;
-  height: 18%;
-  background: transparent;
-  position: absolute;
-  bottom: 13%;
-  left: 32%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view2-floor2 {*/
+/*  width: 17.5%;*/
+/*  height: 18%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 13%;*/
+/*  left: 32%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view1-chairs {
-  width: 25.5%;
-  height: 37.5%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  left: 40.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view1-chairs {*/
+/*  width: 25.5%;*/
+/*  height: 37.5%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 40.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view1-floor1 {
-  width: 40.5%;
-  height: 18%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view1-floor1 {*/
+/*  width: 40.5%;*/
+/*  height: 18%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view1-floor2 {
-  width: 16%;
-  height: 21%;
-  background: transparent;
-  position: absolute;
-  bottom: 8%;
-  left: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view1-floor2 {*/
+/*  width: 16%;*/
+/*  height: 21%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 8%;*/
+/*  left: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view1-floor3 {
-  width: 9%;
-  height: 33%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view1-floor3 {*/
+/*  width: 9%;*/
+/*  height: 33%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  right: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view1-floor4 {
-  width: 23.5%;
-  height: 18%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view1-floor4 {*/
+/*  width: 23.5%;*/
+/*  height: 18%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  right: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-white-view1-lamps {
-  width: 32.5%;
-  height: 59%;
-  background: transparent;
-  position: absolute;
-  top: 0;
-  left: 39.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-white-view1-lamps {*/
+/*  width: 32.5%;*/
+/*  height: 59%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 39.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-red-view3-wall {
-  width: 67.5%;
-  height: 42%;
-  background: transparent;
-  position: absolute;
-  top: 34%;
-  left: 7%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-red-view3-wall {*/
+/*  width: 67.5%;*/
+/*  height: 42%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 34%;*/
+/*  left: 7%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-red-view2-wall {
-  width: 33.5%;
-  height: 22%;
-  background: transparent;
-  position: absolute;
-  top: 46%;
-  left: 31.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-red-view2-wall {*/
+/*  width: 33.5%;*/
+/*  height: 22%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 46%;*/
+/*  left: 31.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-red-view2-lamps {
-  width: 86%;
-  height: 46%;
-  background: transparent;
-  position: absolute;
-  top: 0;
-  left: 5.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-red-view2-lamps {*/
+/*  width: 86%;*/
+/*  height: 46%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 5.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-red-view1-wall {
-  width: 22%;
-  height: 14.5%;
-  background: transparent;
-  position: absolute;
-  top: 47%;
-  left: 39%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-red-view1-wall {*/
+/*  width: 22%;*/
+/*  height: 14.5%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 47%;*/
+/*  left: 39%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-red-view1-floor1 {
-  width: 100%;
-  height: 21%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-red-view1-floor1 {*/
+/*  width: 100%;*/
+/*  height: 21%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-red-view1-lamps {
-  width: 57%;
-  height: 46.5%;
-  background: transparent;
-  position: absolute;
-  top: 0;
-  left: 21.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-red-view1-lamps {*/
+/*  width: 57%;*/
+/*  height: 46.5%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 21.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view3-wall {
-  width: 66%;
-  height: 27%;
-  background: transparent;
-  position: absolute;
-  top: 44%;
-  left: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view3-wall {*/
+/*  width: 66%;*/
+/*  height: 27%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 44%;*/
+/*  left: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view3-chairs {
-  width: 54.5%;
-  height: 17%;
-  background: transparent;
-  position: absolute;
-  bottom: 0;
-  left: 30%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view3-chairs {*/
+/*  width: 54.5%;*/
+/*  height: 17%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 30%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view3-lamps {
-  width: 66%;
-  height: 44%;
-  background: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view3-lamps {*/
+/*  width: 66%;*/
+/*  height: 44%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view2-wall {
-  width: 34%;
-  height: 17%;
-  background: transparent;
-  position: absolute;
-  top: 47%;
-  left: 18.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view2-wall {*/
+/*  width: 34%;*/
+/*  height: 17%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 47%;*/
+/*  left: 18.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view2-chairs {
-  width: 13.5%;
-  height: 25%;
-  background: transparent;
-  position: absolute;
-  top: 63%;
-  left: 64%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view2-chairs {*/
+/*  width: 13.5%;*/
+/*  height: 25%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 63%;*/
+/*  left: 64%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view2-floor1 {
-  width: 33%;
-  height: 12%;
-  background: transparent;
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view2-floor1 {*/
+/*  width: 33%;*/
+/*  height: 12%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0%;*/
+/*  left: 0%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view2-floor2 {
-  width: 22.5%;
-  height: 34%;
-  background: transparent;
-  position: absolute;
-  bottom: 0%;
-  right: 0%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view2-floor2 {*/
+/*  width: 22.5%;*/
+/*  height: 34%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0%;*/
+/*  right: 0%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view2-lamps {
-  width: 44%;
-  height: 47%;
-  background: transparent;
-  position: absolute;
-  top: 0;
-  right: 37.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view2-lamps {*/
+/*  width: 44%;*/
+/*  height: 47%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  right: 37.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view1-wall {
-  width: 39%;
-  height: 15%;
-  background: transparent;
-  position: absolute;
-  top: 48%;
-  left: 30.5%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view1-wall {*/
+/*  width: 39%;*/
+/*  height: 15%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 48%;*/
+/*  left: 30.5%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view1-chairs {
-  width: 24%;
-  height: 20%;
-  background: transparent;
-  position: absolute;
-  top: 66%;
-  left: 56%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view1-chairs {*/
+/*  width: 24%;*/
+/*  height: 20%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 66%;*/
+/*  left: 56%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view1-floor1 {
-  width: 17%;
-  height: 20%;
+/*.kitchen-black-view1-floor1 {*/
+/*  width: 17%;*/
+/*  height: 20%;*/
 
-  background: transparent;
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0%;*/
+/*  left: 0%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view1-floor2 {
-  width: 15%;
-  height: 34%;
+/*.kitchen-black-view1-floor2 {*/
+/*  width: 15%;*/
+/*  height: 34%;*/
 
-  background: transparent;
-  position: absolute;
-  bottom: 0%;
-  right: 0%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  bottom: 0%;*/
+/*  right: 0%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.kitchen-black-view1-lamps {
-  width: 55%;
-  height: 47%;
-  background: transparent;
-  position: absolute;
-  top: 0;
-  right: 22%;
-  z-index: 1;
-  cursor: pointer;
-}
+/*.kitchen-black-view1-lamps {*/
+/*  width: 55%;*/
+/*  height: 47%;*/
+/*  background: transparent;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  right: 22%;*/
+/*  z-index: 1;*/
+/*  cursor: pointer;*/
+/*}*/
 
 .mask {
   pointer-events: none;

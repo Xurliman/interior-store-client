@@ -31,6 +31,9 @@ class SceneResource extends Resource
                 Forms\Components\Section::make()->schema([
                     TextInput::make('name')
                         ->required(),
+                    TextInput::make('sequence_number')
+                        ->numeric()
+                        ->required(),
                     TextInput::make('slug')
                         ->required(),
                     Toggle::make('is_visible')
@@ -43,14 +46,13 @@ class SceneResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('sequence_number'),
                 TextColumn::make('name')
                     ->searchable()
-                    ->sortable()
-                    ->toggleable(),
+                    ->sortable(),
                 TextColumn::make('slug')
                     ->searchable()
-                    ->sortable()
-                    ->toggleable(),
+                    ->sortable(),
                 ToggleColumn::make('is_visible')
                     ->toggleable(false),
             ])
@@ -78,7 +80,7 @@ class SceneResource extends Resource
     {
         return [
             'index' => Pages\ListScenes::route('/'),
-//            'create' => Pages\CreateScene::route('/create'),
+            'create' => Pages\CreateScene::route('/create'),
             'edit' => Pages\EditScene::route('/{record}/edit'),
         ];
     }
