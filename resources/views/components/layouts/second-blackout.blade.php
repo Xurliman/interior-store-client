@@ -5,13 +5,14 @@
             <ul class="navbar-nav">
                 @auth
                 <li class="nav-item">
-                    <a class="drop-down__link nav-link mb-1" href="{{ route('carts.index') }}">
-                        Gallery
+                    <a class="drop-down-btn open-gallery-window drop-down__link nav-link mb-1" href="{{ route('carts.index') }}">
+                        My Gallery
                     </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="drop-down__link nav-link mb-1" href="{{ route('profile.show') }}">
+                    <a class="drop-down-btn open-profile-window drop-down__link nav-link mb-1" href="{{ route('profile.show') }}">
                         Profile
                     </a>
                 </li>
@@ -20,7 +21,7 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
-                        <button class="drop-down__link nav-link mb-1" @click.prevent="$root.submit();">
+                        <button class="drop-down-btn drop-down__link nav-link mb-1" @click.prevent="$root.submit();">
                             {{ __('LogOut') }}
                         </button>
                     </form>
@@ -28,18 +29,18 @@
                 @endauth
 
                 <li class="nav-item">
-                    <a class="drop-down__link nav-link mb-1" href="{{ route('faq') }}">
+                    <a class="drop-down-btn open-faq-window drop-down__link nav-link mb-1" href="{{ route('faq') }}">
                         FAQ
                     </a>
                 </li>
                 @guest
                     <li class="nav-item">
-                        <a class="drop-down__link nav-link mb-1" href="{{ route('register') }}">
+                        <a class="drop-down-btn open-faq-window drop-down__link nav-link mb-1" href="{{ route('register') }}">
                             Register
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="drop-down__link nav-link mb-1" href="{{ route('login') }}">
+                        <a class="drop-down-btn open-faq-window drop-down__link nav-link mb-1" href="{{ route('login') }}">
                             Login
                         </a>
                     </li>

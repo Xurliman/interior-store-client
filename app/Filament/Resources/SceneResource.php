@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SceneResource\Pages;
 use App\Filament\Resources\SceneResource\RelationManagers;
 use App\Models\Scene;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
@@ -87,6 +88,7 @@ class SceneResource extends Resource
 
     public static function canCreate(): bool
     {
-        return false;
+        /** @var User $user */
+        return auth()->user()->hasRole('admin');
     }
 }

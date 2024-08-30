@@ -7,12 +7,12 @@ use App\Filament\Resources\ProductResource\Pages\CreateProduct;
 use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Filament\Resources\ProductResource\RelationManagers;
-use App\Filament\Resources\ProductResource\RelationManagers\ImageRelationManager;
-use App\Filament\Resources\ProductResource\RelationManagers\PriceRelationManager;
 use App\Filament\Resources\ProductResource\RelationManagers\ProductConfigurationRelationManager;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
@@ -37,6 +37,10 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
+//    protected static ?string $navigationGroup = 'Products';
+
+    protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -59,7 +63,16 @@ class ProductResource extends Resource
                         ->default(true),
                     MarkdownEditor::make('description')
                         ->required(),
-                ])->columns(2)
+                    Fieldset::make('Image')
+                        ->relationship('image')
+                        ->schema([
+                            FileUpload::make('path')
+                                ->image()
+                                ->imageEditor()
+                                ->disk('public')
+                                ->required()
+                        ])->columnSpan(1)
+                ])->columns(2),
             ]);
     }
 
@@ -101,7 +114,6 @@ class ProductResource extends Resource
     {
         return [
             ProductConfigurationRelationManager::class,
-            ImageRelationManager::class
         ];
     }
 
@@ -116,6 +128,7 @@ class ProductResource extends Resource
 
     public static function canCreate(): bool
     {
-        return false;
+        /** @var User $user */
+        return auth()->user()->hasRole('admin');
     }
 }

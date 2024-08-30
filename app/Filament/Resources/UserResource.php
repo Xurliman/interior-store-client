@@ -79,4 +79,10 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
+
+    public static function canCreate(): bool
+    {
+        /** @var User $user */
+        return auth()->user()->hasRole('admin');
+    }
 }

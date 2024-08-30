@@ -6,9 +6,12 @@ use App\Filament\Resources\ProductConfigurationResource\Pages;
 use App\Filament\Resources\ProductConfigurationResource\RelationManagers;
 use App\Models\Product;
 use App\Models\ProductConfiguration;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -28,6 +31,12 @@ class ProductConfigurationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-adjustments-horizontal';
 
+//    protected static ?string $navigationGroup = 'Products';
+
+    protected static ?int $navigationSort = 3;
+
+//    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -41,7 +50,28 @@ class ProductConfigurationResource extends Resource
                         ->label('View')
                         ->relationship('view', 'description')
                         ->required(),
-                ])->columns(2)
+                ])->columns(2),
+                Forms\Components\Section::make()->schema([
+                    Repeater::make('Images')
+                        ->hint("Choose how should product look in the selected view")
+                        ->relationship('images', function (Builder $query) {
+                            $query->whereNot('type', 'mask_merged');
+                        })
+                        ->schema([
+                            Forms\Components\Select::make('type')
+                                ->options([
+                                    'transparent_bg' => 'Transparent Background',
+                                    'mask_bg' => 'Mask Background',
+                                ])->required(),
+                            FileUpload::make('path')
+                                ->image()
+                                ->imageEditor()
+                                ->disk('public')
+                                ->required()
+                        ])->columns(2)
+                        ->maxItems(2)
+                        ->minItems(2),
+                ])->columns(1),
             ]);
     }
 
@@ -72,13 +102,6 @@ class ProductConfigurationResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\ImageRelationManager::class
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
@@ -86,5 +109,11 @@ class ProductConfigurationResource extends Resource
             'create' => Pages\CreateProductConfiguration::route('/create'),
             'edit' => Pages\EditProductConfiguration::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        /** @var User $user */
+        return auth()->user()->hasRole('admin');
     }
 }

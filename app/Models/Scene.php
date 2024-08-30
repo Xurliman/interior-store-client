@@ -15,6 +15,8 @@ class Scene extends Model
 
     protected $fillable = [
         'name',
+        'sequence_number',
+        'is_visible',
         'slug',
     ];
 

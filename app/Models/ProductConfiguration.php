@@ -28,6 +28,10 @@ class ProductConfiguration extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+    public function image(): MorphOne {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
     public function view(): BelongsTo {
         return $this->belongsTo(View::class);
     }

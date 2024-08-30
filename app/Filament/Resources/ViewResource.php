@@ -6,11 +6,13 @@ use App\Filament\Resources\ViewResource\Pages;
 use App\Filament\Resources\ViewResource\RelationManagers;
 use App\Models\Image;
 use App\Models\Scene;
+use App\Models\User;
 use App\Models\View;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -51,6 +53,28 @@ class ViewResource extends Resource
                        ->default(true),
                    MarkdownEditor::make('description')
                        ->required(),
+                   Forms\Components\Section::make()->schema([
+                       Repeater::make('Images')
+                           ->hint("Select proper images to corresponding types")
+                           ->relationship('images', function (Builder $query) {
+                               $query->whereNot('type', 'mask_merged');
+                           })
+                           ->schema([
+                               Forms\Components\Select::make('type')
+                                   ->options([
+                                       'black_bg' => 'Final',
+                                       'transparent_bg' => 'Background',
+                                       'mask_bg' => 'Table',
+                                   ])->required(),
+                               FileUpload::make('path')
+                                   ->image()
+                                   ->imageEditor()
+                                   ->disk('public')
+                                   ->required()
+                           ])->columns(2)
+                            ->maxItems(3)
+                            ->minItems(2)
+                   ])->columns(1),
                ])->columns(2)
             ]);
     }
@@ -94,7 +118,7 @@ class ViewResource extends Resource
     {
         return [
 //            RelationManagers\ProductsRelationManager::class,
-            RelationManagers\ImageRelationManager::class,
+//            RelationManagers\ImageRelationManager::class,
             RelationManagers\CategoriesRelationManager::class,
         ];
     }
@@ -110,6 +134,7 @@ class ViewResource extends Resource
 
     public static function canCreate(): bool
     {
-        return false;
+        /** @var User $user */
+        return auth()->user()->hasRole('admin');
     }
 }
