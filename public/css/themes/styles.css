@@ -1,22 +1,22 @@
 @font-face {
     font-family: "db";
-    src: url("../../fonts/Dudek-Black.otf") format("opentype");
+    src: url(../../fonts/Dudek-Black.otf) format("opentype");
 }
 @font-face {
     font-family: "dsb";
-    src: url("../../fonts/Dudek-Semibold.otf") format("opentype");
+    src: url(../../fonts/Dudek-Semibold.otf) format("opentype");
 }
 @font-face {
     font-family: "dm";
-    src: url("../../fonts/Dudek-Medium.otf") format("opentype");
+    src: url(../../fonts/Dudek-Medium.otf) format("opentype");
 }
 @font-face {
     font-family: "dr";
-    src: url("../../fonts/Dudek-Regular.otf") format("opentype");
+    src: url(../../fonts/Dudek-Regular.otf) format("opentype");
 }
 @font-face {
     font-family: "dl";
-    src: url("../../fonts/Dudek-Light.otf") format("opentype");
+    src: url(../../fonts/Dudek-Light.otf) format("opentype");
 }
 * {
     margin: 0;
@@ -187,7 +187,7 @@ nav .burger-wrapper {
     background-size: cover;
     background-repeat: no-repeat;
     content: "";
-    background-image: url(./../images/select-button.svg);
+    background-image: url(../../img/icons/select-btn.svg);
     position: absolute;
     right: 0;
     top: 50%;
@@ -251,7 +251,7 @@ nav .burger-wrapper {
     right: 0;
     height: 100%;
     width: 50%;
-    background-image: url(./../images/dot.svg);
+    background-image: url(../../img/icons/dot.svg);
 }
 
 .home-banner-outer-wrapper {
@@ -428,7 +428,7 @@ nav .burger-wrapper {
     right: 10%;
     padding-bottom: 159%;
     width: 200%;
-    background-image: url(./../images/dotblack.svg);
+    background-image: url(../../img/icons/dotblack.svg);
     z-index: -1;
 }
 .with-us .content-wrapper .right {
@@ -623,7 +623,7 @@ nav .burger-wrapper {
     left: 34.5%;
     height: 135%;
     width: 200%;
-    background-image: url(./../images/dotblack.svg);
+    background-image: url(../../img/icons/dotblack.svg);
     z-index: -1;
 }
 .portfolio img {
@@ -769,7 +769,7 @@ nav .burger-wrapper {
     right: 0px;
     height: 10px;
     width: 85px;
-    background-image: url(./../images/reviews-right-arrow-desktop.svg);
+    background-image: url(../../img/icons/reviews-right-arrow-desktop.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -783,7 +783,7 @@ nav .burger-wrapper {
     height: 10px;
     width: 85px;
     transform: rotate(180deg);
-    background-image: url(./../images/reviews-right-arrow-desktop.svg);
+    background-image: url(../../img/icons/reviews-right-arrow-desktop.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -885,7 +885,7 @@ nav .burger-wrapper {
     right: 0px;
     height: 10px;
     width: 85px;
-    background-image: url(./../images/reviews-right-arrow-desktop.svg);
+    background-image: url(../../img/icons/reviews-right-arrow-desktop.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -899,7 +899,7 @@ nav .burger-wrapper {
     height: 10px;
     width: 85px;
     transform: rotate(180deg);
-    background-image: url(./../images/reviews-right-arrow-desktop.svg);
+    background-image: url(../../img/icons/reviews-right-arrow-desktop.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -911,7 +911,7 @@ nav .burger-wrapper {
     right: 40%;
     height: 100%;
     width: 100%;
-    background-image: url(./../images/dotblack.svg);
+    background-image: url(../../img/icons/dotblack.svg);
     z-index: -1;
 }
 
@@ -1815,8 +1815,8 @@ footer .social img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 280px;
-    padding-bottom: 365px;
+    padding-top: 60px;
+    padding-bottom: 5px;
 }
 .contact .title {
     font-size: 60px;
@@ -1885,7 +1885,7 @@ footer .social img {
     left: -50px;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url(./../images/icon-location.svg);
+    background-image: url(../../img/icons/icon-location.svg);
     width: 21px;
     height: 26px;
     background-repeat: no-repeat;
@@ -1907,7 +1907,7 @@ footer .social img {
     left: -52px;
     top: 67%;
     transform: translateY(-50%);
-    background-image: url(./../images/icon-phone.svg);
+    background-image: url(../../img/icons/icon-phone.svg);
     width: 27px;
     height: 26px;
     background-repeat: no-repeat;
@@ -2001,7 +2001,7 @@ footer .social img {
         right: 0;
         height: 100%;
         width: 50%;
-        background-image: url(./../images/dot.svg);
+        background-image: url(../../img/icons/dot.svg);
     }
     .home-banner-outer-wrapper {
         position: absolute;
@@ -2092,7 +2092,7 @@ footer .social img {
         right: 10%;
         padding-bottom: 159%;
         width: 200%;
-        background-image: url(./../images/dotblack.svg);
+        background-image: url(../../img/icons/dotblack.svg);
         z-index: -1;
     }
     .with-us .content-wrapper .right {
@@ -2249,7 +2249,7 @@ footer .social img {
         left: 35%;
         height: 135%;
         width: 200%;
-        background-image: url(./../images/dotblack.svg);
+        background-image: url(../../img/icons/dotblack.svg);
         z-index: -1;
     }
     .portfolio img {
@@ -2481,7 +2481,7 @@ footer .social img {
         right: 37%;
         height: 100%;
         width: 100%;
-        background-image: url(./../images/dotblack.svg);
+        background-image: url(../../img/icons/dotblack.svg);
         z-index: -1;
     }
     .services-listing .our-services {
@@ -3089,8 +3089,8 @@ footer .social img {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 200px;
-        padding-bottom: 300px;
+        padding-top: 60px;
+        padding-bottom: 5px;
     }
     .contact .title {
         font-size: 40px;
@@ -3148,7 +3148,7 @@ footer .social img {
         left: -35px;
         top: 50%;
         transform: translateY(-50%);
-        background-image: url(./../images/icon-location.svg);
+        background-image: url(../../img/icons/icon-location.svg);
         width: 14px;
         height: 17px;
         background-repeat: no-repeat;
@@ -3169,7 +3169,7 @@ footer .social img {
         left: -38px;
         top: 65%;
         transform: translateY(-50%);
-        background-image: url(./../images/icon-phone.svg);
+        background-image: url(../../img/icons/icon-phone.svg);
         width: 19px;
         height: 19px;
         background-repeat: no-repeat;
@@ -4291,8 +4291,8 @@ footer .social img {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 200px;
-        padding-bottom: 250px;
+        padding-top: 60px;
+        padding-bottom: 5px;
     }
     .contact .title {
         font-size: 40px;
@@ -4346,7 +4346,7 @@ footer .social img {
         left: -35px;
         top: 50%;
         transform: translateY(-50%);
-        background-image: url(./../images/icon-location.svg);
+        background-image: url(../../img/icons/icon-location.svg);
         width: 14px;
         height: 17px;
         background-repeat: no-repeat;
@@ -4367,7 +4367,7 @@ footer .social img {
         left: -38px;
         top: 65%;
         transform: translateY(-50%);
-        background-image: url(./../images/icon-phone.svg);
+        background-image: url(../../img/icons/icon-phone.svg);
         width: 19px;
         height: 19px;
         background-repeat: no-repeat;
@@ -4439,7 +4439,7 @@ footer .social img {
         background-size: cover;
         background-repeat: no-repeat;
         content: "";
-        background-image: url(./../images/select-button.svg);
+        background-image: url(../../img/icons/select-btn.svg);
         position: absolute;
         right: 0;
         top: 50%;
@@ -4496,7 +4496,7 @@ footer .social img {
         right: 0;
         height: 100%;
         width: 50%;
-        background-image: url(./../images/dot.svg);
+        background-image: url(../../img/icons/dot.svg);
     }
     .home-banner-outer-wrapper {
         position: absolute;
@@ -4610,7 +4610,7 @@ footer .social img {
         right: 10%;
         padding-bottom: 154%;
         width: 200%;
-        background-image: url(./../images/home-withus-dots-tab.svg);
+        background-image: url(../../img/icons/home-withus-dots-tab.svg);
         z-index: -1;
     }
     .with-us .content-wrapper .right {
@@ -4772,7 +4772,7 @@ footer .social img {
         left: 35%;
         height: 135%;
         width: 200%;
-        background-image: url(./../images/home-withus-dots-tab.svg);
+        background-image: url(../../img/icons/home-withus-dots-tab.svg);
         z-index: -1;
     }
     .portfolio img {
@@ -4917,7 +4917,7 @@ footer .social img {
         right: 0px;
         height: 10px;
         width: 50px;
-        background-image: url(../images/review-right-arrow-tablet.svg);
+        background-image: url(../../img/icons/review-right-arrow-tablet.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -4931,7 +4931,7 @@ footer .social img {
         height: 10px;
         width: 50px;
         transform: rotate(180deg);
-        background-image: url(./../images/review-right-arrow-tablet.svg);
+        background-image: url(../../img/icons/review-right-arrow-tablet.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -5032,7 +5032,7 @@ footer .social img {
         right: 0px;
         height: 10px;
         width: 50px;
-        background-image: url(./../images/review-right-arrow-tablet.svg);
+        background-image: url(../../img/icons/review-right-arrow-tablet.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -5046,7 +5046,7 @@ footer .social img {
         height: 10px;
         width: 50px;
         transform: rotate(180deg);
-        background-image: url(./../images/review-right-arrow-tablet.svg);
+        background-image: url(../../img/icons/review-right-arrow-tablet.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -5059,15 +5059,15 @@ footer .social img {
         right: 37%;
         height: 100%;
         width: 100%;
-        background-image: url(./../images/dotblack.svg);
+        background-image: url(../../img/icons/dotblack.svg);
         z-index: -1;
     }
     .contact {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 165px;
-        padding-bottom: 155px;
+        padding-top: 60px;
+        padding-bottom: 5px;
     }
     .contact .title {
         font-size: 24px;
@@ -5126,7 +5126,7 @@ footer .social img {
         left: -35px;
         top: 50%;
         transform: translateY(-50%);
-        background-image: url(./../images/icon-location.svg);
+        background-image: url(../../img/icons/icon-location.svg);
         width: 14px;
         height: 17px;
         background-repeat: no-repeat;
@@ -5147,7 +5147,7 @@ footer .social img {
         left: -38px;
         top: 63%;
         transform: translateY(-50%);
-        background-image: url(./../images/icon-phone.svg);
+        background-image: url(../../img/icons/icon-phone.svg);
         width: 19px;
         height: 19px;
         background-repeat: no-repeat;
@@ -5547,7 +5547,7 @@ footer .social img {
         -webkit-transform: translate(-50%, -100%);
         -ms-transform: translate(-50%, -100%);
         transform: translate(-50%, -100%);
-        background-image: url(./../images/select.svg);
+        background-image: url(../../img/icons/select.svg);
         width: 9px;
         height: 5px;
         background-size: contain;
@@ -6175,7 +6175,7 @@ footer .social img {
         background-size: cover;
         background-repeat: no-repeat;
         content: "";
-        background-image: url(./../images/select-button.svg);
+        background-image: url(../../img/icons/select-btn.svg);
         position: absolute;
         right: 0;
         top: 50%;
@@ -6248,7 +6248,7 @@ footer .social img {
         right: 0;
         height: 100%;
         width: 100%;
-        background-image: url(./../images/home-banner-dots.svg);
+        background-image: url(../../img/icons/home-banner-dots.svg);
     }
     .home-banner-outer-wrapper {
         position: absolute;
@@ -6384,7 +6384,7 @@ footer .social img {
         padding-bottom: initial;
         height: 100%;
         width: initial;
-        background-image: url(./../images/home-withus-dots-mob.svg);
+        background-image: url(../../img/icons/home-withus-dots-mob.svg);
         z-index: -1;
     }
     .with-us .content-wrapper .right {
@@ -6605,7 +6605,7 @@ footer .social img {
         left: -5px;
         height: 450px;
         width: initial;
-        background-image: url(./../images/home-withus-dots-mob.svg);
+        background-image: url(../../img/icons/home-withus-dots-mob.svg);
         z-index: -1;
     }
     .portfolio img {
@@ -6765,7 +6765,7 @@ footer .social img {
         transform: translateX(75px);
         height: 10px;
         width: 50px;
-        background-image: url(./../images/review-right-arrow-tablet.svg);
+        background-image: url(../../img/icons/review-right-arrow-tablet.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -6780,7 +6780,7 @@ footer .social img {
         width: 50px;
         cursor: pointer;
         transform: rotate(180deg) translateX(25px);
-        background-image: url(./../images/review-right-arrow-tablet.svg);
+        background-image: url(../../img/icons/review-right-arrow-tablet.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -6890,7 +6890,7 @@ footer .social img {
         transform: translateX(75px);
         height: 10px;
         width: 50px;
-        background-image: url(./../images/review-right-arrow-tablet.svg);
+        background-image: url(../../img/icons/review-right-arrow-tablet.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -6905,7 +6905,7 @@ footer .social img {
         width: 50px;
         cursor: pointer;
         transform: rotate(180deg) translateX(25px);
-        background-image: url(./../images/review-right-arrow-tablet.svg);
+        background-image: url(../../img/icons/review-right-arrow-tablet.svg);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -6918,15 +6918,15 @@ footer .social img {
         right: 2%;
         height: 70%;
         width: 100%;
-        background-image: url(./../images/home-blogs-dots-mob.svg);
+        background-image: url(../../img/icons/home-blogs-dots-mob.svg);
         z-index: -1;
     }
     .contact {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 155px;
-        padding-bottom: 40px;
+        padding-top: 60px;
+        padding-bottom: 5px;
     }
     .contact .title {
         font-size: 20px;
@@ -6988,7 +6988,7 @@ footer .social img {
         left: -35px;
         top: 50%;
         transform: translateY(-50%);
-        background-image: url(./../images/icon-location.svg);
+        background-image: url(../../img/icons/icon-location.svg);
         width: 14px;
         height: 17px;
         background-repeat: no-repeat;
@@ -7009,7 +7009,7 @@ footer .social img {
         left: -30px;
         top: 62%;
         transform: translateY(-50%);
-        background-image: url(./../images/icon-phone.svg);
+        background-image: url(../../img/icons/icon-phone.svg);
         width: 19px;
         height: 19px;
         background-repeat: no-repeat;
@@ -7458,7 +7458,7 @@ footer .social img {
         -webkit-transform: translate(-50%, -100%);
         -ms-transform: translate(-50%, -100%);
         transform: translate(-50%, -100%);
-        background-image: url(./../images/select.svg);
+        background-image: url(../../img/icons/select.svg);
         width: 9px;
         height: 5px;
         background-size: contain;

@@ -4,7 +4,6 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-{{--    <link rel="stylesheet" href="{{ asset('css/base.css') }}" />--}}
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}"/>
 @endsection
@@ -27,5 +26,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 @endsection

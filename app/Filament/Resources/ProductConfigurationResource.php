@@ -86,8 +86,6 @@ class ProductConfigurationResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                ToggleColumn::make('is_visible')
-                    ->toggleable(false),
             ])
             ->filters([
                 //

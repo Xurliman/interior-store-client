@@ -2,13 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\Pages\CreateProduct;
 use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ListProducts;
-use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Filament\Resources\ProductResource\RelationManagers\ProductConfigurationRelationManager;
-use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Filament\Forms;
@@ -20,7 +17,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -28,8 +24,6 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductResource extends Resource
 {
@@ -57,12 +51,9 @@ class ProductResource extends Resource
                         ->required(),
                     TextInput::make('short_name')
                         ->nullable(),
-                    TextInput::make('dimensions')
-                        ->nullable(),
-                    Toggle::make('is_visible')
-                        ->default(true),
                     MarkdownEditor::make('description')
-                        ->required(),
+                        ->required()
+                        ->maxHeight("267px"),
                     Fieldset::make('Image')
                         ->relationship('image')
                         ->schema([
@@ -71,7 +62,12 @@ class ProductResource extends Resource
                                 ->imageEditor()
                                 ->disk('public')
                                 ->required()
-                        ])->columnSpan(1)
+                            ->columnSpanFull()
+                        ])->columnSpan(1),
+                    TextInput::make('dimensions')
+                        ->nullable(),
+                    Toggle::make('is_visible')
+                        ->default(true),
                 ])->columns(2),
             ]);
     }
@@ -95,7 +91,7 @@ class ProductResource extends Resource
                     ->searchable()
                     ->toggleable(),
                 ToggleColumn::make('is_visible')
-                    ->toggleable(false),
+                    ->disabled(),
             ])
             ->filters([
                 //

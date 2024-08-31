@@ -8,7 +8,7 @@
                     <img
                         class="gallery__img mb-2"
                         src="{{ \Illuminate\Support\Facades\Storage::url($cart->image?->path) }}"
-                        alt="{{ $cart->image?->path }}"/>
+                        alt="{{ $cart->image?->path }}" />
 
                     <div class="gallery__cont">
                         <h3 class="gallery__item_title mb-3">
@@ -18,25 +18,25 @@
                         <div class="gallery__desc d-flex flex-column">
                             @foreach($cart->products as $product)
                                 <span class="gallery__accessors">
-                                {{ $product->name }}
+                                    {{ $product->name }}
                                     {{ '$'.$product->price }}
-                            </span>
+                                 </span>
                             @endforeach
                         </div>
 
-                        <button
-                            wire:click="edit({{ $cart }})"
-                            class="gallery__btn">
-                            Modify
-                        </button>
-                        <button
-                            wire:confirm="Are you sure you want to delete this post?"
-                            wire:click="deleteProduct({{ $cart->id }})"
-                            class="gallery__btn cm-error">
-                            Delete
-                        </button>
+                        <!-- Container for buttons -->
+                        <div class="gallery__btn-container">
+                            <button wire:click="edit({{ $cart }})" class="gallery__btn">
+                                Modify
+                            </button>
+                            <button wire:confirm="Are you sure you want to delete this post?" wire:click="deleteProduct({{ $cart->id }})"
+                                    class="gallery__btn cm-error">
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
+
             @empty
                 <h1>No gallery</h1>
             @endforelse

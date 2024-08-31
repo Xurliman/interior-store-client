@@ -141,7 +141,7 @@
     </div>
     <div class="footer">
         <p>+47 94 163 884</p>
-        <p><a href="http://fantomstudio.uz/configurator">fantomstudio.uz/configurator</a></p>
+        <p><a href="/">fantomstudio.uz/configurator</a></p>
     </div>
 </div>
 </body>

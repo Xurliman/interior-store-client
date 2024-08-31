@@ -1,5 +1,7 @@
 .about {
-  margin: 40px 0px 85px 30px;
+    padding-top: 60px;
+    padding-bottom: 5px;
+    margin: 40px 0px 85px 30px;
 }
 
 .about__title {

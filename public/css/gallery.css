@@ -92,6 +92,8 @@
 /*FOLLOWING CODE IS FROM WORDPRESS GENERATED ZIP ARCHIVE*/
 /* Gallery */
 .gallery {
+    padding-top: 60px;
+    padding-bottom: 5px;
     margin: 40px 0px 85px 30px;
 }
 
@@ -128,6 +130,7 @@
 }
 
 .gallery__cont {
+    position: relative;
     padding: 0px 24px 24px 24px;
 }
 
@@ -141,15 +144,22 @@
     margin-bottom: 5px;
 }
 
-.gallery__btn {
+.gallery__btn-container {
+    display: flex; /* Arrange buttons in a row */
+    gap: 10px; /* Space between buttons */
     position: absolute;
     bottom: 24px;
     right: 24px;
+}
 
+.gallery__btn {
     border-radius: 500px;
     padding: 10px 20px;
     background: var(--signin-blue);
     color: var(--main-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 480px) {

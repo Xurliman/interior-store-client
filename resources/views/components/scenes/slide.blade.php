@@ -8,23 +8,17 @@
         <a class="kitchen-scene" href="{{ route('scenes.show', ["scene" => $scene]) }}">
             <picture>
                 <source
-                    srcset="{{ asset("img/main-white-mobile.jpg") }}"
+                    srcset="{{ asset("img/main-black-mobile.jpg") }}"
                     media="(max-width: 540px)"
                 />
                 <img
                     class="carousel__img"
-                    src="{{ Storage::url(collect(
-                        collect(
-                            $scene
-                            ->load('views.images')
-                            ->views)
-                            ->where('is_visible', true)
-                            ->where('is_default', true)
-                            ->first()?->images)
-                            ->where(function($image){
+                    src="{{ Storage::url($view_images
+                            ->where(function($image) {
                                 return $image->type == 'black_bg';
-                        })
-                        ->first()?->path) }}"
+                            })
+                            ->first()?->path)
+                        }}"
                     alt="kitchen-gray"
                 />
             </picture>

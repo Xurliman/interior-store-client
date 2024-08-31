@@ -65,6 +65,7 @@ class ViewResource extends Resource
                                        'black_bg' => 'Final',
                                        'transparent_bg' => 'Background',
                                        'mask_bg' => 'Table',
+                                       'mobile_bg' => 'Mobile'
                                    ])->required(),
                                FileUpload::make('path')
                                    ->image()
@@ -72,8 +73,8 @@ class ViewResource extends Resource
                                    ->disk('public')
                                    ->required()
                            ])->columns(2)
-                            ->maxItems(3)
-                            ->minItems(2)
+                            ->maxItems(4)
+                            ->minItems(3)
                    ])->columns(1),
                ])->columns(2)
             ]);
@@ -97,9 +98,9 @@ class ViewResource extends Resource
                 ToggleColumn::make('is_default')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
+                    ->disabled(),
                 ToggleColumn::make('is_visible')
-                    ->toggleable(false),
+                    ->disabled(),
             ])
             ->filters([
                 //

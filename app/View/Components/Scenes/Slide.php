@@ -17,6 +17,15 @@ class Slide extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.scenes.slide');
+        return view('components.scenes.slide', [
+            'scene' => $this->scene,
+            'view_images' => collect(
+                $this->scene
+                ->load('views.images')->views)
+                ->where('is_visible', true)
+                ->where('is_default', true)
+                ->first()?->images
+            ]
+        );
     }
 }
