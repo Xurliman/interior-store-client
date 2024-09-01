@@ -30,8 +30,6 @@ class PrintButton extends Component
         $this->viewId = $viewId;
     }
 
-
-
     public function render()
     {
         return view('livewire.options.print-button');
