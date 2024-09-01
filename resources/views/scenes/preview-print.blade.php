@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@php use App\Models\Setting; @endphp
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -121,7 +122,7 @@
     </div>
 
     <div class="logo content-center">
-        <h1>FANTOM</h1>
+        <h1>{{ $setting->company_name }}</h1>
     </div>
     <div class="content">
         <h2>Product list:</h2>
@@ -130,7 +131,7 @@
                 <tr>
                     <td class="number">{{ ++$key }}.</td>
                     <td class="item">{{ $product->name }}</td>
-                    <td class="price">{{ "$".$product->price }}</td>
+                    <td class="price">{{ $setting->currency_symbol.$product->price }}</td>
                 </tr>
             @empty
                 <tr>
@@ -140,8 +141,8 @@
         </table>
     </div>
     <div class="footer">
-        <p>+47 94 163 884</p>
-        <p><a href="/">fantomstudio.uz/configurator</a></p>
+        <p>{{ $setting->company_phone }}</p>
+        <p><a href="/">{{ $setting->company_url }}</a></p>
     </div>
 </div>
 </body>

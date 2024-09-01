@@ -36,15 +36,13 @@ class ImageDownloadButton extends Component
 
     public function downloadPng()
     {
-        if (count($this->selectedProducts) > 0) {
-            $view = View::firstWhere('id', $this->viewId);
-            $products = collect($this->selectedProducts)->pluck('product_id')->toArray();
-            $downloadedImg = ImageMerger::imageCreateForView($view, $products);
-            $path = storage_path("app/public/$downloadedImg");
-            return response()
-                ->download($path, "download.png")
-                ->deleteFileAfterSend(true);
-        }
+        $view = View::firstWhere('id', $this->viewId);
+        $products = collect($this->selectedProducts)->pluck('product_id')->toArray();
+        $downloadedImg = ImageMerger::imageCreateForView($view, $products);
+        $path = storage_path("app/public/$downloadedImg");
+        return response()
+            ->download($path, "download.png")
+            ->deleteFileAfterSend(true);
     }
 
     public function render(): \Illuminate\Contracts\View\View|Factory|Application|\Illuminate\View\View

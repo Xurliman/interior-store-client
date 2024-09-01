@@ -17,9 +17,7 @@
 
             <form class="contact__form">
                 <div class="contact__form_top d-flex flex-column mb-4">
-                    <label class="contact__form_label mb-2"
-                    >Title</label
-                    >
+                    <label class="contact__form_label mb-2">Title</label>
                     <input
                         class="contact__form_input"
                         type="text"
@@ -28,25 +26,20 @@
                 </div>
 
                 <div
-                    class="contact__form_center d-flex flex-column mb-4"
-                >
-                    <label class="contact__form_label mb-2"
-                    >Question</label
-                    >
+                    class="contact__form_center d-flex flex-column mb-4">
+                    <label class="contact__form_label mb-2">Question</label>
                     <textarea
                         class="contact__form_textarea"
                         cols="10"
                         rows="10"
-                        placeholder="How can i..."
-                    ></textarea>
+                        placeholder="How can i...">
+
+                    </textarea>
                 </div>
 
                 <div
-                    class="contact__form_center d-flex flex-column mb-5"
-                >
-                    <label class="contact__form_label mb-2"
-                    >Contacts</label
-                    >
+                    class="contact__form_center d-flex flex-column mb-5">
+                    <label class="contact__form_label mb-2">Contacts</label>
                     <input
                         class="contact__form_input"
                         type="number"
@@ -56,8 +49,7 @@
 
                 <div class="contact__form_bottom d-flex">
                     <button
-                        class="contact__form_btn contact-form-send-btn"
-                    >
+                        class="contact__form_btn contact-form-send-btn">
                         Send
                     </button>
                 </div>
@@ -73,8 +65,7 @@
             </button>
 
             <div
-                class="request__cont d-flex flex-column align-items-center"
-            >
+                class="request__cont d-flex flex-column align-items-center">
                 <h4 class="request__title h4 mb-4">
                     Your request is sent
                 </h4>

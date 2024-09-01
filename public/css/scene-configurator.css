@@ -2443,7 +2443,25 @@
     row-gap: 15px;
 
     position: absolute;
-    top: 43%;
+    top: 40%;
+    left: 112%;
+    z-index: 9999;
+
+    background: #f0f0f0;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 13px;
+
+    width: 132px;
+    height: 74px;
+    padding: 10px 20px;
+}
+.print-modal {
+    display: none;
+    flex-direction: column;
+    row-gap: 15px;
+
+    position: absolute;
+    top: 60%;
     left: 112%;
     z-index: 9999;
 
@@ -2463,6 +2481,9 @@
 }
 
 .download-modal.active {
+    display: flex;
+}
+.print-modal.active {
     display: flex;
 }
 

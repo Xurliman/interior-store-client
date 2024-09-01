@@ -30,16 +30,6 @@ class PrintButton extends Component
         $this->viewId = $viewId;
     }
 
-    public function print(): void
-    {
-        if (count($this->selectedProducts) != 0) {
-            redirect()->route('print', [
-                'view_id' => $this->viewId,
-                'products' => $this->selectedProducts,
-            ]);
-        }
-    }
-
     public function render()
     {
         return view('livewire.options.print-button');

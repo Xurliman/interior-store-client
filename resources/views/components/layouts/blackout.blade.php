@@ -1,28 +1,28 @@
-<!-- Drop Down List -->
-<div class="blackout drop-down-blackout">
-    <div class="mynav-drop-down">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="drop-down__link nav-link mb-1" href="./gallery.html"
-                >My gallery</a
-                >
-            </li>
+<div>
+    <ul class="second-nav__list">
+        <li class="second-nav__item">
+            <a class="open-about-window second-nav__link" href="{{ route('about') }}">
+                About us
+            </a>
+        </li>
 
-            <li class="nav-item">
-                <a class="drop-down__link nav-link mb-1" href="./profile.html"
-                >Profile</a
-                >
-            </li>
+        <li class="second-nav__item">
+            <a class="open-contact-window second-nav__link" href="{{ route('contact') }}">
+                Contact us
+            </a>
+        </li>
 
-            <li class="nav-item">
-                <a class="drop-down__link nav-link mb-1" href="./faq.html">FAQ</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="drop-down__link nav-link mb-1" href="./logout.html"
-                >Log out</a
-                >
-            </li>
-        </ul>
-    </div>
+        <li class="second-nav__item">
+            @auth
+                <button class="second-nav__link second-nav-btn">
+                    {{ auth()->user()->name }}
+                </button>
+            @endauth
+            @guest
+                <button class="second-nav__link second-nav-btn">
+                    Guest
+                </button>
+            @endguest
+        </li>
+    </ul>
 </div>

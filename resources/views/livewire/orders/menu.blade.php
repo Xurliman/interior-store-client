@@ -1,3 +1,4 @@
+@php use App\Models\Setting; @endphp
 <div class="container-xxl">
     <div class="order__container">
         <div class="order__menu">
@@ -9,7 +10,7 @@
 
             <button
                 class="order__btn"
-                type="submit" >
+                type="submit">
                 Order
             </button>
         </div>
@@ -21,7 +22,7 @@
                 @endphp
                 <div class="order__item d-flex flex-column">
                     <span class="order__item_title">{{ $product?->name }}</span>
-                    <span class="order__item_price">{{ "$".$product?->price }}</span>
+                    <span class="order__item_price">{{ Setting::getCurrencySymbol().$product?->price }}</span>
                 </div>
             @empty
                 <span class="order__list-empty">No products yet</span>

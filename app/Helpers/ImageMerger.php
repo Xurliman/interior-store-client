@@ -72,6 +72,10 @@ class ImageMerger
     {
         $viewImageName = self::mergeViewWithForegroundTable(view: $view);
         $destinationViewImagePath = storage_path("app/public/$viewImageName");
+
+        if (count($selectedProducts) == 0) {
+            return $viewImageName;
+        }
         $sourceImagePaths = [];
         $selectedProducts = Product::find([$selectedProducts])
             ->load('productConfigurations.images')

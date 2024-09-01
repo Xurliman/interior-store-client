@@ -6,6 +6,7 @@ use App\Helpers\ImageMerger;
 use App\Http\Resources\Scene\SceneResource;
 use App\Models\Product;
 use App\Models\Scene;
+use App\Models\Setting;
 use App\Models\View;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -46,19 +47,15 @@ class SceneController extends Controller
         return $this->generatePdf($products, $request->view_id)->download('download.pdf');
     }
 
-    public function generatePdf($products, $viewId)
+    public function generatePdf($products, $viewId): \Barryvdh\DomPDF\PDF
     {
         $view = View::firstWhere('id', $viewId);
-        if (count($products)==0) {
-            $printImg = "img/image-not-found.png";
-        } else {
-            $printImg = "storage/".ImageMerger::imageCreateForView(
-                $view,
-                collect($products)->pluck('product_id')->toArray());
-        }
-
+        $printImg = "storage/".ImageMerger::imageCreateForView(
+            $view,
+            collect($products)->pluck('product_id')->toArray());
         return Pdf::loadView('scenes.preview-print', [
             'print_img' => $printImg,
+            'setting' => Setting::first(),
             'products' => Product::whereIn('id', collect($products)->pluck('product_id')->toArray())->get(),
         ]);
     }
