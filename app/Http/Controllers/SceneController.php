@@ -9,6 +9,8 @@ use App\Models\Scene;
 use App\Models\Setting;
 use App\Models\View;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 class SceneController extends Controller
@@ -59,5 +61,10 @@ class SceneController extends Controller
             'setting' => Setting::first(),
             'products' => Product::whereIn('id', collect($products)->pluck('product_id')->toArray())->get(),
         ]);
+    }
+
+    public function orderPlaced(): Application|Factory|\Illuminate\Contracts\View\View
+    {
+        return view('scenes.order-placed');
     }
 }

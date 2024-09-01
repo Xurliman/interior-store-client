@@ -1,6 +1,6 @@
 <div class="share-blackout" data-modal="share">
     <div class="share-modal">
-        <button class="close-share-modal ms-auto">
+        <button class="close-share-modal active ms-auto">
             <img src="{{ asset('img/icons/Cancel.svg') }}" alt="Cancel">
         </button>
 
@@ -65,7 +65,7 @@
                             '_blank'
                         );
                     ">
-                    <img src="{{ asset('img/icons/gmail-pr.svg') }}" width="48px" heihgt="48px" alt="Email">
+                    <img src="{{ asset('img/icons/gmail-pr.svg') }}" width="48px" height="48px" alt="Email">
                 </button>
 
                 <span class="share-modal__item_title mt-2">Email</span>
@@ -84,7 +84,7 @@
                         }
                     }"
                     x-on:click="copyContent()">
-                    <img src="{{ asset('img/icons/link-pr.svg') }}" width="40px" heihgt="40px" alt="Link">
+                    <img src="{{ asset('img/icons/link-pr.svg') }}" width="40px" height="40px" alt="Link">
                 </button>
 
                 <span class="share-modal__item_title mt-2">Copy link</span>

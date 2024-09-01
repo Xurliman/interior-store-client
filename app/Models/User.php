@@ -81,4 +81,9 @@ class User extends Authenticatable implements FilamentUser, Auditable
     {
         return $this->hasRole('admin') or $this->hasRole('manager');
     }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }

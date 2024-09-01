@@ -8,7 +8,18 @@
 
             <span class="order__count ms-2">{{count($selected_products)}} items</span>
 
+            @if (session()->has('message'))
+                <div class="alert alert-success" style="position: absolute; width: max-content; bottom: 75%; right: 0%">
+                    <span>{{ session('message') }}</span>
+                </div>
+            @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger" style="position: absolute; width: max-content; bottom: 75%; right: 0%">
+                    <span>{{ session('error') }}</span>
+                </div>
+            @endif
             <button
+                x-on:click="$wire.order()"
                 class="order__btn"
                 type="submit">
                 Order

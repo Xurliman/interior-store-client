@@ -26,10 +26,10 @@ enum OrderStatus: string implements HasLabel, HasColor, HasIcon
     public function getColor(): string|array|null
     {
         return match ($this) {
-            self::PENDING => 'gray',
+            self::PENDING => 'warning',
             self::PROCESSING => 'info',
             self::COMPLETED => 'success',
-            self::CANCELLED => 'warning',
+            self::CANCELLED => 'danger',
         };
     }
 
@@ -39,7 +39,7 @@ enum OrderStatus: string implements HasLabel, HasColor, HasIcon
             self::PENDING => 'heroicon-m-eye',
             self::PROCESSING => 'heroicon-m-pencil',
             self::COMPLETED => 'heroicon-m-check',
-            self::CANCELLED => 'heroicon-m-check-circle',
+            self::CANCELLED => 'heroicon-m-exclamation-circle',
         };
     }
 }
