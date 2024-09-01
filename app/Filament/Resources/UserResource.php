@@ -34,6 +34,10 @@ class UserResource extends Resource
                     TextInput::make('password')
                         ->password()
                         ->required(),
+                    Forms\Components\Select::make('role')
+                        ->relationship('roles', 'name')
+                        ->preload()
+                        ->multiple()
                 ])
             ]);
     }

@@ -47,7 +47,9 @@ class SceneResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('sequence_number'),
+                TextColumn::make('sequence_number')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),

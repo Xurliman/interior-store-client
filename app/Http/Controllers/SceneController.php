@@ -17,6 +17,7 @@ class SceneController extends Controller
     {
         $scenes = SceneResource::collection(Scene::with('views')
             ->where('is_visible', true)
+            ->orderBy('sequence_number')
             ->get()
         );
         return view('scenes.index', compact('scenes'));

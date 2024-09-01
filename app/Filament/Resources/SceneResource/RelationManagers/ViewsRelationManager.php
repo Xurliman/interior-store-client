@@ -64,9 +64,9 @@ class ViewsRelationManager extends RelationManager
             ->filters([
                 //
             ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-            ])
+            ->headerActions(
+                auth()->user()->hasRole('admin') ? [Tables\Actions\CreateAction::make()] : []
+            )
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
