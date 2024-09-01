@@ -2,7 +2,7 @@
 <div class="scene">
     <!-- Camera View -->
     <div class="camera-view">
-        @foreach($scene->views->where('is_visible', true) as $sceneView)
+            @foreach($scene->views->where('is_visible', true) as $sceneView)
             <button
                 wire:click.prevent="viewSelected({{ $sceneView->id }})"
                 class="camera__item d-flex flex-column">
@@ -180,6 +180,9 @@
     <!-- Saved Modal -->
     {{--    <x-modals.saved-modal :selected-products="$selected_products" />--}}
     <livewire:options.save-to-gallery
+        :view-id="$view->id"
+        :selected-products="$selected_products"/>
+    <livewire:options.share-modal
         :view-id="$view->id"
         :selected-products="$selected_products"/>
 </div>

@@ -7,7 +7,7 @@ use App\Models\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class PrintButton extends Component
+class ShareModal extends Component
 {
     public $viewId;
     public array $selectedProducts;
@@ -30,10 +30,21 @@ class PrintButton extends Component
         $this->viewId = $viewId;
     }
 
-
+    public function getImageUrl(): string
+    {
+        $url =  ImageMerger::imageCreateForView(
+            view: View::firstWhere('id', $this->viewId),
+            selectedProducts: collect($this->selectedProducts)
+                ->map(function ($product){
+                    return $product['id'];
+                })
+                ->toArray()
+        );
+        return asset("storage/$url");
+    }
 
     public function render()
     {
-        return view('livewire.options.print-button');
+        return view('livewire.options.share-modal');
     }
 }

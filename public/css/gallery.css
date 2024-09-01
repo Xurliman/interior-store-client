@@ -145,7 +145,7 @@
 }
 
 .gallery__btn-container {
-    display: flex; /* Arrange buttons in a row */
+    /*display: flex; !* Arrange buttons in a row *!*/
     gap: 10px; /* Space between buttons */
     position: absolute;
     bottom: 24px;
@@ -154,9 +154,8 @@
 
 .gallery__btn {
     border-radius: 500px;
-    padding: 10px 20px;
-    background: var(--signin-blue);
-    color: var(--main-white);
+    padding: 10px 10px;
+    color: var(--main-black);
     display: inline-flex;
     align-items: center;
     justify-content: center;

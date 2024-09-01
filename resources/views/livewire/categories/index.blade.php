@@ -34,8 +34,7 @@
                      data-item="{{ $category->data_mask }}"
                      data-mask="{{ $category->data_mask }}">
                     <button
-                        x-on:click="
-                            $wire.removeProducts({{ $category->id }})"
+                        x-on:click="$wire.removeProducts({{ $category->id }})"
                         class="custom-item-remove {{ in_array($category->id, collect($selectedProducts)->pluck('category_id')->toArray()) ? 'active' : ''}}"
                         data-remove="{{ $category->data_mask }}">
                         Remove
