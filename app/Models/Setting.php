@@ -24,6 +24,11 @@ class Setting extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+    public function getMainLogo()
+    {
+        return $this->images()->where('type', 'transparent_bg')->first();
+    }
+
     public static function getCurrencySymbol():string
     {
         return Setting::first()->currency_symbol ?? "$";

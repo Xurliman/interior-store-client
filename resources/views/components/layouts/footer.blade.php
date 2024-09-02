@@ -1,7 +1,12 @@
 <footer>
     <div class="wrapper max-1650">
         <div class="first">
-            <img src="{{ asset('img/mainlogo.svg') }}" alt="">
+            <img src="{{
+                \Illuminate\Support\Facades\Storage::url(
+                    \App\Models\Setting::first()
+                        ->load('images')
+                        ->getMainLogo()?->path)
+                    }}" alt="">
             <p>Allow Fantom to empower you in transforming your ideas into captivating digital experiences. Our team provides cutting-edge solutions and unparalleled value in delivering exceptional creative work.</p>
         </div>
         <div class="about">

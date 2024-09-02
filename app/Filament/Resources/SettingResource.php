@@ -45,17 +45,17 @@ class SettingResource extends Resource
                         ->schema([
                             Forms\Components\Select::make('type')
                                 ->options([
-                                    'transparent_bg' => 'Transparent Background',
-                                    'mask_bg' => 'Mask Background',
-                                ])->required(),
+                                    'transparent_bg' => 'Logo',
+                                ])->default('transparent_bg')
+                                ->required(),
                             FileUpload::make('path')
                                 ->image()
                                 ->imageEditor()
                                 ->disk('public')
                                 ->required()
                         ])->columns(2)
-                        ->maxItems(2)
-                        ->minItems(2),
+                        ->maxItems(1)
+                        ->minItems(1),
                 ])->columns(1),
             ]);
     }

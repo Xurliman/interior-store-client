@@ -64,7 +64,12 @@
                     <img src="{{ asset('img/icons/menu-burger.svg') }}" alt="menu">
                 </div>
                 <a href="/" class="top-logo-wrapper">
-                    <img src="{{ asset('img/mainlogo.svg') }}" alt="mainlogo">
+                    <img src="{{
+                        \Illuminate\Support\Facades\Storage::url(
+                            \App\Models\Setting::first()
+                                ->load('images')
+                                ->getMainLogo()?->path)
+                    }}" alt="mainlogo">
                 </a>
                 <div class="lang-wrapper ">
                     <select>
@@ -77,7 +82,12 @@
         <div class="menu-block">
             <div class="inner-block">
                 <div class="wrapper">
-                    <img src="{{ asset('img/mainlogo.svg') }}" alt="">
+                    <img src="{{
+                        \Illuminate\Support\Facades\Storage::url(
+                            \App\Models\Setting::first()
+                                ->load('images')
+                                ->getMainLogo()?->path)
+                    }}" alt="">
                     <ul>
                         <li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-252"><a href="/">Home page</a></li>
                         <li id="menu-item-256" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a href="/">Services</a></li>
