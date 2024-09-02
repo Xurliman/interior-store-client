@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.qq',
             'password' => bcrypt('securepass'),
         ]);
+
         Role::create([
             'id' => 1,
             'name' => 'admin',
@@ -29,6 +30,22 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $user->assignRole('admin');
+
+        /** @var User $user */
+        $user = User::factory()->create([
+            'name' => 'Khurliman',
+            'email' => 'jumamuratovahurliman8@gmail.com',
+            'password' => bcrypt('securepassword'),
+        ]);
+
+        Role::create([
+            'id' => 1,
+            'name' => 'manager',
+            'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        $user->assignRole('manager');
 
     }
 }

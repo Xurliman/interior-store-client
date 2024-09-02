@@ -44,12 +44,18 @@ class ProductResource extends Resource
                         ->label('Category')
                         ->relationship('category', 'name')
                         ->required(),
+                    Select::make('author_id')
+                        ->label('Author')
+                        ->relationship('author', 'name')
+                        ->required(),
                     TextInput::make('name')
                         ->required(),
                     TextInput::make('price')
                         ->numeric()
                         ->required(),
                     TextInput::make('short_name')
+                        ->nullable(),
+                    TextInput::make('dimensions')
                         ->nullable(),
                     MarkdownEditor::make('description')
                         ->required()
@@ -64,8 +70,6 @@ class ProductResource extends Resource
                                 ->required()
                             ->columnSpanFull()
                         ])->columnSpan(1),
-                    TextInput::make('dimensions')
-                        ->nullable(),
                     Toggle::make('is_visible')
                         ->default(true),
                 ])->columns(2),

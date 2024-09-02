@@ -25,6 +25,7 @@ class Product extends Model implements Auditable
         'short_name',
         'description',
         'dimensions',
+        'author_id'
     ];
 
     public function category(): BelongsTo
@@ -43,6 +44,11 @@ class Product extends Model implements Auditable
     public function cartItems(): HasMany
     {
         return $this->hasMany(CartItem::class);
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(Author::class);
     }
 
     public static function isInCart($productId, $cartId): bool
