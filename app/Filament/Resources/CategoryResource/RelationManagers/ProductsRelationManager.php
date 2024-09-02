@@ -3,8 +3,12 @@
 namespace App\Filament\Resources\CategoryResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -21,12 +25,32 @@ class ProductsRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                Select::make('category_id')
+                    ->label('Category')
+                    ->relationship('category', 'name')
+                    ->required(),
                 TextInput::make('name')
                     ->required(),
+                TextInput::make('price')
+                    ->numeric()
+                    ->required(),
+                Toggle::make('is_visible')
+                    ->default(true),
+                MarkdownEditor::make('description')
+                    ->required()
+                    ->maxHeight('267px'),
+                Fieldset::make('Image')
+                    ->relationship('image')
+                    ->schema([
+                        FileUpload::make('path')
+                            ->image()
+                            ->imageEditor()
+                            ->disk('public')
+                            ->required()
+                            ->columnSpanFull()
+                    ])->columnSpan(1),
                 TextInput::make('short_name')
                     ->nullable(),
-                MarkdownEditor::make('description')
-                    ->required(),
                 TextInput::make('dimensions')
                     ->nullable(),
             ]);
@@ -37,11 +61,16 @@ class ProductsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
+                Tables\Columns\ImageColumn::make('image.path'),
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
                 TextColumn::make('description')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('price')
                     ->sortable()
                     ->searchable()
                     ->toggleable(),

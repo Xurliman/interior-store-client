@@ -4,7 +4,10 @@ namespace App\Filament\Resources\SceneResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -26,18 +29,39 @@ class ViewsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\Section::make([
+                Section::make()->schema([
+                    Toggle::make('is_default')
+                        ->default(false),
+                    Toggle::make('is_visible')
+                        ->requiredIf('is_default', true)
+                        ->default(true),
                     TextInput::make('name')
                         ->required(),
                     MarkdownEditor::make('description')
                         ->required(),
-                    Forms\Components\Section::make([
-                        Toggle::make('is_default')
-                            ->default(false),
-                        Toggle::make('is_visible')
-                            ->requiredIf('is_default', true)
-                            ->default(true),
-                    ])->columns(2),
+                ])->columns(2),
+                Section::make()->schema([
+                    Repeater::make('Images')
+                        ->hint("Select proper images to corresponding types")
+                        ->relationship('images', function (Builder $query) {
+                            $query->whereNot('type', 'mask_merged');
+                        })
+                        ->schema([
+                            Forms\Components\Select::make('type')
+                                ->options([
+                                    'black_bg' => 'Final',
+                                    'transparent_bg' => 'Background',
+                                    'mask_bg' => 'Table',
+                                    'mobile_bg' => 'Mobile'
+                                ])->required(),
+                            FileUpload::make('path')
+                                ->image()
+                                ->imageEditor()
+                                ->disk('public')
+                                ->required()
+                        ])->columns(2)
+                        ->maxItems(4)
+                        ->minItems(3)
                 ])->columns(1),
             ]);
     }

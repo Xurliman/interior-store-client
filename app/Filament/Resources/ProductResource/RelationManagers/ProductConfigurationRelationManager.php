@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\ProductResource\RelationManagers;
 
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -16,6 +19,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProductConfigurationRelationManager extends RelationManager
 {
@@ -25,10 +29,31 @@ class ProductConfigurationRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Select::make('view_id')
-                    ->label('View')
-                    ->relationship('view', 'description')
-                    ->required(),
+                Section::make()->schema([
+                    Select::make('view_id')
+                        ->label('View')
+                        ->relationship('view', 'description')
+                        ->required(),
+                    Repeater::make('Images')
+                        ->hint("Choose how should product look in the selected view")
+                        ->relationship('images', function (Builder $query) {
+                            $query->whereNot('type', 'mask_merged');
+                        })
+                        ->schema([
+                            Select::make('type')
+                                ->options([
+                                    'transparent_bg' => 'Transparent Background',
+                                    'mask_bg' => 'Mask Background',
+                                ])->required(),
+                            FileUpload::make('path')
+                                ->image()
+                                ->imageEditor()
+                                ->disk('public')
+                                ->required()
+                        ])->columns(2)
+                        ->maxItems(2)
+                        ->minItems(2),
+                ])->columns(1)
             ]);
     }
 

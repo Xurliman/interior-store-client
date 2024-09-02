@@ -10,6 +10,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
 
 class CategoriesRelationManager extends RelationManager
 {
@@ -19,16 +20,21 @@ class CategoriesRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Select::make('category_id')
-                    ->label('Category')
-                    ->relationship('category', 'name')
-                    ->required(),
-                TextInput::make('width')->required()->numeric(),
-                TextInput::make('height')->required()->numeric(),
-                TextInput::make('bottom')->nullable()->numeric(),
-                TextInput::make('top')->nullable()->numeric(),
-                TextInput::make('right')->nullable()->numeric(),
-                TextInput::make('left')->nullable()->numeric(),
+                Forms\Components\Section::make()
+                    ->description('Adjust clickable zones for corresponding categories')
+                    ->schema([
+                    Select::make('category_id')
+                        ->label('Category')
+                        ->relationship('category', 'name')
+                        ->required()
+                        ->columnSpanFull(),
+                    TextInput::make('width')->required()->numeric(),
+                    TextInput::make('height')->required()->numeric(),
+                    TextInput::make('bottom')->nullable()->numeric(),
+                    TextInput::make('top')->nullable()->numeric(),
+                    TextInput::make('right')->nullable()->numeric(),
+                    TextInput::make('left')->nullable()->numeric(),
+                ])->columns(3)
             ]);
     }
 
