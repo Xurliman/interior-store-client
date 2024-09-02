@@ -28,14 +28,21 @@ class SettingResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make()->schema([
-                    Forms\Components\TextInput::make('company_name'),
-                    Forms\Components\TextInput::make('company_phone'),
-                    Forms\Components\TextInput::make('company_email'),
-                    Forms\Components\TextInput::make('company_url'),
-                    Forms\Components\TextInput::make('currency'),
-                    Forms\Components\TextInput::make('currency_symbol'),
-                    Forms\Components\TextInput::make('timezone'),
-                ]),
+                    Forms\Components\TextInput::make('company_name')
+                        ->required(),
+                    Forms\Components\TextInput::make('company_phone')
+                        ->required(),
+                    Forms\Components\TextInput::make('company_email')
+                        ->required(),
+                    Forms\Components\TextInput::make('company_url')
+                        ->required(),
+                    Forms\Components\TextInput::make('currency')
+                        ->required(),
+                    Forms\Components\TextInput::make('currency_symbol')
+                        ->required(),
+                    Forms\Components\TextInput::make('timezone')
+                        ->required(),
+                ])->columns(2),
                 Forms\Components\Section::make()->schema([
                     Repeater::make('Images')
                         ->hint("Choose organization logo images")

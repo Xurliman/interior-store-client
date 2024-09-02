@@ -39,6 +39,7 @@
         }
 
         .image-container {
+            position: relative;
             text-align: center;
             margin: auto;
             height: 100%; /* Adjust the height */
@@ -56,6 +57,17 @@
 
         .full-page-image {
             object-fit: contain;
+        }
+
+        .logo-icon {
+            position: absolute;
+            bottom: 8%; /* Adjust to position vertically */
+            left: 0%; /* Adjust to position horizontally */
+            width: 100px; /* Adjust size as needed */
+            height: auto;
+            z-index: 10; /* Ensure it is above the image */
+            opacity: 0.8; /* Optional: make it slightly transparent */
+            transform: rotate(90deg);
         }
 
         .logo h1 {
@@ -118,11 +130,16 @@
 <!-- First Page with Image -->
 <div class="container">
     <div class="image-container" style="page-break-after: always;">
-        <img src="{{ public_path($print_img) }}" alt="Image" class="full-page-image rotate-image">
+        <img src="{{ public_path($print_img) }}"
+             alt="Image"
+             class="full-page-image rotate-image">
+        <img src="{{ public_path($main_logo) }}"
+             alt="mainlogo"
+             class="logo-icon">
     </div>
 
     <div class="logo content-center">
-        <h1>{{ $setting->company_name }}</h1>
+        <h1>{{ $setting?->company_name }}</h1>
     </div>
     <div class="content">
         <h2>Product list:</h2>
@@ -131,7 +148,7 @@
                 <tr>
                     <td class="number">{{ ++$key }}.</td>
                     <td class="item">{{ $product->name }}</td>
-                    <td class="price">{{ $setting->currency_symbol.$product->price }}</td>
+                    <td class="price">{{ $setting?->currency_symbol.$product->price }}</td>
                 </tr>
             @empty
                 <tr>
@@ -141,8 +158,8 @@
         </table>
     </div>
     <div class="footer">
-        <p>{{ $setting->company_phone }}</p>
-        <p><a href="/">{{ $setting->company_url }}</a></p>
+        <p>{{ $setting?->company_phone }}</p>
+        <p><a href="/">{{ $setting?->company_url }}</a></p>
     </div>
 </div>
 </body>

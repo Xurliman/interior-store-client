@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Cart;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -39,7 +40,7 @@ class UserSeeder extends Seeder
         ]);
 
         Role::create([
-            'id' => 1,
+            'id' => 2,
             'name' => 'manager',
             'guard_name' => 'web',
             'created_at' => now(),
@@ -47,5 +48,14 @@ class UserSeeder extends Seeder
         ]);
         $user->assignRole('manager');
 
+        Setting::create([
+            'company_name' => 'Fantom',
+            'company_phone' => '+47 94 163 884',
+            'company_email' => 'no-reply@fantomstudio.uz',
+            'company_url' => 'www.fantomstudio.uz',
+            'currency' => 'dollar',
+            'currency_symbol' => '$',
+            'timezone' => 'Asia/Tashkent',
+        ]);
     }
 }

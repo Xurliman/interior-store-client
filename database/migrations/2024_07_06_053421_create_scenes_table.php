@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('scenes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('sequence_number')->autoIncrement();
+            $table->integer('sequence_number')->default(0);
             $table->boolean('is_visible')->default(true);
             $table->string('slug')->unique();
             $table->timestamps();

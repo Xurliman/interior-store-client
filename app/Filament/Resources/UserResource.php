@@ -54,6 +54,7 @@ class UserResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                TextColumn::make('roles.name')
             ])
             ->filters([
                 //

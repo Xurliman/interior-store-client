@@ -50,14 +50,16 @@ class SceneController extends Controller
         return $this->generatePdf($products, $request->view_id)->download('download.pdf');
     }
 
-    public function generatePdf($products, $viewId): \Barryvdh\DomPDF\PDF
+    public function generatePdf($products, $viewId) #: \Barryvdh\DomPDF\PDF
     {
         $view = View::firstWhere('id', $viewId);
         $printImg = "storage/".ImageMerger::imageCreateForView(
             $view,
             collect($products)->pluck('product_id')->toArray());
+        $mainLogoImg = "storage/".Setting::first()?->load('images')->getMainLogo()?->path;
         return Pdf::loadView('scenes.preview-print', [
             'print_img' => $printImg,
+            'main_logo' => $mainLogoImg,
             'setting' => Setting::first(),
             'products' => Product::whereIn('id', collect($products)->pluck('product_id')->toArray())->get(),
         ]);
