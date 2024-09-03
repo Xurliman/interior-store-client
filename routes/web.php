@@ -41,3 +41,6 @@ Route::middleware([
 Route::post('/print-view', [SceneController::class, 'printView'])->name('print');
 Route::post('/pdf-download', [SceneController::class, 'downloadPDF'])->name('pdf-download');
 Route::get('/order-placed', [SceneController::class, 'orderPlaced'])->name('order-placed');
+Route::get('/test', function (){
+    
+});

@@ -24,6 +24,10 @@ class OrderResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document';
 
+    protected static ?string $navigationGroup = 'Users';
+
+    protected static ?int $navigationSort = 7;
+
     public static function form(Form $form): Form
     {
         return $form

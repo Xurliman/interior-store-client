@@ -25,6 +25,10 @@ class SceneResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-camera';
 
+    protected static ?string $navigationGroup = 'Scenes';
+
+    protected static ?int $navigationSort = 4;
+
     public static function form(Form $form): Form
     {
         return $form

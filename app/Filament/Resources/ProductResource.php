@@ -31,7 +31,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
-//    protected static ?string $navigationGroup = 'Products';
+    protected static ?string $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 2;
 
@@ -43,10 +43,6 @@ class ProductResource extends Resource
                     Select::make('category_id')
                         ->label('Category')
                         ->relationship('category', 'name')
-                        ->required(),
-                    Select::make('author_id')
-                        ->label('Author')
-                        ->relationship('author', 'name')
                         ->required(),
                     TextInput::make('name')
                         ->required(),

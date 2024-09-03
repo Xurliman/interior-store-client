@@ -31,7 +31,7 @@ class ProductConfigurationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-adjustments-horizontal';
 
-//    protected static ?string $navigationGroup = 'Products';
+    protected static ?string $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 3;
 
