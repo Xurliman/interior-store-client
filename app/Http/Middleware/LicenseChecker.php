@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
-use MongoDB\Driver\Exception\ConnectionTimeoutException;
+use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response;
 
 class LicenseChecker
@@ -13,12 +13,12 @@ class LicenseChecker
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Closure(Request): (Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
         try {
-            $response = \Illuminate\Support\Facades\Http::post('http://127.0.0.1:8001/api/validate-license', [
+            $response = Http::post('http://127.0.0.1:8001/api/validate-license', [
                 'license_key' => config('license.license_key'),
             ]);
 
@@ -29,8 +29,5 @@ class LicenseChecker
         } catch (ConnectionException $exception) {
             return response()->view('auth.license-expired');
         }
-
-
-
     }
 }

@@ -40,3 +40,7 @@ Route::get('/test2', function (){
 //    dd(collect(\App\Models\Scene::with('views.items.category')->with('views.categories.products.productConfigurations')->first())->toArray());
     return \App\Http\Resources\Scene\SceneResource::collection(\App\Models\Scene::with('views.categories.products.productConfigurations')->with('views.items.category')->get());
 });
+
+Route::get('/test3', function (){
+
+});
