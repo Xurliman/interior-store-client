@@ -12,9 +12,16 @@ class ViewItemResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'views' => ViewResource::make($this->whenLoaded('views')),
-            'category' => CategoryResource::make($this->whenLoaded('category'))
+//            'id' => $this->id,
+            'category_id' => $this->category_id,
+            'width' => $this->width,
+            'height' => $this->height,
+            'top' => $this->top,
+            'bottom' => $this->bottom,
+            'right' => $this->right,
+            'left' => $this->left,
+//            'views' => ViewResource::make($this->whenLoaded('views')),
+//            'category' => CategoryResource::make($this->whenLoaded('category'))
         ];
     }
 }

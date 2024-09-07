@@ -22,6 +22,12 @@ class Scene extends Model implements Auditable
         'slug',
     ];
 
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     public function views(): HasMany {
         return $this->hasMany(View::class);
     }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}"/>
 @endsection
 
-@section('content')
+@section('main-window-content')
     <!-- Carousel -->
     <div class="carousel swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
         <div class="swiper-wrapper" aria-live="polite">
@@ -25,6 +25,3 @@
     </div>
 @endsection
 
-@section('js')
-<script src="{{ asset('js/script.js') }}"></script>
-@endsection

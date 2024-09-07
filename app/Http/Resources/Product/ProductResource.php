@@ -14,14 +14,15 @@ class ProductResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'category_id' => $this->category_id,
             'name' => $this->name,
             'short_name' => $this->short_name,
             'description' => $this->description,
             'dimensions' => $this->dimensions,
             'category' => CategoryResource::make($this->whenLoaded('category')),
-            'product_configuration' => ProductConfigurationResource::make($this->whenLoaded('productConfiguration')),
             'price' => $this->price,
-            'image' => $this->image->path ?? null
+            'image' => $this->image->path ?? null,
+            'product_configurations' => ProductConfigurationResource::collection($this->whenLoaded('productConfigurations')),
         ];
     }
 }

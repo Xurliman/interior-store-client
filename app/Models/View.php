@@ -26,6 +26,11 @@ class View extends Model implements Auditable
         'is_visible',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function scene(): BelongsTo {
         return $this->belongsTo(Scene::class);
     }

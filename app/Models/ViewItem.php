@@ -24,6 +24,12 @@ class ViewItem extends Model implements Auditable
         'left',
     ];
 
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     public function view(): BelongsTo
     {
         return $this->belongsTo(View::class);

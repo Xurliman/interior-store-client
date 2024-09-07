@@ -18,7 +18,7 @@ use Livewire\Component;
 
 class Menu extends Component
 {
-    public array $selectedProducts;
+    public array $selectedProducts = [];
 
     public function mount($selectedProducts): void
     {

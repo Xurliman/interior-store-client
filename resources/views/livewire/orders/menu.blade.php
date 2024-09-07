@@ -15,7 +15,7 @@
             @endif
             <div x-data="{ show: false}">
                 <button
-                    x-on:click="show={{ count($selected_products)>0 }};$wire.order()"
+                    x-on:click="show={{ count($selected_products)>0 ? 'true' : 'false' }};$wire.order()"
                     class="order__btn has-cyan-bluish-gray-background-color"
                     type="submit"
                     :disabled="show"

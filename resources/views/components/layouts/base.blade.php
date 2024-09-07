@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="--address-bar-height: 669px;">
+<html lang="en">
 <head>
     <title>@yield('title')</title>
     <meta charset="UTF-8">
@@ -121,18 +121,23 @@
         <!-- Navbar -->
         <nav class="my-nav margin">
             <div class="second-nav-container">
-                <div>
+                <div x-data="{ logoToggle : false }">
                     <button
+                        x-on:click="logoToggle = true; "
+                        :style="logoToggle ? '' : 'display:none'"
                         class="open-main-window">
                         <div
                             id="shapeToggle"
-                            class="back-btn hide arrow">
+                            :class="{ 'hide' : logoToggle }"
+                            class="back-btn arrow hide">
 
                         </div>
-                        <x-logo.application-logo />
+                        <span class="second-nav__logo">Logo</span>
                     </button>
 
                     <button
+                        x-on:click="logoToggle = false; window.location.href='/'"
+                        id="close-button"
                         class="close-scene-window hide">
                         <div
                             id="shapeToggle"
@@ -156,10 +161,9 @@
 
             <!-- Main Window -->
             <div class="main-window">
-                <!-- Carousel -->
-                @yield('content')
+                @yield('main-window-content')
             </div>
-
+            @yield('main-content')
             @yield('loading-modal')
             <x-auth.login />
             <x-layouts.chat-modal />
@@ -168,6 +172,7 @@
     <x-layouts.footer />
     <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/swiper.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
     @yield('js')
 </body>
 </html>

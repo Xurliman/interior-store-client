@@ -53,6 +53,8 @@ class ProductResource extends Resource
                         ->nullable(),
                     TextInput::make('dimensions')
                         ->nullable(),
+                    Toggle::make('is_visible')
+                        ->default(true),
                     MarkdownEditor::make('description')
                         ->required()
                         ->maxHeight("267px"),
@@ -66,8 +68,6 @@ class ProductResource extends Resource
                                 ->required()
                             ->columnSpanFull()
                         ])->columnSpan(1),
-                    Toggle::make('is_visible')
-                        ->default(true),
                 ])->columns(2),
             ]);
     }

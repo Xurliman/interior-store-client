@@ -15,15 +15,15 @@ return [
     |
     */
 
-    'paths' => ['*'],
+    'paths' => ['api/*', 'storage/*', 'admin/*'], // Ensure paths include your desired endpoints
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:8000', 'http://127.0.0.1:8000'],
+    'allowed_origins' => ['*'], // Allows requests from any origin
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['*'],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['*'], // Allows all headers
 
     'exposed_headers' => [],
 

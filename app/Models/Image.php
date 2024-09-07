@@ -19,6 +19,14 @@ class Image extends Model implements Auditable
         'type'
     ];
 
+    protected $hidden = [
+        'id',
+        'imageable_id',
+        'imageable_type',
+        'created_at',
+        'updated_at',
+    ];
+
     public function imageable(): MorphTo
     {
         return $this->morphTo();

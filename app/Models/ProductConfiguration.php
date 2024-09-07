@@ -22,6 +22,12 @@ class ProductConfiguration extends Model implements Auditable
         'is_visible',
     ];
 
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     public function product(): BelongsTo {
         return $this->belongsTo(Product::class);
     }

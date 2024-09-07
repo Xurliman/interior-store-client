@@ -27,6 +27,11 @@ class Product extends Model implements Auditable
         'dimensions',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

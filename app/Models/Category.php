@@ -20,6 +20,11 @@ class Category extends Model implements Auditable
         'data_mask',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
