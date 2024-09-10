@@ -1,7 +1,7 @@
 .about {
-    padding-top: 60px;
-    padding-bottom: 5px;
-    margin: 40px 0px 85px 30px;
+    /*padding-top: 60px;*/
+    /*padding-bottom: 5px;*/
+    /*margin: 40px 0px 85px 30px;*/
 }
 
 .about__title {
@@ -9,13 +9,13 @@
 }
 
 .about__section_title {
-  color: var(--signin-blue);
+  /*color: var(--signin-blue);*/
   font-weight: 500;
 }
 
 .about__section_desc {
-  max-width: 720px;
-  color: var(--signin-blue);
+  /*max-width: 720px;*/
+  /*color: var(--signin-blue);*/
 }
 
 @media (max-width: 480px) {

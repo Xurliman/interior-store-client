@@ -18,8 +18,10 @@ class LicenseChecker
     public function handle(Request $request, Closure $next): Response
     {
         try {
-            $response = Http::post('http://127.0.0.1:8001/api/validate-license', [
+            $licensingServerUrl = config('license.licensing_server_url');
+            $response = Http::post("$licensingServerUrl/api/validate-license", [
                 'license_key' => config('license.license_key'),
+                'store_id' => config('license.store_id'),
             ]);
 
             if ($response->failed() || $response->json('status') !== 'active') {

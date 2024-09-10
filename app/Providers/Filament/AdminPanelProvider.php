@@ -26,7 +26,6 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->databaseNotifications(true)
             ->id('admin')
             ->path('admin')
             ->login()
@@ -38,7 +37,6 @@ class AdminPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
                 Pages\Dashboard::class,
-//                Dashboard::class
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
@@ -57,6 +55,7 @@ class AdminPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
                 LicenseChecker::class
             ])
+            ->databaseNotifications()
             ->authMiddleware([
                 Authenticate::class,
             ]);

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}"/>
 @endsection
 
-@section('content')
+@section('main-content')
     <div class="about">
         <div class="container-xxl">
             <h2 class="about__title h2 mb-4">Order placed successfully.</h2>

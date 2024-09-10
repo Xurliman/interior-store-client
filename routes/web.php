@@ -1,10 +1,15 @@
 <?php
 
 use App\Helpers\ImageMerger;
+use App\Http\Controllers\ContentUpdateController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SceneController;
 use App\Models\User;
 use App\Models\View;
+use App\Notifications\UpdateAvailableNotification;
+use Filament\Notifications\Notification;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,12 +40,5 @@ Route::middleware(\App\Http\Middleware\LicenseChecker::class)->group(function ()
     });
 
 });
-Route::get('/test2', function (){
-//    return \App\Models\Setting::first();
-//    dd(collect(\App\Models\Scene::with('views.items.category')->with('views.categories.products.productConfigurations')->first())->toArray());
-    return \App\Http\Resources\Scene\SceneResource::collection(\App\Models\Scene::with('views.categories.products.productConfigurations')->with('views.items.category')->get());
-});
 
-Route::get('/test3', function (){
-
-});
+Route::get('/test', [ContentUpdateController::class, 'manageContentUpdate']);

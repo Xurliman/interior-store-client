@@ -8,20 +8,22 @@
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}"/>
 @endsection
 
-@section('main-window-content')
+@section('main-content')
     <!-- Carousel -->
-    <div class="carousel swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
-        <div class="swiper-wrapper" aria-live="polite">
-            @forelse($scenes as $scene)
-                <x-scenes.slide :scene="$scene"/>
-            @empty
-                <h1>No Scene</h1>
-            @endforelse
-        </div>
+    <div class="main-window">
+        <div class="carousel swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+            <div class="swiper-wrapper" aria-live="polite">
+                @forelse($scenes as $scene)
+                    <x-scenes.slide :scene="$scene"/>
+                @empty
+                    <h1>No Scene</h1>
+                @endforelse
+            </div>
 
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
 @endsection
 

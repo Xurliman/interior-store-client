@@ -61,7 +61,7 @@ class Product extends Model implements Auditable
 
         static::deleting(function ($product) {
             $product->productConfigurations()->delete();
-            $product->cartItems()->delete();
+//            $product->cartItems()->delete();
 
             $productImg = $product->image->path;
             if ($productImg) {

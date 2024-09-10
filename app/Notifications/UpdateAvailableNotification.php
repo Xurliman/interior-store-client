@@ -2,8 +2,10 @@
 
 namespace App\Notifications;
 
+use Filament\Notifications\DatabaseNotification;
+use Filament\Notifications\Notification as FilamentNotification;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Filament\Notifications\Actions\Action;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -49,5 +51,19 @@ class UpdateAvailableNotification extends Notification
         return [
             'data' => 'Update available',
         ];
+    }
+
+    public function toDatabase(object $notifiable): DatabaseNotification
+    {
+        return FilamentNotification::make()
+            ->success()
+            ->title('New Content')
+            ->body('Update available')
+            ->actions([
+                Action::make('view')
+                    ->button()
+                    ->markAsRead(),
+            ])
+            ->toDatabase();
     }
 }

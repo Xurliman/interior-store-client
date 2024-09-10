@@ -14,7 +14,7 @@
     </div>
 @endsection
 
-@section('content')
+@section('main-content')
     <livewire:views.show :scene="$scene" :view="null"/>
 @endsection
 

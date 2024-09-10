@@ -31,12 +31,13 @@ class CheckIfUpdateAvailable extends Command
     public function handle(): void
     {
         try {
-            $storeId = env('license.store_id');
-            $response = Http::post('check-if-update-available', [
+            $storeId = config('license.store_id');
+            $licensingServerUrl = config('license.licensing_server_url');
+            $response = Http::post("$licensingServerUrl/api/check-if-update-available", [
                 'store_id' => $storeId,
             ]);
 
-            if ($response->successful() and $response->json('is_available')) {
+            if ($response->successful() and $response->json('status')=='available') {
                 $users = User::role('manager')->get();
                 Notification::send($users, new UpdateAvailableNotification());
             }

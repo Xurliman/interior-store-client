@@ -159,13 +159,10 @@
             <!-- Blackout -->
             <div class="blackout-white"></div>
 
-            <!-- Main Window -->
-            <div class="main-window">
-                @yield('main-window-content')
-            </div>
+            <!-- Main Content -->
             @yield('main-content')
             @yield('loading-modal')
-            <x-auth.login />
+{{--            <x-auth.login />--}}
             <x-layouts.chat-modal />
         </div>
     </div>

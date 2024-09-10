@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}"/>
 @endsection
 
-@section('content')
+@section('main-content')
     <!-- Gallery -->
     <livewire:profile.gallery :carts="$carts"/>
 @endsection

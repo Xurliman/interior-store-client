@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}"/>
 @endsection
 
-@section('content')
+@section('main-content')
     <!-- Sign Up -->
     <div class="signup">
         <form class="signup d-flex flex-column mb-4">

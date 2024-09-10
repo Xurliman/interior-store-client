@@ -14,7 +14,7 @@
     </div>
 @endsection
 
-@section('content')
+@section('main-content')
     <livewire:views.edit :cart="$cart"/>
 @endsection
 

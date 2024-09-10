@@ -1,23 +1,3 @@
-// Drop Down List
-var secondNavBtn = document.querySelector(".second-nav-btn");
-var secondDropDown = document.querySelector(".second-nav-drop-down");
-var secondBlackout = document.querySelector(".second-blackout");
-document.getElementById('close-button').classList.remove('hide');
-
-secondNavBtn.addEventListener("click", () => {
-    secondDropDown.classList.add("open");
-    secondBlackout.classList.add("active");
-});
-
-document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("second-blackout")) {
-        secondDropDown.classList.remove("open");
-        secondBlackout.classList.remove("active");
-    } else {
-        console.log();
-    }
-});
-
 // Products Array
 var customArr = [];
 
@@ -265,7 +245,7 @@ function customObjectsHandler(button, object) {
         // var objectBtn = e.target;
         // var objectBtnAttr = objectBtn.getAttribute("data-object");
         // var objectBtnMaskAttr = objectBtn.getAttribute("data-mask");
-        // var objectRemoveAttr = objectBtn.getAttribute("data-remove");
+        // var objectRemoveAttr = objectBtn.getAttribute("loading-jpg");
 
         // object.forEach((el) => {
             // var objectAttr = el.getAttribute("data-object");
@@ -324,48 +304,48 @@ function customObjectsHandler(button, object) {
 }
 
 // Check Object Product
-function checkObjectProduct(product) {
-    product.forEach((el) => {
-        var elProduct = el.getAttribute("data-product");
-        var elPrice = el.getAttribute("data-price");
-
-        if (el.classList.contains("object-visible")) {
-            var existingProductIndex = customArr.findIndex(
-                (item) => item.elProduct === elProduct
-            );
-            var existingProductIndexPr = productArr.findIndex(
-                (item) => item.elProduct === elProduct
-            );
-
-            if (existingProductIndex === -1 || existingProductIndexPr === -1) {
-                customArr.push({
-                    elProduct,
-                    elPrice,
-                });
-
-                productArr.push({
-                    elProduct,
-                    elPrice,
-                });
-
-                countItems++;
-            }
-        } else {
-            var existingItemIndex = customArr.findIndex(
-                (item) => item.elProduct === elProduct
-            );
-            var existingProductIndex = productArr.findIndex(
-                (item) => item.elProduct === elProduct
-            );
-
-            if (existingItemIndex !== -1 || existingProductIndex !== -1) {
-                customArr.splice(existingItemIndex, 1);
-                productArr.splice(existingProductIndex, 1);
-                countItems--;
-            }
-        }
-    });
-}
+// function checkObjectProduct(product) {
+//     product.forEach((el) => {
+//         var elProduct = el.getAttribute("data-product");
+//         var elPrice = el.getAttribute("data-price");
+//
+//         if (el.classList.contains("object-visible")) {
+//             var existingProductIndex = customArr.findIndex(
+//                 (item) => item.elProduct === elProduct
+//             );
+//             var existingProductIndexPr = productArr.findIndex(
+//                 (item) => item.elProduct === elProduct
+//             );
+//
+//             if (existingProductIndex === -1 || existingProductIndexPr === -1) {
+//                 customArr.push({
+//                     elProduct,
+//                     elPrice,
+//                 });
+//
+//                 productArr.push({
+//                     elProduct,
+//                     elPrice,
+//                 });
+//
+//                 countItems++;
+//             }
+//         } else {
+//             var existingItemIndex = customArr.findIndex(
+//                 (item) => item.elProduct === elProduct
+//             );
+//             var existingProductIndex = productArr.findIndex(
+//                 (item) => item.elProduct === elProduct
+//             );
+//
+//             if (existingItemIndex !== -1 || existingProductIndex !== -1) {
+//                 customArr.splice(existingItemIndex, 1);
+//                 productArr.splice(existingProductIndex, 1);
+//                 countItems--;
+//             }
+//         }
+//     });
+// }
 
 optionsBtnSave.forEach((element) => {
     element.addEventListener("click", () => {
