@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('sequence_number')->default(0);
             $table->boolean('is_visible')->default(true);
-            $table->string('slug')->unique();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

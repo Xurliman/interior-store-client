@@ -241,7 +241,7 @@ class ContentUpdateController extends Controller
                                 $newImageData[] = array(
                                     'type' => $type,
                                     'path' => $newFileName,
-                                    'imageable_id' => $product['id'],
+                                    'imageable_id' => $product_configuration['id'],
                                     'imageable_type' => 'App\Models\ProductConfiguration',
                                     'created_at' => now(),
                                     'updated_at' => now(),

@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreignIdFor(Category::class);
             $table->string('name');
             $table->string('short_name')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->boolean('is_visible')->default(true);
             $table->decimal('price', 15, 2)->default(0);
             $table->text('dimensions')->nullable();
