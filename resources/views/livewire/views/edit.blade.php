@@ -1,9 +1,8 @@
 @php use Illuminate\Support\Facades\Storage; @endphp
 <div class="scene-window active">
     <div class="scene">
-        <!-- Camera View -->
         <div class="camera-view">
-            @foreach($scene->views as $sceneView)
+            @foreach($scene->views->where('is_visible', true) as $sceneView)
                 <button
                     wire:click.prevent="viewSelected({{ $sceneView->id }})"
                     class="camera__item d-flex flex-column">
@@ -18,17 +17,17 @@
             @endforeach
         </div>
 
-        <!-- Scene Image / Masks / Objects -->
         <div class="view-scene">
-            <!-- Popup Notify -->
             <x-layouts.popup/>
 
-            <!-- Panzoom / Scene images -->
             <div class="my-cont">
-                <div class="f-panzoom">
+                <div
+                    class="f-panzoom"
+                     style="overflow: hidden; user-select: none; touch-action: none;">
                     <div
                         class="f-panzoom__content"
-                        id="myPanzoom">
+                        id="myPanzoom"
+                        style="cursor: move; user-select: none; touch-action: none; transform-origin: 50% 50%; transition: none; transform: scale(1) translate(0px, 0px);">
                         <img
                             usemap="#image-map"
                             id="scene-img"
@@ -43,7 +42,6 @@
                                 alt="{{ $foreground_img }}"/>
                         @endif
 
-                        <!-- Object Images -->
                         <div class="object__images">
                             @foreach($categories as $category)
                                 <div>
@@ -55,12 +53,12 @@
                                                 ->first();
                                         @endphp
                                         @if($productConfiguration)
-                                            <img class="loading-jpg {{ in_array($productConfiguration->product_id, collect($selected_products)->pluck('product_id')->toArray()) ? 'object-visible' : ''}}"
+                                            <img
+                                                class="loading-jpg {{ in_array($productConfiguration->product_id, collect($selected_products)->pluck('product_id')->toArray()) ? 'object-visible' : ''}}"
                                                  style="{{ in_array($product->id, collect($selected_products)->pluck('product_id')->toArray()) ? 'display:block;' : 'display:none;'}}"
                                                  src="{{ Storage::url($productConfiguration?->images()->where('type', 'transparent_bg')->first()?->path) }}"
                                                  data-product="{{ $product->name }}"
                                                  data-price="{{ $product->price }}"
-                                                 data-remove="{{ $category->data_mask }}"
                                                  alt="{{ $product->image?->path }}"/>
                                         @endif
                                     @endforeach
@@ -69,7 +67,6 @@
 
                         </div>
 
-                        <!-- Masks -->
                         <div class="masks-container">
                             <div class="kitchen-mask active">
                                 @foreach($scene->views as $sceneView)
@@ -77,6 +74,7 @@
                                         <div class="active">
                                             @foreach($sceneView->items as $item)
                                                 <div
+                                                    x-data="{ categoryId: {{ $item->category->id }} }"
                                                     class="mask_btn"
                                                     style="width: {{$item->width}}%;
                                                     height: {{$item->height}}%;
@@ -88,7 +86,7 @@
                                                     position: absolute;
                                                     z-index: 1;
                                                     cursor: pointer;"
-                                                    data-mask="{{ $item->category->data_mask }}">
+                                                    x-on:click="$dispatch('mask-btn-clicked', { categoryId: categoryId })">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -96,9 +94,9 @@
                                         <div class="">
                                             @foreach($sceneView->items as $item)
                                                 <div
+                                                    x-data="{ categoryId: {{ $item->category->id }} }"
                                                     class="mask_btn"
-                                                    {{--                                            style="width: {{$item->width}}%; height: {{$item->height}}%; top: {{$item->top}}%; bottom: {{$item->bottom}}%; left: {{$item->left}}%; right: {{$item->right}}%; background: transparent; position: absolute; z-index: 1; cursor: pointer;"--}}
-                                                    data-mask="{{ $item->category->data_mask }}">
+                                                    x-on:click="$dispatch('mask-btn-clicked', { categoryId: categoryId })">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -108,8 +106,14 @@
 
                             @foreach($categories as $category)
                                 <img
-                                    class="mask mask-{{ $category->data_mask }}"
-                                    data-mask="{{ $category->data_mask }}"
+                                    x-data="{ glitchMaskImage:false, custom:document.querySelector('.custom') }"
+                                    @mask-btn-clicked.window="glitchMaskImage = ($event.detail.categoryId == {{ $category->id }});
+                                        setTimeout(() => {
+                                            glitchMaskImage = false;
+                                        }, 200);
+                                        custom.classList.add('open');"
+                                    :class="{ 'active': glitchMaskImage }"
+                                    class="mask"
                                     src="{{ !is_null($category->mask_img) ? Storage::url($category->mask_img) : '#'}}"
                                     alt="{{ !is_null($category->mask_img) ? Storage::url($category->mask_img) : 'not found' }}"/>
                             @endforeach
@@ -117,55 +121,41 @@
                     </div>
                 </div>
 
-                <!-- Order Menu -->
                 <livewire:orders.menu :selected-products="$selected_products"/>
+                </div>
             </div>
-        </div>
 
-        <!-- Custom Menu -->
         <livewire:categories.index :viewId="$view->id" :selected-products="$selected_products"/>
-        <!-- Options Desktop -->
         <div class="options">
-            <!-- Save -->
             <x-options.save-button x-data/>
 
-            <!-- Camera View -->
             <x-options.camera-view-button />
 
-            <!-- Download -->
             <livewire:options.image-download-button
                 :viewId="$view->id"
                 :selected-products="$selected_products" />
 
-            <!-- Print -->
             <livewire:options.print-button
                 :view-id="$view->id"
                 :selected-products="$selected_products"/>
 
-            <!-- Share -->
             <x-options.share-button />
         </div>
 
-        <!-- Options Mobile -->
         <div class="options-container">
             <div class="options-mobile">
-                <!-- Save -->
                 <x-options.save-button x-data/>
 
-                <!-- Camera View -->
                 <x-options.camera-view-button />
 
-                <!-- Download -->
                 <livewire:options.image-download-button
                     :viewId="$view->id"
                     :selected-products="$selected_products"/>
 
-                <!-- Print -->
                 <livewire:options.print-button
                     :view-id="$view->id"
                     :selected-products="$selected_products"/>
 
-                <!-- Share -->
                 <x-options.share-button />
             </div>
 
@@ -174,11 +164,12 @@
             </button>
         </div>
 
-        <!-- Saved Modal -->
-        {{--    <x-modals.saved-modal :selected-products="$selected_products" />--}}
         <livewire:options.save-to-gallery
             :view-id="$view->id"
             :selected-products="$selected_products"
             :cart="$cart"/>
+        <livewire:options.share-modal
+            :view-id="$view->id"
+            :selected-products="$selected_products"/>
     </div>
 </div>

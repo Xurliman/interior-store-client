@@ -36,7 +36,7 @@ class ShareModal extends Component
             view: View::firstWhere('id', $this->viewId),
             selectedProducts: collect($this->selectedProducts)
                 ->map(function ($product){
-                    return $product['id'];
+                    return $product['product_id'];
                 })
                 ->toArray()
         );

@@ -7,10 +7,8 @@
     <div class="custom__items">
         @foreach($categories as $category)
             <div
-{{--                id="{{ $category->div_id }}"--}}
                 class="custom__block"
                 style="{{ $category->display ? 'display:block' : 'display:none' }}">
-                <!-- Custom Item -->
                 <div class="custom__item">
                     <img
                         class="custom__item_img"
@@ -19,10 +17,27 @@
                     <span class="custom__item_title">{{ $category->name }}</span>
 
                     <button
-                        x-data="{ toggleDropList:false, categoryId : {{ $category->id }} }"
-                        x-on:click="toggleDropList = !toggleDropList; $dispatch('toggle-drop-list', { toggleDropList: toggleDropList, categoryId: categoryId })"
+                        x-data="{ toggleDropList:false, categoryId : {{ $category->id }}, lastEvent: '' }"
+                        x-on:click="
+                            if (lastEvent !== 'mask-btn-clicked') {
+                                toggleDropList = !toggleDropList;
+                            }
+                            categoryId = {{ $category->id }};
+                            $dispatch('toggle-drop-list', {
+                                toggleDropList: toggleDropList,
+                                categoryId: categoryId
+                            });
+                            lastEvent = 'toggle-btn-clicked'"
+                        @mask-btn-clicked.window="
+                            categoryId = $event.detail.categoryId;
+                            toggleDropList = true;
+                            lastEvent = 'mask-btn-clicked' "
+                        @product-selected.window="
+                            toggleDropList =
+                                categoryId == $event.detail.categoryId;
+                            lastEvent = 'product-selected' "
+                        :class="{ 'open' : (toggleDropList && categoryId == {{$category->id}}) }"
                         class="custom-item-btn"
-                        :class="{ 'open' : toggleDropList }"
                         data-mask="{{ $category->id }}">
                         <img data-item="{{ $category->id }}"
                              data-mask="{{ $category->id }}"
@@ -33,14 +48,14 @@
 
                 <div
                     x-data="{ toggleDropList:false, categoryId : {{ $category->id }}}"
-                    @toggle-drop-list.window="toggleDropList = $event.detail.toggleDropList; categoryId = $event.detail.categoryId;console.log('toggle-drop-list', categoryId, toggleDropList)"
-                    @mask-btn-clicked.window="categoryId = $event.detail.categoryId;toggleDropList=true;console.log('mask-btn-clicked', categoryId, toggleDropList)"
+                    @toggle-drop-list.window="toggleDropList = $event.detail.toggleDropList; categoryId = $event.detail.categoryId;"
+                    @mask-btn-clicked.window="categoryId = $event.detail.categoryId;toggleDropList = true"
                     :class="{ 'open' : (toggleDropList && categoryId == {{$category->id}}) }"
                     class="custom-drop-list">
                     <button
                         x-on:click="$wire.removeProducts({{ $category->id }})"
                         class="custom-item-remove {{ in_array($category->id, collect($selectedProducts)->pluck('category_id')->toArray()) ? 'active' : ''}}">
-                        Remove
+                            Remove
                     </button>
 
                     <div class="drop-list-container">
@@ -53,7 +68,9 @@
                             @if($productConfiguration)
                                 <button
                                         id="productSelectedBtn"
-                                        x-on:click="$wire.productSelected({{ $category->id }}, {{ $product->id }})"
+                                        x-on:click="
+                                            $wire.productSelected({{ $category->id }}, {{ $product->id }});
+                                            $dispatch('product-selected', { categoryId : {{ $category->id }} })"
                                         class="load-jpg">
                                     <img class="custom__img"
                                          data-remove="{{ $category->id }}"
