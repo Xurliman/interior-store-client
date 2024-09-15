@@ -80,18 +80,20 @@
                                         <div class="active">
                                             @foreach($sceneView->items as $item)
                                                 <div
+                                                    x-data="{ categoryId: {{ $item->category->id }} }"
                                                     class="mask_btn"
-                                                    style="width: {{$item->width}}%;
-                                                    height: {{$item->height}}%;
-                                                    {{$item->top ? "top: {$item->top}%;" : ''}}
-                                                    {{$item->bottom ? "bottom: {$item->bottom}%;" : ''}}
-                                                    {{$item->left ? "left: {$item->left}%;" : ''}}
-                                                    {{$item->right ? "right: {$item->right}%;" : ''}}
-                                                    background: transparent;
-                                                    position: absolute;
-                                                    z-index: 1;
-                                                    cursor: pointer;"
-                                                    data-mask="{{ $item->category->data_mask }}">
+                                                    style="
+                                                        width: {{$item->width}}%;
+                                                        height: {{$item->height}}%;
+                                                        {{$item->top ? "top: {$item->top}%;" : ''}}
+                                                        {{$item->bottom ? "bottom: {$item->bottom}%;" : ''}}
+                                                        {{$item->left ? "left: {$item->left}%;" : ''}}
+                                                        {{$item->right ? "right: {$item->right}%;" : ''}}
+                                                        background: transparent;
+                                                        position: absolute;
+                                                        z-index: 1;
+                                                        cursor: pointer;"
+                                                    x-on:click="$dispatch('mask-btn-clicked', { categoryId: categoryId })">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -99,9 +101,9 @@
                                         <div class="">
                                             @foreach($sceneView->items as $item)
                                                 <div
+                                                    x-data="{ categoryId: {{ $item->category->id }} }"
                                                     class="mask_btn"
-                                                    x-on:click="$dispatch('mask-btn-clicked', )"
-                                                    data-mask="{{ $item->category->data_mask }}">
+                                                    x-on:click="$dispatch('mask-btn-clicked', { categoryId: categoryId });">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -111,8 +113,14 @@
 
                             @foreach($categories as $category)
                                 <img
-                                    class="mask mask-{{ $category->data_mask }}"
-                                    data-mask="{{ $category->data_mask }}"
+                                    x-data="{ glitchMaskImage:false, custom:document.querySelector('.custom') }"
+                                    @mask-btn-clicked.window="glitchMaskImage = ($event.detail.categoryId == {{ $category->id }});
+                                        setTimeout(() => {
+                                            glitchMaskImage = false;
+                                        }, 200);
+                                        custom.classList.add('open');"
+                                    :class="{ 'active': glitchMaskImage }"
+                                    class="mask"
                                     src="{{ Storage::url($category->mask_img) }}"
                                     alt="{{ Storage::url($category->mask_img) }}"/>
                             @endforeach

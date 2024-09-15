@@ -99,17 +99,18 @@ var customDropList = document.querySelectorAll(".custom-drop-list");
 var lastClickedButton = null;
 customItemBtn.forEach((button) => {
     button.addEventListener("click", (e) => {
-        // var btn = e.target;
-        // var buttonAttr = btn.getAttribute("data-item");
-        // customDropList.forEach((el) => {
-        //     var listAttr = el.getAttribute("data-item");
-        //     if (buttonAttr == listAttr) {
-        //         el.classList.toggle("open");
-        //     } else {
-        //         el.classList.remove("open");
-        //     }
-        // });
+        var btn = e.target;
+        var buttonAttr = btn.getAttribute("data-item");
+        customDropList.forEach((el) => {
+            var listAttr = el.getAttribute("data-item");
+            if (buttonAttr == listAttr) {
+                el.classList.toggle("open");
+            } else {
+                el.classList.remove("open");
+            }
+        });
 
+        button.classList.toggle("open");
         if (lastClickedButton && lastClickedButton !== button) {
             lastClickedButton.classList.remove("open");
         }
@@ -225,46 +226,46 @@ document.addEventListener("livewire:navigated", () => {
 
     maskBtn.forEach((button) => {
         button.addEventListener("click", (e) => {
-            // var buttonTarget = e.target;
-            // var buttonAttr = buttonTarget.getAttribute("data-mask");
-            // switch (buttonAttr) {
-            //     case "wall-pattern":
-            //         showMasks(maskWallPanels, buttonAttr);
-            //         break;
-            //     case "chairs":
-            //         showMasks(maskChairs, buttonAttr);
-            //         break;
-            //     case "floor":
-            //         showMasks(maskFloor, buttonAttr);
-            //         break;
-            //     case "lamps":
-            //         showMasks(maskLamps, buttonAttr);
-            //         break;
-            //     default:
-            //         break;
-            // }
+            var buttonTarget = e.target;
+            var buttonAttr = buttonTarget.getAttribute("data-mask");
+            switch (buttonAttr) {
+                case "wall-pattern":
+                    showMasks(maskWallPanels, buttonAttr);
+                    break;
+                case "chairs":
+                    showMasks(maskChairs, buttonAttr);
+                    break;
+                case "floor":
+                    showMasks(maskFloor, buttonAttr);
+                    break;
+                case "lamps":
+                    showMasks(maskLamps, buttonAttr);
+                    break;
+                default:
+                    break;
+            }
 
             checkOpenMenu();
         });
     });
 
-    // function showMasks(mask, customMenu) {
-    //     setTimeout(() => {
-    //         mask.classList.remove("active");
-    //     }, 200);
-    //     mask.classList.add("active");
-    //     customDropList.forEach((el) => {
-    //         var listArtt = el.getAttribute("data-mask");
-    //
-    //         if (listArtt == customMenu) {
-    //             el.classList.add("open");
-    //         } else {
-    //             el.classList.remove("open");
-    //         }
-    //     });
-    //
-    //     custom.classList.add("open");
-    // }
+    function showMasks(mask, customMenu) {
+        setTimeout(() => {
+            mask.classList.remove("active");
+        }, 200);
+        mask.classList.add("active");
+        customDropList.forEach((el) => {
+            var listArtt = el.getAttribute("data-mask");
+
+            if (listArtt == customMenu) {
+                el.classList.add("open");
+            } else {
+                el.classList.remove("open");
+            }
+        });
+
+        custom.classList.add("open");
+    }
 });
 var loadingModal = document.getElementById("loadingModal");
 function showLoadingModal() {

@@ -19,24 +19,27 @@
                     <span class="custom__item_title">{{ $category->name }}</span>
 
                     <button
-                        @click="$wire.showDropList=true"
+                        x-data="{ toggleDropList:false, categoryId : {{ $category->id }} }"
+                        x-on:click="toggleDropList = !toggleDropList; $dispatch('toggle-drop-list', { toggleDropList: toggleDropList, categoryId: categoryId })"
                         class="custom-item-btn"
-                        data-mask="{{ $category->data_mask }}">
-                        <img data-item="{{ $category->data_mask }}"
-                             data-mask="{{ $category->data_mask }}"
+                        :class="{ 'open' : toggleDropList }"
+                        data-mask="{{ $category->id }}">
+                        <img data-item="{{ $category->id }}"
+                             data-mask="{{ $category->id }}"
                              src="{{ asset('img/icons/open-custom.svg') }}"
                              alt=""/>
                     </button>
                 </div>
 
-                <!-- Custom Drop List -->
-                <div class="custom-drop-list {{ ($category_id == $category->id && $show_drop_list) ? 'open' : '' }}"
-                     data-item="{{ $category->data_mask }}"
-                     data-mask="{{ $category->data_mask }}">
+                <div
+                    x-data="{ toggleDropList:false, categoryId : {{ $category->id }}}"
+                    @toggle-drop-list.window="toggleDropList = $event.detail.toggleDropList; categoryId = $event.detail.categoryId;console.log('toggle-drop-list', categoryId, toggleDropList)"
+                    @mask-btn-clicked.window="categoryId = $event.detail.categoryId;toggleDropList=true;console.log('mask-btn-clicked', categoryId, toggleDropList)"
+                    :class="{ 'open' : (toggleDropList && categoryId == {{$category->id}}) }"
+                    class="custom-drop-list">
                     <button
                         x-on:click="$wire.removeProducts({{ $category->id }})"
-                        class="custom-item-remove {{ in_array($category->id, collect($selectedProducts)->pluck('category_id')->toArray()) ? 'active' : ''}}"
-                        data-remove="{{ $category->data_mask }}">
+                        class="custom-item-remove {{ in_array($category->id, collect($selectedProducts)->pluck('category_id')->toArray()) ? 'active' : ''}}">
                         Remove
                     </button>
 
@@ -49,12 +52,11 @@
                             @endphp
                             @if($productConfiguration)
                                 <button
-                                        x-on:click="
-                                            $wire.activeClass='active';
-                                            $wire.productSelected({{ $category->id }}, {{ $product->id }})"
+                                        id="productSelectedBtn"
+                                        x-on:click="$wire.productSelected({{ $category->id }}, {{ $product->id }})"
                                         class="load-jpg">
                                     <img class="custom__img"
-                                         data-remove="{{ $category->data_mask }}"
+                                         data-remove="{{ $category->id }}"
                                          src="{{ Storage::url($product->image?->path) }}"
                                          alt="Floor"/>
                                 </button>

@@ -12,7 +12,6 @@ use Livewire\Component;
 class Index extends Component
 {
     public string $class = '';
-    public bool $showDropList = true;
     public array $selectedProducts = [];
     public $categoryId;
     public $viewId;
@@ -34,7 +33,6 @@ class Index extends Component
     public function viewSelected($viewId): void
     {
         $this->viewId = $viewId;
-        $this->showDropList = false;
         $this->categorisedProducts = $this->getCategorisedProducts($viewId);
     }
 
@@ -84,7 +82,6 @@ class Index extends Component
         return view('livewire.categories.index', [
             'categories' => $this->categorisedProducts,
             'category_id' => $this->categoryId,
-            'show_drop_list' => $this->showDropList,
             'view_id' => $this->viewId,
             'class' => $this->class,
         ]);
