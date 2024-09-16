@@ -2,11 +2,11 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Pages\Dashboard;
 use App\Http\Middleware\LicenseChecker;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Notifications\Notification;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;

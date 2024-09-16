@@ -41,4 +41,25 @@ Route::middleware(\App\Http\Middleware\LicenseChecker::class)->group(function ()
 
 });
 
-Route::get('/test', [ContentUpdateController::class, 'manageContentUpdate']);
+Route::get('/install/update/{id}', [ContentUpdateController::class, 'manageContentUpdate'])->name('install.update');
+Route::get('/check', function (){
+    try {
+        $storeId = config('license.store_id');
+        $licensingServerUrl = config('license.licensing_server_url');
+        $response = Http::post("$licensingServerUrl/api/check-if-update-available", [
+            'store_id' => $storeId,
+        ]);
+
+        if ($response->successful() and $response->json('status')=='available') {
+            /**@var User $user*/;
+            $user = auth()->user();
+            $notifications = $user->notifications()->where('created_at', '>=', $response->json('created_at'))->get();
+            if (!count($notifications) > 0) {
+                $users = User::role('admin')->get();
+                \Illuminate\Support\Facades\Notification::send($users, new UpdateAvailableNotification());
+            }
+        }
+    } catch (ConnectionException $exception) {
+
+    }
+});

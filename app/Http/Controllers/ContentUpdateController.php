@@ -7,21 +7,25 @@ use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductConfiguration;
 use App\Models\Scene;
+use App\Models\User;
 use App\Models\View;
 use App\Models\ViewItem;
+use App\Notifications\UpdateInstalledNotification;
 use BaconQrCode\Exception\RuntimeException;
+use Filament\Notifications\Actions\Action;
+use Filament\Notifications\Notification;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Response;
+use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Intervention\Image\ImageManager;
-use Symfony\Component\HttpFoundation\Response as ResponseStatus;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Throwable;
 use ZipArchive;
@@ -31,7 +35,7 @@ class ContentUpdateController extends Controller
     /**
      * @throws RuntimeException|ConnectionException|Throwable
      */
-    public function manageContentUpdate()
+    public function manageContentUpdate($id)
     {
         try {
             $licensingServerUrl = config('license.licensing_server_url');
@@ -41,6 +45,11 @@ class ContentUpdateController extends Controller
             $updateFolder = storage_path("app/updates/$storeId");
             $this->mapData($updateFolder);
             $this->verifyUpload($data['content_update_id'], $licensingServerUrl);
+
+            DatabaseNotification::find($id)->markAsRead();
+            $users = User::role('admin')->get();
+            \Illuminate\Support\Facades\Notification::send($users, new UpdateInstalledNotification());
+            return redirect()->back();
         } catch (ConnectionException|RuntimeException|QueryException $exception) {
             return response([
                 'message' => $exception->getMessage(),
@@ -409,16 +418,12 @@ class ContentUpdateController extends Controller
 
     public function verifyUpload($contentUpdateId, $licensingServerUrl): void
     {
-        try {
-            $response = Http::post("$licensingServerUrl/api/verify-update", [
-                'content_update_id' => $contentUpdateId,
-                'update_installed_at' => now()
-            ]);
-            if (!$response->successful()) {
-                throw new ConflictHttpException('Having trouble verifying update.');
-            }
-        } catch (ConnectionException $exception) {
-
+        $response = Http::post("$licensingServerUrl/api/verify-update", [
+            'content_update_id' => $contentUpdateId,
+            'update_installed_at' => now()
+        ]);
+        if (!$response->successful()) {
+            throw new ConflictHttpException('Having trouble verifying update.');
         }
     }
 }

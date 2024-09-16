@@ -57,7 +57,15 @@ document.addEventListener("click", (e) => {
 var secondNavBtn = document.querySelector(".second-nav-btn");
 var secondDropDown = document.querySelector(".second-nav-drop-down");
 var secondBlackout = document.querySelector(".second-blackout");
-document.getElementById('close-button').classList.remove('hide');
+if (
+    window.location.pathname !== '/' &&
+    window.location.pathname !== '/about' &&
+    window.location.pathname !== '/contact' &&
+    window.location.pathname !== '/faq'
+) {
+    document.getElementById('close-button').classList.remove('hide');
+}
+
 
 secondNavBtn.addEventListener("click", () => {
     secondDropDown.classList.add("open");

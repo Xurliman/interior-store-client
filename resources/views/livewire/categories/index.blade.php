@@ -48,8 +48,12 @@
 
                 <div
                     x-data="{ toggleDropList:false, categoryId : {{ $category->id }}}"
-                    @toggle-drop-list.window="toggleDropList = $event.detail.toggleDropList; categoryId = $event.detail.categoryId;"
-                    @mask-btn-clicked.window="categoryId = $event.detail.categoryId;toggleDropList = true"
+                    @toggle-drop-list.window="
+                        toggleDropList = $event.detail.toggleDropList;
+                        categoryId = $event.detail.categoryId;"
+                    @mask-btn-clicked.window="
+                        categoryId = $event.detail.categoryId;
+                        toggleDropList = true"
                     :class="{ 'open' : (toggleDropList && categoryId == {{$category->id}}) }"
                     class="custom-drop-list">
                     <button
