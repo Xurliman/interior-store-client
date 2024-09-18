@@ -14,7 +14,6 @@ services:
       dockerfile: ./deploy/Dockerfile
     volumes:
       - configurator_app:/var/www/fantom/storage/app
-#      - fantom-configurator-cc_configurator_cc:/content
     environment:
       DB_CONNECTION: ${DB_CONNECTION}
       DB_HOST: database
@@ -27,6 +26,7 @@ services:
         - "8000:80"
     networks:
         -   n-laravel
+        -   deploy_n-license
     depends_on:
       database:
         condition: service_healthy
@@ -43,7 +43,6 @@ services:
       volumes:
           - configurator_database:/var/lib/mysql
       healthcheck:
-#        test: ['CMD', 'mariadb', '${DB_DATABASE}', '-h', 'localhost', '--password=${DB_PASSWORD}', '-u', '${DB_USERNAME}']
         test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
         timeout: 20s
         retries: 10
@@ -56,9 +55,9 @@ services:
 volumes:
   configurator_app: {}
   configurator_database: {}
-#  fantom-configurator-cc_configurator_cc:
-#    external: true
 
 networks:
   n-laravel:
     driver: bridge
+  deploy_n-license:
+    external: true
