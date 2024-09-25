@@ -38,7 +38,7 @@ class CheckIfUpdateAvailable extends Command
             ]);
 
             if ($response->successful() and $response->json('status')=='available') {
-                $users = User::role('manager')->get();
+                $users = User::role('admin')->get();
                 Notification::send($users, new UpdateAvailableNotification());
             }
         } catch (ConnectionException $exception) {

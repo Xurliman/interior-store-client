@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\ContentUpdate;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductConfiguration;
@@ -11,9 +12,8 @@ use App\Models\User;
 use App\Models\View;
 use App\Models\ViewItem;
 use App\Notifications\UpdateInstalledNotification;
+use App\Notifications\ValidationErrorNotification;
 use BaconQrCode\Exception\RuntimeException;
-use Filament\Notifications\Actions\Action;
-use Filament\Notifications\Notification;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
@@ -21,7 +21,9 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Response;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -41,22 +43,32 @@ class ContentUpdateController extends Controller
             $licensingServerUrl = config('license.licensing_server_url');
             $storeId = config('license.store_id');
             $data = $this->downloadUpdate($licensingServerUrl, $storeId);
-            $this->unzip($data['filename'], $storeId);
-            $updateFolder = storage_path("app/updates/$storeId");
-            $this->mapData($updateFolder);
-            $this->verifyUpload($data['content_update_id'], $licensingServerUrl);
+            $content = $this->unzip($data['filename'], $storeId);
+            $response = $this->mapData($content->path, $content);
+            $responseMsg = json_decode($response->getContent(),1);
+            if ($content['status'] == "failed" && count($responseMsg) == 1) {
+                File::deleteDirectory($content->path);
+                ContentUpdate::firstWhere('id', $content->id)->delete();
+                $users = User::role('admin')->get();
 
+                $notificationMsg = $responseMsg['message'];
+                Notification::send($users, new ValidationErrorNotification($notificationMsg));
+                return redirect()->back();
+            }
+            Storage::disk('public')->delete($responseMsg);
+            $this->verifyUpload($data['content_update_id'], $licensingServerUrl);
             DatabaseNotification::find($id)->markAsRead();
             $users = User::role('admin')->get();
-            \Illuminate\Support\Facades\Notification::send($users, new UpdateInstalledNotification());
+            Notification::send($users, new UpdateInstalledNotification());
             return redirect()->back();
-        } catch (ConnectionException|RuntimeException|QueryException $exception) {
+        } catch (ConnectionException|RuntimeException|QueryException|ValidationException $exception) {
             return response([
                 'message' => $exception->getMessage(),
                 'code' => $exception->getCode() ?? 500,
             ]);
         }
     }
+
     /**
      * @param $licensingServerUrl
      * @param $storeId
@@ -76,7 +88,6 @@ class ContentUpdateController extends Controller
         if (!$response->successful()) {
             throw new ConnectionException('Error during downloading update.', 301);
         }
-        $filename = 'downloaded_file.zip';
         $tempFilePath = tempnam(sys_get_temp_dir(), 'downloaded_');
 
         $fileStream = fopen($tempFilePath, 'wb');
@@ -96,7 +107,7 @@ class ContentUpdateController extends Controller
 
         fclose($fileStream);
         fclose($responseStream);
-
+        $filename = $storeId."/".now()->format('Ymd_His').'.zip';
         Storage::disk('public')->put($filename, file_get_contents($tempFilePath));
         unlink($tempFilePath);
         return array(
@@ -105,7 +116,7 @@ class ContentUpdateController extends Controller
         );
     }
 
-    public function unzip($fileName, $storeId): void
+    public function unzip($fileName, $storeId)
     {
         $filePath = Storage::disk('public')->path($fileName);
         $zip = new ZipArchive();
@@ -113,14 +124,38 @@ class ContentUpdateController extends Controller
         if ($res === false) {
             throw new RuntimeException('Failed to open zip file.');
         }
-        $zip->extractTo(storage_path("app/updates/$storeId"));
+        $extractionPath = storage_path("app/updates/$storeId/".now()->format('YmdHis'));
+        $content = ContentUpdate::create([
+            'description' => 'Installation was not successful',
+            'path' => $extractionPath,
+            'update_installed_at' => now(),
+            'status' => "failed",
+        ]);
+        $zip->extractTo($extractionPath);
         $zip->close();
+        if (file_exists("$extractionPath/__MACOSX")) {
+            File::deleteDirectory("$extractionPath/__MACOSX");
+            $extractedFiles = scandir($extractionPath);
+            $extractedFiles = array_diff($extractedFiles, array('.', '..'));
+            if (count($extractedFiles) === 1 && is_dir($extractionPath . '/' . reset($extractedFiles))) {
+                $innerFolder = $extractionPath . '/' . reset($extractedFiles);
+                $filesInInnerFolder = scandir($innerFolder);
+                $filesInInnerFolder = array_diff($filesInInnerFolder, array('.', '..'));
+
+                foreach ($filesInInnerFolder as $file) {
+                    rename($innerFolder . '/' . $file, $extractionPath . '/' . $file);
+                }
+
+                File::deleteDirectory($innerFolder);
+            }
+        }
+        return $content;
     }
 
     /**
      * @throws Throwable
      */
-    public function mapData($updateFolder): Application|Response|ResponseFactory
+    public function mapData($updateFolder, $content): Application|Response|ResponseFactory
     {
         DB::beginTransaction();
         try {
@@ -128,9 +163,6 @@ class ContentUpdateController extends Controller
                 ->orWhere('imageable_type', Product::class)
                 ->orWhere('imageable_type', ProductConfiguration::class)
                 ->get();
-            Storage::disk('public')->delete(collect($oldImages)
-                ->pluck('path')
-                ->toArray());
             Image::destroy(
                 collect($oldImages)
                     ->pluck('id')
@@ -141,11 +173,9 @@ class ContentUpdateController extends Controller
             Category::destroy(Category::all()->pluck('id')->toArray());
             ProductConfiguration::destroy(ProductConfiguration::all()->pluck('id')->toArray());
 
-            $folder = glob("$updateFolder/*", GLOB_ONLYDIR)[1];
-            $jsonFilePath = "$folder/data-grabbed.json";
+            $jsonFilePath = glob("$updateFolder/*.json")[0];
             $jsonStringContent = file_get_contents($jsonFilePath);
             $jsonArrayContent = json_decode($jsonStringContent, true);
-
             $newSceneData = $newViewData = $newCategoryData = $newProductData = $newViewItemData = $newProductConfigData = $newImageData = [];
             $manager = ImageManager::gd();
 
@@ -159,7 +189,7 @@ class ContentUpdateController extends Controller
                     'updated_at' => now(),
                 );
                 foreach ($scene['views'] as $view) {
-                    $this->viewValidate($view);
+                    $this->viewValidate($view, $updateFolder);
                     $newViewData[] = array(
                         'id' => $view['id'],
                         'scene_id' => $scene['id'],
@@ -170,7 +200,7 @@ class ContentUpdateController extends Controller
                         'updated_at' => now(),
                     );
                     foreach ($view['view_images'] as $type => $image) {
-                        $newFileName = $this->storeImage($image['path'], $folder, $manager);
+                        $newFileName = $this->storeImage($image['path'], $updateFolder, $manager);
                         $newImageData[] = array(
                             'type' => $type,
                             'path' => $newFileName,
@@ -213,7 +243,7 @@ class ContentUpdateController extends Controller
                 }
 
                 foreach ($scene['products'] as $product) {
-                    $this->productValidate($product);
+                    $this->productValidate($product, $updateFolder);
                     $newProductData[] = array(
                         'id' => $product['id'],
                         'category_id' => $product['category_id'],
@@ -225,7 +255,10 @@ class ContentUpdateController extends Controller
                         'created_at' => now(),
                         'updated_at' => now(),
                     );
-                    $newFileName = $this->storeImage($product['image'], $folder, $manager);
+                    $newFileName = $this->storeImage($product['image'], $updateFolder, $manager);
+                    if ($newFileName == "") {
+                        throw new RuntimeException('File not exists: ' . $image['path']);
+                    }
                     $newImageData[] = array(
                         'type' => null,
                         'path' => $newFileName,
@@ -236,7 +269,7 @@ class ContentUpdateController extends Controller
                     );
 
                     foreach ($product['product_configurations'] as $product_configuration) {
-                        $this->productConfigurationValidate($product_configuration);
+                        $this->productConfigurationValidate($product_configuration, $updateFolder);
                         $productConfigurationIds = collect($newProductConfigData)->pluck('id')->toArray();
                         if (!in_array($product_configuration['id'], $productConfigurationIds)) {
                             $newProductConfigData[] = array(
@@ -246,7 +279,10 @@ class ContentUpdateController extends Controller
                             );
 
                             foreach ($product_configuration['conf_images'] as $type => $confImage) {
-                                $newFileName = $this->storeImage($confImage['path'], $folder, $manager);
+                                $newFileName = $this->storeImage($confImage['path'], $updateFolder, $manager);
+                                if ($newFileName == "") {
+                                    throw new RuntimeException('File not exists: ' . $image['path']);
+                                }
                                 $newImageData[] = array(
                                     'type' => $type,
                                     'path' => $newFileName,
@@ -276,9 +312,15 @@ class ContentUpdateController extends Controller
                 })->toArray()
             );
             DB::commit();
-            return response([
-                'message' => 'All done',
-            ], 200);
+            ContentUpdate::firstWhere('id', $content->id)->update([
+                'status' => 'successful',
+                'version' => $jsonArrayContent['global']['version'],
+                'description' => $jsonArrayContent['global']['description'],
+            ]);
+            return response(collect($oldImages)
+                ->pluck('path')
+                ->toArray(), 200);
+
         } catch (ValidationException $exception) {
             DB::rollBack();
             return response([
@@ -289,9 +331,11 @@ class ContentUpdateController extends Controller
             return response([
                 'message' => $exception->getMessage()
             ], 500);
-        } catch (Throwable $e) {
+        } catch (Throwable $exception) {
             DB::rollBack();
-            throw $e;
+            return response([
+                'message' => $exception->getMessage()
+            ], 500);
         }
     }
 
@@ -317,18 +361,26 @@ class ContentUpdateController extends Controller
     /**
      * @throws ValidationException
      */
-    public function viewValidate($view): void
+    public function viewValidate($view, $folder): void
     {
         $validator = Validator::make($view, array(
             'id' => 'required',
             'name' => 'required',
-            'is_default' => 'required',
+            'is_default' => 'numeric',
             'view_images' => 'required',
             'view_images.transparent_bg' => 'required',
             'view_images.black_bg' => 'required',
         ));
         if ($validator->fails()) {
             throw new ValidationException($validator);
+        }
+        foreach ($view['view_images'] as $viewImage) {
+            $path = explode('\\', $viewImage['path']);
+            $fileName = $path[count($path) - 1];
+            $imagePath = $folder . implode('/', array_slice($path, 0, count($path)-1)) . '/' . $fileName;
+            if (!file_exists($imagePath)) {
+                throw ValidationException::withMessages(["message" => "File not exists: {$viewImage['path']}"]);
+            }
         }
     }
 
@@ -370,7 +422,7 @@ class ContentUpdateController extends Controller
     /**
      * @throws ValidationException
      */
-    public function productValidate($product): void
+    public function productValidate($product, $folder): void
     {
         $validator = Validator::make($product, array(
             'id' => 'required',
@@ -386,12 +438,18 @@ class ContentUpdateController extends Controller
         if ($validator->fails()) {
             throw new ValidationException($validator);
         }
+        $path = explode('\\', $product['image']);
+        $fileName = $path[count($path) - 1];
+        $imagePath = $folder . implode('/', array_slice($path, 0, count($path)-1)) . '/' . $fileName;
+        if (!file_exists($imagePath)) {
+            throw ValidationException::withMessages(["message" => "File not exists: {$product['image']}"]);
+        }
     }
 
     /**
      * @throws ValidationException
      */
-    public function productConfigurationValidate($productConfiguration): void
+    public function productConfigurationValidate($productConfiguration, $folder): void
     {
         $validator = Validator::make($productConfiguration, array(
             'id' => 'required',
@@ -402,6 +460,14 @@ class ContentUpdateController extends Controller
         ));
         if ($validator->fails()) {
             throw new ValidationException($validator);
+        }
+        foreach ($productConfiguration['conf_images'] as $confImage) {
+            $path = explode('\\', $confImage['path']);
+            $fileName = $path[count($path) - 1];
+            $imagePath = $folder . implode('/', array_slice($path, 0, count($path)-1)) . '/' . $fileName;
+            if (!file_exists($imagePath)) {
+                throw ValidationException::withMessages(["message" => "File not exists: {$confImage['path']}"]);
+            }
         }
     }
 

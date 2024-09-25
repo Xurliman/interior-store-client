@@ -30,7 +30,6 @@ class CategoryResource extends Resource
             ->schema([
                 Section::make()->schema([
                     TextInput::make('name')->required(),
-                    TextInput::make('data_mask')->label('slug')->required(),
                 ])->columns(2)
             ]);
     }
@@ -43,8 +42,8 @@ class CategoryResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('data_mask')
-                    ->label('slug')
+                TextColumn::make('products.name')
+                    ->wrap()
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
