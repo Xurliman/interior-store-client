@@ -44,6 +44,7 @@ class ContentUpdateController extends Controller
             $storeId = config('license.store_id');
             $data = $this->downloadUpdate($licensingServerUrl, $storeId);
             $content = $this->unzip($data['filename'], $storeId);
+            Storage::disk('public')->deleteDirectory($storeId);
             $response = $this->mapData($content->path, $content);
             $responseMsg = json_decode($response->getContent(),1);
             if ($content['status'] == "failed" && count($responseMsg) == 1) {

@@ -32,6 +32,11 @@ class ContentUpdateResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('version')
                     ->maxLength(255),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'failed' => 'Failed',
+                        'successful' => 'Successful',
+                    ])->hiddenOn('edit'),
                 MarkdownEditor::make('description')
                     ->columnSpanFull(),
                 Forms\Components\DateTimePicker::make('update_installed_at'),
@@ -42,6 +47,8 @@ class ContentUpdateResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('status')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('version')
                     ->sortable()
                     ->searchable(),
