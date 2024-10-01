@@ -33,7 +33,7 @@ RUN docker-php-ext-enable pdo_mysql gd
 
 
 # install composer
-COPY --from=composer:2.7.6 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.7.7 /usr/bin/composer /usr/bin/composer
 
 # Set working directory
 RUN mkdir /var/www/fantom

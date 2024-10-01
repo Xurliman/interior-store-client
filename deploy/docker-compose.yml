@@ -6,58 +6,58 @@
 version: '3.9'
 
 services:
-  laravel:
-    restart: unless-stopped
-    container_name: laravelapp
-    build:
-      context: ../
-      dockerfile: ./deploy/Dockerfile
-    volumes:
-      - configurator_app:/var/www/fantom/storage/app
-    environment:
-      DB_CONNECTION: ${DB_CONNECTION}
-      DB_HOST: database
-      DB_PORT: ${DB_PORT}
-      DB_DATABASE: ${DB_DATABASE}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-    ports:
-        - "8000:80"
-    networks:
-        -   n-laravel
-        -   deploy_n-license
-    depends_on:
-      database:
-        condition: service_healthy
+    laravel:
+        restart: unless-stopped
+        container_name: laravelapp
+        build:
+            context: ../
+            dockerfile: ./deploy/Dockerfile
+        volumes:
+            - configurator_app:/var/www/fantom/storage/app
+        environment:
+            DB_CONNECTION: ${DB_CONNECTION}
+            DB_HOST: database
+            DB_PORT: ${DB_PORT}
+            DB_DATABASE: ${DB_DATABASE}
+            DB_USERNAME: ${DB_USERNAME}
+            DB_PASSWORD: ${DB_PASSWORD}
+            DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+        ports:
+            - "8000:80"
+        networks:
+            -   n-laravel
+            -   deploy_n-license
+        depends_on:
+            database:
+                condition: service_healthy
 
-  database:
-      restart: unless-stopped
-      image: mariadb:latest
-      environment:
-        MARIADB_DATABASE: ${DB_DATABASE}
-        MARIADB_USER: ${DB_USERNAME}
-        MARIADB_PASSWORD: ${DB_PASSWORD}
-        MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-        MARIADB_AUTO_UPGRADE: 1
-      volumes:
-          - configurator_database:/var/lib/mysql
-      healthcheck:
-        test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
-        timeout: 20s
-        retries: 10
-      networks:
-        -   n-laravel
-      ports:
-        - "3306:3306"
-      extra_hosts:
-        - "host.docker.internal:host-gateway"
+    database:
+        restart: unless-stopped
+        image: mariadb:latest
+        environment:
+            MARIADB_DATABASE: ${DB_DATABASE}
+            MARIADB_USER: ${DB_USERNAME}
+            MARIADB_PASSWORD: ${DB_PASSWORD}
+            MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MARIADB_AUTO_UPGRADE: 1
+        volumes:
+            - configurator_database:/var/lib/mysql
+        healthcheck:
+            test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+            timeout: 20s
+            retries: 10
+        networks:
+            -   n-laravel
+        ports:
+            - "3306:3306"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
 volumes:
-  configurator_app: {}
-  configurator_database: {}
+    configurator_app: {}
+    configurator_database: {}
 
 networks:
-  n-laravel:
-    driver: bridge
-  deploy_n-license:
-    external: true
+    n-laravel:
+        driver: bridge
+    deploy_n-license:
+        external: true
