@@ -5,7 +5,7 @@
                 \Illuminate\Support\Facades\Storage::url(
                     \App\Models\Setting::first()
                         ->load('images')
-                        ->getMainLogo()?->path)
+                        ->getMainLogo())
                     }}" alt="">
             <p>Allow Fantom to empower you in transforming your ideas into captivating digital experiences. Our team provides cutting-edge solutions and unparalleled value in delivering exceptional creative work.</p>
         </div>

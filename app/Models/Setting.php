@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
 
 class Setting extends Model
 {
@@ -26,7 +29,10 @@ class Setting extends Model
 
     public function getMainLogo()
     {
-        return $this->images()->where('type', 'transparent_bg')->first();
+        $image = $this->images()->where('type', 'transparent_bg')->first();
+        if ($image) {
+            return $image->path;
+        }
     }
 
     public static function getCurrencySymbol():string

@@ -68,7 +68,7 @@
                         \Illuminate\Support\Facades\Storage::url(
                             \App\Models\Setting::first()
                                 ->load('images')
-                                ->getMainLogo()?->path)
+                                ->getMainLogo())
                     }}" alt="mainlogo">
                 </a>
                 <div class="lang-wrapper ">
@@ -86,7 +86,7 @@
                         \Illuminate\Support\Facades\Storage::url(
                             \App\Models\Setting::first()
                                 ->load('images')
-                                ->getMainLogo()?->path)
+                                ->getMainLogo())
                     }}" alt="">
                     <ul>
                         <li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-252"><a href="/">Home page</a></li>

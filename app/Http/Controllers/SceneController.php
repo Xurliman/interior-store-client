@@ -56,7 +56,7 @@ class SceneController extends Controller
         $printImg = "storage/".ImageMerger::imageCreateForView(
             $view,
             collect($products)->pluck('product_id')->toArray());
-        $mainLogoImg = "storage/".Setting::first()?->load('images')->getMainLogo()?->path;
+        $mainLogoImg = "storage/".Setting::first()?->load('images')->getMainLogo();
         return Pdf::loadView('scenes.preview-print', [
             'print_img' => $printImg,
             'main_logo' => $mainLogoImg,

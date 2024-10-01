@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
@@ -48,7 +49,7 @@ class UserSeeder extends Seeder
         ]);
         $user->assignRole('manager');
 
-        Setting::create([
+        $setting = Setting::create([
             'company_name' => 'Fantom',
             'company_phone' => '+47 94 163 884',
             'company_email' => 'no-reply@fantomstudio.uz',
@@ -56,6 +57,13 @@ class UserSeeder extends Seeder
             'currency' => 'dollar',
             'currency_symbol' => '$',
             'timezone' => 'Asia/Tashkent',
+        ]);
+
+        $newFileName = uniqid(rand(), false).'_mainlogo.svg';
+        Storage::putFileAs('public','img/mainlogo.svg', $newFileName);
+        $setting->images()->create([
+            'type' => 'transparent_bg',
+            'path' => $newFileName,
         ]);
     }
 }

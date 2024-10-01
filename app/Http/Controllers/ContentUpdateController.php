@@ -414,6 +414,7 @@ class ContentUpdateController extends Controller
         $validator = Validator::make($category, array(
             'id' => 'required',
             'name' => 'required',
+//            'layer_order' => 'required',
         ));
         if ($validator->fails()) {
             throw new ValidationException($validator);
