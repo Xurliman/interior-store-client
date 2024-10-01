@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
         ]);
 
         $newFileName = uniqid(rand(), false).'_mainlogo.svg';
-        Storage::putFileAs('public','img/mainlogo.svg', $newFileName);
+        Storage::putFileAs('public',public_path('img/mainlogo.svg'), $newFileName);
         $setting->images()->create([
             'type' => 'transparent_bg',
             'path' => $newFileName,
