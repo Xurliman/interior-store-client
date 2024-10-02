@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('layer_order')->nullable();
+            $table->string('layer_order');
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ trait GetCategorisedProduct
             ->whereHas('products', function (Builder $query){
                 $query->where('is_visible', 1);
             })
+            ->orderBy('layer_order')
             ->get();
         foreach ($categories as $key => $category) {
             $flag = false;

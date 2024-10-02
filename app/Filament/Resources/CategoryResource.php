@@ -30,6 +30,7 @@ class CategoryResource extends Resource
             ->schema([
                 Section::make()->schema([
                     TextInput::make('name')->required(),
+                    TextInput::make('layer_order')->required()->numeric(),
                 ])->columns(2)
             ]);
     }

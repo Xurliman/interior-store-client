@@ -12,25 +12,25 @@ class CategorySeeder extends Seeder
         $data = [
             [
                 'name' => 'Wall Panels',
-                'data_mask' => 'wall-pattern',
+                'layer_order' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'name' => 'Floor Covering',
-                'data_mask' => 'floor',
+                'layer_order' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'name' => 'Chairs',
-                'data_mask' => 'chairs',
+                'layer_order' => 4,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'name' => 'Lamps',
-                'data_mask' => 'lamps',
+                'layer_order' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

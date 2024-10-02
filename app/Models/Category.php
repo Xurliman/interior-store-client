@@ -17,7 +17,7 @@ class Category extends Model implements Auditable
 
     protected $fillable = [
         'name',
-        'data_mask',
+        'layer_order',
     ];
 
     protected $hidden = [

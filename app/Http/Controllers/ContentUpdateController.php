@@ -218,6 +218,7 @@ class ContentUpdateController extends Controller
                     $newCategoryData[] = array(
                         'id' => $category['id'],
                         'name' => $category['name'],
+                        'layer_order' => $category['layer_order'],
                         'created_at' => now(),
                         'updated_at' => now(),
                     );
@@ -414,7 +415,7 @@ class ContentUpdateController extends Controller
         $validator = Validator::make($category, array(
             'id' => 'required',
             'name' => 'required',
-//            'layer_order' => 'required',
+            'layer_order' => 'required',
         ));
         if ($validator->fails()) {
             throw new ValidationException($validator);
