@@ -1,0 +1,2610 @@
+{
+    "global": {
+        "version": "2024.09.06",
+        "company": "Fantom Studio Test",
+        "language": "english",
+        "description": "Fantom Studio Test. Custom Content Module."
+    },
+    "scenes": [
+        {
+            "id": 1,
+            "name": "Black Kitchen",
+            "slug": "black_kitchen",
+            "views": [
+                {
+                    "id": 1,
+                    "name": "View1",
+                    "is_default": 1,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\Black Kitchen\\View1\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\Black Kitchen\\View1\\Jpeg\\Final.jpg"
+                        },
+                        "mask_bg": {
+                            "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Foreground.png"
+                        }
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "View2",
+                    "is_default": 0,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\Black Kitchen\\View2\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\Black Kitchen\\View2\\Jpeg\\Final.jpg"
+                        },
+                        "mask_bg": {
+                            "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Foreground.png"
+                        }
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "View3",
+                    "is_default": 0,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\Black Kitchen\\View3\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\Black Kitchen\\View3\\Jpeg\\Final.jpg"
+                        }
+                    }
+                }
+            ],
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "BarStool"
+                },
+                {
+                    "id": 2,
+                    "name": "KitchenFartuk"
+                },
+                {
+                    "id": 3,
+                    "name": "Lamp"
+                },
+                {
+                    "id": 4,
+                    "name": "Parquet"
+                }
+            ],
+            "clickable_zones": [
+                {
+                    "id": 1,
+                    "category_id": 1,
+                    "view_id": 1,
+                    "width": "24.00",
+                    "height": "20.00",
+                    "top": "66.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "56.00"
+                },
+                {
+                    "id": 2,
+                    "category_id": 2,
+                    "view_id": 1,
+                    "width": "39.00",
+                    "height": "15.00",
+                    "top": "48.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "30.50"
+                },
+                {
+                    "id": 25,
+                    "category_id": 4,
+                    "view_id": 1,
+                    "width": "17.00",
+                    "height": "20.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "0.00"
+                },
+                {
+                    "id": 3,
+                    "category_id": 3,
+                    "view_id": 1,
+                    "width": "55.00",
+                    "height": "47.00",
+                    "top": "0.00",
+                    "bottom": null,
+                    "right": "22.00",
+                    "left": null
+                },
+                {
+                    "id": 4,
+                    "category_id": 4,
+                    "view_id": 1,
+                    "width": "15.00",
+                    "height": "34.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": "0.00",
+                    "left": null
+                },
+                {
+                    "id": 5,
+                    "category_id": 1,
+                    "view_id": 2,
+                    "width": "13.50",
+                    "height": "25.00",
+                    "top": "63.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "64.00"
+                },
+                {
+                    "id": 6,
+                    "category_id": 2,
+                    "view_id": 2,
+                    "width": "34.00",
+                    "height": "17.00",
+                    "top": "47.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "18.50"
+                },
+                {
+                    "id": 26,
+                    "category_id": 4,
+                    "view_id": 2,
+                    "width": "22.50",
+                    "height": "34.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": "0.00",
+                    "left": null
+                },
+                {
+                    "id": 7,
+                    "category_id": 3,
+                    "view_id": 2,
+                    "width": "44.00",
+                    "height": "47.00",
+                    "top": "0.00",
+                    "bottom": null,
+                    "right": "37.50",
+                    "left": null
+                },
+                {
+                    "id": 8,
+                    "category_id": 4,
+                    "view_id": 2,
+                    "width": "33.00",
+                    "height": "12.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "0.00"
+                },
+                {
+                    "id": 9,
+                    "category_id": 1,
+                    "view_id": 3,
+                    "width": "54.50",
+                    "height": "17.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "30.00"
+                },
+                {
+                    "id": 10,
+                    "category_id": 2,
+                    "view_id": 3,
+                    "width": "66.00",
+                    "height": "27.00",
+                    "top": "44.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "0.00"
+                },
+                {
+                    "id": 11,
+                    "category_id": 3,
+                    "view_id": 3,
+                    "width": "66.00",
+                    "height": "44.00",
+                    "top": "0.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "0.00"
+                }
+            ],
+            "products": [
+                {
+                    "id": 1,
+                    "category_id": 1,
+                    "name": "BarStool1",
+                    "short_name": "BarStool1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 566.92,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\BarStool1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 1,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\BarStool1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\BarStool1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\BarStool1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\BarStool1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\BarStool1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\BarStool1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "category_id": 1,
+                    "name": "BarStool2",
+                    "short_name": "BarStool2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 391.56,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\BarStool2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 4,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\BarStool2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\BarStool2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\BarStool2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\BarStool2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\BarStool2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\BarStool2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "category_id": 1,
+                    "name": "BarStool3",
+                    "short_name": "BarStool3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 580.84,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\BarStool3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 7,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\BarStool3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\BarStool3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 8,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\BarStool3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\BarStool3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 9,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\BarStool3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\BarStool3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "category_id": 1,
+                    "name": "BarStool4",
+                    "short_name": "BarStool4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 380.72,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\BarStool4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 10,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\BarStool4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\BarStool4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 11,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\BarStool4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\BarStool4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 12,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\BarStool4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\BarStool4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "category_id": 1,
+                    "name": "BarStool5",
+                    "short_name": "BarStool5",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 430.41,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\BarStool5.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 13,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\BarStool5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\BarStool5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 14,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\BarStool5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\BarStool5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 15,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\BarStool5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\BarStool5.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "category_id": 1,
+                    "name": "BarStool6",
+                    "short_name": "BarStool6",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 316.53,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\BarStool6.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 16,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\BarStool6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\BarStool6.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 17,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\BarStool6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\BarStool6.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 18,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\BarStool6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\BarStool6.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "category_id": 2,
+                    "name": "KitchenFartuk1",
+                    "short_name": "KitchenFartuk1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 556.83,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\KitchenFartuk1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 19,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\KitchenFartuk1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\KitchenFartuk1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 20,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\KitchenFartuk1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\KitchenFartuk1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 21,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\KitchenFartuk1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\KitchenFartuk1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "category_id": 2,
+                    "name": "KitchenFartuk2",
+                    "short_name": "KitchenFartuk2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 552.52,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\KitchenFartuk2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 22,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\KitchenFartuk2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\KitchenFartuk2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 23,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\KitchenFartuk2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\KitchenFartuk2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 24,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\KitchenFartuk2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\KitchenFartuk2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 9,
+                    "category_id": 2,
+                    "name": "KitchenFartuk3",
+                    "short_name": "KitchenFartuk3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 551.05,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\KitchenFartuk3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 25,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\KitchenFartuk3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\KitchenFartuk3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 26,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\KitchenFartuk3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\KitchenFartuk3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 27,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\KitchenFartuk3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\KitchenFartuk3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 10,
+                    "category_id": 3,
+                    "name": "Lamp1",
+                    "short_name": "Lamp1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 557.82,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Lamp1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 28,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Lamp1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Lamp1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 29,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Lamp1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Lamp1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 30,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\Lamp1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\Lamp1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 11,
+                    "category_id": 3,
+                    "name": "Lamp2",
+                    "short_name": "Lamp2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 395.02,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Lamp2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 31,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Lamp2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Lamp2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 32,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Lamp2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Lamp2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 33,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\Lamp2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\Lamp2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 12,
+                    "category_id": 3,
+                    "name": "Lamp3",
+                    "short_name": "Lamp3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 451.28,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Lamp3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 34,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Lamp3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Lamp3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 35,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Lamp3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Lamp3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 36,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\Lamp3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\Lamp3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 13,
+                    "category_id": 3,
+                    "name": "Lamp4",
+                    "short_name": "Lamp4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 478.8,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Lamp4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 37,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Lamp4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Lamp4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 38,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Lamp4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Lamp4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 39,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\Lamp4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\Lamp4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 14,
+                    "category_id": 3,
+                    "name": "Lamp5",
+                    "short_name": "Lamp5",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 308.49,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Lamp5.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 40,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Lamp5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Lamp5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 41,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Lamp5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Lamp5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 42,
+                            "view_id": 3,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Png\\Lamp5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View3\\Masks\\Png\\Lamp5.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 15,
+                    "category_id": 4,
+                    "name": "Parquet1",
+                    "short_name": "Parquet1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 296.45,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Parquet1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 43,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Parquet1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Parquet1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 44,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Parquet1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Parquet1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 16,
+                    "category_id": 4,
+                    "name": "Parquet2",
+                    "short_name": "Parquet2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 252.62,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Parquet2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 45,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Parquet2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Parquet2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 46,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Parquet2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Parquet2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 17,
+                    "category_id": 4,
+                    "name": "Parquet3",
+                    "short_name": "Parquet3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 373.86,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Parquet3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 47,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Parquet3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Parquet3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 48,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Parquet3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Parquet3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 18,
+                    "category_id": 4,
+                    "name": "Parquet4",
+                    "short_name": "Parquet4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 235.22,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Parquet4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 49,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Parquet4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Parquet4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 50,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Parquet4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Parquet4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 19,
+                    "category_id": 4,
+                    "name": "Parquet5",
+                    "short_name": "Parquet5",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 407.79,
+                    "image": "\\Scenes\\Black Kitchen\\Detailed\\Parquet5.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 51,
+                            "view_id": 1,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Png\\Parquet5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View1\\Masks\\Png\\Parquet5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 52,
+                            "view_id": 2,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Png\\Parquet5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Black Kitchen\\View2\\Masks\\Png\\Parquet5.png"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Red Kitchen",
+            "slug": "red_kitchen",
+            "views": [
+                {
+                    "id": 4,
+                    "name": "View1",
+                    "is_default": 1,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\Red Kitchen\\View1\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\Red Kitchen\\View1\\Jpeg\\Final.jpg"
+                        },
+                        "mask_bg": {
+                            "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Foreground.png"
+                        }
+                    }
+                },
+                {
+                    "id": 5,
+                    "name": "View2",
+                    "is_default": 0,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\Red Kitchen\\View2\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\Red Kitchen\\View2\\Jpeg\\Final.jpg"
+                        },
+                        "mask_bg": {
+                            "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Foreground.png"
+                        }
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "View3",
+                    "is_default": 0,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\Red Kitchen\\View3\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\Red Kitchen\\View3\\Jpeg\\Final.jpg"
+                        }
+                    }
+                }
+            ],
+            "categories": [
+                {
+                    "id": 5,
+                    "name": "KitchenFartuk"
+                },
+                {
+                    "id": 6,
+                    "name": "Lamp"
+                },
+                {
+                    "id": 7,
+                    "name": "Parquet"
+                }
+            ],
+            "clickable_zones": [
+                {
+                    "id": 12,
+                    "category_id": 5,
+                    "view_id": 4,
+                    "width": "22.00",
+                    "height": "14.50",
+                    "top": "47.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "39.00"
+                },
+                {
+                    "id": 13,
+                    "category_id": 6,
+                    "view_id": 4,
+                    "width": "57.00",
+                    "height": "46.50",
+                    "top": "0.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "21.50"
+                },
+                {
+                    "id": 14,
+                    "category_id": 7,
+                    "view_id": 4,
+                    "width": "100.00",
+                    "height": "21.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "0.00"
+                },
+                {
+                    "id": 15,
+                    "category_id": 5,
+                    "view_id": 5,
+                    "width": "33.50",
+                    "height": "22.00",
+                    "top": "46.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "31.50"
+                },
+                {
+                    "id": 16,
+                    "category_id": 6,
+                    "view_id": 5,
+                    "width": "86.00",
+                    "height": "46.00",
+                    "top": "0.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "5.50"
+                },
+                {
+                    "id": 17,
+                    "category_id": 7,
+                    "view_id": 5,
+                    "width": "10.00",
+                    "height": "10.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "0.00"
+                },
+                {
+                    "id": 27,
+                    "category_id": 7,
+                    "view_id": 5,
+                    "width": "10.00",
+                    "height": "10.00",
+                    "top": "0.00",
+                    "bottom": null,
+                    "right": "0.00",
+                    "left": null
+                },
+                {
+                    "id": 18,
+                    "category_id": 5,
+                    "view_id": 6,
+                    "width": "67.50",
+                    "height": "42.00",
+                    "top": "34.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "7.00"
+                }
+            ],
+            "products": [
+                {
+                    "id": 20,
+                    "category_id": 5,
+                    "name": "KitchenFartuk1",
+                    "short_name": "KitchenFartuk1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 245.78,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\KitchenFartuk1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 53,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\KitchenFartuk1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\KitchenFartuk1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 54,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\KitchenFartuk1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\KitchenFartuk1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 55,
+                            "view_id": 6,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View3\\Png\\KitchenFartuk1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View3\\Masks\\Png\\KitchenFartuk1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 21,
+                    "category_id": 5,
+                    "name": "KitchenFartuk2",
+                    "short_name": "KitchenFartuk2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 542.37,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\KitchenFartuk2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 56,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\KitchenFartuk2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\KitchenFartuk2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 57,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\KitchenFartuk2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\KitchenFartuk2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 58,
+                            "view_id": 6,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View3\\Png\\KitchenFartuk2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View3\\Masks\\Png\\KitchenFartuk2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 22,
+                    "category_id": 5,
+                    "name": "KitchenFartuk3",
+                    "short_name": "KitchenFartuk3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 219.21,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\KitchenFartuk3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 59,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\KitchenFartuk3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\KitchenFartuk3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 60,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\KitchenFartuk3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\KitchenFartuk3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 61,
+                            "view_id": 6,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View3\\Png\\KitchenFartuk3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View3\\Masks\\Png\\KitchenFartuk3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 23,
+                    "category_id": 5,
+                    "name": "KitchenFartuk4",
+                    "short_name": "KitchenFartuk4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 354.96,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\KitchenFartuk4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 62,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\KitchenFartuk4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\KitchenFartuk4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 63,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\KitchenFartuk4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\KitchenFartuk4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 64,
+                            "view_id": 6,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View3\\Png\\KitchenFartuk4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View3\\Masks\\Png\\KitchenFartuk4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 24,
+                    "category_id": 6,
+                    "name": "Lamp1",
+                    "short_name": "Lamp1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 377.83,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Lamp1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 65,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Lamp1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Lamp1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 66,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Lamp1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Lamp1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 25,
+                    "category_id": 6,
+                    "name": "Lamp2",
+                    "short_name": "Lamp2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 425.35,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Lamp2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 67,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Lamp2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Lamp2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 68,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Lamp2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Lamp2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 26,
+                    "category_id": 6,
+                    "name": "Lamp3",
+                    "short_name": "Lamp3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 576.06,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Lamp3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 69,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Lamp3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Lamp3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 70,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Lamp3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Lamp3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 27,
+                    "category_id": 6,
+                    "name": "Lamp4",
+                    "short_name": "Lamp4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 371.66,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Lamp4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 71,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Lamp4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Lamp4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 72,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Lamp4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Lamp4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 28,
+                    "category_id": 6,
+                    "name": "Lamp5",
+                    "short_name": "Lamp5",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 492.52,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Lamp5.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 73,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Lamp5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Lamp5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 74,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Lamp5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Lamp5.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 29,
+                    "category_id": 6,
+                    "name": "Lamp6",
+                    "short_name": "Lamp6",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 294.9,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Lamp6.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 75,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Lamp6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Lamp6.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 76,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Lamp6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Lamp6.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 30,
+                    "category_id": 7,
+                    "name": "Parquet1",
+                    "short_name": "Parquet1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 358.75,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Parquet1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 77,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Parquet1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Parquet1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 78,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Parquet1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Parquet1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 31,
+                    "category_id": 7,
+                    "name": "Parquet2",
+                    "short_name": "Parquet2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 495.38,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Parquet2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 79,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Parquet2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Parquet2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 80,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Parquet2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Parquet2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 32,
+                    "category_id": 7,
+                    "name": "Parquet3",
+                    "short_name": "Parquet3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 278.81,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Parquet3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 81,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Parquet3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Parquet3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 82,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Parquet3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Parquet3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 33,
+                    "category_id": 7,
+                    "name": "Parquet4",
+                    "short_name": "Parquet4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 319.3,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Parquet4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 83,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Parquet4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Parquet4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 84,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Parquet4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Parquet4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 34,
+                    "category_id": 7,
+                    "name": "Parquet5",
+                    "short_name": "Parquet5",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 298.81,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Parquet5.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 85,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Parquet5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Parquet5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 86,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Parquet5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Parquet5.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 35,
+                    "category_id": 7,
+                    "name": "Parquet6",
+                    "short_name": "Parquet6",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 477.6,
+                    "image": "\\Scenes\\Red Kitchen\\Detailed\\Parquet6.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 87,
+                            "view_id": 4,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Png\\Parquet6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View1\\Masks\\Png\\Parquet6.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 88,
+                            "view_id": 5,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Png\\Parquet6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\Red Kitchen\\View2\\Masks\\Png\\Parquet6.png"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "White Kitchen",
+            "slug": "white_kitchen",
+            "views": [
+                {
+                    "id": 7,
+                    "name": "View1",
+                    "is_default": 1,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\White Kitchen\\View1\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\White Kitchen\\View1\\Jpeg\\Final.jpg"
+                        }
+                    }
+                },
+                {
+                    "id": 8,
+                    "name": "View2",
+                    "is_default": 0,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\White Kitchen\\View2\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\White Kitchen\\View2\\Jpeg\\Final.jpg"
+                        }
+                    }
+                },
+                {
+                    "id": 9,
+                    "name": "View3",
+                    "is_default": 0,
+                    "view_images": {
+                        "transparent_bg": {
+                            "path": "\\Scenes\\White Kitchen\\View3\\Jpeg\\Background.jpg"
+                        },
+                        "black_bg": {
+                            "path": "\\Scenes\\White Kitchen\\View3\\Jpeg\\Final.jpg"
+                        }
+                    }
+                }
+            ],
+            "categories": [
+                {
+                    "id": 8,
+                    "name": "BarStool"
+                },
+                {
+                    "id": 9,
+                    "name": "Lamp"
+                },
+                {
+                    "id": 10,
+                    "name": "Parquet"
+                }
+            ],
+            "clickable_zones": [
+                {
+                    "id": 19,
+                    "category_id": 8,
+                    "view_id": 7,
+                    "width": "25.50",
+                    "height": "37.50",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "40.50"
+                },
+                {
+                    "id": 20,
+                    "category_id": 9,
+                    "view_id": 7,
+                    "width": "32.50",
+                    "height": "59.00",
+                    "top": "0.00",
+                    "bottom": null,
+                    "right": null,
+                    "left": "39.50"
+                },
+                {
+                    "id": 21,
+                    "category_id": 10,
+                    "view_id": 7,
+                    "width": "40.50",
+                    "height": "18.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "0.00"
+                },
+                {
+                    "id": 28,
+                    "category_id": 10,
+                    "view_id": 7,
+                    "width": "16.00",
+                    "height": "21.00",
+                    "top": null,
+                    "bottom": "8.00",
+                    "right": null,
+                    "left": "0.00"
+                },
+                {
+                    "id": 29,
+                    "category_id": 10,
+                    "view_id": 7,
+                    "width": "9.00",
+                    "height": "33.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": "0.00",
+                    "left": null
+                },
+                {
+                    "id": 30,
+                    "category_id": 10,
+                    "view_id": 7,
+                    "width": "23.50",
+                    "height": "18.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": "0.00",
+                    "left": null
+                },
+                {
+                    "id": 22,
+                    "category_id": 10,
+                    "view_id": 8,
+                    "width": "40.50",
+                    "height": "18.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "18.00"
+                },
+                {
+                    "id": 31,
+                    "category_id": 10,
+                    "view_id": 8,
+                    "width": "17.50",
+                    "height": "18.00",
+                    "top": null,
+                    "bottom": "13.00",
+                    "right": null,
+                    "left": "32.00"
+                },
+                {
+                    "id": 23,
+                    "category_id": 8,
+                    "view_id": 9,
+                    "width": "30.00",
+                    "height": "44.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": "38.50",
+                    "left": null
+                },
+                {
+                    "id": 24,
+                    "category_id": 10,
+                    "view_id": 9,
+                    "width": "31.50",
+                    "height": "33.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": null,
+                    "left": "0.00"
+                },
+                {
+                    "id": 32,
+                    "category_id": 10,
+                    "view_id": 9,
+                    "width": "14.50",
+                    "height": "15.00",
+                    "top": null,
+                    "bottom": "0.00",
+                    "right": "0.00",
+                    "left": null
+                }
+            ],
+            "products": [
+                {
+                    "id": 36,
+                    "category_id": 8,
+                    "name": "BarStool1",
+                    "short_name": "BarStool1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 331.03,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\BarStool1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 89,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\BarStool1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\BarStool1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 90,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\BarStool1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\BarStool1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 37,
+                    "category_id": 8,
+                    "name": "BarStool2",
+                    "short_name": "BarStool2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 466.07,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\BarStool2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 91,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\BarStool2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\BarStool2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 92,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\BarStool2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\BarStool2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 38,
+                    "category_id": 8,
+                    "name": "BarStool3",
+                    "short_name": "BarStool3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 515.67,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\BarStool3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 93,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\BarStool3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\BarStool3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 94,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\BarStool3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\BarStool3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 39,
+                    "category_id": 8,
+                    "name": "BarStool4",
+                    "short_name": "BarStool4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 264.61,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\BarStool4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 95,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\BarStool4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\BarStool4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 96,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\BarStool4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\BarStool4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 40,
+                    "category_id": 8,
+                    "name": "BarStool5",
+                    "short_name": "BarStool5",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 267.79,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\BarStool5.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 97,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\BarStool5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\BarStool5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 98,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\BarStool5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\BarStool5.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 41,
+                    "category_id": 9,
+                    "name": "Lamp1",
+                    "short_name": "Lamp1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 462.17,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Lamp1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 99,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Lamp1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Lamp1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 42,
+                    "category_id": 9,
+                    "name": "Lamp2",
+                    "short_name": "Lamp2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 561.37,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Lamp2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 100,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Lamp2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Lamp2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 43,
+                    "category_id": 9,
+                    "name": "Lamp3",
+                    "short_name": "Lamp3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 273.78,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Lamp3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 101,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Lamp3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Lamp3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 44,
+                    "category_id": 9,
+                    "name": "Lamp4",
+                    "short_name": "Lamp4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 438.34,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Lamp4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 102,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Lamp4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Lamp4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 45,
+                    "category_id": 10,
+                    "name": "Parquet1",
+                    "short_name": "Parquet1",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 277.22,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Parquet1.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 103,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Parquet1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Parquet1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 104,
+                            "view_id": 8,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Png\\Parquet1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Masks\\Png\\Parquet1.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 105,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\Parquet1.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\Parquet1.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 46,
+                    "category_id": 10,
+                    "name": "Parquet2",
+                    "short_name": "Parquet2",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 537.4,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Parquet2.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 106,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Parquet2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Parquet2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 107,
+                            "view_id": 8,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Png\\Parquet2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Masks\\Png\\Parquet2.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 108,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\Parquet2.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\Parquet2.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 47,
+                    "category_id": 10,
+                    "name": "Parquet3",
+                    "short_name": "Parquet3",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 450.03,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Parquet3.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 109,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Parquet3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Parquet3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 110,
+                            "view_id": 8,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Png\\Parquet3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Masks\\Png\\Parquet3.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 111,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\Parquet3.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\Parquet3.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 48,
+                    "category_id": 10,
+                    "name": "Parquet4",
+                    "short_name": "Parquet4",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 399.07,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Parquet4.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 112,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Parquet4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Parquet4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 113,
+                            "view_id": 8,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Png\\Parquet4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Masks\\Png\\Parquet4.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 114,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\Parquet4.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\Parquet4.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 49,
+                    "category_id": 10,
+                    "name": "Parquet5",
+                    "short_name": "Parquet5",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 503.54,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Parquet5.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 115,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Parquet5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Parquet5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 116,
+                            "view_id": 8,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Png\\Parquet5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Masks\\Png\\Parquet5.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 117,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\Parquet5.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\Parquet5.png"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 50,
+                    "category_id": 10,
+                    "name": "Parquet6",
+                    "short_name": "Parquet6",
+                    "description": null,
+                    "dimensions": null,
+                    "price": 277.01,
+                    "image": "\\Scenes\\White Kitchen\\Detailed\\Parquet6.jpg",
+                    "product_configurations": [
+                        {
+                            "id": 118,
+                            "view_id": 7,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Png\\Parquet6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View1\\Masks\\Png\\Parquet6.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 119,
+                            "view_id": 8,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Png\\Parquet6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View2\\Masks\\Png\\Parquet6.png"
+                                }
+                            }
+                        },
+                        {
+                            "id": 120,
+                            "view_id": 9,
+                            "conf_images": {
+                                "transparent_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Png\\Parquet6.png"
+                                },
+                                "mask_bg": {
+                                    "path": "\\Scenes\\White Kitchen\\View3\\Masks\\Png\\Parquet6.png"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

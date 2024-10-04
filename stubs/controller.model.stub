@@ -1,0 +1,20 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ namespacedRequests }}
+
+class {{ class }} extends Controller
+{
+    public function index()
+    {
+        //
+    }
+
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        //
+    }
+}
